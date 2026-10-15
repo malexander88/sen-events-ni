@@ -1,211 +1,266 @@
 (function () {
+  'use strict';
   const REMOTE_URLS = [
     'https://malexander88.github.io/sen-events-ni/events.json',
     'https://raw.githubusercontent.com/malexander88/sen-events-ni/main/events.json'
   ];
   const CACHE_KEY = 'sen-events-ni-cache-v1';
-  const AREA_ORDER = {
-    'Newtownabbey & North Belfast': 0,
-    'Belfast': 1,
-    'Rest of Antrim': 2,
-    'County Down': 3
+  const SAVED_KEY = 'sen-events-ni-saved-v1';
+  const NEAR = 'Newtownabbey & North Belfast';
+  const AREAS = [NEAR, 'Belfast', 'Rest of Antrim', 'County Down'];
+  const AREA_ORDER = { [NEAR]: 0, 'Belfast': 1, 'Rest of Antrim': 2, 'County Down': 3 };
+  const TYPE_ICONS = {
+    'Halloween': '🎃', 'Christmas': '🎄', 'Theatre': '🎭', 'Cinema': '🎬', 'Sensory play': '🫧',
+    'Swim/Leisure': '🏊', 'Library/Storytime': '📚', 'Museum/Attraction': '🏛️', 'Outdoors': '🌳',
+    'Disco/Party': '🪩', 'Soft play (SEN hours)': '🧸', 'Place to visit': '📍'
   };
+  const typeIcon = t => TYPE_ICONS[t] || '⭐';
 
-  const els = {
-    list: document.getElementById('list'),
-    status: document.getElementById('status'),
-    area: document.getElementById('filter-area'),
-    type: document.getElementById('filter-type'),
-    sen: document.getElementById('filter-sen'),
-    hidePast: document.getElementById('filter-hide-past'),
-    onlyNew: document.getElementById('filter-new')
-  };
+  const $ = id => document.getElementById(id);
+  const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), areas: $('area-chips'),
+    types: $('type-chips'), detail: $('detail') };
 
+  const state = { near: false, weekend: false, free: false, sen: false, new: false, saved: false, area: 'all', type: 'all' };
   let allEvents = [];
+  let saved = new Set();
+  try { saved = new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]')); } catch (_) {}
+  const persistSaved = () => { try { localStorage.setItem(SAVED_KEY, JSON.stringify([...saved])); } catch (_) {} };
 
-  function todayLocal() {
-    const d = new Date();
-    d.setHours(0, 0, 0, 0);
-    return d;
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
+  function today() { const d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+  function parseDate(s) { if (!s) return null; const d = new Date(s + 'T00:00:00'); return isNaN(d) ? null : d; }
+  const startOf = ev => parseDate(ev.startDate);
+  const endOf = ev => parseDate(ev.endDate) || parseDate(ev.startDate);
 
-  function parseDate(s) {
-    if (!s) return null;
-    const d = new Date(s + 'T00:00:00');
-    return isNaN(d) ? null : d;
+  function isPast(ev) { if (ev.recurring) return false; const e = endOf(ev); return !!e && e < today(); }
+  function isNew(ev) { const a = parseDate(ev.addedDate); return !!a && a >= addDays(today(), -2); }
+  function isFree(ev) { const p = String(ev.price || ''); return /^\s*free\b(?!\s+with)/i.test(p) || /£0(\.00)?\b/.test(p) || /free entry/i.test(p); }
+  function overlaps(ev, from, to) { const s = startOf(ev); if (!s) return false; const e = endOf(ev) || s; return s <= to && e >= from; }
+  function weekendRange() {
+    const t = today(); const dow = t.getDay();
+    const sat = dow === 0 ? addDays(t, -1) : addDays(t, 6 - dow);
+    return [dow === 0 ? t : sat, addDays(sat, 1)];
   }
-
-  function isNew(ev) {
-    const a = parseDate(ev.addedDate);
-    if (!a) return false;
-    const cutoff = todayLocal(); cutoff.setDate(cutoff.getDate() - 2);
-    return a >= cutoff;
+  function isWeekend(ev) {
+    const [a, b] = weekendRange();
+    if (startOf(ev)) return overlaps(ev, a, b);
+    return /\b(sat|sun|saturday|sunday|weekend|daily|every day|open daily)/i.test((ev.recurring || '') + ' ' + (ev.time || ''));
   }
-
-  function isPast(ev) {
-    if (ev.recurring) return false;
-    const end = parseDate(ev.endDate) || parseDate(ev.startDate);
-    if (!end) return false;
-    return end < todayLocal();
+  function group(ev) {
+    if (!startOf(ev)) return 'Always open';
+    return overlaps(ev, today(), addDays(today(), 7)) ? 'This week' : 'Coming up';
   }
-
-  function sortKey(ev) {
-    const area = AREA_ORDER[ev.area] ?? 9;
-    const start = parseDate(ev.startDate);
-    const t = start ? start.getTime() : (ev.recurring ? Number.MAX_SAFE_INTEGER - 1 : Number.MAX_SAFE_INTEGER);
-    return [area, t, ev.name];
-  }
-
-  function cmp(a, b) {
-    const ka = sortKey(a), kb = sortKey(b);
-    for (let i = 0; i < ka.length; i++) {
-      if (ka[i] < kb[i]) return -1;
-      if (ka[i] > kb[i]) return 1;
-    }
-    return 0;
-  }
+  const GROUPS = ['This week', 'Coming up', 'Always open'];
 
   function dateLabel(ev) {
-    if (ev.recurring) return ev.recurring;
+    const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
     const parts = [];
-    if (ev.startDate && ev.endDate && ev.startDate !== ev.endDate) {
-      parts.push(ev.startDate + ' → ' + ev.endDate);
-    } else if (ev.startDate) {
-      parts.push(ev.startDate);
-    }
-    if (ev.time) parts.push(ev.time);
+    const s = startOf(ev), e = endOf(ev);
+    if (ev.recurring) parts.push(ev.recurring);
+    else if (s && e && +s !== +e) parts.push(fmt(s) + ' – ' + fmt(e));
+    else if (s) parts.push(fmt(s));
+    if (ev.time && !ev.recurring) parts.push(ev.time);
     return parts.join(' · ') || 'See booking page';
   }
 
-  function fillTypes(events) {
-    const types = [...new Set(events.map(e => e.type))].sort();
-    const current = els.type.value;
-    els.type.innerHTML = '<option value="all">All types</option>' +
-      types.map(t => '<option value="' + escapeAttr(t) + '">' + escapeHtml(t) + '</option>').join('');
-    if (types.includes(current)) els.type.value = current;
+  function pills(ev) {
+    let h = '';
+    if (isNew(ev)) h += '<span class="pill pill-new">New</span>';
+    if (ev.senSpecific) h += '<span class="pill pill-sen">SEN only</span>';
+    if (isFree(ev)) h += '<span class="pill pill-free">Free</span>';
+    if (ev.soldOut) h += '<span class="pill pill-sold">Sold out</span>';
+    h += '<span class="pill pill-type">' + esc(ev.type) + '</span>';
+    return h;
   }
-
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-  function escapeAttr(s) { return escapeHtml(s); }
+  const heartBtn = ev => '<button class="heart" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) +
+    '" aria-label="' + (saved.has(ev.id) ? 'Remove from saved' : 'Save') + '">' + (saved.has(ev.id) ? '♥' : '♡') + '</button>';
 
   function filtered() {
-    return allEvents
-      .filter(ev => {
-        if (els.hidePast.checked && isPast(ev)) return false;
-        if (els.onlyNew.checked && !isNew(ev)) return false;
-        if (els.area.value !== 'all' && ev.area !== els.area.value) return false;
-        if (els.type.value !== 'all' && ev.type !== els.type.value) return false;
-        if (els.sen.value === 'sen' && !ev.senSpecific) return false;
-        if (els.sen.value === 'suitable' && ev.senSpecific) return false;
-        return true;
-      })
-      .sort(cmp);
+    return allEvents.filter(ev => {
+      if (isPast(ev)) return false;
+      if (state.near && ev.area !== NEAR) return false;
+      if (state.weekend && !isWeekend(ev)) return false;
+      if (state.free && !isFree(ev)) return false;
+      if (state.sen && !ev.senSpecific) return false;
+      if (state.new && !isNew(ev)) return false;
+      if (state.saved && !saved.has(ev.id)) return false;
+      if (state.area !== 'all' && ev.area !== state.area) return false;
+      if (state.type !== 'all' && ev.type !== state.type) return false;
+      return true;
+    }).sort((a, b) => {
+      const s1 = startOf(a), s2 = startOf(b);
+      const k = [(AREA_ORDER[a.area] ?? 9) - (AREA_ORDER[b.area] ?? 9), (s1 ? +s1 : 9e15) - (s2 ? +s2 : 9e15)];
+      for (const v of k) if (v) return v;
+      return a.name.localeCompare(b.name);
+    });
   }
 
   function render() {
     const items = filtered();
     if (!items.length) {
-      els.list.innerHTML = '<p class="empty">No events match these filters.</p>';
+      els.list.innerHTML = '<p class="empty">' + (state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
       return;
     }
-    els.list.innerHTML = items.map(ev => {
-      const senBadge = ev.senSpecific
-        ? '<span class="badge badge-sen">SEN / autism-specific</span>'
-        : '<span class="badge badge-suitable">Generally suitable</span>';
-      const newB = isNew(ev) ? '<span class="badge badge-new">New</span>' : '';
-      const sold = ev.soldOut ? '<span class="badge badge-sold">Sold out</span>' : '';
-      return (
-        '<a class="card' + (ev.soldOut ? ' sold-out' : '') + '" href="' + escapeAttr(ev.url) + '" target="_blank" rel="noopener noreferrer">' +
-          '<div class="card-top">' + newB + senBadge +
-            '<span class="badge badge-type">' + escapeHtml(ev.type) + '</span>' + sold +
-          '</div>' +
-          '<h2>' + escapeHtml(ev.name) + '</h2>' +
-          '<p class="meta">' + escapeHtml(dateLabel(ev)) + '</p>' +
-          '<p class="meta">' + escapeHtml(ev.venue) + ', ' + escapeHtml(ev.town) +
-            ' · ' + escapeHtml(ev.area) + '</p>' +
-          '<p class="desc">' + escapeHtml(ev.description) + '</p>' +
-          '<p class="price">' + escapeHtml(ev.price) + '</p>' +
-          '<p class="cta">Open booking →</p>' +
-        '</a>'
-      );
-    }).join('');
+    let html = '';
+    for (const g of GROUPS) {
+      const gi = items.filter(ev => group(ev) === g);
+      if (!gi.length) continue;
+      html += '<h3 class="group-title">' + g + ' · ' + gi.length + '</h3>';
+      html += gi.map(ev =>
+        '<article class="card' + (ev.soldOut ? ' sold-out' : '') + '" data-id="' + esc(ev.id) + '" tabindex="0">' +
+          '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
+          '<div class="card-body">' +
+            '<h2>' + esc(ev.name) + '</h2>' +
+            '<p class="meta">' + esc(dateLabel(ev)) + '</p>' +
+            '<p class="meta">' + esc(ev.venue) + ', ' + esc(ev.town) + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
+            '<div class="pills">' + pills(ev) + '</div>' +
+          '</div>' + heartBtn(ev) +
+        '</article>').join('');
+    }
+    els.list.innerHTML = html;
   }
 
-  function setStatus(msg) { els.status.textContent = msg; }
+  function chipRow(container, key, values, labelAll) {
+    container.innerHTML = ['all', ...values].map(v =>
+      '<button class="chip" data-' + key + '="' + esc(v) + '" aria-pressed="' + (state[key] === v) + '">' +
+      (v === 'all' ? labelAll : (key === 'type' ? typeIcon(v) + ' ' : '') + esc(v)) + '</button>').join('');
+  }
+  function syncChips() {
+    els.quick.querySelectorAll('[data-q]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.q])));
+    els.areas.querySelectorAll('[data-area]').forEach(b => b.setAttribute('aria-pressed', String(state.area === b.dataset.area)));
+    els.types.querySelectorAll('[data-type]').forEach(b => b.setAttribute('aria-pressed', String(state.type === b.dataset.type)));
+  }
 
+  // ---------- Details ----------
+  function toICSDate(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
+  function addToCalendar(ev) {
+    const s = startOf(ev); if (!s) return;
+    const e = addDays(endOf(ev) || s, 1);
+    const where = ev.venue + ', ' + ev.town;
+    const details = (ev.description || '') + (ev.time ? '\nTime: ' + ev.time : '') + '\n' + ev.url;
+    if (window.SENAndroid && window.SENAndroid.addToCalendar) {
+      window.SENAndroid.addToCalendar(ev.name, +s, +e, where, details);
+      return;
+    }
+    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(ev.name) +
+      '&dates=' + toICSDate(s) + '/' + toICSDate(e) + '&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent(details);
+    window.open(url, '_blank', 'noopener');
+  }
+  const mapsUrl = ev => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ev.venue + ', ' + ev.town + ', Northern Ireland');
+
+  function row(icon, label, value) {
+    return value ? '<div class="info-row"><span class="k" aria-hidden="true">' + icon + '</span><div class="v"><span class="lbl">' + label + '</span>' + esc(value) + '</div></div>' : '';
+  }
+  function showDetail(id) {
+    const ev = allEvents.find(x => x.id === id);
+    if (!ev) { hideDetail(); return; }
+    const dated = !!startOf(ev);
+    els.detail.innerHTML =
+      '<div class="detail-inner">' +
+        '<div class="detail-top"><button class="icon-btn" data-back>← Back</button>' +
+          '<button class="icon-btn" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) + '">' + (saved.has(ev.id) ? '♥ Saved' : '♡ Save') + '</button></div>' +
+        '<div class="detail-hero"><div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div><h2>' + esc(ev.name) + '</h2></div>' +
+        '<div class="pills">' + pills(ev) + '</div>' +
+        (ev.soldOut ? '<p class="note">Sold out at last check. Returns sometimes come up on the booking page.</p>' : '') +
+        '<div class="info">' +
+          row('🗓️', ev.recurring ? 'Hours' : 'When', dateLabel(ev)) +
+          (ev.recurring && ev.time ? row('⏰', 'Time', ev.time) : '') +
+          row('📍', 'Where', ev.venue + ', ' + ev.town) +
+          row('🧭', 'Area', ev.area) +
+          row('💷', 'Price', ev.price) +
+        '</div>' +
+        '<div class="info"><div class="info-row"><span class="k" aria-hidden="true">💙</span><div class="v why"><span class="lbl">Why it suits / what to expect</span>' + esc(ev.description) + '</div></div></div>' +
+        '<a class="btn btn-primary" href="' + esc(ev.url) + '" target="_blank" rel="noopener noreferrer">Book / More info</a>' +
+        '<div class="btn-row">' +
+          (dated ? '<button class="btn btn-secondary" data-cal>🗓️ Add to calendar</button>' : '') +
+          '<a class="btn btn-secondary" href="' + esc(mapsUrl(ev)) + '" target="_blank" rel="noopener noreferrer">🧭 Directions</a>' +
+        '</div>' +
+      '</div>';
+    els.detail.hidden = false;
+    els.detail.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    els.detail.querySelector('[data-cal]')?.addEventListener('click', () => addToCalendar(ev));
+  }
+  function hideDetail() { els.detail.hidden = true; els.detail.innerHTML = ''; document.body.style.overflow = ''; }
+  function route() {
+    const m = location.hash.match(/^#e\/(.+)$/);
+    if (m) showDetail(decodeURIComponent(m[1])); else hideDetail();
+  }
+
+  // ---------- Events ----------
+  function toggleSave(id) {
+    if (saved.has(id)) saved.delete(id); else saved.add(id);
+    persistSaved();
+    render();
+    if (!els.detail.hidden) showDetail(id);
+  }
+  document.addEventListener('click', e => {
+    const h = e.target.closest('[data-heart]');
+    if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
+    if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
+    const q = e.target.closest('[data-q]');
+    if (q) { state[q.dataset.q] = !state[q.dataset.q]; syncChips(); render(); return; }
+    const a = e.target.closest('[data-area]');
+    if (a) { state.area = a.dataset.area; syncChips(); render(); return; }
+    const t = e.target.closest('[data-type]');
+    if (t) { state.type = t.dataset.type; syncChips(); render(); return; }
+    const card = e.target.closest('.card[data-id]');
+    if (card) location.hash = 'e/' + encodeURIComponent(card.dataset.id);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.matches('.card[data-id]')) location.hash = 'e/' + encodeURIComponent(e.target.dataset.id);
+    if (e.key === 'Escape' && !els.detail.hidden) history.back();
+  });
+  window.addEventListener('hashchange', route);
+
+  // ---------- Data ----------
   function applyData(data, source) {
     allEvents = (data && data.events) || [];
-    fillTypes(allEvents);
+    chipRow(els.areas, 'area', AREAS, '🗺️ All areas');
+    chipRow(els.types, 'type', [...new Set(allEvents.map(e => e.type))].sort(), '🔎 All types');
+    syncChips();
     render();
+    route();
     const when = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
-    setStatus(allEvents.length + ' events' + when + ' (' + source + ')');
+    els.status.textContent = allEvents.length + ' events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
   }
-
-  async function loadFallback() {
-    const res = await fetch('events.json');
-    if (!res.ok) throw new Error('fallback ' + res.status);
-    return res.json();
-  }
-
   async function fetchRemote() {
-    let lastErr;
+    let last;
     for (const base of REMOTE_URLS) {
       try {
         const res = await fetch(base + '?t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error(base + ' ' + res.status);
         return await res.json();
-      } catch (e) { lastErr = e; }
+      } catch (e) { last = e; }
     }
-    throw lastErr || new Error('all remotes failed');
+    throw last || new Error('all remotes failed');
   }
-
   async function init() {
-    let used = null;
     try {
       const data = await fetchRemote();
-      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (_) {}
       applyData(data, 'live');
-      used = 'live';
     } catch (e) {
+      let cached = null;
+      try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch (_) {}
+      if (cached) { applyData(cached, 'offline copy'); return; }
       try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          applyData(JSON.parse(cached), 'cached');
-          used = 'cached';
-        }
-      } catch (_) {}
-      if (!used) {
-        try {
-          const data = await loadFallback();
-          applyData(data, 'bundled');
-        } catch (err) {
-          setStatus('Could not load events. Check your connection and try again.');
-        }
-      } else {
-        setStatus(els.status.textContent + ' · live update unavailable');
+        const res = await fetch('events.json');
+        applyData(await res.json(), 'bundled');
+      } catch (err) {
+        els.list.innerHTML = '<p class="empty">Could not load events. Check your connection and try again.</p>';
       }
     }
   }
 
-  ['change', 'input'].forEach(ev => {
-    els.area.addEventListener(ev, render);
-    els.type.addEventListener(ev, render);
-    els.sen.addEventListener(ev, render);
-    els.hidePast.addEventListener(ev, render);
-    els.onlyNew.addEventListener(ev, render);
-  });
-
   try {
     const p = new URLSearchParams(location.search);
-    if (p.get('new') === '1' || location.hash === '#new') els.onlyNew.checked = true;
+    if (p.get('new') === '1' || location.hash === '#new') state.new = true;
   } catch (_) {}
-  window.senShowNew = function () { els.onlyNew.checked = true; render(); };
-
+  window.senShowNew = function () { state.new = true; if (location.hash) location.hash = ''; syncChips(); render(); };
+  syncChips();
   init();
 })();

@@ -30,6 +30,23 @@ public class MainActivity extends Activity {
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setAllowFileAccessFromFileURLs(true);
 
+        webView.addJavascriptInterface(new Object() {
+            @android.webkit.JavascriptInterface
+            public void addToCalendar(String title, double begin, double end, String location, String details) {
+                Intent i = new Intent(Intent.ACTION_INSERT)
+                        .setData(android.provider.CalendarContract.Events.CONTENT_URI)
+                        .putExtra(android.provider.CalendarContract.Events.TITLE, title)
+                        .putExtra(android.provider.CalendarContract.EXTRA_EVENT_BEGIN_TIME, (long) begin)
+                        .putExtra(android.provider.CalendarContract.EXTRA_EVENT_END_TIME, (long) end)
+                        .putExtra(android.provider.CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+                        .putExtra(android.provider.CalendarContract.Events.EVENT_LOCATION, location)
+                        .putExtra(android.provider.CalendarContract.Events.DESCRIPTION, details);
+                try { startActivity(i); } catch (Exception e) {
+                    android.widget.Toast.makeText(MainActivity.this, "No calendar app found", android.widget.Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, "SENAndroid");
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -40,7 +57,7 @@ public class MainActivity extends Activity {
                         || url.contains("malexander88.github.io/sen-events-ni")) {
                     return false;
                 }
-                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                try { startActivity(new Intent(Intent.ACTION_VIEW, uri)); } catch (Exception ignored) {}
                 return true;
             }
         });

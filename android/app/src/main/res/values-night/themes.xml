@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SENEvents" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#1d2725</item>
+        <item name="android:navigationBarColor">#141b1a</item>
+        <item name="android:windowBackground">#141b1a</item>
+        <item name="android:colorPrimary">#1d2725</item>
+    </style>
+</resources>
