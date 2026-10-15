@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T18:00:00+01:00",
+  "updatedAt": "2026-10-15T19:10:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -17,7 +17,8 @@
       "senSpecific": true,
       "price": "£11 child, carers free",
       "url": "https://www.titanicbelfast.com/visitor-information/offers-events/quiet-sessions/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "titanic-christmas-experience-quiet-sessions-2",
@@ -34,7 +35,8 @@
       "senSpecific": true,
       "price": "From £29 child (phone booking 028 9076 6386)",
       "url": "https://www.titanicbelfast.com/visitor-information/offers-events/a-magical-christmas-experience",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "w5-halloween-quiet-session-3",
@@ -51,7 +53,8 @@
       "senSpecific": true,
       "price": "From £10.50, carers free",
       "url": "https://w5online.co.uk/whats-on/quiet-session-halloween26",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "sen-space-halloween-event-4",
@@ -68,7 +71,8 @@
       "senSpecific": true,
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.co.uk/e/sen-space-halloween-event-tickets-2002739962139",
-      "soldOut": true
+      "soldOut": true,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "hallowee-uns-spooky-sen-disco-5",
@@ -85,7 +89,8 @@
       "senSpecific": true,
       "price": "See booking page",
       "url": "https://bookwhen.com/weeunsworld/e/ev-s7005-20261029113000",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "you2me-halloween-sensory-disco-6",
@@ -102,7 +107,8 @@
       "senSpecific": true,
       "price": "£12",
       "url": "https://you2me-tuition.pembee.app/activity/6a8c9693bb09a993291ae0e4",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "ice-bowl-sensory-friendly-halloween-session-7",
@@ -119,7 +125,8 @@
       "senSpecific": true,
       "price": "£5.50",
       "url": "https://lisburncastlereagh.gov.uk/halloween",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "lisburn-relaxed-twilight-night-8",
@@ -136,7 +143,8 @@
       "senSpecific": true,
       "price": "Tickets in advance (see site)",
       "url": "https://lisburncastlereagh.gov.uk/halloween",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "spooky-silent-disco-relaxed-session-9",
@@ -153,7 +161,8 @@
       "senSpecific": true,
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.co.uk/e/spooky-silent-disco-relaxed-session-tickets-2000999112210",
-      "soldOut": true
+      "soldOut": true,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "rathfriland-halloween-inflatable-inclusive-sessi-10",
@@ -170,7 +179,8 @@
       "senSpecific": true,
       "price": "See council site",
       "url": "https://www.armaghbanbridgecraigavon.gov.uk/abchalloween/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "the-haunted-garden-sen-friendly-session-11",
@@ -187,7 +197,8 @@
       "senSpecific": true,
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.co.uk/e/the-haunted-garden-sen-friendly-session-tickets-2002418041265",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "dobbies-santa-s-quiet-grotto-12",
@@ -204,7 +215,8 @@
       "senSpecific": true,
       "price": "£15",
       "url": "https://events.dobbies.com/event-detail/?e=4443&r=v&v=0",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "enchanted-winter-garden-inclusive-evenings-13",
@@ -221,7 +233,8 @@
       "senSpecific": true,
       "price": "See booking page",
       "url": "https://lovebelfast.co.uk/enchanted-winter-garden-antrim-castle-gardens-2026/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "glenarm-castle-christmas-quiet-sessions-14",
@@ -238,7 +251,8 @@
       "senSpecific": true,
       "price": "£37 child, carers half price (Autism NI card accepted)",
       "url": "https://glenarmcastle.com/events/christmas-at-glenarm-castle-2026/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "the-ark-open-farm-quiet-sen-night-christmas-expe-15",
@@ -255,7 +269,8 @@
       "senSpecific": true,
       "price": "See farm website",
       "url": "https://www.thearkopenfarm.co.uk/christmas/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "goldilocks-and-the-three-bears-relaxed-16",
@@ -272,7 +287,8 @@
       "senSpecific": true,
       "price": "From £16, free carer ticket",
       "url": "https://themaclive.com/event/goldilocks-the-three-bears",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "jack-and-the-beanstalk-relaxed-17",
@@ -289,7 +305,8 @@
       "senSpecific": true,
       "price": "£22.50",
       "url": "https://tickets.theatreatthemill.com/antrimandnewtownabbeybc/website/EventDetails.aspx?EventId=210601&resize=true",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "sleeping-beauty-relaxed-18",
@@ -306,7 +323,8 @@
       "senSpecific": true,
       "price": "See Waterfront",
       "url": "https://www.waterfront.co.uk/what-s-on/sleeping-beauty/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "the-little-mermaid-relaxed-19",
@@ -323,7 +341,8 @@
       "senSpecific": true,
       "price": "See GOH",
       "url": "https://www.goh.co.uk/whats-on/the-little-mermaid",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "omniplex-sensory-friendly-screenings-20",
@@ -340,7 +359,8 @@
       "senSpecific": true,
       "price": "Standard cinema pricing",
       "url": "https://www.omniplexcinemas.co.uk/filters/sensoryfriendly",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "antrim-newtownabbey-quiet-hour-21",
@@ -357,7 +377,8 @@
       "senSpecific": true,
       "price": "Leisure centre rates",
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/quiet-hour/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "airtastic-quiet-air-22",
@@ -374,7 +395,8 @@
       "senSpecific": true,
       "price": "See Airtastic",
       "url": "https://daysoutni.com/airtastic-newtownabbey/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "larne-halloween-hooley-quiet-hour-23",
@@ -391,7 +413,8 @@
       "senSpecific": false,
       "price": "See council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "hallowena-quiet-hour-24",
@@ -408,7 +431,8 @@
       "senSpecific": false,
       "price": "Ticketed — see council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "carrickfeargus-quiet-session-25",
@@ -425,7 +449,8 @@
       "senSpecific": false,
       "price": "Ticketed — see council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "halloween-in-ballymena-sensory-play-bus-26",
@@ -442,7 +467,8 @@
       "senSpecific": false,
       "price": "See council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "little-monsters-ball-27",
@@ -459,7 +485,8 @@
       "senSpecific": false,
       "price": "Free, no booking",
       "url": "https://lisburncastlereagh.gov.uk/halloween",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "belfast-one-pumpkin-patch-quiet-slots-28",
@@ -476,7 +503,8 @@
       "senSpecific": false,
       "price": "See Belfast One",
       "url": "https://belfastone.co.uk/whats-on/event/belfast-one-pumpkin-patch-2-2/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "autism-ni-glow-walk-29",
@@ -493,7 +521,8 @@
       "senSpecific": false,
       "price": "Fundraising — see Autism NI",
       "url": "https://autismni.org/get-involved/fundraising/fundraising-events/glow-walk",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "geppetto-30",
@@ -510,7 +539,8 @@
       "senSpecific": false,
       "price": "See Lyric",
       "url": "https://lyrictheatre.co.uk/whats-on/geppetto",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "belfast-zoo-touch-and-tell-tour-31",
@@ -527,7 +557,8 @@
       "senSpecific": false,
       "price": "Free with zoo admission",
       "url": "https://www.belfastcity.gov.uk/zoo/your-visit/accessibility-in-the-zoo/touch-and-tell-tours",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-10"
     },
     {
       "id": "mid-east-antrim-quiet-hour-32",
@@ -544,7 +575,8 @@
       "senSpecific": true,
       "price": "Free",
       "url": "https://www.midandeastantrim.gov.uk/news/quiet-hour-continues-170426",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-12"
     },
     {
       "id": "pause-and-breathe-quiet-time-33",
@@ -561,7 +593,8 @@
       "senSpecific": true,
       "price": "Free drop-in",
       "url": "https://www.librariesni.org.uk/libraries/county-antrim/carrickfergus-library/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-12"
     },
     {
       "id": "asd-friendly-grinch-christmas-game-show-34",
@@ -578,7 +611,8 @@
       "senSpecific": true,
       "price": "See Universe booking",
       "url": "https://www.universe.com/events/an-asd-friendly-grinch-christmas-game-show-tickets-G41B73",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-12"
     },
     {
       "id": "lapland-express-quiet-train-35",
@@ -595,7 +629,8 @@
       "senSpecific": true,
       "price": "£27 child (incl. present), £22 adult",
       "url": "https://www.downrail.co.uk/event/santa/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-12"
     },
     {
       "id": "rushmere-inclusive-silent-sundays-36",
@@ -612,7 +647,8 @@
       "senSpecific": true,
       "price": "£12.50 child, £7.50 adult",
       "url": "https://www.rushmereshopping.com/santas-grotto-2026-bookings/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-12"
     },
     {
       "id": "indiana-land-sensory-friendly-sessions-37",
@@ -629,7 +665,8 @@
       "senSpecific": true,
       "price": "See Ice Bowl",
       "url": "https://www.theicebowl.com/activities/indiana-land/asd-sessions/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-12"
     },
     {
       "id": "w5-november-quiet-session-38",
@@ -646,7 +683,8 @@
       "senSpecific": true,
       "price": "Carers free; book ahead",
       "url": "https://w5online.co.uk/whats-on/quiet-session-november26",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "w5-christmas-quiet-session-39",
@@ -663,7 +701,8 @@
       "senSpecific": true,
       "price": "Carers free; book ahead",
       "url": "https://w5online.co.uk/whats-on/quiet-session-christmas-26",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "wee-uns-quiet-sen-play-session-40",
@@ -680,7 +719,8 @@
       "senSpecific": true,
       "price": "£8.95 child (1 adult free)",
       "url": "https://bookwhen.com/weeunsworld/e/ev-s8lw0-20261022090000",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "wee-uns-sen-christmas-session-41",
@@ -697,7 +737,8 @@
       "senSpecific": true,
       "price": "See Wee'uns World",
       "url": "https://www.weeunsworld.com/christmas-events-at-wee-uns-world/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "peaceplus-halloween-inclusive-spooky-bash-42",
@@ -714,7 +755,8 @@
       "senSpecific": true,
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.com/e/peaceplus-halloween-event-ballymena-26th-and-27th-october-tickets-2002061967238",
-      "soldOut": true
+      "soldOut": true,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "larne-library-sensory-storytime-43",
@@ -731,7 +773,8 @@
       "senSpecific": true,
       "price": "Free; ages 4–8",
       "url": "https://www.librariesni.org.uk/libraries/county-antrim/larne-library/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "larne-library-quiet-sensory-play-room-44",
@@ -748,7 +791,8 @@
       "senSpecific": true,
       "price": "Free; enquire at desk",
       "url": "https://www.librariesni.org.uk/libraries/county-antrim/larne-library/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "carnlough-library-sensory-storytime-45",
@@ -765,7 +809,8 @@
       "senSpecific": true,
       "price": "Free",
       "url": "https://www.librariesni.org.uk/libraries/county-antrim/carnlough-library/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "carnlough-library-quiet-time-46",
@@ -782,7 +827,8 @@
       "senSpecific": true,
       "price": "Free",
       "url": "https://www.librariesni.org.uk/libraries/county-antrim/carnlough-library/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "ards-blair-mayne-autism-friendly-evening-47",
@@ -799,7 +845,8 @@
       "senSpecific": true,
       "price": "Leisure centre rates",
       "url": "https://www.leisureardsandnorthdown.com/accessibility-our-centres",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "get-active-abc-quiet-hour-swims-48",
@@ -816,7 +863,8 @@
       "senSpecific": true,
       "price": "Free for person with additional needs + carer",
       "url": "https://getactiveabc.com/events/quiet-hour-swim-session/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "buttercrane-autism-friendly-shopping-49",
@@ -833,7 +881,8 @@
       "senSpecific": true,
       "price": "Free to visit",
       "url": "https://www.buttercraneshopping.co.uk/facilities",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "cineworld-belfast-autism-friendly-screenings-50",
@@ -850,7 +899,8 @@
       "senSpecific": true,
       "price": "Standard cinema pricing",
       "url": "https://www.cineworld.co.uk/static/en/uk/accessibility/autism-friendly",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "exploris-aquarium-quiet-sessions-51",
@@ -867,7 +917,8 @@
       "senSpecific": true,
       "price": "Standard admission (ring 028 4272 8062 to confirm)",
       "url": "https://www.explorisni.com/accessibility-2/",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "buttercrane-silent-santa-52",
@@ -884,7 +935,8 @@
       "senSpecific": true,
       "price": "TBC",
       "url": "https://www.buttercraneshopping.co.uk/bookings/select-type.asp",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     },
     {
       "id": "ulster-folk-museum-santa-private-visits-53",
@@ -901,7 +953,296 @@
       "senSpecific": false,
       "price": "See museum",
       "url": "https://www.ulsterfolkmuseum.org/whats-on/visit-santa-ulster-folk-museum",
-      "soldOut": false
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "valley-playzone-quiet-hour",
+      "name": "Valley Playzone soft play Quiet Hour",
+      "description": "No music or PA announcements, sensory toys out, quieter time of day. No booking needed.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every Wednesday & Thursday 4–5pm",
+      "time": null,
+      "venue": "Valley Leisure Centre",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "£6.21 per child",
+      "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/soft-play/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "brook-sensory-swim",
+      "name": "Brook Leisure Centre Sensory Swim",
+      "description": "Quiet swim with sensory lights, projections, toys and floats; shallow 0.9m pool floor.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Several weekly slots (e.g. 12–1pm) — check timetable",
+      "time": null,
+      "venue": "Brook Leisure Centre",
+      "town": "Dunmurry",
+      "area": "Belfast",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "Standard swim price — see booking",
+      "url": "https://www.better.org.uk/leisure-centre/belfast/brook-leisure-centre/timetable",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "high-rise-inclusion-zone",
+      "name": "High Rise Inclusion Zone Soft Play",
+      "description": "Reduced numbers, no music, for autism/sensory needs. Autism NI Impact Award venue with 2 sensory rooms. Book ahead — often sells out.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every Sunday 9:45–10:45am",
+      "time": null,
+      "venue": "High Rise, 11A Altona Road",
+      "town": "Lisburn",
+      "area": "County Down",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "£4 per person",
+      "url": "https://highriseni.org/soft-play/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "leisureplex-asd-swim",
+      "name": "LeisurePlex Disability & ASD Friendly Swim",
+      "description": "90-minute supervised leisure-pool session for disabled/autistic swimmers and families, with floats and toys. Booking opens 7am, 7 days ahead.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every Tuesday 6–7:30pm",
+      "time": null,
+      "venue": "Lagan Valley LeisurePlex",
+      "town": "Lisburn",
+      "area": "County Down",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "See booking",
+      "url": "https://www.theleisureplex.com/pools/leisure-pools/disability-friendly/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "ice-bowl-inclusive-skating",
+      "name": "Ice Bowl Sensory Friendly / Inclusive Ice Skating",
+      "description": "Small sessions for ages 4+ with sensory needs, with height-adjustable skating aids and trained staff. Pre-booking essential (opens 7 days ahead). Next: Fri 30 Oct 3:30–5pm.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "2nd Tuesday & last Friday of each month (next Fri 30 Oct, 3:30–5pm)",
+      "time": null,
+      "venue": "Dundonald International Ice Bowl",
+      "town": "Dundonald",
+      "area": "County Down",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "£8, one carer free",
+      "url": "https://www.theicebowl.com/activities/ice-skating/inclusive-skating-sessions/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "infinity-inclusion-mission",
+      "name": "Infinity Adventure Park Inclusion Mission",
+      "description": "Trampoline/ninja session designed for additional needs, with lower capacity; under-6 soft play area on site.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Thursdays 6–7pm & Sundays 12–1pm",
+      "time": null,
+      "venue": "Infinity Adventure Park",
+      "town": "Banbridge",
+      "area": "County Down",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "See booking",
+      "url": "https://infinityadventure.co.uk/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "belfast-zoo-autism",
+      "name": "Belfast Zoo (Autism NI Impact Award)",
+      "description": "Visual pre-visit guide by email, ear defenders on loan, fast-track entry with JAM/Autism card; quietest 9–10am and from 2pm in winter. Steep paths.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily — quiet hour 9–10am",
+      "time": null,
+      "venue": "Belfast Zoo, Antrim Road",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Standard admission, one carer free",
+      "url": "https://www.belfastcity.gov.uk/zoo/your-visit/accessibility-in-the-zoo",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "hazelbank-sensory-garden",
+      "name": "Hazelbank Park Sensory Garden",
+      "description": "Free calm sensory garden built for autism and sensory needs: chimes, drums, stepping logs, mirrors, wide paths. Needs a RADAR key.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open dawn to dusk",
+      "time": null,
+      "venue": "Hazelbank Park",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://antrimandnewtownabbey.gov.uk/council/accessibility/council-facilities/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "v36-inclusive-playpark",
+      "name": "V36 inclusive play park",
+      "description": "Flagship council play park with sensory play elements, wheelchair swing and roundabout.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": null,
+      "venue": "V36 play park",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Place to visit",
+      "senSpecific": false,
+      "price": "Free",
+      "url": "https://antrimandnewtownabbey.gov.uk/council/accessibility/council-facilities/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "mo-mowlam-play-park",
+      "name": "Mo Mowlam inclusive Play Park",
+      "description": "Free inclusive park with 40+ pieces of equipment and a dedicated multi-sensory area for children with sensory needs.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": null,
+      "venue": "Stormont Estate",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Place to visit",
+      "senSpecific": false,
+      "price": "Free",
+      "url": "https://www.nidirect.gov.uk/articles/mo-mowlam-play-park-children",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "blacks-road-sensory-playground",
+      "name": "Blacks Road Sensory Playground",
+      "description": "Council sensory playground in west Belfast.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": null,
+      "venue": "Blacks Road, Springmartin Road",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://www.belfastcity.gov.uk/Things-to-Do/Parks-and-Open-Spaces/Playgrounds",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "antrim-castle-gardens-sensory",
+      "name": "Antrim Castle Gardens Sensory Garden",
+      "description": "Calming sensory garden in an Autism NI Impact Award venue; pre-visit guides and a sensory tour available.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": null,
+      "venue": "Antrim Castle Gardens",
+      "town": "Antrim",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://visitantrimandnewtownabbey.com/things-to-do/gardens-and-parks/antrim-castle-gardens-clotworthy-house/sensory-garden/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "ballyclare-sensory-garden",
+      "name": "Ballyclare Sensory Garden",
+      "description": "Free sensory garden designed for autism and sensory needs, with chimes, drums and touch panels.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open dawn to dusk",
+      "time": null,
+      "venue": "Ballyclare War Memorial Park",
+      "town": "Ballyclare",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://antrimandnewtownabbey.gov.uk/news/2024/may/new-sensory-garden-opens-in-ballyclare/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "carnfunnock-sensory-park",
+      "name": "Carnfunnock Country Park (Impact Award)",
+      "description": "Autism NI Impact Award park with a sensory park (textures, musical instruments), quiet hour and pre-visit guide.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": null,
+      "venue": "Carnfunnock Country Park",
+      "town": "Larne",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free entry (some attractions charged)",
+      "url": "https://www.midandeastantrim.gov.uk/resident/healthandwellbeing/autism-friendly",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "gobbins-autism-friendly",
+      "name": "The Gobbins (Impact Award)",
+      "description": "Autism welcome pack, quiet room, advance check-in and noise warnings. Check age/height limits for the cliff path before booking.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Seasonal — check booking",
+      "time": null,
+      "venue": "The Gobbins Visitor Centre",
+      "town": "Islandmagee",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "See booking, carer support",
+      "url": "https://www.thegobbinscliffpath.com/accessibility/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
+    },
+    {
+      "id": "bangor-aurora-sensory",
+      "name": "Bangor Aurora sensory room & packs",
+      "description": "Autism NI Impact Award leisure centre; sensory packs (ear defenders, fidgets) and a chill-out sensory room on request; soft play on site.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "During opening hours — ask at reception",
+      "time": null,
+      "venue": "Bangor Aurora Aquatics & Leisure Complex",
+      "town": "Bangor",
+      "area": "County Down",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free to request",
+      "url": "https://www.moreleisure.com/bangoraurora/policies-documents/accessibility-at-bangor-aurora-aquatics-leisure-complex/",
+      "soldOut": false,
+      "addedDate": "2026-10-15"
     }
   ]
 }

@@ -17,7 +17,8 @@
     area: document.getElementById('filter-area'),
     type: document.getElementById('filter-type'),
     sen: document.getElementById('filter-sen'),
-    hidePast: document.getElementById('filter-hide-past')
+    hidePast: document.getElementById('filter-hide-past'),
+    onlyNew: document.getElementById('filter-new')
   };
 
   let allEvents = [];
@@ -32,6 +33,13 @@
     if (!s) return null;
     const d = new Date(s + 'T00:00:00');
     return isNaN(d) ? null : d;
+  }
+
+  function isNew(ev) {
+    const a = parseDate(ev.addedDate);
+    if (!a) return false;
+    const cutoff = todayLocal(); cutoff.setDate(cutoff.getDate() - 2);
+    return a >= cutoff;
   }
 
   function isPast(ev) {
@@ -90,6 +98,7 @@
     return allEvents
       .filter(ev => {
         if (els.hidePast.checked && isPast(ev)) return false;
+        if (els.onlyNew.checked && !isNew(ev)) return false;
         if (els.area.value !== 'all' && ev.area !== els.area.value) return false;
         if (els.type.value !== 'all' && ev.type !== els.type.value) return false;
         if (els.sen.value === 'sen' && !ev.senSpecific) return false;
@@ -109,10 +118,11 @@
       const senBadge = ev.senSpecific
         ? '<span class="badge badge-sen">SEN / autism-specific</span>'
         : '<span class="badge badge-suitable">Generally suitable</span>';
+      const newB = isNew(ev) ? '<span class="badge badge-new">New</span>' : '';
       const sold = ev.soldOut ? '<span class="badge badge-sold">Sold out</span>' : '';
       return (
         '<a class="card' + (ev.soldOut ? ' sold-out' : '') + '" href="' + escapeAttr(ev.url) + '" target="_blank" rel="noopener noreferrer">' +
-          '<div class="card-top">' + senBadge +
+          '<div class="card-top">' + newB + senBadge +
             '<span class="badge badge-type">' + escapeHtml(ev.type) + '</span>' + sold +
           '</div>' +
           '<h2>' + escapeHtml(ev.name) + '</h2>' +
@@ -188,7 +198,14 @@
     els.type.addEventListener(ev, render);
     els.sen.addEventListener(ev, render);
     els.hidePast.addEventListener(ev, render);
+    els.onlyNew.addEventListener(ev, render);
   });
+
+  try {
+    const p = new URLSearchParams(location.search);
+    if (p.get('new') === '1' || location.hash === '#new') els.onlyNew.checked = true;
+  } catch (_) {}
+  window.senShowNew = function () { els.onlyNew.checked = true; render(); };
 
   init();
 })();

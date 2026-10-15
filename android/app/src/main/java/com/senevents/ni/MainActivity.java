@@ -45,7 +45,27 @@ public class MainActivity extends Activity {
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+        boolean showNew = getIntent() != null && getIntent().getBooleanExtra("showNew", false);
+        webView.loadUrl("file:///android_asset/index.html" + (showNew ? "?new=1" : ""));
+
+        if (android.os.Build.VERSION.SDK_INT >= 33 &&
+                checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 7);
+        }
+        NewEventsJobService.schedule(this);
+        // Seed the seen-id set on first launch (first run stores ids without notifying)
+        if (!getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).contains(NewEventsJobService.KEY_IDS)) {
+            final android.content.Context app = getApplicationContext();
+            new Thread(() -> { try { NewEventsJobService.check(app); } catch (Exception ignored) {} }).start();
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent != null && intent.getBooleanExtra("showNew", false) && webView != null) {
+            webView.evaluateJavascript("window.senShowNew && window.senShowNew()", null);
+        }
     }
 
     @Override
