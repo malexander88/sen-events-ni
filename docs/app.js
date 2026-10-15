@@ -1,5 +1,8 @@
 (function () {
-  const REMOTE_URL = 'https://raw.githubusercontent.com/malexander88/sen-events-ni/main/events.json';
+  const REMOTE_URLS = [
+    'https://malexander88.github.io/sen-events-ni/events.json',
+    'https://raw.githubusercontent.com/malexander88/sen-events-ni/main/events.json'
+  ];
   const CACHE_KEY = 'sen-events-ni-cache-v1';
   const AREA_ORDER = {
     'Newtownabbey & North Belfast': 0,
@@ -140,13 +143,22 @@
     return res.json();
   }
 
+  async function fetchRemote() {
+    let lastErr;
+    for (const base of REMOTE_URLS) {
+      try {
+        const res = await fetch(base + '?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error(base + ' ' + res.status);
+        return await res.json();
+      } catch (e) { lastErr = e; }
+    }
+    throw lastErr || new Error('all remotes failed');
+  }
+
   async function init() {
-    // Prefer remote, then cache, then bundled
     let used = null;
     try {
-      const res = await fetch(REMOTE_URL + '?t=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('remote ' + res.status);
-      const data = await res.json();
+      const data = await fetchRemote();
       localStorage.setItem(CACHE_KEY, JSON.stringify(data));
       applyData(data, 'live');
       used = 'live';
