@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#5b7c99" />
+  <meta name="description" content="SEN and autism-friendly events in County Antrim and County Down" />
+  <title>SEN Events NI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>SEN Events NI</h1>
+    <p class="subtitle">Antrim &amp; Down · calm days out for autistic children</p>
+  </header>
+
+  <section class="filters" aria-label="Filters">
+    <label>
+      <span>Area</span>
+      <select id="filter-area">
+        <option value="all">All areas</option>
+        <option value="Newtownabbey & North Belfast">Newtownabbey &amp; North Belfast</option>
+        <option value="Belfast">Belfast</option>
+        <option value="Rest of Antrim">Rest of Antrim</option>
+        <option value="County Down">County Down</option>
+      </select>
+    </label>
+    <label>
+      <span>Type</span>
+      <select id="filter-type">
+        <option value="all">All types</option>
+      </select>
+    </label>
+    <label>
+      <span>SEN</span>
+      <select id="filter-sen">
+        <option value="all">All events</option>
+        <option value="sen">SEN / autism-specific only</option>
+        <option value="suitable">Generally suitable only</option>
+      </select>
+    </label>
+    <label class="checkbox">
+      <input type="checkbox" id="filter-hide-past" checked />
+      <span>Hide past events</span>
+    </label>
+  </section>
+
+  <p id="status" class="status" role="status"></p>
+  <main id="list" class="event-list" aria-live="polite"></main>
+
+  <footer class="app-footer">
+    <p>Tap an event to open booking. List updates from GitHub when online.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
