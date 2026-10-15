@@ -32,6 +32,22 @@ public class MainActivity extends Activity {
 
         webView.addJavascriptInterface(new Object() {
             @android.webkit.JavascriptInterface
+            public void addEvent(String title, double begin, double end, boolean allDay, String location, String details) {
+                Intent i = new Intent(Intent.ACTION_INSERT)
+                        .setData(android.provider.CalendarContract.Events.CONTENT_URI)
+                        .putExtra(android.provider.CalendarContract.Events.TITLE, title)
+                        .putExtra(android.provider.CalendarContract.EXTRA_EVENT_BEGIN_TIME, (long) begin)
+                        .putExtra(android.provider.CalendarContract.EXTRA_EVENT_END_TIME, (long) end)
+                        .putExtra(android.provider.CalendarContract.EXTRA_EVENT_ALL_DAY, allDay)
+                        .putExtra(android.provider.CalendarContract.Events.EVENT_LOCATION, location)
+                        .putExtra(android.provider.CalendarContract.Events.DESCRIPTION, details);
+                if (!allDay) i.putExtra(android.provider.CalendarContract.Events.EVENT_TIMEZONE, "Europe/London");
+                try { startActivity(i); } catch (Exception e) {
+                    android.widget.Toast.makeText(MainActivity.this, "No calendar app found", android.widget.Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @android.webkit.JavascriptInterface
             public void addToCalendar(String title, double begin, double end, String location, String details) {
                 Intent i = new Intent(Intent.ACTION_INSERT)
                         .setData(android.provider.CalendarContract.Events.CONTENT_URI)

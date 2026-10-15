@@ -49,11 +49,23 @@
     if (startOf(ev)) return overlaps(ev, a, b);
     return /\b(sat|sun|saturday|sunday|weekend|daily|every day|open daily)/i.test((ev.recurring || '') + ' ' + (ev.time || ''));
   }
+  const DAY = 86400000;
+  function isLong(ev) { const a = startOf(ev), b = endOf(ev); return !!a && !!b && Math.round((b - a) / DAY) > 7; }
+  function weekRange() { const t = today(); const mon = addDays(t, -((t.getDay() + 6) % 7)); return [mon, addDays(mon, 6)]; }
   function group(ev) {
     if (!startOf(ev)) return 'Always open';
-    return overlaps(ev, today(), addDays(today(), 7)) ? 'This week' : 'Coming up';
+    if (isLong(ev) && startOf(ev) <= addDays(today(), 7)) return 'On now';
+    const [m, su] = weekRange();
+    if (!isLong(ev) && overlaps(ev, m, su)) return 'This week';
+    return 'Coming up';
   }
-  const GROUPS = ['This week', 'Coming up', 'Always open'];
+  const GROUPS = ['On now', 'This week', 'Coming up', 'Always open'];
+  const fmtShort = d => d.getDate() + ' ' + d.toLocaleDateString('en-GB', { month: 'short' });
+  function runBadge(ev) {
+    if (!isLong(ev)) return '';
+    const s = startOf(ev), e = endOf(ev);
+    return s > today() ? 'Starts ' + fmtShort(s) + ' · runs to ' + fmtShort(e) : 'Runs until ' + fmtShort(e);
+  }
 
   function dateLabel(ev) {
     const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
@@ -114,7 +126,7 @@
           '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
           '<div class="card-body">' +
             '<h2>' + esc(ev.name) + '</h2>' +
-            '<p class="meta">' + esc(dateLabel(ev)) + '</p>' +
+            (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
             '<p class="meta">' + esc(ev.venue) + ', ' + esc(ev.town) + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
             '<div class="pills">' + pills(ev) + '</div>' +
           '</div>' + heartBtn(ev) +
@@ -135,18 +147,41 @@
   }
 
   // ---------- Details ----------
-  function toICSDate(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
+  const pad = n => String(n).padStart(2, '0');
+  function toICSDate(d) { return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()); }
+  function toICSDateTime(d) { return toICSDate(d) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00'; }
+  // First "HH:MM" (optionally "–HH:MM") in the time text; null if none.
+  function parseTimes(t) {
+    const m = String(t || '').match(/(\d{1,2})[:.](\d{2})(?:\s*[–\-]\s*(\d{1,2})[:.](\d{2}))?/);
+    if (!m) return null;
+    return { sh: +m[1], sm: +m[2], eh: m[3] != null ? +m[3] : null, em: m[4] != null ? +m[4] : null };
+  }
   function addToCalendar(ev) {
-    const s = startOf(ev); if (!s) return;
-    const e = addDays(endOf(ev) || s, 1);
+    const s0 = startOf(ev); if (!s0) return;
+    const long = isLong(ev);
+    const day = long && s0 < today() ? today() : s0; // first upcoming date for long runs
+    const tm = parseTimes(ev.time);
     const where = ev.venue + ', ' + ev.town;
-    const details = (ev.description || '') + (ev.time ? '\nTime: ' + ev.time : '') + '\n' + ev.url;
-    if (window.SENAndroid && window.SENAndroid.addToCalendar) {
-      window.SENAndroid.addToCalendar(ev.name, +s, +e, where, details);
-      return;
+    const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    let details = '';
+    if (long) details += 'Runs ' + fmt(s0) + ' – ' + fmt(endOf(ev)) + ' (pick the date that suits on the booking page).\n';
+    else if (+endOf(ev) !== +s0) details += 'Dates: ' + fmt(s0) + ' – ' + fmt(endOf(ev)) + '\n';
+    details += (ev.time ? 'Time: ' + ev.time + '\n' : '') + (ev.description || '') + '\n' + ev.url;
+    let begin, end, allDay;
+    if (tm) {
+      begin = new Date(day); begin.setHours(tm.sh, tm.sm, 0, 0);
+      if (tm.eh != null) { end = new Date(day); end.setHours(tm.eh, tm.em, 0, 0); }
+      if (!end || end <= begin) end = new Date(+begin + 2 * 3600000);
+      allDay = false;
+    } else {
+      begin = new Date(day); end = addDays(day, (!long && endOf(ev)) ? Math.round((endOf(ev) - s0) / DAY) + 1 : 1); allDay = true;
     }
+    const A = window.SENAndroid;
+    if (A && A.addEvent) { A.addEvent(ev.name, +begin, +end, allDay, where, details); return; }
+    if (A && A.addToCalendar && allDay) { A.addToCalendar(ev.name, +begin, +end, where, details); return; }
+    const dates = allDay ? toICSDate(begin) + '/' + toICSDate(end) : toICSDateTime(begin) + '/' + toICSDateTime(end);
     const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(ev.name) +
-      '&dates=' + toICSDate(s) + '/' + toICSDate(e) + '&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent(details);
+      '&dates=' + dates + '&ctz=Europe/London&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent(details);
     window.open(url, '_blank', 'noopener');
   }
   const mapsUrl = ev => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ev.venue + ', ' + ev.town + ', Northern Ireland');
@@ -164,6 +199,7 @@
           '<button class="icon-btn" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) + '">' + (saved.has(ev.id) ? '♥ Saved' : '♡ Save') + '</button></div>' +
         '<div class="detail-hero"><div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div><h2>' + esc(ev.name) + '</h2></div>' +
         '<div class="pills">' + pills(ev) + '</div>' +
+        (runBadge(ev) ? '<p class="run-badge run-badge-lg">📅 ' + esc(runBadge(ev)) + '</p>' : '') +
         (ev.soldOut ? '<p class="note">Sold out at last check. Returns sometimes come up on the booking page.</p>' : '') +
         '<div class="info">' +
           row('🗓️', ev.recurring ? 'Hours' : 'When', dateLabel(ev)) +

@@ -83,3 +83,6 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .btn-row { display: flex; gap: 10px; } .btn-row .btn { flex: 1; }
 .app-footer { color: var(--muted); font-size: .8rem; text-align: center; padding: 0 16px 28px; }
+.run-badge { display: inline-block; margin: 4px 0 2px; padding: 4px 10px; border-radius: 8px; font-size: .85rem; font-weight: 800; background: #fff1d6; color: #8a4b00; border: 1px solid #f3c57a; }
+.run-badge-lg { font-size: 1rem; padding: 8px 12px; margin: 10px 0; }
+@media (prefers-color-scheme: dark) { .run-badge { background: #3a2a10; color: #ffcf7a; border-color: #6b4b1a; } }
