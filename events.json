@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T09:30:00+01:00",
+  "updatedAt": "2026-10-16T11:30:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1367,6 +1367,60 @@
       "senSpecific": true,
       "price": "Free",
       "url": "https://www.librariesni.org.uk/libraries/county-down/warrenpoint-library/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "moviehouse-cityside-relaxed-screenings-77",
+      "name": "Movie House CitySide Relaxed Screenings",
+      "description": "Monthly sensory-friendly film: no ads or trailers, lights up a little, sound down, free to move around. Usually first weekend of the month around 11am, marked RS on the listings. No date is listed right now, so check the page.",
+      "startDate": null,
+      "endDate": "2027-06-30",
+      "recurring": "Monthly, usually first Sat/Sun around 11am",
+      "time": "around 11:00",
+      "venue": "Movie House CitySide, York Road",
+      "town": "Belfast",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Cinema",
+      "senSpecific": false,
+      "price": "Standard cinema price",
+      "url": "https://moviehouse.co.uk/cityside-belfast/relaxedscreening",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "2-royal-avenue-sensory-dome-78",
+      "name": "2 Royal Avenue sensory dome & quiet room",
+      "description": "Free city-centre community hub with a sensory dome (light and sound), a quiet room and a cosy play area. Fidget toys and headphones to borrow. Handy break during a trip into town.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily during opening hours",
+      "time": "Opening hours",
+      "venue": "2 Royal Avenue",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Place to visit",
+      "senSpecific": false,
+      "price": "Free",
+      "url": "https://visitbelfast.com/plan/accessible-belfast/family-friendly-experiences/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "through-the-looking-glass-ballymoney-79",
+      "name": "Through the Looking Glass sensory space",
+      "description": "Calm, low-lit sensory play space with bubble tubes, fibre-optic lights and tactile play, for children with sensory needs. Booked sessions only; times and prices on their Facebook page (Through the Looking Glass NI).",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Booked sessions",
+      "time": "See Facebook",
+      "venue": "Through the Looking Glass NI",
+      "town": "Ballymoney",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Per session, check Facebook",
+      "url": "https://daysoutni.com/through-the-looking-glass-ni/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
