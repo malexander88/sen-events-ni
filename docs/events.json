@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T20:50:00+01:00",
+  "updatedAt": "2026-10-16T20:51:35+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2284,6 +2284,24 @@
       "endDate": "2026-10-28",
       "recurring": null,
       "type": "Halloween",
+      "senSpecific": true,
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "cinemagic-smeds-smoos-relaxed-ulster-museum",
+      "name": "The Smeds and the Smoos relaxed screening (Cinemagic)",
+      "description": "A short 25-minute relaxed screening of the animated story about two young aliens from rival families, made for neurodiverse audiences and children with sensory sensitivities. The house lights stay dimly lit, the sound is turned down, seating is limited for extra space, and children can move around, make noise, or come and go at any time. Cert U. Every attendee needs a ticket except under-2s on a lap; carers get the concession price.",
+      "time": "16:00–16:25",
+      "venue": "Ulster Museum Lecture Theatre, Botanic Gardens, BT9 5AB",
+      "town": "Belfast",
+      "area": "Belfast",
+      "price": "£3.30 adult, £2.20 child/carer (incl. booking fee)",
+      "url": "https://wegottickets.com/f/26490/",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-24",
+      "recurring": null,
+      "type": "Cinema",
       "senSpecific": true,
       "soldOut": false,
       "addedDate": "2026-10-16"
