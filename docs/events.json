@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T20:35:00+01:00",
+  "updatedAt": "2026-10-16T20:40:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2214,6 +2214,24 @@
       "price": "Child £34.95, adult £31.95 (Wed), plus booking fee",
       "url": "https://magheramorneestate.com/experiences/magic-and-mistletoe/",
       "soldOut": true,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "abbey-allsorts-special-needs-club",
+      "name": "Abbey Allsorts Special Needs Club (children with additional needs + siblings)",
+      "description": "Parent-run charity club in Newtownabbey for children with disabilities and their brothers and sisters: arts and crafts, singing and dancing, messy play, children's entertainers and family games. Sensory and Makaton friendly, with a hoist and changing bench available. Parents or carers stay with their children. Saturday sessions are announced on their Facebook page, and Listening Ear Newtownabbey (Rathcoole) also lists an evening session on the last Tuesday of each month, 6:30 to 8pm. Contact abbeyallsorts@mail.com or 07754 678497 to check the next date.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Saturdays as announced on Facebook; also last Tuesday of each month",
+      "time": "Sat 12:00–14:00; last Tue 18:30–20:00 (confirm before going)",
+      "venue": "Abbey Presbyterian Church, 99–101 Monkstown Road, BT37 0LG",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Free (contact to confirm)",
+      "url": "https://www.abbeypresbyterian.org.uk/abbey-allsorts/",
+      "soldOut": false,
       "addedDate": "2026-10-16"
     }
   ]
