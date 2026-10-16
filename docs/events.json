@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T19:35:00+01:00",
+  "updatedAt": "2026-10-16T19:45:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2069,6 +2069,24 @@
       "senSpecific": true,
       "price": "Free (booking essential)",
       "url": "https://mae-murray-foundation.eventcube.io/events/97604/music-yard-larne-17th-october",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "montalto-halloween-asd-quiet-2026-10-27",
+      "name": "Halloween at Montalto: ASD/Quiet Sessions (Trail of Tiny Terrors)",
+      "description": "Dedicated ASD/quiet sessions of Montalto Estate's family Halloween trail: a gentle, not-too-scary outdoor woodland trail (about 1 hour) with spooky scenes, a witch's cottage, play park and a pumpkin for each child to take home. Quieter, calmer timeslots for children who find busy or loud places hard. Wheelchair and pram friendly; outdoors, so wellies recommended. Carer tickets £2.50 (phone 028 9756 6100). Book the ASD/Quiet timeslot on the Ticketsolve page.",
+      "startDate": "2026-10-27",
+      "endDate": "2026-10-27",
+      "recurring": null,
+      "time": "09:30 or 10:30 arrival slots",
+      "venue": "Montalto Estate, Spa Road",
+      "town": "Ballynahinch",
+      "area": "County Down",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "Child £13.50 (incl. pumpkin), adult £11.50, carer £2.50",
+      "url": "https://montaltoestate.ticketsolve.com/shows/873638673/events/129697332",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
