@@ -61,7 +61,26 @@
   const endOf = ev => parseDate(ev.endDate) || parseDate(ev.startDate);
 
   function isPast(ev) { if (ev.recurring) return false; const e = endOf(ev); return !!e && e < today(); }
-  function isNew(ev) { const a = parseDate(ev.addedDate); return !!a && a >= addDays(today(), -2); }
+  function londonToday() { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date()); } catch (_) { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); } }
+  function isNew(ev) { return !!ev.addedDate && ev.addedDate.slice(0, 10) === londonToday(); }
+  // ---- GPS "Near me" ----
+  const RADIUS_MI = 10;
+  let userPos = null, geoNotice = '';
+  function hasCoords(ev) { return typeof ev.lat === 'number' && typeof ev.lng === 'number'; }
+  function distMi(ev) {
+    if (!userPos || !hasCoords(ev)) return null;
+    const r = Math.PI / 180, dLat = (ev.lat - userPos.lat) * r, dLng = (ev.lng - userPos.lng) * r;
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(userPos.lat * r) * Math.cos(ev.lat * r) * Math.sin(dLng / 2) ** 2;
+    return 3958.8 * 2 * Math.asin(Math.sqrt(a));
+  }
+  function requestLocation() {
+    geoNotice = 'Finding your location…';
+    const fail = () => { userPos = null; geoNotice = 'Location unavailable, so showing Newtownabbey & North Belfast instead.'; render(); };
+    if (!navigator.geolocation) return fail();
+    navigator.geolocation.getCurrentPosition(p => {
+      userPos = { lat: p.coords.latitude, lng: p.coords.longitude }; geoNotice = ''; render();
+    }, fail, { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
+  }
   function isFree(ev) { const p = String(ev.price || ''); return /^\s*free\b(?!\s+with)/i.test(p) || /£0(\.00)?\b/.test(p) || /free entry/i.test(p); }
   function overlaps(ev, from, to) { const s = startOf(ev); if (!s) return false; const e = endOf(ev) || s; return s <= to && e >= from; }
   function weekendRange() {
@@ -105,7 +124,7 @@
 
   function pills(ev) {
     let h = '';
-    if (isNew(ev)) h += '<span class="pill pill-new">New</span>';
+    if (isNew(ev)) h += '<span class="pill pill-new">Found today</span>';
     if (ev.senSpecific) h += '<span class="pill pill-sen">SEN only</span>';
     if (ev.general) h += '<span class="pill pill-general" title="General family event, not SEN-specific">General</span>';
     if (isFree(ev)) h += '<span class="pill pill-free">Free</span>';
@@ -116,12 +135,19 @@
   const heartBtn = ev => '<button class="heart" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) +
     '" aria-label="' + (saved.has(ev.id) ? 'Remove from saved' : 'Save') + '">' + (saved.has(ev.id) ? '♥' : '♡') + '</button>';
 
+  function anyFilter() {
+    return !!(state.near || state.weekend || state.free || state.sen || state.general || state.new || state.saved ||
+      state.area !== 'all' || state.type !== 'all' || (state.query && state.query.trim()));
+  }
   function filtered(wantHidden) {
     return allEvents.filter(ev => {
       if (isPast(ev)) return false;
       if (hidden.has(ev.id) !== !!wantHidden) return false;
       if (!matchesQuery(ev)) return false;
-      if (state.near && ev.area !== NEAR) return false;
+      if (state.near) {
+        if (userPos) { const d = distMi(ev); if (d !== null && d > RADIUS_MI) return false; }
+        else if (ev.area !== NEAR) return false;
+      }
       if (state.weekend && !isWeekend(ev)) return false;
       if (state.free && !isFree(ev)) return false;
       if (state.sen && !ev.senSpecific) return false;
@@ -132,6 +158,10 @@
       if (state.type !== 'all' && ev.type !== state.type) return false;
       return true;
     }).sort((a, b) => {
+      if (state.near && userPos) {
+        const d1 = distMi(a), d2 = distMi(b);
+        if (d1 !== d2) return (d1 === null ? 9e9 : d1) - (d2 === null ? 9e9 : d2);
+      }
       const s1 = startOf(a), s2 = startOf(b);
       const k = [(AREA_ORDER[a.area] ?? 9) - (AREA_ORDER[b.area] ?? 9), (s1 ? +s1 : 9e15) - (s2 ? +s2 : 9e15)];
       for (const v of k) if (v) return v;
@@ -160,19 +190,23 @@
     if (state.showHidden) {
       const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
       const hid = filtered(true);
-      els.status.textContent = total + ' hidden item' + (total === 1 ? '' : 's');
+      els.status.textContent = anyFilter() ? hid.length + ' of ' + total + ' hidden' : total + ' hidden item' + (total === 1 ? '' : 's');
       els.list.innerHTML = '<div class="hidden-view-head"><h3 class="group-title group-hidden">Hidden (' + total + ')' + (hid.length !== total ? ' · ' + hid.length + ' match' : '') + '</h3>' +
         '<button class="icon-btn back-all" data-back-all="1">← Show all events</button></div>' +
         (hid.length ? hid.map(hiddenCard).join('') : '<p class="empty empty-sm">' + (total ? 'No hidden items match these filters.' : 'Nothing hidden.') + '</p>');
       return;
     }
-    if (statusText) els.status.textContent = statusText;
     const items = filtered(false);
+    if (anyFilter()) {
+      const all = allEvents.filter(ev => !isPast(ev) && !hidden.has(ev.id)).length;
+      els.status.textContent = items.length + ' of ' + all + ' events & places';
+    } else if (statusText) els.status.textContent = statusText;
+    const notice = state.near && geoNotice ? '<p class="geo-notice">' + esc(geoNotice) + '</p>' : (state.near && userPos ? '<p class="geo-notice geo-ok">📍 Within ' + RADIUS_MI + ' miles of you, nearest first</p>' : '');
     if (!items.length) {
-      els.list.innerHTML = '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
+      els.list.innerHTML = notice + '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
       return;
     }
-    let html = '';
+    let html = notice;
     for (const g of GROUPS) {
       const gi = items.filter(ev => group(ev) === g);
       if (!gi.length) continue;
@@ -183,7 +217,7 @@
           '<div class="card-body">' +
             '<h2>' + esc(ev.name) + '</h2>' +
             (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
-            '<p class="meta">' + esc(ev.venue) + ', ' + esc(ev.town) + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
+            '<p class="meta">' + (state.near && distMi(ev) !== null ? '<span class="dist">' + distMi(ev).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ', ' + esc(ev.town) + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
             '<div class="pills">' + pills(ev) + '</div>' +
           '</div>' + heartBtn(ev) + hideBtn(ev) +
         '</article>').join('');
@@ -311,7 +345,7 @@
     if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
     if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
     const q = e.target.closest('[data-q]');
-    if (q) { state[q.dataset.q] = !state[q.dataset.q]; syncChips(); render(); return; }
+    if (q) { state[q.dataset.q] = !state[q.dataset.q]; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
     const a = e.target.closest('[data-area]');
     if (a) { state.area = a.dataset.area; syncChips(); render(); return; }
     const t = e.target.closest('[data-type]');
@@ -337,7 +371,7 @@
     route();
     const when = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
     statusText = allEvents.length + ' events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
-    if (!state.showHidden) els.status.textContent = statusText;
+    render();
   }
   async function fetchRemote() {
     let last;
@@ -372,6 +406,13 @@
     const p = new URLSearchParams(location.search);
     if (p.get('new') === '1' || location.hash === '#new') state.new = true;
   } catch (_) {}
+  (function () {
+    const b = $('notify-chip'), A = window.SENAndroid;
+    if (!b || !A || !A.getNotifications) return;
+    const paint = on => { b.textContent = on ? '🔔' : '🔕'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on ? 'New-event notifications on' : 'New-event notifications off'); };
+    let on = !!A.getNotifications(); paint(on); b.hidden = false;
+    b.addEventListener('click', () => { on = !on; A.setNotifications(on); paint(on); });
+  })();
   window.senShowNew = function () { state.new = true; if (location.hash) location.hash = ''; syncChips(); render(); };
   syncChips();
   init();

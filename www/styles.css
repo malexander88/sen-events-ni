@@ -117,3 +117,7 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 
 .hidden-view-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:8px 0 4px;padding:10px 12px;border-radius:12px;background:rgba(239,143,33,.14);border:1px solid rgba(239,143,33,.45)}
 .hidden-view-head .group-title{margin:0}
+.geo-notice { margin: 4px 0 10px; padding: 8px 12px; border-radius: 10px; font-size: .85rem; background: var(--surface-2); color: var(--muted); }
+.dist { font-weight: 800; color: var(--sen); }
+.logo-img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; padding: 0; background: none; display: block; }
+#notify-chip[hidden] { display: none !important; }

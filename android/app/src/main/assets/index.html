@@ -15,10 +15,10 @@
 <body>
   <header class="app-header">
     <div class="brand">
-      <span class="logo" aria-hidden="true">♥</span>
+      <img class="logo logo-img" src="icon-192.png" alt="" aria-hidden="true" width="40" height="40">
       <div>
         <h1>SEN Events NI</h1>
-        <p class="subtitle">Calm days out across Antrim &amp; Down</p>
+        <p class="subtitle">Antrim &amp; Down</p>
       </div>
     </div>
     <div class="search-row">
@@ -28,6 +28,7 @@
         <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" hidden>✕</button>
       </label>
       <button id="hidden-chip" class="chip chip-hidden" aria-pressed="false">Show hidden (0)</button>
+      <button id="notify-chip" class="chip chip-hidden" aria-pressed="true" hidden title="Notify me about new events at about 9:45am and 5:45pm">🔔</button>
     </div>
     <nav class="chips" id="quick-chips" aria-label="Quick filters">
       <button class="chip" data-q="near" aria-pressed="false">📍 Near me</button>
@@ -35,7 +36,7 @@
       <button class="chip" data-q="free" aria-pressed="false">🆓 Free</button>
       <button class="chip" data-q="sen" aria-pressed="false">💙 SEN only</button>
       <button class="chip" data-q="general" aria-pressed="false">🎈 General</button>
-      <button class="chip" data-q="new" aria-pressed="false">✨ New</button>
+      <button class="chip" data-q="new" aria-pressed="false">✨ Found today</button>
       <button class="chip" data-q="saved" aria-pressed="false">♥ Saved</button>
     </nav>
     <nav class="chips chips-secondary" id="area-chips" aria-label="Area"></nav>

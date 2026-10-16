@@ -37,16 +37,48 @@ public class NewEventsJobService extends JobService {
         "https://raw.githubusercontent.com/malexander88/sen-events-ni/main/events.json"
     };
 
+    static final String KEY_NOTIFY = "notify_on";
+
+    static boolean enabled(Context ctx) { return ctx.getSharedPreferences(PREFS, MODE_PRIVATE).getBoolean(KEY_NOTIFY, true); }
+
+    /** Next 09:45 or 17:45 Europe/London after now (epoch ms). */
+    static long nextSlot(long now) {
+        java.util.Calendar c = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("Europe/London"));
+        c.setTimeInMillis(now);
+        int[][] slots = {{9, 45}, {17, 45}};
+        for (int day = 0; day < 2; day++) {
+            for (int[] sl : slots) {
+                java.util.Calendar t = (java.util.Calendar) c.clone();
+                t.add(java.util.Calendar.DAY_OF_YEAR, day);
+                t.set(java.util.Calendar.HOUR_OF_DAY, sl[0]); t.set(java.util.Calendar.MINUTE, sl[1]);
+                t.set(java.util.Calendar.SECOND, 0); t.set(java.util.Calendar.MILLISECOND, 0);
+                if (t.getTimeInMillis() > now + 60000) return t.getTimeInMillis();
+            }
+        }
+        return now + 12L * 3600 * 1000;
+    }
+
+    /** Arms an inexact alarm (10-min window) for the next check slot; cancels everything if notifications are off. */
     public static void schedule(Context ctx) {
+        android.app.AlarmManager am = (android.app.AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pi = PendingIntent.getBroadcast(ctx, 0, new Intent(ctx, CheckReceiver.class),
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        JobScheduler js = (JobScheduler) ctx.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        if (js != null) js.cancel(JOB_ID); // drop the old 24h periodic job from <=1.6
+        if (am == null) return;
+        am.cancel(pi);
+        if (!enabled(ctx)) return;
+        am.setWindow(android.app.AlarmManager.RTC_WAKEUP, nextSlot(System.currentTimeMillis()), 10L * 60 * 1000, pi);
+    }
+
+    /** One-shot network job to run the check now. */
+    static void runSoon(Context ctx) {
         JobScheduler js = (JobScheduler) ctx.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         if (js == null) return;
-        for (JobInfo j : js.getAllPendingJobs()) if (j.getId() == JOB_ID) return;
-        JobInfo info = new JobInfo.Builder(JOB_ID, new ComponentName(ctx, NewEventsJobService.class))
+        js.schedule(new JobInfo.Builder(JOB_ID + 1, new ComponentName(ctx, NewEventsJobService.class))
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-                .setPeriodic(24L * 60 * 60 * 1000)
-                .setPersisted(true)
-                .build();
-        js.schedule(info);
+                .setOverrideDeadline(30L * 60 * 1000)
+                .build());
     }
 
     @Override
@@ -88,27 +120,36 @@ public class NewEventsJobService extends JobService {
         boolean firstRun = !p.contains(KEY_IDS);
         Set<String> seen = new HashSet<>(p.getStringSet(KEY_IDS, new HashSet<>()));
         int fresh = 0;
+        java.util.List<String> titles = new java.util.ArrayList<>();
         Set<String> hiddenIds = p.getStringSet(KEY_HIDDEN, new HashSet<>());
-        for (String id : ids) if (!seen.contains(id) && !hiddenIds.contains(id)) fresh++;
+        for (int i = 0; i < events.length(); i++) {
+            JSONObject ev = events.getJSONObject(i); String id = ev.optString("id");
+            if (!seen.contains(id) && !hiddenIds.contains(id)) { fresh++; titles.add(ev.optString("name")); }
+        }
         seen.addAll(ids);
         p.edit().putStringSet(KEY_IDS, seen).apply();
-        if (!firstRun && fresh > 0) notifyNew(ctx, fresh);
+        if (!firstRun && fresh > 0 && enabled(ctx)) notifyNew(ctx, fresh, titles);
         return firstRun ? 0 : fresh;
     }
 
-    static void notifyNew(Context ctx, int n) {
+    static void notifyNew(Context ctx, int n, java.util.List<String> titles) {
         if (Build.VERSION.SDK_INT >= 33 &&
                 ctx.checkSelfPermission("android.permission.POST_NOTIFICATIONS") != PackageManager.PERMISSION_GRANTED) return;
         NotificationManager nm = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= 26) {
-            nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "New SEN-friendly finds", NotificationManager.IMPORTANCE_DEFAULT));
+            nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "New events found", NotificationManager.IMPORTANCE_DEFAULT));
         }
         Intent open = new Intent(ctx, MainActivity.class).putExtra("showNew", true)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pi = PendingIntent.getActivity(ctx, 0, open, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        String text = n + " new SEN-friendly find" + (n == 1 ? "" : "s") + " near you";
+        String title = n + " new event" + (n == 1 ? "" : "s") + " found";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < Math.min(5, titles.size()); i++) sb.append(i > 0 ? "\n" : "").append("• ").append(titles.get(i));
+        if (titles.size() > 5) sb.append("\n…and ").append(titles.size() - 5).append(" more");
+        String text = sb.toString();
         Notification.Builder b = Build.VERSION.SDK_INT >= 26 ? new Notification.Builder(ctx, CHANNEL_ID) : new Notification.Builder(ctx);
-        b.setSmallIcon(R.mipmap.ic_launcher).setContentTitle("SEN Events NI").setContentText(text)
+        b.setSmallIcon(R.mipmap.ic_launcher).setContentTitle(title).setContentText(titles.isEmpty() ? "" : "• " + titles.get(0))
+                .setStyle(new Notification.BigTextStyle().bigText(text))
                 .setContentIntent(pi).setAutoCancel(true);
         nm.notify(1, b.build());
     }

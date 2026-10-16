@@ -18,7 +18,10 @@
       "price": "£11 child, carers free",
       "url": "https://www.titanicbelfast.com/visitor-information/offers-events/quiet-sessions/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.60814,
+      "lng": -5.90984,
+      "geoSource": "venue"
     },
     {
       "id": "titanic-christmas-experience-quiet-sessions-2",
@@ -36,7 +39,10 @@
       "price": "From £29 child (phone booking 028 9076 6386)",
       "url": "https://www.titanicbelfast.com/visitor-information/offers-events/a-magical-christmas-experience",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.60814,
+      "lng": -5.90984,
+      "geoSource": "venue"
     },
     {
       "id": "w5-halloween-quiet-session-3",
@@ -54,7 +60,10 @@
       "price": "From £10.50, carers free",
       "url": "https://w5online.co.uk/whats-on/quiet-session-halloween26",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.60465,
+      "lng": -5.91501,
+      "geoSource": "venue"
     },
     {
       "id": "sen-space-halloween-event-4",
@@ -72,7 +81,10 @@
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.co.uk/e/sen-space-halloween-event-tickets-2002739962139",
       "soldOut": true,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.55313,
+      "lng": -6.00321,
+      "geoSource": "town"
     },
     {
       "id": "hallowee-uns-spooky-sen-disco-5",
@@ -90,7 +102,10 @@
       "price": "See booking page",
       "url": "https://bookwhen.com/weeunsworld/e/ev-s7005-20261029113000",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.57165,
+      "lng": -5.90574,
+      "geoSource": "venue"
     },
     {
       "id": "you2me-halloween-sensory-disco-6",
@@ -108,7 +123,10 @@
       "price": "£12",
       "url": "https://you2me-tuition.pembee.app/activity/6a8c9693bb09a993291ae0e4",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "ice-bowl-sensory-friendly-halloween-session-7",
@@ -126,7 +144,10 @@
       "price": "£5.50",
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.58711,
+      "lng": -5.81862,
+      "geoSource": "venue"
     },
     {
       "id": "lisburn-relaxed-twilight-night-8",
@@ -144,7 +165,10 @@
       "price": "Tickets in advance (see site)",
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.51619,
+      "lng": -6.04015,
+      "geoSource": "venue"
     },
     {
       "id": "spooky-silent-disco-relaxed-session-9",
@@ -162,7 +186,10 @@
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.co.uk/e/spooky-silent-disco-relaxed-session-tickets-2000999112210",
       "soldOut": true,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.71575,
+      "lng": -5.8053,
+      "geoSource": "venue"
     },
     {
       "id": "rathfriland-halloween-inflatable-inclusive-sessi-10",
@@ -180,7 +207,10 @@
       "price": "See council site",
       "url": "https://www.armaghbanbridgecraigavon.gov.uk/abchalloween/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.23818,
+      "lng": -6.16031,
+      "geoSource": "town"
     },
     {
       "id": "the-haunted-garden-sen-friendly-session-11",
@@ -198,7 +228,10 @@
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.co.uk/e/the-haunted-garden-sen-friendly-session-tickets-2002418041265",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.09999,
+      "lng": -6.25128,
+      "geoSource": "town"
     },
     {
       "id": "dobbies-santa-s-quiet-grotto-12",
@@ -216,7 +249,10 @@
       "price": "£15",
       "url": "https://events.dobbies.com/event-detail/?e=4443&r=v&v=0",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.50369,
+      "lng": -6.02878,
+      "geoSource": "venue"
     },
     {
       "id": "enchanted-winter-garden-inclusive-evenings-13",
@@ -234,7 +270,10 @@
       "price": "See booking page",
       "url": "https://lovebelfast.co.uk/enchanted-winter-garden-antrim-castle-gardens-2026/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.71807,
+      "lng": -6.22474,
+      "geoSource": "venue"
     },
     {
       "id": "glenarm-castle-christmas-quiet-sessions-14",
@@ -252,7 +291,10 @@
       "price": "£37 child, carers half price (Autism NI card accepted)",
       "url": "https://glenarmcastle.com/events/christmas-at-glenarm-castle-2026/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.96618,
+      "lng": -5.95613,
+      "geoSource": "venue"
     },
     {
       "id": "the-ark-open-farm-quiet-sen-night-christmas-expe-15",
@@ -270,7 +312,10 @@
       "price": "Child £34 (incl. bear building), toddler £23, adult £20, carer £5",
       "url": "https://bookings.thearkopenfarm.co.uk/book/christmas---quiet-nights/93",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "goldilocks-and-the-three-bears-relaxed-16",
@@ -288,7 +333,10 @@
       "price": "From £16, free carer ticket",
       "url": "https://themaclive.com/event/goldilocks-the-three-bears",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.60354,
+      "lng": -5.92745,
+      "geoSource": "venue"
     },
     {
       "id": "jack-and-the-beanstalk-relaxed-17",
@@ -306,7 +354,10 @@
       "price": "£22.50",
       "url": "https://tickets.theatreatthemill.com/antrimandnewtownabbeybc/website/EventDetails.aspx?EventId=210601&resize=true",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.69518,
+      "lng": -5.94693,
+      "geoSource": "venue"
     },
     {
       "id": "sleeping-beauty-relaxed-18",
@@ -324,7 +375,10 @@
       "price": "See Waterfront",
       "url": "https://www.waterfront.co.uk/what-s-on/sleeping-beauty/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "the-little-mermaid-relaxed-19",
@@ -342,7 +396,10 @@
       "price": "See GOH",
       "url": "https://www.goh.co.uk/whats-on/the-little-mermaid",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59533,
+      "lng": -5.93519,
+      "geoSource": "venue"
     },
     {
       "id": "omniplex-sensory-friendly-screenings-20",
@@ -360,7 +417,10 @@
       "price": "Standard cinema pricing",
       "url": "https://www.omniplexcinemas.co.uk/filters/sensoryfriendly",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59474,
+      "lng": -5.81053,
+      "geoSource": "town"
     },
     {
       "id": "antrim-newtownabbey-quiet-hour-21",
@@ -378,7 +438,10 @@
       "price": "Leisure centre rates",
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/quiet-hour/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "airtastic-quiet-air-22",
@@ -396,7 +459,10 @@
       "price": "Soft play £8.75–£9.50; Inflata £15.95 (carer free); bowling from £6.95",
       "url": "https://air-tastic.com/locations/belfast",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "larne-halloween-hooley-quiet-hour-23",
@@ -414,7 +480,10 @@
       "price": "See council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.85766,
+      "lng": -5.80725,
+      "geoSource": "venue"
     },
     {
       "id": "hallowena-quiet-hour-24",
@@ -432,7 +501,10 @@
       "price": "Ticketed — see council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.8721,
+      "lng": -6.28111,
+      "geoSource": "venue"
     },
     {
       "id": "carrickfeargus-quiet-session-25",
@@ -450,7 +522,10 @@
       "price": "Ticketed — see council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.71755,
+      "lng": -5.8044,
+      "geoSource": "venue"
     },
     {
       "id": "halloween-in-ballymena-sensory-play-bus-26",
@@ -468,7 +543,10 @@
       "price": "See council site",
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.86562,
+      "lng": -6.27557,
+      "geoSource": "venue"
     },
     {
       "id": "little-monsters-ball-27",
@@ -486,7 +564,10 @@
       "price": "Free, no booking",
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59474,
+      "lng": -5.81053,
+      "geoSource": "town"
     },
     {
       "id": "belfast-one-pumpkin-patch-quiet-slots-28",
@@ -504,7 +585,10 @@
       "price": "See Belfast One",
       "url": "https://belfastone.co.uk/whats-on/event/belfast-one-pumpkin-patch-2-2/",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59644,
+      "lng": -5.92951,
+      "geoSource": "venue"
     },
     {
       "id": "geppetto-30",
@@ -522,7 +606,10 @@
       "price": "See Lyric",
       "url": "https://lyrictheatre.co.uk/whats-on/geppetto",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "belfast-zoo-touch-and-tell-tour-31",
@@ -540,7 +627,10 @@
       "price": "Free with zoo admission",
       "url": "https://www.belfastcity.gov.uk/zoo/your-visit/accessibility-in-the-zoo/touch-and-tell-tours",
       "soldOut": false,
-      "addedDate": "2026-10-10"
+      "addedDate": "2026-10-10",
+      "lat": 54.65727,
+      "lng": -5.94212,
+      "geoSource": "venue"
     },
     {
       "id": "mid-east-antrim-quiet-hour-32",
@@ -558,7 +648,10 @@
       "price": "Free",
       "url": "https://www.midandeastantrim.gov.uk/news/quiet-hour-continues-170426",
       "soldOut": false,
-      "addedDate": "2026-10-12"
+      "addedDate": "2026-10-12",
+      "lat": 54.71362,
+      "lng": -5.80731,
+      "geoSource": "town"
     },
     {
       "id": "asd-friendly-grinch-christmas-game-show-34",
@@ -576,7 +669,10 @@
       "price": "See Universe booking",
       "url": "https://www.universe.com/events/an-asd-friendly-grinch-christmas-game-show-tickets-G41B73",
       "soldOut": false,
-      "addedDate": "2026-10-12"
+      "addedDate": "2026-10-12",
+      "lat": 54.55313,
+      "lng": -6.00321,
+      "geoSource": "town"
     },
     {
       "id": "lapland-express-quiet-train-35",
@@ -594,7 +690,10 @@
       "price": "£27 child (incl. present), £22 adult",
       "url": "https://www.downrail.co.uk/event/santa/",
       "soldOut": false,
-      "addedDate": "2026-10-12"
+      "addedDate": "2026-10-12",
+      "lat": 54.32793,
+      "lng": -5.71649,
+      "geoSource": "town"
     },
     {
       "id": "rushmere-inclusive-silent-sundays-36",
@@ -612,7 +711,10 @@
       "price": "£12.50 child, £7.50 adult",
       "url": "https://www.rushmereshopping.com/santas-grotto-2026-bookings/",
       "soldOut": false,
-      "addedDate": "2026-10-12"
+      "addedDate": "2026-10-12",
+      "lat": 54.4502,
+      "lng": -6.39108,
+      "geoSource": "venue"
     },
     {
       "id": "indiana-land-sensory-friendly-sessions-37",
@@ -630,7 +732,10 @@
       "price": "See Ice Bowl",
       "url": "https://www.theicebowl.com/activities/indiana-land/asd-sessions/",
       "soldOut": false,
-      "addedDate": "2026-10-12"
+      "addedDate": "2026-10-12",
+      "lat": 54.58711,
+      "lng": -5.81862,
+      "geoSource": "venue"
     },
     {
       "id": "w5-november-quiet-session-38",
@@ -648,7 +753,10 @@
       "price": "Carers free; book ahead",
       "url": "https://w5online.co.uk/whats-on/quiet-session-november26",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.60465,
+      "lng": -5.91501,
+      "geoSource": "venue"
     },
     {
       "id": "w5-christmas-quiet-session-39",
@@ -666,7 +774,10 @@
       "price": "Carers free; book ahead",
       "url": "https://w5online.co.uk/whats-on/quiet-session-christmas-26",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.60465,
+      "lng": -5.91501,
+      "geoSource": "venue"
     },
     {
       "id": "wee-uns-quiet-sen-play-session-40",
@@ -684,7 +795,10 @@
       "price": "£8.95 child (1 adult free)",
       "url": "https://bookwhen.com/weeunsworld/e/ev-s8lw0-20261022090000",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.57165,
+      "lng": -5.90574,
+      "geoSource": "venue"
     },
     {
       "id": "wee-uns-sen-christmas-session-41",
@@ -702,7 +816,10 @@
       "price": "See Wee'uns World",
       "url": "https://www.weeunsworld.com/christmas-events-at-wee-uns-world/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.57165,
+      "lng": -5.90574,
+      "geoSource": "venue"
     },
     {
       "id": "peaceplus-halloween-inclusive-spooky-bash-42",
@@ -720,7 +837,10 @@
       "price": "See Eventbrite",
       "url": "https://www.eventbrite.com/e/peaceplus-halloween-event-ballymena-26th-and-27th-october-tickets-2002061967238",
       "soldOut": true,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.8663,
+      "lng": -6.27602,
+      "geoSource": "town"
     },
     {
       "id": "ards-blair-mayne-autism-friendly-evening-47",
@@ -738,7 +858,10 @@
       "price": "Leisure centre rates",
       "url": "https://www.leisureardsandnorthdown.com/accessibility-our-centres",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "get-active-abc-quiet-hour-swims-48",
@@ -756,7 +879,10 @@
       "price": "Free for person with additional needs + carer",
       "url": "https://getactiveabc.com/events/quiet-hour-swim-session/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.35142,
+      "lng": -6.27146,
+      "geoSource": "town"
     },
     {
       "id": "buttercrane-autism-friendly-shopping-49",
@@ -774,7 +900,10 @@
       "price": "Free to visit",
       "url": "https://www.buttercraneshopping.co.uk/facilities",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.17194,
+      "lng": -6.3416,
+      "geoSource": "venue"
     },
     {
       "id": "cineworld-belfast-autism-friendly-screenings-50",
@@ -792,7 +921,10 @@
       "price": "Standard cinema pricing",
       "url": "https://www.cineworld.co.uk/static/en/uk/accessibility/autism-friendly",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "exploris-aquarium-quiet-sessions-51",
@@ -810,7 +942,10 @@
       "price": "Standard admission (ring 028 4272 8062 to confirm)",
       "url": "https://www.explorisni.com/accessibility-2/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.38171,
+      "lng": -5.54909,
+      "geoSource": "venue"
     },
     {
       "id": "buttercrane-silent-santa-52",
@@ -828,7 +963,10 @@
       "price": "TBC",
       "url": "https://www.buttercraneshopping.co.uk/bookings/select-type.asp",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.17194,
+      "lng": -6.3416,
+      "geoSource": "venue"
     },
     {
       "id": "ulster-folk-museum-santa-private-visits-53",
@@ -846,7 +984,10 @@
       "price": "See museum",
       "url": "https://www.ulsterfolkmuseum.org/whats-on/visit-santa-ulster-folk-museum",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.64045,
+      "lng": -5.83617,
+      "geoSource": "town"
     },
     {
       "id": "valley-playzone-quiet-hour",
@@ -864,7 +1005,10 @@
       "price": "£6.21 per child",
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/soft-play/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.66316,
+      "lng": -5.93047,
+      "geoSource": "venue"
     },
     {
       "id": "brook-sensory-swim",
@@ -882,7 +1026,10 @@
       "price": "Standard swim price — see booking",
       "url": "https://www.better.org.uk/leisure-centre/belfast/brook-leisure-centre/timetable",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.55313,
+      "lng": -6.00321,
+      "geoSource": "town"
     },
     {
       "id": "high-rise-inclusion-zone",
@@ -900,7 +1047,10 @@
       "price": "£4 per person",
       "url": "https://highriseni.org/soft-play/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.51129,
+      "lng": -6.04672,
+      "geoSource": "town"
     },
     {
       "id": "leisureplex-asd-swim",
@@ -918,7 +1068,10 @@
       "price": "See booking",
       "url": "https://www.theleisureplex.com/pools/leisure-pools/disability-friendly/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.50598,
+      "lng": -6.05087,
+      "geoSource": "venue"
     },
     {
       "id": "ice-bowl-inclusive-skating",
@@ -936,7 +1089,10 @@
       "price": "£8, one carer free",
       "url": "https://www.theicebowl.com/activities/ice-skating/inclusive-skating-sessions/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.58711,
+      "lng": -5.81862,
+      "geoSource": "venue"
     },
     {
       "id": "belfast-zoo-autism",
@@ -954,7 +1110,10 @@
       "price": "Standard admission, one carer free",
       "url": "https://www.belfastcity.gov.uk/zoo/your-visit/accessibility-in-the-zoo",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "hazelbank-sensory-garden",
@@ -972,7 +1131,10 @@
       "price": "Free",
       "url": "https://antrimandnewtownabbey.gov.uk/council/accessibility/council-facilities/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.66194,
+      "lng": -5.90219,
+      "geoSource": "venue"
     },
     {
       "id": "v36-inclusive-playpark",
@@ -990,7 +1152,10 @@
       "price": "Free",
       "url": "https://antrimandnewtownabbey.gov.uk/council/accessibility/council-facilities/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "mo-mowlam-play-park",
@@ -1008,7 +1173,10 @@
       "price": "Free",
       "url": "https://www.nidirect.gov.uk/articles/mo-mowlam-play-park-children",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.60106,
+      "lng": -5.83258,
+      "geoSource": "venue"
     },
     {
       "id": "blacks-road-sensory-playground",
@@ -1026,7 +1194,10 @@
       "price": "Free",
       "url": "https://www.belfastcity.gov.uk/Things-to-Do/Parks-and-Open-Spaces/Playgrounds",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "antrim-castle-gardens-sensory",
@@ -1044,7 +1215,10 @@
       "price": "Free",
       "url": "https://visitantrimandnewtownabbey.com/things-to-do/gardens-and-parks/antrim-castle-gardens-clotworthy-house/sensory-garden/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.71807,
+      "lng": -6.22474,
+      "geoSource": "venue"
     },
     {
       "id": "ballyclare-sensory-garden",
@@ -1062,7 +1236,10 @@
       "price": "Free",
       "url": "https://antrimandnewtownabbey.gov.uk/news/2024/may/new-sensory-garden-opens-in-ballyclare/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.75253,
+      "lng": -6.00109,
+      "geoSource": "town"
     },
     {
       "id": "carnfunnock-sensory-park",
@@ -1080,7 +1257,10 @@
       "price": "Free entry (some attractions charged)",
       "url": "https://www.midandeastantrim.gov.uk/resident/healthandwellbeing/autism-friendly",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.85085,
+      "lng": -5.81831,
+      "geoSource": "town"
     },
     {
       "id": "gobbins-autism-friendly",
@@ -1098,7 +1278,10 @@
       "price": "See booking, carer support",
       "url": "https://www.thegobbinscliffpath.com/accessibility/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.77834,
+      "lng": -5.70842,
+      "geoSource": "town"
     },
     {
       "id": "bangor-aurora-sensory",
@@ -1116,7 +1299,10 @@
       "price": "Free to request",
       "url": "https://www.moreleisure.com/bangoraurora/policies-documents/accessibility-at-bangor-aurora-aquatics-leisure-complex/",
       "soldOut": false,
-      "addedDate": "2026-10-15"
+      "addedDate": "2026-10-15",
+      "lat": 54.6626,
+      "lng": -5.66791,
+      "geoSource": "town"
     },
     {
       "id": "castlewood-pumpkin-dash-quiet-54",
@@ -1134,7 +1320,10 @@
       "price": "£13 per person",
       "url": "https://bookevents.blairsholidayparks.com/event/275?date=2026-10-30&dateID=327",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.71514,
+      "lng": -6.2192,
+      "geoSource": "town"
     },
     {
       "id": "hilltop-pumpkin-dash-quiet-55",
@@ -1152,7 +1341,10 @@
       "price": "£13 per person",
       "url": "https://bookevents.blairsholidayparks.com/event/272?date=2026-10-30&dateID=324",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 55.20451,
+      "lng": -6.65286,
+      "geoSource": "town"
     },
     {
       "id": "bangor-aurora-quieter-hours-56",
@@ -1170,7 +1362,10 @@
       "price": "Standard activity prices",
       "url": "https://www.moreleisure.com/bangoraurora/timetables/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.6626,
+      "lng": -5.66791,
+      "geoSource": "town"
     },
     {
       "id": "airtastic-bangor-quiet-57",
@@ -1188,7 +1383,10 @@
       "price": "From £8.25 under-4s / £8.75 over-4s (peak Sun)",
       "url": "https://air-tastic.com/activities/soft-play-at-bangor",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.6626,
+      "lng": -5.66791,
+      "geoSource": "town"
     },
     {
       "id": "moviehouse-cityside-relaxed-screenings-77",
@@ -1206,7 +1404,10 @@
       "price": "Standard cinema price",
       "url": "https://moviehouse.co.uk/cityside-belfast/relaxedscreening",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "2-royal-avenue-sensory-dome-78",
@@ -1224,7 +1425,10 @@
       "price": "Free",
       "url": "https://visitbelfast.com/plan/accessible-belfast/family-friendly-experiences/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.5996,
+      "lng": -5.93128,
+      "geoSource": "venue"
     },
     {
       "id": "through-the-looking-glass-ballymoney-79",
@@ -1242,7 +1446,10 @@
       "price": "Per session, check Facebook",
       "url": "https://daysoutni.com/through-the-looking-glass-ni/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 55.07027,
+      "lng": -6.51728,
+      "geoSource": "town"
     },
     {
       "id": "odeon-belfast-autism-friendly",
@@ -1260,7 +1467,10 @@
       "area": "Belfast",
       "type": "Cinema",
       "price": "Normal ticket price",
-      "url": "https://help.odeon.co.uk/hc/en-gb/articles/360010538459-Guests-on-the-autism-spectrum-or-with-sensory-difficulties"
+      "url": "https://help.odeon.co.uk/hc/en-gb/articles/360010538459-Guests-on-the-autism-spectrum-or-with-sensory-difficulties",
+      "lat": 54.59844,
+      "lng": -5.92588,
+      "geoSource": "venue"
     },
     {
       "id": "honeybees-playtown-sen",
@@ -1278,7 +1488,10 @@
       "area": "Rest of Antrim",
       "type": "Soft play (SEN hours)",
       "price": "Check with venue",
-      "url": "https://honeybeesplaytown.co.uk/sen-session/"
+      "url": "https://honeybeesplaytown.co.uk/sen-session/",
+      "lat": 54.8663,
+      "lng": -6.27602,
+      "geoSource": "town"
     },
     {
       "id": "nmd-autism-swim-newry",
@@ -1296,7 +1509,10 @@
       "area": "County Down",
       "type": "Swim/Leisure",
       "price": "Standard swim price",
-      "url": "https://www.newrymournedown.org/inclusive-sport"
+      "url": "https://www.newrymournedown.org/inclusive-sport",
+      "lat": 54.18069,
+      "lng": -6.34531,
+      "geoSource": "venue"
     },
     {
       "id": "nmd-autism-swim-downpatrick",
@@ -1314,7 +1530,10 @@
       "area": "County Down",
       "type": "Swim/Leisure",
       "price": "Standard swim price",
-      "url": "https://www.newrymournedown.org/inclusive-sport"
+      "url": "https://www.newrymournedown.org/inclusive-sport",
+      "lat": 54.32433,
+      "lng": -5.71961,
+      "geoSource": "venue"
     },
     {
       "id": "nmd-autism-swim-kilkeel",
@@ -1332,7 +1551,10 @@
       "area": "County Down",
       "type": "Swim/Leisure",
       "price": "Standard swim price",
-      "url": "https://www.newrymournedown.org/inclusive-sport"
+      "url": "https://www.newrymournedown.org/inclusive-sport",
+      "lat": 54.06267,
+      "lng": -6.00599,
+      "geoSource": "town"
     },
     {
       "id": "nature-and-nurture-lisburn",
@@ -1350,7 +1572,10 @@
       "area": "County Down",
       "type": "Sensory play",
       "price": "£5.99–£6.99 (1 hr, cash) or £9.50 (90 min)",
-      "url": "https://naturenurtureni.com"
+      "url": "https://naturenurtureni.com",
+      "lat": 54.51,
+      "lng": -6.04697,
+      "geoSource": "venue"
     },
     {
       "id": "templemore-send-swim-lessons",
@@ -1368,7 +1593,10 @@
       "area": "Belfast",
       "type": "Swim/Leisure",
       "price": "Lesson membership, check with Better",
-      "url": "https://www.better.org.uk/leisure-centre/belfast/templemorebaths/swimming-lessons"
+      "url": "https://www.better.org.uk/leisure-centre/belfast/templemorebaths/swimming-lessons",
+      "lat": 54.59638,
+      "lng": -5.90095,
+      "geoSource": "venue"
     },
     {
       "id": "amphitheatre-carrick-quiet-swim",
@@ -1386,7 +1614,10 @@
       "area": "Rest of Antrim",
       "type": "Swim/Leisure",
       "price": "£4.45 / £3.10 child-concession; family £12.20",
-      "url": "https://www.midandeastantrim.gov.uk/resident/sport-and-leisure/leisure-centres/amphitheatre-carrickfergus/swimming-pool"
+      "url": "https://www.midandeastantrim.gov.uk/resident/sport-and-leisure/leisure-centres/amphitheatre-carrickfergus/swimming-pool",
+      "lat": 54.71362,
+      "lng": -5.80731,
+      "geoSource": "town"
     },
     {
       "id": "joey-dunlop-lc-autism-impact",
@@ -1404,7 +1635,10 @@
       "area": "Rest of Antrim",
       "type": "Place to visit",
       "price": "Soft play £3.90–£4.90",
-      "url": "https://www.northernirelandworld.com/news/people/three-causeway-coast-glens-leisure-centres-recognised-by-autism-ni-for-work-to-improve-accessibility-9055070"
+      "url": "https://www.northernirelandworld.com/news/people/three-causeway-coast-glens-leisure-centres-recognised-by-autism-ni-for-work-to-improve-accessibility-9055070",
+      "lat": 55.07027,
+      "lng": -6.51728,
+      "geoSource": "town"
     },
     {
       "id": "ludo-soft-play-quiet-hour",
@@ -1422,7 +1656,10 @@
       "price": "£3.80 per child / £6.30 for 2 from same family (from 1 Apr 2026); free with Family membership",
       "url": "https://www.midandeastantrim.gov.uk/resident/sport-and-leisure/leisure-centres/amphitheatre-carrickfergus/ludo-soft-play-area",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.71362,
+      "lng": -5.80731,
+      "geoSource": "town"
     },
     {
       "id": "airtastic-bangor-quiet-bowling",
@@ -1440,7 +1677,10 @@
       "price": "From £6.95 under-16 / £7.50 adult (1 game)",
       "url": "https://air-tastic.com/activities/bowling-in-bangor",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.6626,
+      "lng": -5.66791,
+      "geoSource": "town"
     },
     {
       "id": "carrickfergus-castle-sensory",
@@ -1458,7 +1698,10 @@
       "price": "Child £4 / Adult £6; under-5s and carers free; family £18",
       "url": "https://www.shapedbyseaandstone.com/things-to-do/carrickfergus-castle-p674971",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.71341,
+      "lng": -5.80651,
+      "geoSource": "venue"
     },
     {
       "id": "sensory-kids-antrim",
@@ -1476,7 +1719,10 @@
       "price": "Contact to book (078 7563 7373)",
       "url": "https://sensorykidsni.co.uk/soft-play-room/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.71514,
+      "lng": -6.2192,
+      "geoSource": "town"
     },
     {
       "id": "mount-stewart-calm-bags",
@@ -1494,7 +1740,10 @@
       "price": "Child £8 / adult £16 (Gift Aid higher); under-5s free; NT members free",
       "url": "https://www.nationaltrust.org.uk/visit/northern-ireland/mount-stewart/visiting-mount-stewart-with-family",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.55157,
+      "lng": -5.60198,
+      "geoSource": "venue"
     },
     {
       "id": "castle-espie-sensory",
@@ -1512,7 +1761,10 @@
       "price": "Junior from ~£6.08 online / carers free",
       "url": "https://www.wwt.org.uk/wetland-centres/castle-espie/plan-your-visit/accessibility",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.54983,
+      "lng": -5.74543,
+      "geoSource": "town"
     },
     {
       "id": "wee-village-inclusive-sessions",
@@ -1530,7 +1782,10 @@
       "price": "Standard session price (1 adult included); email hello@theweevillage.co.uk",
       "url": "https://www.theweevillage.com/oursessions",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.75253,
+      "lng": -6.00109,
+      "geoSource": "town"
     },
     {
       "id": "barnardos-play-for-all-saturday-clubs",
@@ -1566,7 +1821,10 @@
       "price": "Paid booking for non-members (call 07539 284961 / hello@mpda.co.uk)",
       "url": "https://mpda.co.uk/sensory-room-service/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.71514,
+      "lng": -6.2192,
+      "geoSource": "town"
     },
     {
       "id": "hillsborough-castle-autism-friendly",
@@ -1584,7 +1842,10 @@
       "price": "See booking; one carer/companion free",
       "url": "https://www.hrp.org.uk/hillsborough-castle/visit/accessibility/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.46281,
+      "lng": -6.08308,
+      "geoSource": "town"
     },
     {
       "id": "infinity-adventure-inclusion-mission",
@@ -1602,7 +1863,10 @@
       "price": "See booking (028 4062 7941)",
       "url": "https://infinityadventure.co.uk/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.35142,
+      "lng": -6.27146,
+      "geoSource": "town"
     },
     {
       "id": "castle-ward-quiet-space-calm-bags",
@@ -1620,7 +1884,10 @@
       "price": "NT admission applies; NT members free",
       "url": "https://www.nationaltrust.org.uk/visit/northern-ireland/castle-ward/family-friendly-things-to-do-at-castle-ward",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.32793,
+      "lng": -5.71649,
+      "geoSource": "town"
     },
     {
       "id": "belfast-castle-autism-impact-award",
@@ -1638,7 +1905,10 @@
       "price": "Free",
       "url": "https://www.belfastcity.gov.uk/BelfastCastle/Contact-us/Visitor-accessibility-facilities",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.63551,
+      "lng": -5.93687,
+      "geoSource": "venue"
     },
     {
       "id": "hill-croft-play-dates",
@@ -1656,7 +1926,10 @@
       "price": "Contact school",
       "url": "https://hillcroftschool.greenhousecms.co.uk/Play-Dates/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.68974,
+      "lng": -5.95445,
+      "geoSource": "venue"
     },
     {
       "id": "ice-bowl-sensory-friendly-bowling",
@@ -1674,7 +1947,10 @@
       "price": "See Ice Bowl (028 9080 9100)",
       "url": "https://www.theicebowl.com/activities/tenpin-bowling/revised-opening-hours/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.58711,
+      "lng": -5.81862,
+      "geoSource": "venue"
     },
     {
       "id": "playtown-ni-sen-session",
@@ -1692,7 +1968,10 @@
       "price": "See booking",
       "url": "https://bookwhen.com/playtownni",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "sticky-fingers-storyland-newry",
@@ -1710,7 +1989,10 @@
       "price": "Under 4 £4, 4+ £6, adult £4, family of 4 £15",
       "url": "https://www.stickyfingersarts.co.uk/the-storyland",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.17753,
+      "lng": -6.33751,
+      "geoSource": "town"
     },
     {
       "id": "banbridge-leisure-sensory-pod",
@@ -1728,7 +2010,10 @@
       "price": "Free with centre visit",
       "url": "https://getactiveabc.com/activities/softplay-creche/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.35212,
+      "lng": -6.26988,
+      "geoSource": "venue"
     },
     {
       "id": "snap-north-belfast-saturday-group",
@@ -1746,7 +2031,10 @@
       "price": "Free",
       "url": "https://snap-autism.weebly.com/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.60167,
+      "lng": -5.93077,
+      "geoSource": "town"
     },
     {
       "id": "blue-blossoms-asd-adhd-family-group",
@@ -1764,7 +2052,10 @@
       "price": "Free",
       "url": "https://antrimandnewtownabbey.gov.uk/residents/residents-community-information/community-centres/the-sovereign-complex/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "helping-hands-autism-centre-dundonald",
@@ -1782,7 +2073,10 @@
       "price": "Free/low cost (charity)",
       "url": "https://www.familysupportni.gov.uk/Service/1650/disability--learning-disability-autism-adhd/helping-hands-autism-resource-centre--dundonald",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59474,
+      "lng": -5.81053,
+      "geoSource": "town"
     },
     {
       "id": "capaa-downpatrick-saturday-kids-club",
@@ -1800,7 +2094,10 @@
       "price": "Contact group",
       "url": "https://www.facebook.com/supportingchildrenadultsparentsautism/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.32793,
+      "lng": -5.71649,
+      "geoSource": "town"
     },
     {
       "id": "abbey-centre-sensory-shopping-hour",
@@ -1818,7 +2115,10 @@
       "price": "Free to visit",
       "url": "https://lesleyabbeycentre.co.uk/centre-information/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "victoria-square-quiet-times",
@@ -1836,7 +2136,10 @@
       "price": "Free to visit; sensory packs free to hire",
       "url": "https://victoriasquare.com/accessibility",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59837,
+      "lng": -5.92574,
+      "geoSource": "venue"
     },
     {
       "id": "mo-mowlam-quiet-hour",
@@ -1854,7 +2157,10 @@
       "price": "Free",
       "url": "https://www.nidirect.gov.uk/articles/mo-mowlam-play-park-children",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "circusful-itty-bitty-circus",
@@ -1872,7 +2178,10 @@
       "price": "Contact for fees (classes@belfastcircus.com)",
       "url": "https://belfastcircus.com/classes/itty-bitty-circus-youth-circus",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "you2me-halloween-camp-marrowbone",
@@ -1890,7 +2199,10 @@
       "price": "£28 per day / £75 all 3 days",
       "url": "https://you2me-tuition.pembee.app/activity/6a8fe5012af81a55cd81e4e9",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "you2me-halloween-camp-downpatrick",
@@ -1908,7 +2220,10 @@
       "price": "£28 per day / £75 all 3 days",
       "url": "https://you2me-tuition.pembee.app/activity/6a8db885606780c8ebb0b9b7",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.32793,
+      "lng": -5.71649,
+      "geoSource": "town"
     },
     {
       "id": "gymfun-inclusive-newtownabbey",
@@ -1926,7 +2241,10 @@
       "price": "Contact club (join waiting list; 07971 144885 / clubgymfun@gmail.com)",
       "url": "https://gymfun.co.uk/inclusive-gymfun-classes/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "tilt-gymable-castlereagh",
@@ -1944,7 +2262,10 @@
       "price": "£31 per 4-week term (07522 607236 / tiltgymnastics19@outlook.com)",
       "url": "https://www.tiltgymnastics.co.uk/gym-able",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "origin-gymnastics-gymable",
@@ -1962,7 +2283,10 @@
       "price": "See booking page (plus annual insurance)",
       "url": "https://origingymnastics.com/gymable/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59689,
+      "lng": -5.83206,
+      "geoSource": "town"
     },
     {
       "id": "bangor-gymnastics-inclusive-open-play",
@@ -1980,7 +2304,10 @@
       "price": "Pay as you go (prices vary)",
       "url": "https://www.bangorgymnasticsclub.com/inclusivegymnastics",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.6626,
+      "lng": -5.66791,
+      "geoSource": "town"
     },
     {
       "id": "sbg-belfast-cheeky-monkeys",
@@ -1998,7 +2325,10 @@
       "price": "Contact for fees (sbgbelfast@yahoo.com)",
       "url": "https://sbgbelfast.com/cheeky-monkeys-ages-4-6/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "acting-up-glengormley-drama-3-6",
@@ -2016,7 +2346,10 @@
       "price": "See booking page",
       "url": "https://acting-up-belfast.classforkids.io/venue/10/ballyduff-community-centre",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.68885,
+      "lng": -5.9361,
+      "geoSource": "venue"
     },
     {
       "id": "mackenzie-equestrian-inclusive-riding",
@@ -2034,7 +2367,10 @@
       "price": "Contact for fees",
       "url": "https://www.mackenziesequestrian.com/all-inclusive-riding",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.74989,
+      "lng": -6.31976,
+      "geoSource": "town"
     },
     {
       "id": "special-yoga-maitri-studio",
@@ -2052,7 +2388,10 @@
       "price": "Contact for fees",
       "url": "https://maitristudio.net/features/special-yoga-maitri-studio",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59485,
+      "lng": -5.90536,
+      "geoSource": "venue"
     },
     {
       "id": "mae-murray-music-yard-larne-2026-10-17",
@@ -2070,7 +2409,10 @@
       "price": "Free (booking essential)",
       "url": "https://mae-murray-foundation.eventcube.io/events/97604/music-yard-larne-17th-october",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.85085,
+      "lng": -5.81831,
+      "geoSource": "town"
     },
     {
       "id": "montalto-halloween-asd-quiet-2026-10-27",
@@ -2088,7 +2430,10 @@
       "price": "Child £13.50 (incl. pumpkin), adult £11.50, carer £2.50",
       "url": "https://montaltoestate.ticketsolve.com/shows/873638673/events/129697332",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.38425,
+      "lng": -5.89242,
+      "geoSource": "venue"
     },
     {
       "id": "o2-belfast-arena-sensory-bags",
@@ -2106,7 +2451,10 @@
       "price": "Event ticket; sensory bag free; Essential Companion ticket may be free",
       "url": "https://theo2belfast.com/accessibility",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "larne-fc-inver-park-sensory-bags",
@@ -2124,7 +2472,10 @@
       "price": "Match ticket; sensory bag free (book 24h ahead)",
       "url": "https://larnefc.com/accessibility-at-larne-fc/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.85085,
+      "lng": -5.81831,
+      "geoSource": "town"
     },
     {
       "id": "ballymoney-halloween-quiet-time-2026",
@@ -2142,7 +2493,10 @@
       "price": "Free entry (rides charged)",
       "url": "https://www.visitcausewaycoastandglens.com/whats-on/halloween-happenings-in-ballymoney-p864671",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 55.06222,
+      "lng": -6.49822,
+      "geoSource": "venue"
     },
     {
       "id": "ballycastle-halloween-quiet-time-2026",
@@ -2160,7 +2514,10 @@
       "price": "Free entry (rides charged)",
       "url": "https://www.visitcausewaycoastandglens.com/whats-on/halloween-happenings-in-ballycastle-p864291",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 55.20069,
+      "lng": -6.25028,
+      "geoSource": "town"
     },
     {
       "id": "valdez-ready-steady-gym-ballymena",
@@ -2178,7 +2535,10 @@
       "price": "Contact club (028 2565 4440 / valdezgym@hotmail.com)",
       "url": "https://www.valdezgymnasticsni.com/classes/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.8663,
+      "lng": -6.27602,
+      "geoSource": "town"
     },
     {
       "id": "ulster-orchestra-snowman-relaxed",
@@ -2196,7 +2556,10 @@
       "price": "£16–£22 (box office 028 9033 4455)",
       "url": "https://www.ulsterorchestra.org.uk/whats-on/snowman-2pm/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59675,
+      "lng": -5.91965,
+      "geoSource": "venue"
     },
     {
       "id": "magheramorne-magic-mistletoe-quiet",
@@ -2214,7 +2577,10 @@
       "price": "Child £34.95, adult £31.95 (Wed), plus booking fee",
       "url": "https://magheramorneestate.com/experiences/magic-and-mistletoe/",
       "soldOut": true,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.85085,
+      "lng": -5.81831,
+      "geoSource": "town"
     },
     {
       "id": "abbey-allsorts-special-needs-club",
@@ -2232,7 +2598,10 @@
       "price": "Free (contact to confirm)",
       "url": "https://www.abbeypresbyterian.org.uk/abbey-allsorts/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "active-able-halloween-camp-avoniel",
@@ -2250,7 +2619,10 @@
       "type": "Halloween",
       "senSpecific": true,
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59476,
+      "lng": -5.89618,
+      "geoSource": "venue"
     },
     {
       "id": "active-able-halloween-camp-brook",
@@ -2268,7 +2640,10 @@
       "type": "Halloween",
       "senSpecific": true,
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "active-able-halloween-camp-bangor",
@@ -2286,7 +2661,10 @@
       "type": "Halloween",
       "senSpecific": true,
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.65392,
+      "lng": -5.66292,
+      "geoSource": "venue"
     },
     {
       "id": "cinemagic-smeds-smoos-relaxed-ulster-museum",
@@ -2304,7 +2682,10 @@
       "type": "Cinema",
       "senSpecific": true,
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "junction-antrim-pumpkin-patch-sensory-2026",
@@ -2322,7 +2703,10 @@
       "price": "£8 per child (incl. pumpkin and decorating); adults free ticket",
       "url": "https://www.tickettailor.com/events/junction/2398070",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.71514,
+      "lng": -6.2192,
+      "geoSource": "town"
     },
     {
       "id": "ark-open-farm-halloween-quiet-session-2026-10-25",
@@ -2340,7 +2724,10 @@
       "price": "Child £18 (incl. pumpkin), toddler £8, adult £16–19, carer £3; family of 4 £64",
       "url": "https://bookings.thearkopenfarm.co.uk/book/pumpkin-patch---quiet-sessions/85",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "newcastle-cinema-relaxed-monster-house-2026-10-17",
@@ -2358,7 +2745,10 @@
       "price": "£3 per person",
       "url": "https://www.newcastlecinema.org/whatson/monster-house",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.21183,
+      "lng": -5.88972,
+      "geoSource": "town"
     },
     {
       "id": "newcastle-cinema-relaxed-toy-story-5-2026-11-14",
@@ -2376,7 +2766,10 @@
       "price": "£3 per person",
       "url": "https://www.newcastlecinema.org/whatson/toy-story-5",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.21183,
+      "lng": -5.88972,
+      "geoSource": "town"
     },
     {
       "id": "larne-ymca-autism-support-programme",
@@ -2394,7 +2787,10 @@
       "price": "Contact to check (low cost)",
       "url": "https://www.larneymca.com/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.85085,
+      "lng": -5.81831,
+      "geoSource": "town"
     },
     {
       "id": "nas-ni-dads-stay-and-play-carryduff",
@@ -2412,7 +2808,10 @@
       "price": "Contact to check",
       "url": "https://www.autism.org.uk/what-we-do/northern-ireland/northern-ireland-services",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.51848,
+      "lng": -5.88746,
+      "geoSource": "town"
     },
     {
       "id": "wee-village-ballyclare-santa-2026",
@@ -2430,7 +2829,10 @@
       "price": "Child £29.95, adult £9.50 (max 2 adults), under-1 £10.50",
       "url": "https://www.theweevillage.com/booksanta",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.75253,
+      "lng": -6.00109,
+      "geoSource": "town"
     },
     {
       "id": "wave-ballyclare-special-needs-monthly",
@@ -2448,7 +2850,10 @@
       "price": "Free",
       "url": "https://www.wave-for-change.org.uk/find-a-group-near-you",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.75253,
+      "lng": -6.00109,
+      "geoSource": "town"
     },
     {
       "id": "scrabo-hall-kidz-quest-connect-newtownards",
@@ -2466,7 +2871,10 @@
       "price": "Free",
       "url": "https://www.scrabo.org/youth/scrabo-kids-quest-connect/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "windsor-park-quiet-room-ni-football",
@@ -2484,7 +2892,10 @@
       "price": "Normal adult/junior match prices; one essential companion free",
       "url": "https://www.irishfa.com/tickets/accessible-tickets",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "carryduff-gac-all-stars",
@@ -2502,7 +2913,10 @@
       "price": "Contact to check",
       "url": "https://carryduffgac.com/carryduff-all-stars-team/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.51848,
+      "lng": -5.88746,
+      "geoSource": "town"
     },
     {
       "id": "brassneck-peoples-panto-pinocchio-asd-2026",
@@ -2520,7 +2934,10 @@
       "price": "From about £12.75 (check booking page)",
       "url": "https://www.tickettailor.com/events/brassnecktheatrecompany/2251781",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "tumble-circus-winter-circus-relaxed-2026",
@@ -2538,7 +2955,10 @@
       "price": "£10 (£11.20 with booking fee); carers free",
       "url": "https://wegottickets.com/f/28292/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "rosstulla-lets-play-playgroup",
@@ -2556,7 +2976,10 @@
       "price": "Not stated (contact school, 028 9086 2743)",
       "url": "https://www.rosstulla.co.uk/pupils/lets-play/",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "sen-space-family-sessions",
@@ -2574,7 +2997,10 @@
       "price": "£10 per family",
       "url": "https://www.senspace.org.uk/family-sessions",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.55313,
+      "lng": -6.00321,
+      "geoSource": "town"
     },
     {
       "id": "lush-belfast-halloween-sen-workshop-2026",
@@ -2592,7 +3018,10 @@
       "price": "£15",
       "url": "https://www.lush.com/uk/en/e/lushs-little-monsters-halfterm-bath-bomb-making-workshops",
       "soldOut": false,
-      "addedDate": "2026-10-16"
+      "addedDate": "2026-10-16",
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-v36-funfair",
@@ -2611,7 +3040,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/halloween/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "gen-spooked-out-v36",
@@ -2630,7 +3062,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/halloween/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "gen-oogie-boogie",
@@ -2649,7 +3084,10 @@
       "url": "https://tickets.thecourtyardtheatre.com/antrimandnewtownabbeybc/website/EventDetails.aspx?EventId=224001&resize=true",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "gen-mr-hullabaloo",
@@ -2668,7 +3106,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/halloween/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "gen-coco-singalong",
@@ -2687,7 +3128,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/halloween/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.71517,
+      "lng": -6.22089,
+      "geoSource": "venue"
     },
     {
       "id": "gen-sanderson-sisters",
@@ -2706,7 +3150,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/halloween/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.71517,
+      "lng": -6.22089,
+      "geoSource": "venue"
     },
     {
       "id": "gen-funworks",
@@ -2725,7 +3172,10 @@
       "url": "https://www.fun.ie/fun-works",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67181,
+      "lng": -5.95941,
+      "geoSource": "town"
     },
     {
       "id": "gen-little-play-studio",
@@ -2744,7 +3194,10 @@
       "url": "https://littleplaystudio.co.uk/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67181,
+      "lng": -5.95941,
+      "geoSource": "town"
     },
     {
       "id": "gen-w5-halloween",
@@ -2763,7 +3216,10 @@
       "url": "https://w5online.co.uk/whats-on/halloween-at-w5-2026",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-w5-santa",
@@ -2782,7 +3238,10 @@
       "url": "https://w5online.co.uk/whats-on/santas-workshop",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-bcc-pumpkin-patch",
@@ -2801,7 +3260,10 @@
       "url": "https://www.belfastcity.gov.uk/events/pumpkin-patch-city-hall",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59662,
+      "lng": -5.93101,
+      "geoSource": "venue"
     },
     {
       "id": "gen-monsters-take-over",
@@ -2820,7 +3282,10 @@
       "url": "https://www.belfastcity.gov.uk/events/belfast-one-monsters-take-over",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.61222,
+      "lng": -5.9281,
+      "geoSource": "venue"
     },
     {
       "id": "gen-mac-monster-mash",
@@ -2839,7 +3304,10 @@
       "url": "https://themaclive.com/event/monster-mash-halloween-special",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.60354,
+      "lng": -5.92745,
+      "geoSource": "venue"
     },
     {
       "id": "gen-cinemagic-pooh",
@@ -2858,7 +3326,10 @@
       "url": "https://cinemagic.org.uk/poohs-heffalump-halloween-movie-post-screening-halloween-face-painting/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59865,
+      "lng": -5.92052,
+      "geoSource": "venue"
     },
     {
       "id": "gen-cinemagic-broom",
@@ -2877,7 +3348,10 @@
       "url": "https://queensfilmtheatre.com/Whats-On/Room-on-the-Broom",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-belfast-hills-spooky",
@@ -2896,7 +3370,10 @@
       "url": "https://belfasthills.org/events/spooky-storytelling/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.64698,
+      "lng": -5.94979,
+      "geoSource": "venue"
     },
     {
       "id": "gen-xmas-market",
@@ -2915,7 +3392,10 @@
       "url": "https://www.belfastcity.gov.uk/events/belfast-christmas-market",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59662,
+      "lng": -5.93101,
+      "geoSource": "venue"
     },
     {
       "id": "gen-lights-switch-on",
@@ -2934,7 +3414,10 @@
       "url": "https://www.belfastcity.gov.uk/events/christmas-lights-switch-on",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59644,
+      "lng": -5.92951,
+      "geoSource": "venue"
     },
     {
       "id": "gen-roar-explore",
@@ -2953,7 +3436,10 @@
       "url": "https://www.roarandexplore.com/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.56052,
+      "lng": -6.0199,
+      "geoSource": "venue"
     },
     {
       "id": "gen-vertigo",
@@ -2972,7 +3458,10 @@
       "url": "https://wearevertigo.com/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-larne-spooky-carnival",
@@ -2991,7 +3480,10 @@
       "url": "https://www.midandeastantrim.gov.uk/halloween-2026",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.85122,
+      "lng": -5.81941,
+      "geoSource": "venue"
     },
     {
       "id": "gen-whitehead-pumpkins",
@@ -3010,7 +3502,10 @@
       "url": "https://steamtrainsireland.com/whats-on/114/pumpkins-paws-claws",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.75664,
+      "lng": -5.71156,
+      "geoSource": "venue"
     },
     {
       "id": "gen-rpsi-santa",
@@ -3029,7 +3524,10 @@
       "url": "https://www.steamtrainsireland.com/whats-on",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.75664,
+      "lng": -5.71156,
+      "geoSource": "venue"
     },
     {
       "id": "gen-coleraine-horrid",
@@ -3048,7 +3546,10 @@
       "url": "https://www.visitcausewaycoastandglens.com/whats-on/family-events",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 55.1316,
+      "lng": -6.67129,
+      "geoSource": "venue"
     },
     {
       "id": "gen-ballycastle-halloween",
@@ -3067,7 +3568,10 @@
       "url": "https://www.visitcausewaycoastandglens.com/whats-on/halloween-happenings-causeway-coast-and-glens",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 55.20069,
+      "lng": -6.25028,
+      "geoSource": "town"
     },
     {
       "id": "gen-ulster-folk-halloween",
@@ -3086,7 +3590,10 @@
       "url": "https://www.ulsterfolkmuseum.org/whats-on/halloween",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.64045,
+      "lng": -5.83617,
+      "geoSource": "town"
     },
     {
       "id": "gen-bangor-haunted-harvest",
@@ -3105,7 +3612,10 @@
       "url": "https://www.ardsandnorthdown.gov.uk/article/2493/Parks-Activities-and-Events",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.65248,
+      "lng": -5.66812,
+      "geoSource": "venue"
     },
     {
       "id": "gen-ndm-halloween-craft",
@@ -3124,7 +3634,10 @@
       "url": "https://andculture.org.uk/whats-on/not-so-scary-halloween-spooky-seaside-creations",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.6559,
+      "lng": -5.66873,
+      "geoSource": "venue"
     },
     {
       "id": "gen-mount-stewart-halloween",
@@ -3143,7 +3656,10 @@
       "url": "https://www.visitardsandnorthdown.com/whats-on/halloween-in-the-mansion-house-p1101601",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.55157,
+      "lng": -5.60198,
+      "geoSource": "venue"
     },
     {
       "id": "gen-castle-ward-weird",
@@ -3162,7 +3678,10 @@
       "url": "https://www.nationaltrust.org.uk/visit/northern-ireland/castle-ward",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.37297,
+      "lng": -5.57877,
+      "geoSource": "venue"
     },
     {
       "id": "gen-rowallane-fernery",
@@ -3181,7 +3700,10 @@
       "url": "https://www.nationaltrust.org.uk/visit/northern-ireland/rowallane-garden/events/203d8dbe-0b19-4922-ae1b-47e3bad73c22",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.44622,
+      "lng": -5.82798,
+      "geoSource": "venue"
     },
     {
       "id": "gen-hillsborough-halloween",
@@ -3200,7 +3722,10 @@
       "url": "https://www.hrp.org.uk/hillsborough-castle/whats-on/halloween-at-hillsborough-castle-and-gardens/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.46141,
+      "lng": -6.08608,
+      "geoSource": "venue"
     },
     {
       "id": "gen-streamvale-pumpkin",
@@ -3219,7 +3744,10 @@
       "url": "https://www.visitlisburncastlereagh.com/whats-on/streamvales-halloween-pumpkin-patch-2026-p1099891",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59474,
+      "lng": -5.81053,
+      "geoSource": "town"
     },
     {
       "id": "gen-streamvale-xmas",
@@ -3238,7 +3766,10 @@
       "url": "https://www.santaireland.com/location/streamvale-open-farm-magical-christmas-experience-down",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59474,
+      "lng": -5.81053,
+      "geoSource": "town"
     },
     {
       "id": "gen-mountpanther-pumpkin",
@@ -3257,7 +3788,10 @@
       "url": "https://mountpanther.com/pumpkin-patch/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.29091,
+      "lng": -5.83764,
+      "geoSource": "town"
     },
     {
       "id": "gen-mountpanther-xmas",
@@ -3276,7 +3810,10 @@
       "url": "https://mountpanther.com/mountpanther-christmas-experience/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.29091,
+      "lng": -5.83764,
+      "geoSource": "town"
     },
     {
       "id": "gen-newcastle-hallowtides",
@@ -3295,7 +3832,10 @@
       "url": "https://www.visitmournegullionstrangford.com/whats-on/hallowtides-halloween-in-newcastle-p864151",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.20908,
+      "lng": -5.89038,
+      "geoSource": "venue"
     },
     {
       "id": "gen-newry-twilight",
@@ -3314,7 +3854,10 @@
       "url": "https://www.newrymournedown.org/frightful-fun-at-newry-halloween-twilight-market",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.17753,
+      "lng": -6.33751,
+      "geoSource": "town"
     },
     {
       "id": "gen-purple-turnip",
@@ -3333,7 +3876,10 @@
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.5112,
+      "lng": -6.04378,
+      "geoSource": "venue"
     },
     {
       "id": "gen-indiana-disco",
@@ -3352,7 +3898,10 @@
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.58711,
+      "lng": -5.81862,
+      "geoSource": "venue"
     },
     {
       "id": "gen-leisureplex-pool-party",
@@ -3371,7 +3920,10 @@
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.50598,
+      "lng": -6.05087,
+      "geoSource": "venue"
     },
     {
       "id": "gen-icebowl-spooky-sat",
@@ -3390,7 +3942,10 @@
       "url": "https://lisburncastlereagh.gov.uk/halloween",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.58711,
+      "lng": -5.81862,
+      "geoSource": "venue"
     },
     {
       "id": "gen-valley-more-dance",
@@ -3409,7 +3964,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/more-active-kids/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.66316,
+      "lng": -5.93047,
+      "geoSource": "venue"
     },
     {
       "id": "gen-valley-more-skills",
@@ -3428,7 +3986,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/more-active-kids/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.66316,
+      "lng": -5.93047,
+      "geoSource": "venue"
     },
     {
       "id": "gen-gymfun-jordanstown",
@@ -3447,7 +4008,10 @@
       "url": "https://gymfun.classforkids.io/venue/1/ulster-university-jordanstown",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.68707,
+      "lng": -5.88322,
+      "geoSource": "venue"
     },
     {
       "id": "gen-anbc-playparks",
@@ -3466,7 +4030,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/visitor/parks-open-spaces/playgrounds/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.67788,
+      "lng": -5.92492,
+      "geoSource": "town"
     },
     {
       "id": "gen-tatm-jack-panto",
@@ -3485,7 +4052,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/events/2026/december/jack-and-the-beanstalk-%E2%80%93-the-panto/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.69518,
+      "lng": -5.94693,
+      "geoSource": "venue"
     },
     {
       "id": "gen-caveman-capers",
@@ -3504,7 +4074,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/soft-play/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.71496,
+      "lng": -6.22494,
+      "geoSource": "venue"
     },
     {
       "id": "gen-crumlin-more-dance",
@@ -3523,7 +4096,10 @@
       "url": "https://antrimandnewtownabbey.gov.uk/leisure-centres/activities/more-active-kids/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.61885,
+      "lng": -6.21338,
+      "geoSource": "venue"
     },
     {
       "id": "gen-seven-towers",
@@ -3542,7 +4118,10 @@
       "url": "https://www.midandeastantrim.gov.uk/resident/sport-and-leisure/leisure-centres/seven-towers/timetable",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.86192,
+      "lng": -6.26938,
+      "geoSource": "venue"
     },
     {
       "id": "gen-larne-lc-swim",
@@ -3561,7 +4140,10 @@
       "url": "https://larneleisurecentre.co.uk/swimming/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.85491,
+      "lng": -5.80242,
+      "geoSource": "venue"
     },
     {
       "id": "gen-snow-queen-braid",
@@ -3580,7 +4162,10 @@
       "url": "https://www.shapedbyseaandstone.com/whats-on/alternative-medicine-theatre-presents-the-snow-queen-p1089971",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.8663,
+      "lng": -6.27602,
+      "geoSource": "town"
     },
     {
       "id": "gen-rose-park-farm",
@@ -3599,7 +4184,10 @@
       "url": "https://roseparkfarmni.com/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 55.07027,
+      "lng": -6.51728,
+      "geoSource": "town"
     },
     {
       "id": "gen-lisburn-light-trail",
@@ -3618,7 +4206,10 @@
       "url": "https://www.visitlisburncastlereagh.com/whats-on/castle-gardens-light-trail-p931221",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.5115,
+      "lng": -6.03951,
+      "geoSource": "venue"
     },
     {
       "id": "gen-jumping-jacks",
@@ -3637,7 +4228,10 @@
       "url": "https://jumpingjacksni.co.uk/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.50811,
+      "lng": -6.03855,
+      "geoSource": "venue"
     },
     {
       "id": "gen-andersonstown-swim",
@@ -3656,7 +4250,10 @@
       "url": "https://www.better.org.uk/leisure-centre/belfast/andersonstown-leisure-centre/swimming",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.5733,
+      "lng": -5.98724,
+      "geoSource": "venue"
     },
     {
       "id": "gen-olympia-swim",
@@ -3675,7 +4272,10 @@
       "url": "https://www.better.org.uk/leisure-centre/belfast/olympia-leisure-centre/timetable",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.583,
+      "lng": -5.95669,
+      "geoSource": "venue"
     },
     {
       "id": "gen-lisnasharragh-swim",
@@ -3694,7 +4294,10 @@
       "url": "https://www.better.org.uk/leisure-centre/belfast/lisnasharragh/timetable",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.5777,
+      "lng": -5.88269,
+      "geoSource": "venue"
     },
     {
       "id": "gen-shankill-swim",
@@ -3713,7 +4316,10 @@
       "url": "https://www.better.org.uk/leisure-centre/belfast/shankill-leisure-centre/timetable",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.60336,
+      "lng": -5.94492,
+      "geoSource": "venue"
     },
     {
       "id": "gen-ulster-museum",
@@ -3732,7 +4338,10 @@
       "url": "https://www.ulstermuseum.org/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-colin-glen",
@@ -3751,7 +4360,10 @@
       "url": "https://colinglen.org/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.57272,
+      "lng": -6.02876,
+      "geoSource": "venue"
     },
     {
       "id": "gen-golden-thread-workshops",
@@ -3770,7 +4382,10 @@
       "url": "https://www.eventbrite.co.uk/e/family-art-workshop-halloween-crafting-free-tickets-2002294562938",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59835,
+      "lng": -5.93352,
+      "geoSource": "venue"
     },
     {
       "id": "gen-w5-life",
@@ -3789,7 +4404,10 @@
       "url": "https://w5online.co.uk/whats-on/w5-life-saturday-sessions",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-raspberry-jam",
@@ -3808,7 +4426,10 @@
       "url": "https://www.eventbrite.co.uk/e/northern-ireland-raspberry-jam-november-2026-tickets-2003312350167",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-qft-slime",
@@ -3827,7 +4448,10 @@
       "url": "https://queensfilmtheatre.com/Whats-On/Family-Pictures-Slime-Workshop",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59639,
+      "lng": -5.93018,
+      "geoSource": "town"
     },
     {
       "id": "gen-omniplex-kids-club",
@@ -3846,7 +4470,10 @@
       "url": "https://www.omniplex.ie/cinema/kids",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.58121,
+      "lng": -5.97873,
+      "geoSource": "venue"
     },
     {
       "id": "gen-belvoir-cinderella",
@@ -3865,7 +4492,10 @@
       "url": "https://www.belvoirplayers.org/events/cinderella-the-pantomime/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.55244,
+      "lng": -5.93352,
+      "geoSource": "venue"
     },
     {
       "id": "gen-goh-mermaid-all",
@@ -3884,7 +4514,10 @@
       "url": "https://www.goh.co.uk/whats-on/the-little-mermaid",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59533,
+      "lng": -5.93519,
+      "geoSource": "venue"
     },
     {
       "id": "gen-happy-town",
@@ -3903,7 +4536,10 @@
       "url": "https://www.happytown.uk.com/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "gen-little-down-town",
@@ -3922,7 +4558,10 @@
       "url": "https://littledowntown.co.uk/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.32793,
+      "lng": -5.71649,
+      "geoSource": "town"
     },
     {
       "id": "gen-ark-farm",
@@ -3941,7 +4580,10 @@
       "url": "https://www.thearkopenfarm.co.uk/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59338,
+      "lng": -5.69609,
+      "geoSource": "town"
     },
     {
       "id": "gen-streamvale-farm",
@@ -3960,7 +4602,10 @@
       "url": "https://streamvale.com/things-to-do",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59474,
+      "lng": -5.81053,
+      "geoSource": "town"
     },
     {
       "id": "gen-mountpanther-farm",
@@ -3979,7 +4624,10 @@
       "url": "https://mountpanther.com/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.29091,
+      "lng": -5.83764,
+      "geoSource": "town"
     },
     {
       "id": "gen-ulster-transport-museum",
@@ -3998,7 +4646,10 @@
       "url": "https://www.ulstertransportmuseum.org/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.65231,
+      "lng": -5.80498,
+      "geoSource": "venue"
     },
     {
       "id": "gen-ulster-folk-xmas",
@@ -4017,7 +4668,10 @@
       "url": "https://www.visitardsandnorthdown.com/whats-on/seasonal-events/christmas-and-new-year-events",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.64684,
+      "lng": -5.79361,
+      "geoSource": "venue"
     },
     {
       "id": "gen-bangor-xmas-city",
@@ -4036,7 +4690,10 @@
       "url": "https://www.visitardsandnorthdown.com/whats-on/christmas-in-the-city-of-bangor-p804601",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.66373,
+      "lng": -5.67444,
+      "geoSource": "venue"
     },
     {
       "id": "gen-ards-xmas-square",
@@ -4055,7 +4712,10 @@
       "url": "https://www.visitardsandnorthdown.com/whats-on/seasonal-events/christmas-and-new-year-events",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.59331,
+      "lng": -5.69613,
+      "geoSource": "venue"
     },
     {
       "id": "gen-newry-switch-on",
@@ -4074,7 +4734,10 @@
       "url": "https://www.newrymournedown.org/christmas-lights-switch-on-events-announced-for-newry-and-downpatrick",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.17499,
+      "lng": -6.3376,
+      "geoSource": "venue"
     },
     {
       "id": "gen-downpatrick-switch-on",
@@ -4093,7 +4756,10 @@
       "url": "https://www.newrymournedown.org/christmas-lights-switch-on-events-announced-for-newry-and-downpatrick",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.32793,
+      "lng": -5.71649,
+      "geoSource": "town"
     },
     {
       "id": "gen-newry-xmas-market",
@@ -4112,7 +4778,10 @@
       "url": "https://newrychristmasmarket.com/",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.17753,
+      "lng": -6.33751,
+      "geoSource": "venue"
     },
     {
       "id": "gen-hillsborough-xmas",
@@ -4131,7 +4800,10 @@
       "url": "https://www.visitlisburncastlereagh.com/whats-on/christmas-at-hillsborough-castle-and-gardens-p931851",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.46141,
+      "lng": -6.08608,
+      "geoSource": "venue"
     },
     {
       "id": "gen-hillsborough-market",
@@ -4150,7 +4822,10 @@
       "url": "https://www.visitlisburncastlereagh.com/whats-on/royal-hillsborough-christmas-market-p1101711",
       "soldOut": false,
       "addedDate": "2026-10-17",
-      "general": true
+      "general": true,
+      "lat": 54.45683,
+      "lng": -6.07133,
+      "geoSource": "venue"
     }
   ]
 }

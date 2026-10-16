@@ -12,6 +12,9 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     private WebView webView;
+    private String geoOrigin;
+    private android.webkit.GeolocationPermissions.Callback geoCallback;
+    private static final int REQ_LOC = 11;
 
     @SuppressLint({"SetJavaScriptEnabled", "SetJavaScriptEnabled"})
     @Override
@@ -63,6 +66,19 @@ public class MainActivity extends Activity {
             }
 
             @android.webkit.JavascriptInterface
+            public boolean getNotifications() { return NewEventsJobService.enabled(MainActivity.this); }
+
+            @android.webkit.JavascriptInterface
+            public void setNotifications(boolean on) {
+                getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).edit().putBoolean(NewEventsJobService.KEY_NOTIFY, on).apply();
+                NewEventsJobService.schedule(MainActivity.this);
+                if (on && android.os.Build.VERSION.SDK_INT >= 33 &&
+                        checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    runOnUiThread(() -> requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 7));
+                }
+            }
+
+            @android.webkit.JavascriptInterface
             public void setHidden(String json) {
                 java.util.Set<String> ids = new java.util.HashSet<>();
                 try {
@@ -89,6 +105,16 @@ public class MainActivity extends Activity {
             }
         });
 
+        settings.setGeolocationEnabled(true);
+        webView.setWebChromeClient(new android.webkit.WebChromeClient() {
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, android.webkit.GeolocationPermissions.Callback callback) {
+                if (hasLocation()) { callback.invoke(origin, true, false); return; }
+                geoOrigin = origin; geoCallback = callback;
+                requestPermissions(new String[]{"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"}, REQ_LOC);
+            }
+        });
+
         boolean showNew = getIntent() != null && getIntent().getBooleanExtra("showNew", false);
         webView.loadUrl("file:///android_asset/index.html" + (showNew ? "?new=1" : ""));
 
@@ -101,6 +127,21 @@ public class MainActivity extends Activity {
         if (!getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).contains(NewEventsJobService.KEY_IDS)) {
             final android.content.Context app = getApplicationContext();
             new Thread(() -> { try { NewEventsJobService.check(app); } catch (Exception ignored) {} }).start();
+        }
+    }
+
+    private boolean hasLocation() {
+        int ok = android.content.pm.PackageManager.PERMISSION_GRANTED;
+        return checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == ok
+                || checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") == ok;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQ_LOC && geoCallback != null) {
+            geoCallback.invoke(geoOrigin, hasLocation(), false);
+            geoCallback = null; geoOrigin = null;
         }
     }
 
