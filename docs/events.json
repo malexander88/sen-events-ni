@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T22:45:00+01:00",
+  "updatedAt": "2026-10-16T22:55:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2501,6 +2501,24 @@
       "senSpecific": true,
       "price": "Contact to check",
       "url": "https://carryduffgac.com/carryduff-all-stars-team/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "brassneck-peoples-panto-pinocchio-asd-2026",
+      "name": "The People's Panto: Pinocchio (ASD friendly performance)",
+      "description": "Brassneck Theatre Company's community Christmas panto in west Belfast has one ASD friendly performance of Pinocchio this year. The show runs about 1 hour 50 minutes including an interval, so it's a long sit for a 5 or 6 year old. Seating is unreserved, but seats can be held for people with a disability if you tell Brassneck what you need when booking (email finn@brassnecktheatrecompany.com). Children under 12 must come with an adult, and tickets can't be refunded.",
+      "startDate": "2026-12-11",
+      "endDate": "2026-12-11",
+      "recurring": null,
+      "time": "19:00",
+      "venue": "St Comgall's, 2 Divis Street / Falls Road, Belfast, BT12 4AQ",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Christmas",
+      "senSpecific": true,
+      "price": "From about £12.75 (check booking page)",
+      "url": "https://www.tickettailor.com/events/brassnecktheatrecompany/2251781",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
