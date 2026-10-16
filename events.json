@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T18:05:00+01:00",
+  "updatedAt": "2026-10-16T18:30:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1853,6 +1853,24 @@
       "senSpecific": true,
       "price": "Free",
       "url": "https://www.nidirect.gov.uk/articles/mo-mowlam-play-park-children",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "circusful-itty-bitty-circus",
+      "name": "Circusful Itty Bitty Circus classes (autism-supported)",
+      "description": "Weekly small circus-skills classes shaped to each child's needs (4–5 yrs Mon/Tue 4–5pm; 6–7 yrs Mon/Tue 5:30–6:30pm). Autism NI Impact Award: autism-trained trainers, visual timetable, pop-up sensory tents, communication passport, and a free orientation visit or video before starting. Register interest online or call 028 9023 6007; tell them about additional needs at enrolment. No classes 20 Oct–2 Nov or 15 Dec–4 Jan.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly in term time (Mon & Tue)",
+      "time": "16:00–17:00 (ages 4–5) / 17:30–18:30 (ages 6–7)",
+      "venue": "Circusful, 23–25 Gordon Street, Cathedral Quarter, BT1 2LG",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Sensory play",
+      "senSpecific": false,
+      "price": "Contact for fees (classes@belfastcircus.com)",
+      "url": "https://belfastcircus.com/classes/itty-bitty-circus-youth-circus",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
