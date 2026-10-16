@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T20:40:00+01:00",
+  "updatedAt": "2026-10-16T20:50:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2231,6 +2231,60 @@
       "senSpecific": true,
       "price": "Free (contact to confirm)",
       "url": "https://www.abbeypresbyterian.org.uk/abbey-allsorts/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "active-able-halloween-camp-avoniel",
+      "name": "Active & Able Halloween Camp (disabled children 5–15), Avoniel",
+      "description": "Three-afternoon Halloween sports camp made specially for children aged 5 to 15 with learning or physical disabilities. Active games, mindful movement, healthy eating and nature crafts, run by coaches trained in autism and Makaton, with 2 or 3 children per coach. Book all three days (Mon 26 to Wed 28 Oct) through Active Youth NI; email info@activeyouthni.com if your child needs 1:1 support. Held upstairs, with a lift.",
+      "time": "13:30–15:30 each day",
+      "venue": "Avoniel Leisure Centre, Avoniel Road, BT5 4SF",
+      "town": "Belfast",
+      "area": "Belfast",
+      "price": "£30.90 for 3 days",
+      "url": "https://active-youth-ni.classforkids.io/camp/51",
+      "startDate": "2026-10-26",
+      "endDate": "2026-10-28",
+      "recurring": null,
+      "type": "Halloween",
+      "senSpecific": true,
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "active-able-halloween-camp-brook",
+      "name": "Active & Able Halloween Camp (disabled children 5–15), Brook",
+      "description": "Three-afternoon Halloween sports camp made specially for children aged 5 to 15 with learning or physical disabilities. Active games, mindful movement, healthy eating and nature crafts, run by coaches trained in autism and Makaton, with 2 or 3 children per coach. Book all three days (Mon 26 to Wed 28 Oct) through Active Youth NI; email info@activeyouthni.com if your child needs 1:1 support. Held upstairs, with a lift.",
+      "time": "13:30–15:30 each day",
+      "venue": "Brook Leisure Centre, 25 Summerhill Road, Dunmurry, BT17 0RL",
+      "town": "Belfast",
+      "area": "Belfast",
+      "price": "£30.90 for 3 days",
+      "url": "https://active-youth-ni.classforkids.io/camp/52",
+      "startDate": "2026-10-26",
+      "endDate": "2026-10-28",
+      "recurring": null,
+      "type": "Halloween",
+      "senSpecific": true,
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "active-able-halloween-camp-bangor",
+      "name": "Active & Able Halloween Camp (disabled children 5–15), Bangor",
+      "description": "Three-afternoon Halloween sports camp made specially for children aged 5 to 15 with learning or physical disabilities. Active games, mindful movement, healthy eating and nature crafts, run by coaches trained in autism and Makaton, with 2 or 3 children per coach. Book all three days (Mon 26 to Wed 28 Oct) through Active Youth NI; email info@activeyouthni.com if your child needs 1:1 support. Use the Bloomfield Road entrance.",
+      "time": "09:30–11:30 each day",
+      "venue": "Glenlola Collegiate School, 2 Valentine Road, BT20 4TH",
+      "town": "Bangor",
+      "area": "County Down",
+      "price": "£45 for 3 days",
+      "url": "https://active-youth-ni.classforkids.io/camp/53",
+      "startDate": "2026-10-26",
+      "endDate": "2026-10-28",
+      "recurring": null,
+      "type": "Halloween",
+      "senSpecific": true,
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
