@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T23:35:00+01:00",
+  "updatedAt": "2026-10-16T23:45:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2555,6 +2555,24 @@
       "senSpecific": true,
       "price": "Not stated (contact school, 028 9086 2743)",
       "url": "https://www.rosstulla.co.uk/pupils/lets-play/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "sen-space-family-sessions",
+      "name": "SEN Space Family Sessions (monthly Sunday, additional needs)",
+      "description": "A one-hour Sunday morning session once a month at SEN Space, a charity centre in Dunmurry built for children with additional needs. The whole family can use the indoor and outdoor play areas, two activity rooms, a sensory room and an acre of safe, enclosed garden, and meet the staff and other families in the same position. They cap the number of families so it doesn't get overwhelming, and all ages are welcome, including siblings. The exact date each month is on SEN Space's monthly \"What's on\" timetable (also on their Facebook page), so check that or contact them on 07830 355 003 or info@senspace.org.uk to book.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Monthly (one Sunday a month)",
+      "time": "11:00–12:00",
+      "venue": "SEN Space, 4 Thornhill Road, Dunmurry, BT17 9EJ",
+      "town": "Dunmurry",
+      "area": "Belfast",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "£10 per family",
+      "url": "https://www.senspace.org.uk/family-sessions",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
