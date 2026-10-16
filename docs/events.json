@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T21:55:00+01:00",
+  "updatedAt": "2026-10-16T22:15:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2393,6 +2393,42 @@
       "senSpecific": true,
       "price": "Contact to check (low cost)",
       "url": "https://www.larneymca.com/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "nas-ni-dads-stay-and-play-carryduff",
+      "name": "National Autistic Society Dad's Stay and Play",
+      "description": "A two-hour shared play group run by the National Autistic Society NI for dads and their autistic children of primary school age who have complex support needs. Children can use the centre's sensory equipment and activities while National Autistic Society staff support the dads. You need to contact them first to get a place: email Joanne.Keown@nas.org.uk.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every 2 weeks on Fridays",
+      "time": "Fri 18:00–20:00",
+      "venue": "National Autistic Society NI Autism Centre, Eastbank House, 3 Eastbank Road, Carryduff, BT8 8BD (confirm when you contact them)",
+      "town": "Carryduff",
+      "area": "County Down",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Contact to check",
+      "url": "https://www.autism.org.uk/what-we-do/northern-ireland/northern-ireland-services",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "wee-village-ballyclare-santa-2026",
+      "name": "Santa at The Wee Village (calm, child-led Santa visit)",
+      "description": "Not a dedicated SEN session, but built to be low-pressure: 90 minutes of play in a countryside role-play village (Gruffalo theme this year), and Santa sits by the tree so children can go to him whenever they're ready, or not at all. There are no queues and no rush. Each child gets a personalised gift bag, a festive snack and a drink. The same venue runs inclusive additional-needs sessions with the music off and lower lighting, so it's worth asking about a quieter slot when you book. Dates are limited.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Selected dates over Christmas 2026 (on sale now; check availability)",
+      "time": "90-minute sessions",
+      "venue": "The Wee Village, 29B Deer Park Road, Ballyclare, BT39 0RH",
+      "town": "Ballyclare",
+      "area": "Rest of Antrim",
+      "type": "Christmas",
+      "senSpecific": false,
+      "price": "Child £29.95, adult £9.50 (max 2 adults), under-1 £10.50",
+      "url": "https://www.theweevillage.com/booksanta",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
