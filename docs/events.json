@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T12:15:00+01:00",
+  "updatedAt": "2026-10-16T13:20:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1637,6 +1637,60 @@
       "senSpecific": true,
       "price": "Child £4 / Adult £6; under-5s and carers free; family £18",
       "url": "https://www.shapedbyseaandstone.com/things-to-do/carrickfergus-castle-p674971",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "sensory-kids-antrim",
+      "name": "Sensory Kids NI (soft play & sensory room)",
+      "description": "Antrim charity sensory space designed for children and young people with learning difficulties, developmental disabilities, sensory impairments or autism (ages 2+). Soft-play/sensory room for 1:1 or small groups; phone or email to book. Also listed on Family Support NI.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open Mon–Sat (book ahead)",
+      "time": "Mon–Fri 10:00–17:00; Sat 10:00–13:00",
+      "venue": "Sensory Kids, Unit 58, The Junction, 111 Ballymena Road",
+      "town": "Antrim",
+      "area": "Rest of Antrim",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Contact to book (078 7563 7373)",
+      "url": "https://sensorykidsni.co.uk/soft-play-room/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "mount-stewart-calm-bags",
+      "name": "Mount Stewart (calm/sensory bags)",
+      "description": "National Trust house, gardens and demesne on Strangford Lough. Free calm (sensory) bags to borrow from visitor reception for visitors with additional needs; accessible lake/garden paths; Changing Places toilet; mobility scooters/outdoor wheelchairs bookable. Under-5s free. Natural play area and woodland trails — quieter midweek. House lift currently unavailable.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open most days (check NT calendar)",
+      "time": "Gardens/trails typically 10:00–17:00; house from 11:00",
+      "venue": "Mount Stewart, Portaferry Road",
+      "town": "Newtownards",
+      "area": "County Down",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Child £8 / adult £16 (Gift Aid higher); under-5s free; NT members free",
+      "url": "https://www.nationaltrust.org.uk/visit/northern-ireland/mount-stewart/visiting-mount-stewart-with-family",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "castle-espie-sensory",
+      "name": "Castle Espie Wetland Centre (sensory garden)",
+      "description": "WWT wetland centre on Strangford Lough with sensory garden, adventure play and bird hides. Official accessibility page recommends quieter visits Mon–Fri during term time; essential carers free. Flat wide paths (woodland path steep/unpaved); wheelchair/scooter hire for Shop Mobility members.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily (closed Christmas Eve & Day)",
+      "time": "Visitor centre 10:00–17:00; reserve to 16:30",
+      "venue": "WWT Castle Espie, 78 Ballydrain Road",
+      "town": "Comber",
+      "area": "County Down",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Junior from ~£6.08 online / carers free",
+      "url": "https://www.wwt.org.uk/wetland-centres/castle-espie/plan-your-visit/accessibility",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
