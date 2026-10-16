@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T17:41:16+01:00",
+  "updatedAt": "2026-10-16T17:44:08+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -503,24 +503,6 @@
       "senSpecific": false,
       "price": "See Belfast One",
       "url": "https://belfastone.co.uk/whats-on/event/belfast-one-pumpkin-patch-2-2/",
-      "soldOut": false,
-      "addedDate": "2026-10-10"
-    },
-    {
-      "id": "autism-ni-glow-walk-29",
-      "name": "Autism NI Glow Walk",
-      "description": "Fundraising glow walk; family-friendly evening event.",
-      "startDate": "2026-11-07",
-      "endDate": "2026-11-07",
-      "recurring": null,
-      "time": "18:00",
-      "venue": "Stormont Estate",
-      "town": "Belfast",
-      "area": "Belfast",
-      "type": "Outdoors",
-      "senSpecific": false,
-      "price": "Fundraising — see Autism NI",
-      "url": "https://autismni.org/get-involved/fundraising/fundraising-events/glow-walk",
       "soldOut": false,
       "addedDate": "2026-10-10"
     },
