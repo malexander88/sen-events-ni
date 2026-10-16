@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T20:10:00+01:00",
+  "updatedAt": "2026-10-16T20:20:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2123,6 +2123,60 @@
       "senSpecific": true,
       "price": "Match ticket; sensory bag free (book 24h ahead)",
       "url": "https://larnefc.com/accessibility-at-larne-fc/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "ballymoney-halloween-quiet-time-2026",
+      "name": "Ballymoney Halloween Quiet Time (additional needs)",
+      "description": "Causeway Coast & Glens Council's Ballymoney Halloween night opens with an hour of Quiet Time for people with additional needs, with reduced noise and lighting. It includes the amusements, Eurekaseekers, Ray Bubbles, chocolate-apple decorating and a balloon modeller. The busy main event follows from 6:30pm (fireworks 8:30pm). Entry is free; rides are paid. Pre-bookable disabled parking and a Mobile Accessible Changing Unit are available (parking: Bushmills Visitor Information Centre, 028 2073 0390).",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-24",
+      "recurring": null,
+      "time": "17:30–18:30",
+      "venue": "Joey Dunlop Leisure Centre",
+      "town": "Ballymoney",
+      "area": "Rest of Antrim",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "Free entry (rides charged)",
+      "url": "https://www.visitcausewaycoastandglens.com/whats-on/halloween-happenings-in-ballymoney-p864671",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "ballycastle-halloween-quiet-time-2026",
+      "name": "Ballycastle Halloween Quiet Time (additional needs)",
+      "description": "Causeway Coast & Glens Council's Ballycastle Halloween night has an hour of Quiet Time for people with additional needs on the Seafront, with creepy critters, a circus workshop, Ray Bubbles and quieter amusements. The full event follows from 6:30pm (fireworks 8:30pm). Entry is free; rides are paid. A Mobile Accessible Changing Unit is on the Seafront.",
+      "startDate": "2026-10-31",
+      "endDate": "2026-10-31",
+      "recurring": null,
+      "time": "17:30–18:30",
+      "venue": "The Seafront",
+      "town": "Ballycastle",
+      "area": "Rest of Antrim",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "Free entry (rides charged)",
+      "url": "https://www.visitcausewaycoastandglens.com/whats-on/halloween-happenings-in-ballycastle-p864291",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "valdez-ready-steady-gym-ballymena",
+      "name": "Ready Steady Gym at Valdez Gymnastics (extra-support class)",
+      "description": "A 45-minute structured gymnastics class for primary-school-age children who need extra support, with two coaches to six children, sensory equipment and apparatus matched to each child's development. Entry is after an assessment and chat with the parent, so contact the club first. Valdez is an all-inclusive club affiliated with Special Olympics Ireland.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly (Tuesdays)",
+      "time": "16:30–17:15",
+      "venue": "Valdez Gymnastics, Unit 12A Woodside Industrial Estate, Woodside Road",
+      "town": "Ballymena",
+      "area": "Rest of Antrim",
+      "type": "Swim/Leisure",
+      "senSpecific": true,
+      "price": "Contact club (028 2565 4440 / valdezgym@hotmail.com)",
+      "url": "https://www.valdezgymnasticsni.com/classes/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
