@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T20:51:35+01:00",
+  "updatedAt": "2026-10-16T21:05:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -257,7 +257,7 @@
     {
       "id": "the-ark-open-farm-quiet-sen-night-christmas-expe-15",
       "name": "The Ark Open Farm Quiet (SEN) Night Christmas Experience",
-      "description": "SEN quiet night Christmas experience; confirm 2026 dates on site.",
+      "description": "Quiet Nights (SEN) Christmas Experience at The Ark Open Farm, with bear building included for children. 2026 dates aren't shown yet; check the booking page.",
       "startDate": "2026-12-01",
       "endDate": "2026-12-24",
       "recurring": "2026 dates not fully listed — check booking page",
@@ -267,8 +267,8 @@
       "area": "County Down",
       "type": "Christmas",
       "senSpecific": true,
-      "price": "See farm website",
-      "url": "https://www.thearkopenfarm.co.uk/christmas/",
+      "price": "Child £34 (incl. bear building), toddler £23, adult £20, carer £5",
+      "url": "https://bookings.thearkopenfarm.co.uk/book/christmas---quiet-nights/93",
       "soldOut": false,
       "addedDate": "2026-10-10"
     },
@@ -2303,6 +2303,42 @@
       "recurring": null,
       "type": "Cinema",
       "senSpecific": true,
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "junction-antrim-pumpkin-patch-sensory-2026",
+      "name": "The Junction Pumpkin Patch: Sensory Sessions",
+      "description": "Dedicated sensory sessions of The Junction's Halloween pumpkin patch, run every open day. They are quieter, with reduced numbers and trained staff on hand. Children push a mini wheelbarrow round the patch, pick a pumpkin, then decorate it at the decorating station with paints, brushes and stickers (no carving) and take it home. Each session lasts about 45 minutes. Accompanying adults need a free ticket (max 2 adults per child). Book the 'Pumpkin Patch - Sensory Sessions' listing, not the general one. Closed Monday 26 and Tuesday 27 October.",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-31",
+      "recurring": "Daily 24–31 Oct except Mon 26 & Tue 27 Oct",
+      "time": "Sensory timeslots daily (see booking page)",
+      "venue": "The Junction Retail & Leisure Park, 111 Ballymena Road, BT41 4LL",
+      "town": "Antrim",
+      "area": "Rest of Antrim",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "£8 per child (incl. pumpkin and decorating); adults free ticket",
+      "url": "https://www.tickettailor.com/events/junction/2398070",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "ark-open-farm-halloween-quiet-session-2026-10-25",
+      "name": "The Ark Open Farm Halloween Pumpkin Patch: Quiet Session",
+      "description": "A quiet session of The Ark's Halloween experience especially for families with children with additional support needs, held before the farm opens fully at 10am. Pick a pumpkin with a wheelbarrow (staff carve it for you), slime making, marshmallow toasting, Halloween trail and Fairytale Forest, barrel ride, animals and play areas. Carer tickets £3; Essential Companion tickets £3 for Access Card holders. Under-1s free. £1 booking fee.",
+      "startDate": "2026-10-25",
+      "endDate": "2026-10-25",
+      "recurring": null,
+      "time": "09:00 (before 10am general opening)",
+      "venue": "The Ark Open Farm",
+      "town": "Newtownards",
+      "area": "County Down",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "Child £18 (incl. pumpkin), toddler £8, adult £16–19, carer £3; family of 4 £64",
+      "url": "https://bookings.thearkopenfarm.co.uk/book/pumpkin-patch---quiet-sessions/85",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
