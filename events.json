@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T22:55:00+01:00",
+  "updatedAt": "2026-10-16T23:10:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2519,6 +2519,24 @@
       "senSpecific": true,
       "price": "From about £12.75 (check booking page)",
       "url": "https://www.tickettailor.com/events/brassnecktheatrecompany/2251781",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "tumble-circus-winter-circus-relaxed-2026",
+      "name": "Tumble Circus Winter Circus (relaxed performance)",
+      "description": "Belfast's Christmas circus in a heated Big Top in the Cathedral Quarter has one relaxed show this year, for people with autism, a learning disability or sensory and communication needs. Noise and moving about are fine, light and sound effects are toned down, there's extra seating space and an accessible portable toilet on site. Expect aerialists, juggling, acrobatics and comedy, all ages welcome. The show is about 70 minutes with no interval. Doors open 4:45pm. Carers get a free ticket (email bookings@tumblecircus.com), and it's worth giving advance notice of specific needs when booking. Winter Circus sells out every year, so book early.",
+      "startDate": "2026-12-22",
+      "endDate": "2026-12-22",
+      "recurring": null,
+      "time": "17:00",
+      "venue": "Tumble Circus Big Top, Writers' Square, Donegall Street, Belfast, BT1 2HB",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Christmas",
+      "senSpecific": true,
+      "price": "£10 (£11.20 with booking fee); carers free",
+      "url": "https://wegottickets.com/f/28292/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
