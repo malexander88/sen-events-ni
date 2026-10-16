@@ -51,6 +51,7 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .pill-free { background: var(--free-soft); color: var(--free); }
 .pill-sold { background: var(--sold-soft); color: var(--sold); }
 .pill-new { background: var(--new-soft); color: var(--new); }
+.pill-general { background: transparent; color: var(--muted); border: 1px dashed currentColor; padding: 2px 8px; }
 .pill-type { background: var(--surface-2); color: var(--muted); font-weight: 600; }
 .heart { position: absolute; top: 8px; right: 8px; border: 0; background: transparent; font-size: 22px;
   width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: var(--muted); }

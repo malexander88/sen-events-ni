@@ -28,6 +28,7 @@
   let saved = new Set();
   try { saved = new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]')); } catch (_) {}
   const persistSaved = () => { try { localStorage.setItem(SAVED_KEY, JSON.stringify([...saved])); } catch (_) {} };
+  let statusText = '';
   let hidden = new Set();
   try { hidden = new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]')); } catch (_) {}
   const persistHidden = () => {
@@ -106,6 +107,7 @@
     let h = '';
     if (isNew(ev)) h += '<span class="pill pill-new">New</span>';
     if (ev.senSpecific) h += '<span class="pill pill-sen">SEN only</span>';
+    if (ev.general) h += '<span class="pill pill-general" title="General family event, not SEN-specific">General</span>';
     if (isFree(ev)) h += '<span class="pill pill-free">Free</span>';
     if (ev.soldOut) h += '<span class="pill pill-sold">Sold out</span>';
     h += '<span class="pill pill-type">' + esc(ev.type) + '</span>';
@@ -123,6 +125,7 @@
       if (state.weekend && !isWeekend(ev)) return false;
       if (state.free && !isFree(ev)) return false;
       if (state.sen && !ev.senSpecific) return false;
+      if (state.general && !ev.general) return false;
       if (state.new && !isNew(ev)) return false;
       if (state.saved && !saved.has(ev.id)) return false;
       if (state.area !== 'all' && ev.area !== state.area) return false;
@@ -157,11 +160,13 @@
     if (state.showHidden) {
       const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
       const hid = filtered(true);
+      els.status.textContent = total + ' hidden item' + (total === 1 ? '' : 's');
       els.list.innerHTML = '<div class="hidden-view-head"><h3 class="group-title group-hidden">Hidden (' + total + ')' + (hid.length !== total ? ' · ' + hid.length + ' match' : '') + '</h3>' +
         '<button class="icon-btn back-all" data-back-all="1">← Show all events</button></div>' +
         (hid.length ? hid.map(hiddenCard).join('') : '<p class="empty empty-sm">' + (total ? 'No hidden items match these filters.' : 'Nothing hidden.') + '</p>');
       return;
     }
+    if (statusText) els.status.textContent = statusText;
     const items = filtered(false);
     if (!items.length) {
       els.list.innerHTML = '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
@@ -331,7 +336,8 @@
     render();
     route();
     const when = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
-    els.status.textContent = allEvents.length + ' events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
+    statusText = allEvents.length + ' events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
+    if (!state.showHidden) els.status.textContent = statusText;
   }
   async function fetchRemote() {
     let last;
