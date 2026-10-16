@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T19:45:00+01:00",
+  "updatedAt": "2026-10-16T20:10:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2087,6 +2087,42 @@
       "senSpecific": true,
       "price": "Child £13.50 (incl. pumpkin), adult £11.50, carer £2.50",
       "url": "https://montaltoestate.ticketsolve.com/shows/873638673/events/129697332",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "o2-belfast-arena-sensory-bags",
+      "name": "The O2 Belfast arena (Belfast Giants games and family shows) with sensory bags",
+      "description": "Free sensory bags at the arena's concierge desk for anyone who finds the noise and crowds hard: ear defenders, fidget toys, cue cards, a weighted lap pad and a wobble cushion (leave ID as a deposit). You can ask for a familiarisation visit on a non-event day through the venue's Contact Us page, and an Essential Companion ticket can be free. Belfast Giants also made a BBC Bitesize 'Let's Go Out!' sensory story video to help children prepare for a game night. Ice hockey and arena shows are loud, so ear defenders are a must.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "On event days (Giants home games and family shows)",
+      "time": "Box office opens 1 hour before doors",
+      "venue": "The O2 Belfast (formerly SSE Arena), Odyssey, Queen's Quay",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Event ticket; sensory bag free; Essential Companion ticket may be free",
+      "url": "https://theo2belfast.com/accessibility",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "larne-fc-inver-park-sensory-bags",
+      "name": "Larne FC home games with sensory bags (Inver Park)",
+      "description": "Staff and volunteers are CALM-trained, and sensory bags with ear defenders and fidget toys are available at every home game for children with autism. Book at least 24 hours ahead by emailing samneill@larnefc.com, then collect from the ticket office. A free personal assistant ticket may be available.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Larne FC home matches",
+      "time": "Match days (check fixtures)",
+      "venue": "Inver Park, Inver Road",
+      "town": "Larne",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Match ticket; sensory bag free (book 24h ahead)",
+      "url": "https://larnefc.com/accessibility-at-larne-fc/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
