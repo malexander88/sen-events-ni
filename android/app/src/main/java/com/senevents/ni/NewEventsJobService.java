@@ -31,6 +31,7 @@ public class NewEventsJobService extends JobService {
     static final String CHANNEL_ID = "new_events";
     static final String PREFS = "sen_events";
     static final String KEY_IDS = "seen_ids";
+    static final String KEY_HIDDEN = "hidden_ids";
     static final String[] URLS = {
         "https://malexander88.github.io/sen-events-ni/events.json",
         "https://raw.githubusercontent.com/malexander88/sen-events-ni/main/events.json"
@@ -87,7 +88,8 @@ public class NewEventsJobService extends JobService {
         boolean firstRun = !p.contains(KEY_IDS);
         Set<String> seen = new HashSet<>(p.getStringSet(KEY_IDS, new HashSet<>()));
         int fresh = 0;
-        for (String id : ids) if (!seen.contains(id)) fresh++;
+        Set<String> hiddenIds = p.getStringSet(KEY_HIDDEN, new HashSet<>());
+        for (String id : ids) if (!seen.contains(id) && !hiddenIds.contains(id)) fresh++;
         seen.addAll(ids);
         p.edit().putStringSet(KEY_IDS, seen).apply();
         if (!firstRun && fresh > 0) notifyNew(ctx, fresh);

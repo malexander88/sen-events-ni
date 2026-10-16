@@ -61,6 +61,17 @@ public class MainActivity extends Activity {
                     android.widget.Toast.makeText(MainActivity.this, "No calendar app found", android.widget.Toast.LENGTH_SHORT).show();
                 }
             }
+
+            @android.webkit.JavascriptInterface
+            public void setHidden(String json) {
+                java.util.Set<String> ids = new java.util.HashSet<>();
+                try {
+                    org.json.JSONArray a = new org.json.JSONArray(json);
+                    for (int k = 0; k < a.length(); k++) ids.add(a.optString(k));
+                } catch (Exception ignored) { return; }
+                getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).edit()
+                        .putStringSet(NewEventsJobService.KEY_HIDDEN, ids).apply();
+            }
         }, "SENAndroid");
 
         webView.setWebViewClient(new WebViewClient() {

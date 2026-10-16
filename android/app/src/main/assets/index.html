@@ -18,6 +18,14 @@
         <p class="subtitle">Calm days out across Antrim &amp; Down</p>
       </div>
     </div>
+    <div class="search-row">
+      <label class="search-box">
+        <span class="search-ico" aria-hidden="true">🔍</span>
+        <input id="search" type="search" placeholder="Search events, venues, towns…" autocomplete="off" enterkeyhint="search" aria-label="Search" />
+        <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" hidden>✕</button>
+      </label>
+      <button id="hidden-chip" class="chip chip-hidden" aria-pressed="false">Show hidden (0)</button>
+    </div>
     <nav class="chips" id="quick-chips" aria-label="Quick filters">
       <button class="chip" data-q="near" aria-pressed="false">📍 Near me</button>
       <button class="chip" data-q="weekend" aria-pressed="false">📅 This weekend</button>

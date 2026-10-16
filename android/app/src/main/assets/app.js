@@ -6,6 +6,7 @@
   ];
   const CACHE_KEY = 'sen-events-ni-cache-v1';
   const SAVED_KEY = 'sen-events-ni-saved-v1';
+  const HIDDEN_KEY = 'sen-events-ni-hidden-v1';
   const NEAR = 'Newtownabbey & North Belfast';
   const AREAS = [NEAR, 'Belfast', 'Rest of Antrim', 'County Down'];
   const AREA_ORDER = { [NEAR]: 0, 'Belfast': 1, 'Rest of Antrim': 2, 'County Down': 3 };
@@ -14,17 +15,40 @@
     'Swim/Leisure': '🏊', 'Library/Storytime': '📚', 'Museum/Attraction': '🏛️', 'Outdoors': '🌳',
     'Disco/Party': '🪩', 'Soft play (SEN hours)': '🧸', 'Place to visit': '📍'
   };
+  const EYE_OFF = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+  const EYE = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
   const typeIcon = t => TYPE_ICONS[t] || '⭐';
 
   const $ = id => document.getElementById(id);
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), areas: $('area-chips'),
-    types: $('type-chips'), detail: $('detail') };
+    types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
 
-  const state = { near: false, weekend: false, free: false, sen: false, new: false, saved: false, area: 'all', type: 'all' };
+  const state = { near: false, weekend: false, free: false, sen: false, new: false, saved: false, area: 'all', type: 'all', query: '', showHidden: false };
   let allEvents = [];
   let saved = new Set();
   try { saved = new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]')); } catch (_) {}
   const persistSaved = () => { try { localStorage.setItem(SAVED_KEY, JSON.stringify([...saved])); } catch (_) {} };
+  let hidden = new Set();
+  try { hidden = new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]')); } catch (_) {}
+  const persistHidden = () => {
+    try { localStorage.setItem(HIDDEN_KEY, JSON.stringify([...hidden])); } catch (_) {}
+    try { window.SENAndroid && window.SENAndroid.setHidden && window.SENAndroid.setHidden(JSON.stringify([...hidden])); } catch (_) {}
+  };
+  // Drop hidden ids whose item has passed or is no longer in the list.
+  function pruneHidden() {
+    if (!allEvents.length) return;
+    const live = new Set(allEvents.filter(ev => !isPast(ev)).map(ev => ev.id));
+    let changed = false;
+    for (const id of [...hidden]) if (!live.has(id)) { hidden.delete(id); changed = true; }
+    if (changed) persistHidden();
+  }
+  const norm = s => String(s == null ? '' : s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  function matchesQuery(ev) {
+    const words = norm(state.query).split(/\s+/).filter(Boolean);
+    if (!words.length) return true;
+    const hay = norm([ev.name, ev.description, ev.venue, ev.town].join(' '));
+    return words.every(w => hay.includes(w));
+  }
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -90,9 +114,11 @@
   const heartBtn = ev => '<button class="heart" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) +
     '" aria-label="' + (saved.has(ev.id) ? 'Remove from saved' : 'Save') + '">' + (saved.has(ev.id) ? '♥' : '♡') + '</button>';
 
-  function filtered() {
+  function filtered(wantHidden) {
     return allEvents.filter(ev => {
       if (isPast(ev)) return false;
+      if (hidden.has(ev.id) !== !!wantHidden) return false;
+      if (!matchesQuery(ev)) return false;
       if (state.near && ev.area !== NEAR) return false;
       if (state.weekend && !isWeekend(ev)) return false;
       if (state.free && !isFree(ev)) return false;
@@ -110,10 +136,29 @@
     });
   }
 
+  const hideBtn = ev => '<button class="hide-btn" data-hide="' + esc(ev.id) + '" aria-label="Hide" title="Hide">' + EYE_OFF + '</button>';
+  function hiddenCard(ev) {
+    return '<article class="card card-hidden" data-id="' + esc(ev.id) + '" tabindex="0">' +
+      '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
+      '<div class="card-body"><h2 class="h2-hidden">' + esc(ev.name) + '</h2>' +
+        '<p class="meta">' + esc(ev.venue) + ', ' + esc(ev.town) + '</p></div>' +
+      '<button class="unhide-btn" data-unhide="' + esc(ev.id) + '">' + EYE + ' Unhide</button></article>';
+  }
+  function updateHiddenChip() {
+    const n = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
+    els.hiddenChip.innerHTML = EYE_OFF + ' ' + 'Show hidden' + ' (' + n + ')';
+    els.hiddenChip.setAttribute('aria-pressed', String(state.showHidden));
+    els.hiddenChip.disabled = n === 0 && !state.showHidden;
+    els.searchClear.hidden = !state.query;
+  }
   function render() {
-    const items = filtered();
+    updateHiddenChip();
+    const items = filtered(false);
+    const hid = state.showHidden ? filtered(true) : [];
+    const hiddenHtml = hid.length ? '<h3 class="group-title group-hidden">Hidden · ' + hid.length + '</h3>' + hid.map(hiddenCard).join('') :
+      (state.showHidden ? '<h3 class="group-title group-hidden">Hidden · 0</h3><p class="empty empty-sm">Nothing hidden matches.</p>' : '');
     if (!items.length) {
-      els.list.innerHTML = '<p class="empty">' + (state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
+      els.list.innerHTML = '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>' + hiddenHtml;
       return;
     }
     let html = '';
@@ -129,10 +174,10 @@
             (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
             '<p class="meta">' + esc(ev.venue) + ', ' + esc(ev.town) + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
             '<div class="pills">' + pills(ev) + '</div>' +
-          '</div>' + heartBtn(ev) +
+          '</div>' + heartBtn(ev) + hideBtn(ev) +
         '</article>').join('');
     }
-    els.list.innerHTML = html;
+    els.list.innerHTML = html + hiddenHtml;
   }
 
   function chipRow(container, key, values, labelAll) {
@@ -195,8 +240,9 @@
     const dated = !!startOf(ev);
     els.detail.innerHTML =
       '<div class="detail-inner">' +
-        '<div class="detail-top"><button class="icon-btn" data-back>← Back</button>' +
-          '<button class="icon-btn" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) + '">' + (saved.has(ev.id) ? '♥ Saved' : '♡ Save') + '</button></div>' +
+        '<div class="detail-top"><button class="icon-btn" data-back>← Back</button><div class="detail-actions">' +
+          '<button class="icon-btn" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) + '">' + (saved.has(ev.id) ? '♥ Saved' : '♡ Save') + '</button>' +
+          (hidden.has(ev.id) ? '<button class="icon-btn" data-unhide="' + esc(ev.id) + '">' + EYE + ' Unhide</button>' : '<button class="icon-btn" data-hide="' + esc(ev.id) + '">' + EYE_OFF + ' Hide</button>') + '</div></div>' +
         '<div class="detail-hero"><div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div><h2>' + esc(ev.name) + '</h2></div>' +
         '<div class="pills">' + pills(ev) + '</div>' +
         (runBadge(ev) ? '<p class="run-badge run-badge-lg">📅 ' + esc(runBadge(ev)) + '</p>' : '') +
@@ -233,7 +279,22 @@
     render();
     if (!els.detail.hidden) showDetail(id);
   }
+  function setHidden(id, on) {
+    if (on) hidden.add(id); else hidden.delete(id);
+    persistHidden();
+    const inDetail = !els.detail.hidden;
+    render();
+    if (inDetail) { if (on) { history.length > 1 ? history.back() : (location.hash = ''); } else showDetail(id); }
+  }
+  els.search.addEventListener('input', () => { state.query = els.search.value; render(); });
+  els.searchClear.addEventListener('click', () => { els.search.value = ''; state.query = ''; render(); els.search.focus(); });
+  els.search.addEventListener('keydown', e => { if (e.key === 'Escape') { els.search.value = ''; state.query = ''; render(); } });
+  els.hiddenChip.addEventListener('click', () => { state.showHidden = !state.showHidden; render(); });
   document.addEventListener('click', e => {
+    const hb = e.target.closest('[data-hide]');
+    if (hb) { e.stopPropagation(); e.preventDefault(); setHidden(hb.dataset.hide, true); return; }
+    const ub = e.target.closest('[data-unhide]');
+    if (ub) { e.stopPropagation(); e.preventDefault(); setHidden(ub.dataset.unhide, false); return; }
     const h = e.target.closest('[data-heart]');
     if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
     if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
@@ -248,13 +309,15 @@
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && e.target.matches('.card[data-id]')) location.hash = 'e/' + encodeURIComponent(e.target.dataset.id);
-    if (e.key === 'Escape' && !els.detail.hidden) history.back();
+    if (e.key === 'Escape' && !els.detail.hidden && e.target !== els.search) history.back();
   });
   window.addEventListener('hashchange', route);
 
   // ---------- Data ----------
   function applyData(data, source) {
     allEvents = (data && data.events) || [];
+    if (source === 'live') pruneHidden();
+    persistHidden();
     chipRow(els.areas, 'area', AREAS, '🗺️ All areas');
     chipRow(els.types, 'type', [...new Set(allEvents.map(e => e.type))].sort(), '🔎 All types');
     syncChips();
