@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T19:20:00+01:00",
+  "updatedAt": "2026-10-16T19:35:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2051,6 +2051,24 @@
       "senSpecific": true,
       "price": "Contact for fees",
       "url": "https://maitristudio.net/features/special-yoga-maitri-studio",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "mae-murray-music-yard-larne-2026-10-17",
+      "name": "Mae Murray Foundation All-Ability Music Session at The Music Yard",
+      "description": "Free all-ability family music session run by the Mae Murray Foundation (a charity for people with disabilities and their families) at The Music Yard, an inclusive music and wellbeing centre. Whole family welcome; parents stay with their child. Changing Places toilet on site. Free but booking essential via the Mae Murray ticket page.",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-17",
+      "recurring": null,
+      "time": "11:00–12:30",
+      "venue": "The Music Yard, Unit 5 Stylux Business Park, Old Glenarm Road",
+      "town": "Larne",
+      "area": "Rest of Antrim",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Free (booking essential)",
+      "url": "https://mae-murray-foundation.eventcube.io/events/97604/music-yard-larne-17th-october",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
