@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T18:30:00+01:00",
+  "updatedAt": "2026-10-16T18:50:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1871,6 +1871,42 @@
       "senSpecific": false,
       "price": "Contact for fees (classes@belfastcircus.com)",
       "url": "https://belfastcircus.com/classes/itty-bitty-circus-youth-circus",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "you2me-halloween-camp-marrowbone",
+      "name": "You2Me Play Halloween Camp (additional needs), Marrowbone",
+      "description": "Three-morning Halloween holiday camp from You2Me Play, whose holiday camps are designed for children with additional needs. Messy play and sensory exploration, crafts, baking and pumpkin decorating, games, a Halloween disco, and a calm corner. Book single days (£28) or all three (£75). Read the information pack on the booking page before booking (it covers ages and drop-off), and no refunds within 48 hours.",
+      "startDate": "2026-10-27",
+      "endDate": "2026-10-29",
+      "recurring": null,
+      "time": "10:00–13:00",
+      "venue": "Belfast Marrowbone, 11–13 Gracehill Court, BT14 7RG",
+      "town": "Belfast",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "£28 per day / £75 all 3 days",
+      "url": "https://you2me-tuition.pembee.app/activity/6a8fe5012af81a55cd81e4e9",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "you2me-halloween-camp-downpatrick",
+      "name": "You2Me Play Halloween Camp (additional needs), Downpatrick",
+      "description": "Three-morning Halloween holiday camp from You2Me Play, whose holiday camps are designed for children with additional needs. Messy play and sensory exploration, crafts, baking and pumpkin decorating, games, a Halloween disco, and a calm corner. Book single days (£28) or all three (£75). Read the information pack on the booking page before booking (it covers ages and drop-off), and no refunds within 48 hours.",
+      "startDate": "2026-10-27",
+      "endDate": "2026-10-29",
+      "recurring": null,
+      "time": "10:00–13:00",
+      "venue": "Dunsford Old School, 1 Tollumgrange Road, BT30 7SR",
+      "town": "Downpatrick",
+      "area": "County Down",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "£28 per day / £75 all 3 days",
+      "url": "https://you2me-tuition.pembee.app/activity/6a8db885606780c8ebb0b9b7",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
