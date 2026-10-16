@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T23:45:00+01:00",
+  "updatedAt": "2026-10-16T23:55:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2573,6 +2573,24 @@
       "senSpecific": true,
       "price": "£10 per family",
       "url": "https://www.senspace.org.uk/family-sessions",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "lush-belfast-halloween-sen-workshop-2026",
+      "name": "Lush Belfast Little Monsters bath bomb workshop (SEN sensory-friendly session)",
+      "description": "A 45-minute Halloween half-term workshop at the Lush shop in Belfast city centre where children make their own pumpkin-themed vegan bath bomb, play a couple of spooky party games and take home a goodie bag. One session is set aside as a SEN sensory-friendly slot: it runs at a more relaxed pace and the music is turned down. Suitable for all ages, so a parent can stay alongside. Worth knowing: the shop and the bath bomb are strongly scented (cinnamon, lime and orange), so it suits children who enjoy smells and messy hands-on play more than those who find scents overwhelming. Book the 10am Thursday slot specifically on the Lush event page.",
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-29",
+      "recurring": null,
+      "time": "10:00–10:45",
+      "venue": "Lush Belfast, 27–29 Castle Lane, Belfast, BT1 5DB",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Halloween",
+      "senSpecific": true,
+      "price": "£15",
+      "url": "https://www.lush.com/uk/en/e/lushs-little-monsters-halfterm-bath-bomb-making-workshops",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
