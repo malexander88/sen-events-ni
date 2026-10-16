@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T12:00:00+01:00",
+  "updatedAt": "2026-10-16T12:15:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1585,6 +1585,60 @@
       "type": "Place to visit",
       "price": "Soft play £3.90–£4.90",
       "url": "https://www.northernirelandworld.com/news/people/three-causeway-coast-glens-leisure-centres-recognised-by-autism-ni-for-work-to-improve-accessibility-9055070"
+    },
+    {
+      "id": "ludo-soft-play-quiet-hour",
+      "name": "Ludo Soft Play Quiet Hour",
+      "description": "Bookable inclusive soft-play hour for children with disabilities or specific needs. Limited numbers, safe-space tent, and sensory/autism packs from reception (£5 refundable deposit). Book via Get MEActive app or Amphitheatre 028 9335 8342.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every Monday, Wednesday and Friday from 15 Jun 2026",
+      "time": "10:00–11:00",
+      "venue": "Ludo Soft Play, Amphitheatre Leisure Centre",
+      "town": "Carrickfergus",
+      "area": "Rest of Antrim",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "£3.80 per child / £6.30 for 2 from same family (from 1 Apr 2026); free with Family membership",
+      "url": "https://www.midandeastantrim.gov.uk/resident/sport-and-leisure/leisure-centres/amphitheatre-carrickfergus/ludo-soft-play-area",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "airtastic-bangor-quiet-bowling",
+      "name": "Airtastic Bangor Quiet Bowling",
+      "description": "Autism-friendly quiet bowling: no music or loud announcements, no strobe/flashing lights, minimum house lights, reduced capacity. Lights and sound return to normal from 11am.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every Sunday",
+      "time": "10:00–11:00",
+      "venue": "Airtastic Bangor",
+      "town": "Bangor",
+      "area": "County Down",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "From £6.95 under-16 / £7.50 adult (1 game)",
+      "url": "https://air-tastic.com/activities/bowling-in-bangor",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "carrickfergus-castle-sensory",
+      "name": "Carrickfergus Castle (sensory room)",
+      "description": "Norman castle with a sensory room (low light, sensory tent) confirmed on Mid & East Antrim tourism. Carers free. Third-party guides mention Sunday 9:30–11am quiet time, but official DfC and Discover NI pages do not list it — phone 028 9335 1273 to confirm before travelling. Winter: Tue–Sun 9am–4pm (Mon closed except bank holidays); last entry 3:30pm.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open most days (check before visit)",
+      "time": "Winter Tue–Sun 9:00–16:00",
+      "venue": "Carrickfergus Castle, Marine Highway",
+      "town": "Carrickfergus",
+      "area": "Rest of Antrim",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Child £4 / Adult £6; under-5s and carers free; family £18",
+      "url": "https://www.shapedbyseaandstone.com/things-to-do/carrickfergus-castle-p674971",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
     }
   ]
 }
