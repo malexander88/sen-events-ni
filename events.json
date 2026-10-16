@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T20:20:00+01:00",
+  "updatedAt": "2026-10-16T20:35:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2178,6 +2178,42 @@
       "price": "Contact club (028 2565 4440 / valdezgym@hotmail.com)",
       "url": "https://www.valdezgymnasticsni.com/classes/",
       "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "ulster-orchestra-snowman-relaxed",
+      "name": "The Snowman Family Concert (relaxed performance)",
+      "description": "Ulster Orchestra plays Howard Blake's score live to The Snowman film. Both shows are relaxed and signed: noise and movement are fine, you can come and go during the show, there's a chill-out space on level one, and noise-cancelling headphones are welcome. Sound and lighting are not turned down, apart from slight dimming during the film.",
+      "startDate": "2026-12-13",
+      "endDate": "2026-12-13",
+      "recurring": null,
+      "time": "14:00 and 16:30",
+      "venue": "Waterfront Hall",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Christmas",
+      "senSpecific": true,
+      "price": "£16–£22 (box office 028 9033 4455)",
+      "url": "https://www.ulsterorchestra.org.uk/whats-on/snowman-2pm/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "magheramorne-magic-mistletoe-quiet",
+      "name": "Magic and Mistletoe Christmas Quiet Sessions (additional needs)",
+      "description": "Quiet sessions of Magheramorne Estate's outdoor Christmas trail for children with additional needs, with low audio and restricted guest numbers. Includes meeting Father Christmas, farm animals, marshmallow toasting and all food. Gravel paths with slopes and steps. The 2026 event is showing as sold out, so watch for swaps or returns.",
+      "startDate": "2026-12-02",
+      "endDate": "2026-12-16",
+      "recurring": null,
+      "time": "Wed 2, 9 and 16 Dec, entry 15:00 or 15:15",
+      "venue": "Magheramorne Estate",
+      "town": "Larne",
+      "area": "Rest of Antrim",
+      "type": "Christmas",
+      "senSpecific": true,
+      "price": "Child £34.95, adult £31.95 (Wed), plus booking fee",
+      "url": "https://magheramorneestate.com/experiences/magic-and-mistletoe/",
+      "soldOut": true,
       "addedDate": "2026-10-16"
     }
   ]
