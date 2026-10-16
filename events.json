@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T22:25:00+01:00",
+  "updatedAt": "2026-10-16T22:45:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2483,6 +2483,24 @@
       "senSpecific": true,
       "price": "Normal adult/junior match prices; one essential companion free",
       "url": "https://www.irishfa.com/tickets/accessible-tickets",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "carryduff-gac-all-stars",
+      "name": "Carryduff All Stars: Gaelic games for children with additional needs (age 5+)",
+      "description": "A regular GAA For All programme at Carryduff GAC for children aged 5 and up with additional needs who can't manage a normal team game. Sessions are gentle exercise, simple games and ball skills, with the focus on fun and joining in at the child's own pace in a safe, friendly setting, and the team also goes to Ulster GAA For All festival days. About 150 people take part. The club doesn't publish the session day online, so email Maria at healthandwellbeing@carryduffgac.com to ask about times and a place before going.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Regular sessions through the year (contact the club for the current day and time)",
+      "time": "Contact the club for session times",
+      "venue": "Carryduff GAC, Knockbracken Drive, Belfast, BT8 8EX",
+      "town": "Carryduff",
+      "area": "County Down",
+      "type": "Swim/Leisure",
+      "senSpecific": true,
+      "price": "Contact to check",
+      "url": "https://carryduffgac.com/carryduff-all-stars-team/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
