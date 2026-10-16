@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T21:05:00+01:00",
+  "updatedAt": "2026-10-16T21:40:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2339,6 +2339,42 @@
       "senSpecific": true,
       "price": "Child £18 (incl. pumpkin), toddler £8, adult £16–19, carer £3; family of 4 £64",
       "url": "https://bookings.thearkopenfarm.co.uk/book/pumpkin-patch---quiet-sessions/85",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "newcastle-cinema-relaxed-monster-house-2026-10-17",
+      "name": "Relaxed Screening: Monster House",
+      "description": "Relaxed cinema screening run by Newcastle Community Cinema with Autism Support Kilkeel (ASK) and ADHD Hub, for neurodiverse people and their families. Softer sound, lower lighting and a relaxed atmosphere where you can move around, make noise or take a break. Everyone welcome; tickets just £3 per person, book online through TicketSource. Film: Monster House (PG, 2006 animation; a spooky Halloween comedy, so may be a little scary for younger children).",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-17",
+      "recurring": null,
+      "time": "14:00–16:00",
+      "venue": "Newcastle Community Cinema, St Mary's Hall, Main Street",
+      "town": "Newcastle",
+      "area": "County Down",
+      "type": "Cinema",
+      "senSpecific": true,
+      "price": "£3 per person",
+      "url": "https://www.newcastlecinema.org/whatson/monster-house",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "newcastle-cinema-relaxed-toy-story-5-2026-11-14",
+      "name": "Relaxed Screening: Toy Story 5",
+      "description": "Relaxed cinema screening run by Newcastle Community Cinema with Autism Support Kilkeel (ASK) and ADHD Hub, for neurodiverse people and their families. Softer sound, lower lighting and a relaxed atmosphere where you can move around, make noise or take a break. Everyone welcome; tickets just £3 per person, book online through TicketSource. Film: Toy Story 5 (PG, 102 min).",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-14",
+      "recurring": null,
+      "time": "14:00–16:00",
+      "venue": "Newcastle Community Cinema, St Mary's Hall, Main Street",
+      "town": "Newcastle",
+      "area": "County Down",
+      "type": "Cinema",
+      "senSpecific": true,
+      "price": "£3 per person",
+      "url": "https://www.newcastlecinema.org/whatson/toy-story-5",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
