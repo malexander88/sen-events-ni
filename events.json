@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T23:10:00+01:00",
+  "updatedAt": "2026-10-16T23:35:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2537,6 +2537,24 @@
       "senSpecific": true,
       "price": "£10 (£11.20 with booking fee); carers free",
       "url": "https://wegottickets.com/f/28292/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "rosstulla-lets-play-playgroup",
+      "name": "Let's Play playgroup for children with additional needs, Rosstulla School (ages 0–6)",
+      "description": "A weekly play session at Rosstulla special school in Jordanstown for children up to 6 with additional needs, with a parent or carer joining in. It's play-based and led by the school's experienced SEN staff in the nursery classroom, so it's a calm, understanding space, and a chance to meet other parents of children with additional needs. It runs on Wednesday afternoons, so it suits days your child is off school or finishes early. The page doesn't say whether it runs during school holidays or whether you need to book, so ring the school on 028 9086 2743 before going.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly (Wednesdays)",
+      "time": "14:00–15:00",
+      "venue": "Rosstulla School (nursery classroom), 2–6 Jordanstown Road, Newtownabbey, BT37 0QF",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Not stated (contact school, 028 9086 2743)",
+      "url": "https://www.rosstulla.co.uk/pupils/lets-play/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
