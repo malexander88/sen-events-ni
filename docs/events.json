@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T21:40:00+01:00",
+  "updatedAt": "2026-10-16T21:55:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2375,6 +2375,24 @@
       "senSpecific": true,
       "price": "£3 per person",
       "url": "https://www.newcastlecinema.org/whatson/toy-story-5",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "larne-ymca-autism-support-programme",
+      "name": "Larne YMCA Autism Support Programme (ASP) Saturday club",
+      "description": "Weekly social and play club at Larne YMCA set up for children aged 4+ with autism (or waiting on a diagnosis). Small groups with games in the hall, arts and crafts, football, cooking, park trips and seasonal Halloween and Christmas fun, plus a quiet chill-out room for sensory time and calming down. It's popular and sometimes has a waiting list, so contact Leanne Doherty (leanne@larneymca.org) or call 028 2827 9331 (option 1) to ask about a place before going.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly on Saturdays (term time; check for closures)",
+      "time": "Sat 14:30–16:30 (confirm when you contact them)",
+      "venue": "Larne YMCA, 34a Pound Street, BT40 1SD",
+      "town": "Larne",
+      "area": "Rest of Antrim",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Contact to check (low cost)",
+      "url": "https://www.larneymca.com/",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
