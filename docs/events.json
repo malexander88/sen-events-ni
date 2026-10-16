@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T14:25:00+01:00",
+  "updatedAt": "2026-10-16T15:20:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1661,7 +1661,7 @@
     {
       "id": "mount-stewart-calm-bags",
       "name": "Mount Stewart (calm/sensory bags)",
-      "description": "National Trust house, gardens and demesne on Strangford Lough. Free calm (sensory) bags to borrow from visitor reception for visitors with additional needs; accessible lake/garden paths; Changing Places toilet; mobility scooters/outdoor wheelchairs bookable. Under-5s free. Natural play area and woodland trails — quieter midweek. House lift currently unavailable.",
+      "description": "National Trust house, gardens and demesne on Strangford Lough. Free calm (sensory) bags to borrow from visitor reception for visitors with additional needs; accessible lake/garden paths; Changing Places toilet; mobility scooters/outdoor wheelchairs bookable. Under-5s free. Natural play area and woodland trails — quieter midweek. House lift currently unavailable. Halloween (24 Oct to 1 Nov): Magic Ink Pot sensory trail in the House 11:00–16:00 (ground floor only, decorated) and Frightful Fernery outdoor trail 10:00–17:00; both free with admission, no booking.",
       "startDate": null,
       "endDate": null,
       "recurring": "Open most days (check NT calendar)",
@@ -1763,6 +1763,60 @@
       "senSpecific": true,
       "price": "See booking; one carer/companion free",
       "url": "https://www.hrp.org.uk/hillsborough-castle/visit/accessibility/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "infinity-adventure-inclusion-mission",
+      "name": "Infinity Adventure Park Inclusion Mission (additional needs trampoline session)",
+      "description": "Trampoline and ninja-obstacle park session designed with additional needs in mind, with lower capacity than open sessions. Soft play area for under-6s on site. Halloween week (27 Oct to 1 Nov) keeps the Thursday 6pm and Sunday noon Inclusion slots. Book online; times can change for private events.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Every Thursday 6–7pm and Sunday 12–1pm (term time and Halloween week)",
+      "time": "Thu 18:00–19:00; Sun 12:00–13:00",
+      "venue": "Infinity Adventure Park, 4 Waringsford Road",
+      "town": "Banbridge",
+      "area": "County Down",
+      "type": "Soft play (SEN hours)",
+      "senSpecific": true,
+      "price": "See booking (028 4062 7941)",
+      "url": "https://infinityadventure.co.uk/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "castle-ward-quiet-space-calm-bags",
+      "name": "Castle Ward (Lough View Quiet Space and calm bags)",
+      "description": "National Trust estate on Strangford Lough. Lough View Quiet Space is an accessible sensory-friendly quiet hut open daily; free calm bags (fidget toys, ear defenders, sensory items) to borrow from reception; indoor play den in the Stableyard (10am–4pm daily, ramp access on request). Shuttle around the estate; sensory packs bookable in advance.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily (house closed Tuesdays)",
+      "time": "Play den 10:00–16:00; house 11:00–16:00",
+      "venue": "Castle Ward, Strangford",
+      "town": "Downpatrick",
+      "area": "County Down",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "NT admission applies; NT members free",
+      "url": "https://www.nationaltrust.org.uk/visit/northern-ireland/castle-ward/family-friendly-things-to-do-at-castle-ward",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "belfast-castle-autism-impact-award",
+      "name": "Belfast Castle and Cave Hill Visitor Centre (Autism Impact Award venue)",
+      "description": "Staff hold the Autism Impact Award and JAM Card accreditation, so they're trained to give extra time and privacy. Free parking, lift, accessible toilets, self-guided Cave Hill Visitor Centre, adventure playground and gardens. Free entry; quieter on weekday mornings.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": "See opening hours",
+      "venue": "Belfast Castle, Antrim Road",
+      "town": "Belfast",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://www.belfastcity.gov.uk/BelfastCastle/Contact-us/Visitor-accessibility-facilities",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
