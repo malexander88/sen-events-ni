@@ -23,7 +23,7 @@
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), areas: $('area-chips'),
     types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
 
-  const state = { near: false, weekend: false, free: false, sen: false, new: false, saved: false, area: 'all', type: 'all', query: '', showHidden: false };
+  const state = { near: false, weekend: false, free: false, sen: false, general: false, new: false, saved: false, area: 'all', type: 'all', query: '', showHidden: false };
   let allEvents = [];
   let saved = new Set();
   try { saved = new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]')); } catch (_) {}
