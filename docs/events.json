@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T22:15:00+01:00",
+  "updatedAt": "2026-10-16T22:25:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2429,6 +2429,60 @@
       "senSpecific": false,
       "price": "Child £29.95, adult £9.50 (max 2 adults), under-1 £10.50",
       "url": "https://www.theweevillage.com/booksanta",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "wave-ballyclare-special-needs-monthly",
+      "name": "WAVE Ballyclare monthly group for people with special needs (all ages, Makaton-trained leaders)",
+      "description": "A relaxed, cross-church monthly gathering for children and adults with special needs or disabilities, with their parents and carers. It uses arts and crafts, drama and storytelling rather than talking, and the leaders (several are teachers) are trained in Makaton, which suits a non-verbal child. Parents can chat over a cup of tea. It is a Christian group with a short faith element. Still listed as running by the WAVE network; check the group's Facebook page or the church before your first visit. Next date should be Sunday 25 October.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Last Sunday of each month",
+      "time": "15:00–16:00",
+      "venue": "Ballyclare Presbyterian Church, 2 Foundry Lane, Ballyclare, BT39 9BQ",
+      "town": "Ballyclare",
+      "area": "Rest of Antrim",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://www.wave-for-change.org.uk/find-a-group-near-you",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "scrabo-hall-kidz-quest-connect-newtownards",
+      "name": "Kidz Quest Connect: additional-needs children's group, Scrabo Hall (ages 4–11)",
+      "description": "A small-group session for children aged 4 to 11 with additional needs who can't manage the mainstream children's programme, whether because of sensory, learning or behavioural difficulties. Numbers are kept small and sensory stimulation is turned down, and activities are pitched to each child. Experienced volunteers run a special-needs session on Sunday mornings during the church's family service. It's a church group with simple Bible stories. Get in touch through their contact page before going so they can plan for your child.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Sundays",
+      "time": "11:30–12:15",
+      "venue": "Scrabo Hall, 143–161 Mill Street, Newtownards, BT23 4LN",
+      "town": "Newtownards",
+      "area": "County Down",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Free",
+      "url": "https://www.scrabo.org/youth/scrabo-kids-quest-connect/",
+      "soldOut": false,
+      "addedDate": "2026-10-16"
+    },
+    {
+      "id": "windsor-park-quiet-room-ni-football",
+      "name": "Northern Ireland football at Windsor Park with a sensory Quiet Room",
+      "description": "The national stadium has a soundproofed Quiet Room in the family stand, set up with the National Autistic Society: soft floor, comfy seats, calm LED lighting, sensory toys, its own accessible toilet and a full view of the pitch. It takes up to 5 people, with one free essential companion ticket and junior prices for children. There is also a Quiet Seating area. Request it through the Irish FA accessible ticket form when tickets for a men's or women's home international go on sale; places are first come, first served. Questions to dao@irishfa.com.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Northern Ireland men's and women's home internationals",
+      "time": "Match days",
+      "venue": "National Football Stadium at Windsor Park, Donegall Avenue, Belfast",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Place to visit",
+      "senSpecific": true,
+      "price": "Normal adult/junior match prices; one essential companion free",
+      "url": "https://www.irishfa.com/tickets/accessible-tickets",
       "soldOut": false,
       "addedDate": "2026-10-16"
     }
