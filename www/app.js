@@ -146,19 +146,25 @@
   }
   function updateHiddenChip() {
     const n = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
-    els.hiddenChip.innerHTML = EYE_OFF + ' ' + 'Show hidden' + ' (' + n + ')';
+    els.hiddenChip.innerHTML = state.showHidden ? (EYE + ' Show all events') : (EYE_OFF + ' Show hidden (' + n + ')');
     els.hiddenChip.setAttribute('aria-pressed', String(state.showHidden));
     els.hiddenChip.disabled = n === 0 && !state.showHidden;
+    document.body.classList.toggle('view-hidden', state.showHidden);
     els.searchClear.hidden = !state.query;
   }
   function render() {
     updateHiddenChip();
+    if (state.showHidden) {
+      const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
+      const hid = filtered(true);
+      els.list.innerHTML = '<div class="hidden-view-head"><h3 class="group-title group-hidden">Hidden (' + total + ')' + (hid.length !== total ? ' · ' + hid.length + ' match' : '') + '</h3>' +
+        '<button class="icon-btn back-all" data-back-all="1">← Show all events</button></div>' +
+        (hid.length ? hid.map(hiddenCard).join('') : '<p class="empty empty-sm">' + (total ? 'No hidden items match these filters.' : 'Nothing hidden.') + '</p>');
+      return;
+    }
     const items = filtered(false);
-    const hid = state.showHidden ? filtered(true) : [];
-    const hiddenHtml = hid.length ? '<h3 class="group-title group-hidden">Hidden · ' + hid.length + '</h3>' + hid.map(hiddenCard).join('') :
-      (state.showHidden ? '<h3 class="group-title group-hidden">Hidden · 0</h3><p class="empty empty-sm">Nothing hidden matches.</p>' : '');
     if (!items.length) {
-      els.list.innerHTML = '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>' + hiddenHtml;
+      els.list.innerHTML = '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
       return;
     }
     let html = '';
@@ -177,7 +183,7 @@
           '</div>' + heartBtn(ev) + hideBtn(ev) +
         '</article>').join('');
     }
-    els.list.innerHTML = html + hiddenHtml;
+    els.list.innerHTML = html;
   }
 
   function chipRow(container, key, values, labelAll) {
@@ -289,11 +295,12 @@
   els.search.addEventListener('input', () => { state.query = els.search.value; render(); });
   els.searchClear.addEventListener('click', () => { els.search.value = ''; state.query = ''; render(); els.search.focus(); });
   els.search.addEventListener('keydown', e => { if (e.key === 'Escape') { els.search.value = ''; state.query = ''; render(); } });
-  els.hiddenChip.addEventListener('click', () => { state.showHidden = !state.showHidden; render(); });
+  els.hiddenChip.addEventListener('click', () => { state.showHidden = !state.showHidden; render(); window.scrollTo(0,0); });
   document.addEventListener('click', e => {
     const hb = e.target.closest('[data-hide]');
     if (hb) { e.stopPropagation(); e.preventDefault(); setHidden(hb.dataset.hide, true); return; }
     const ub = e.target.closest('[data-unhide]');
+    if (e.target.closest('[data-back-all]')) { e.preventDefault(); state.showHidden = false; render(); window.scrollTo(0,0); return; }
     if (ub) { e.stopPropagation(); e.preventDefault(); setHidden(ub.dataset.unhide, false); return; }
     const h = e.target.closest('[data-heart]');
     if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
