@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-17T01:45:00+01:00",
+  "updatedAt": "2026-10-17T09:45:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -7,9 +7,9 @@
       "name": "Titanic Belfast Quiet Sessions",
       "description": "Lower sound, softer lighting, ear defenders and a quiet area.",
       "startDate": "2026-10-20",
-      "endDate": "2026-11-15",
+      "endDate": "2027-03-21",
       "recurring": null,
-      "time": "Various (see booking)",
+      "time": "Tue 20 Oct 8–9:30am; Sun 25 Oct 4–5:30pm; Sat 7 Nov 3:30–5pm; Sun 15 Nov 9–10:30am; Sat 16 Jan 9–10:30am; Sun 24 Jan 3–4:30pm; Sat 13 Feb 3–4:30pm; Sun 28 Feb 9–10:30am; Sat 6 Mar 9–10:30am; Sun 21 Mar 3–4:30pm",
       "venue": "Titanic Belfast",
       "town": "Belfast",
       "area": "Belfast",
@@ -3025,6 +3025,27 @@
       "lat": 54.59639,
       "lng": -5.93018,
       "geoSource": "town"
+    },
+    {
+      "id": "avenue-cinema-belfast-sensory-friendly-screenings",
+      "name": "The Avenue Cinema Sensory Friendly Screenings",
+      "description": "The Avenue, the independent cinema inside CastleCourt on Royal Avenue, runs 'sensory friendly' screenings designed for guests with autism or sensory difficulties: the lights stay on low, the sound is turned down and subtitles are shown. Screenings are listed under the 'Sensory' type on the cinema's Showtimes page (schedules are set weekly, updated each Wednesday for the coming Friday). Check the film is suitable for a 5–6 year old; contact hi@theavenuecinema.com for upcoming sensory dates. Fully step-free venue.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Selected screenings — check the 'Sensory' filter on the Showtimes page",
+      "time": "See showtimes",
+      "venue": "The Avenue Cinema, CastleCourt, Royal Avenue, Belfast BT1 1DD",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Cinema",
+      "senSpecific": true,
+      "price": "Standard cinema pricing (see website)",
+      "url": "https://www.theavenuecinema.com/company/accessibility",
+      "soldOut": false,
+      "addedDate": "2026-10-17",
+      "lat": 54.60089,
+      "lng": -5.9318,
+      "geoSource": "venue"
     },
     {
       "id": "gen-v36-funfair",
