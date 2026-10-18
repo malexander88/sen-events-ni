@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-17T15:30:00+01:00",
+  "updatedAt": "2026-10-18T09:30:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -2397,27 +2397,6 @@
       "geoSource": "venue"
     },
     {
-      "id": "mae-murray-music-yard-larne-2026-10-17",
-      "name": "Mae Murray Foundation All-Ability Music Session at The Music Yard",
-      "description": "Free all-ability family music session run by the Mae Murray Foundation (a charity for people with disabilities and their families) at The Music Yard, an inclusive music and wellbeing centre. Whole family welcome; parents stay with their child. Changing Places toilet on site. Free but booking essential via the Mae Murray ticket page.",
-      "startDate": "2026-10-17",
-      "endDate": "2026-10-17",
-      "recurring": null,
-      "time": "11:00–12:30",
-      "venue": "The Music Yard, Unit 5 Stylux Business Park, Old Glenarm Road",
-      "town": "Larne",
-      "area": "Rest of Antrim",
-      "type": "Sensory play",
-      "senSpecific": true,
-      "price": "Free (booking essential)",
-      "url": "https://mae-murray-foundation.eventcube.io/events/97604/music-yard-larne-17th-october",
-      "soldOut": false,
-      "addedDate": "2026-10-16",
-      "lat": 54.85085,
-      "lng": -5.81831,
-      "geoSource": "town"
-    },
-    {
       "id": "montalto-halloween-asd-quiet-2026-10-27",
       "name": "Halloween at Montalto: ASD/Quiet Sessions (Trail of Tiny Terrors)",
       "description": "Dedicated ASD/quiet sessions of Montalto Estate's family Halloween trail: a gentle, not-too-scary outdoor woodland trail (about 1 hour) with spooky scenes, a witch's cottage, play park and a pumpkin for each child to take home. Quieter, calmer timeslots for children who find busy or loud places hard. Wheelchair and pram friendly; outdoors, so wellies recommended. Carer tickets £2.50 (phone 028 9756 6100). Book the ASD/Quiet timeslot on the Ticketsolve page.",
@@ -2733,27 +2712,6 @@
       "geoSource": "town"
     },
     {
-      "id": "newcastle-cinema-relaxed-monster-house-2026-10-17",
-      "name": "Relaxed Screening: Monster House",
-      "description": "Relaxed cinema screening run by Newcastle Community Cinema with Autism Support Kilkeel (ASK) and ADHD Hub, for neurodiverse people and their families. Softer sound, lower lighting and a relaxed atmosphere where you can move around, make noise or take a break. Everyone welcome; tickets just £3 per person, book online through TicketSource. Film: Monster House (PG, 2006 animation; a spooky Halloween comedy, so may be a little scary for younger children).",
-      "startDate": "2026-10-17",
-      "endDate": "2026-10-17",
-      "recurring": null,
-      "time": "14:00–16:00",
-      "venue": "Newcastle Community Cinema, St Mary's Hall, Main Street",
-      "town": "Newcastle",
-      "area": "County Down",
-      "type": "Cinema",
-      "senSpecific": true,
-      "price": "£3 per person",
-      "url": "https://www.newcastlecinema.org/whatson/monster-house",
-      "soldOut": false,
-      "addedDate": "2026-10-16",
-      "lat": 54.21183,
-      "lng": -5.88972,
-      "geoSource": "town"
-    },
-    {
       "id": "newcastle-cinema-relaxed-toy-story-5-2026-11-14",
       "name": "Relaxed Screening: Toy Story 5",
       "description": "Relaxed cinema screening run by Newcastle Community Cinema with Autism Support Kilkeel (ASK) and ADHD Hub, for neurodiverse people and their families. Softer sound, lower lighting and a relaxed atmosphere where you can move around, make noise or take a break. Everyone welcome; tickets just £3 per person, book online through TicketSource. Film: Toy Story 5 (PG, 102 min).",
@@ -2987,11 +2945,11 @@
     {
       "id": "sen-space-family-sessions",
       "name": "SEN Space Family Sessions (monthly Sunday, additional needs)",
-      "description": "A one-hour Sunday morning session once a month at SEN Space, a charity centre in Dunmurry built for children with additional needs. The whole family can use the indoor and outdoor play areas, two activity rooms, a sensory room and an acre of safe, enclosed garden, and meet the staff and other families in the same position. They cap the number of families so it doesn't get overwhelming, and all ages are welcome, including siblings. The exact date each month is on SEN Space's monthly \"What's on\" timetable (also on their Facebook page), so check that or contact them on 07830 355 003 or info@senspace.org.uk to book.",
-      "startDate": null,
-      "endDate": null,
+      "description": "A Sunday morning session once a month at SEN Space, a charity centre in Dunmurry built for children with additional needs. The whole family can use the sensory rooms, arts and crafts, indoor and outdoor play areas and an acre of safe, enclosed garden, and meet the staff and other families in the same position. They cap the number of families so it doesn't get overwhelming, and all ages are welcome, including siblings. Upcoming dates are Sun 22 Nov, Sun 13 Dec, Sun 17 Jan and Sun 21 Feb, 11am–12:30pm, booked on SEN Space's Eventbrite page (search \"Inclusive Play & Family Fun for Children with Additional Needs\"), or contact them on 07830 355 003 or info@senspace.org.uk.",
+      "startDate": "2026-11-22",
+      "endDate": "2027-02-21",
       "recurring": "Monthly (one Sunday a month)",
-      "time": "11:00–12:00",
+      "time": "Sun 22 Nov, Sun 13 Dec, Sun 17 Jan, Sun 21 Feb, 11:00–12:30",
       "venue": "SEN Space, 4 Thornhill Road, Dunmurry, BT17 9EJ",
       "town": "Dunmurry",
       "area": "Belfast",
