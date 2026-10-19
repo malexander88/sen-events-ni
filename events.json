@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T15:30:00+01:00",
+  "updatedAt": "2026-10-19T09:40:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -6326,6 +6326,27 @@
       "geoSource": "venue",
       "addedDate": "2026-10-18",
       "general": true
+    },
+    {
+      "id": "white-rise-sensory-playground-lagmore",
+      "name": "White Rise playground, Lagmore (sensory-friendly equipment + communication panel)",
+      "description": "Belfast City Council playground in Lagmore, west Belfast, reopened at Easter 2026 after a full refurbishment. The council says it is designed to be welcoming for all children, including those with sensory processing differences: it has sensory-friendly acoustic (sound-making) play equipment, a communication panel (a Makaton picture board, which a non-verbal child can point at), wheelchair-accessible features, and new safety surfacing and fencing. Free, open daily, no booking. It's a local neighbourhood playground rather than a big destination park.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Open daily",
+      "time": null,
+      "venue": "White Rise playground, Lagmore, Belfast BT17",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Park/Playground",
+      "senSpecific": false,
+      "price": "Free",
+      "url": "https://www.belfastcity.gov.uk/news/%C2%A31-5-million-of-further-park-improvements-planned",
+      "soldOut": false,
+      "addedDate": "2026-10-19",
+      "lat": 54.55665,
+      "lng": -6.0368,
+      "geoSource": "venue"
     }
   ]
 }
