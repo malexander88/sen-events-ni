@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T15:25:00+01:00",
+  "updatedAt": "2026-10-20T09:40:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -6325,6 +6325,27 @@
       "lng": -5.54909,
       "geoSource": "venue",
       "addedDate": "2026-10-19"
+    },
+    {
+      "id": "you2me-christmas-breakfast-play-2026",
+      "name": "You2Me Christmas Breakfast & Play (with Santa)",
+      "description": "Festive morning from You2Me Play, the NI additional-needs play provider behind the sensory discos and SEN holiday camps. Christmas-themed messy play for the children while parents get a hot breakfast, plus a surprise visit from Santa. Small group (20 tickets). The listing doesn't say it's SEN-only, so message You2Me (you2metuition@gmail.com) if you'd like to check support for a non-verbal child. Book online; ticket covers 1 adult + 1 child, extra child or adult +£15.",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-05",
+      "recurring": null,
+      "time": "10:00–12:00",
+      "venue": "The Lansdowne Hotel, 657 Antrim Road",
+      "town": "Belfast",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Christmas",
+      "senSpecific": true,
+      "price": "£35 (1 adult + 1 child); extra child or adult £15",
+      "url": "https://you2me-tuition.pembee.app/activity/6ab10bbcfbc550b387f19649",
+      "soldOut": false,
+      "lat": 54.6346,
+      "lng": -5.93643,
+      "geoSource": "venue",
+      "addedDate": "2026-10-20"
     }
   ]
 }
