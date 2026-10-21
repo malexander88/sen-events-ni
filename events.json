@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T15:45:00+01:00",
+  "updatedAt": "2026-10-21T09:45:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -1958,10 +1958,10 @@
     {
       "id": "playtown-ni-sen-session",
       "name": "Play Town NI SEN Session",
-      "description": "SEN play session at a new role-play mini-town (shops, café, pretend play) for little ones. Book on Bookwhen; check there for further SEN dates.",
-      "startDate": "2026-10-20",
-      "endDate": "2026-10-20",
-      "recurring": null,
+      "description": "Weekly SEN play session at a role-play mini-town (shops, café, pretend play). Runs Tuesdays at 4pm (Bookwhen shows 27 Oct, 3 Nov, 17 Nov and onwards); book on Bookwhen.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly (Tuesdays)",
       "time": "16:00",
       "venue": "Play Town NI, 30c Comber Road",
       "town": "Newtownards",
@@ -6874,6 +6874,50 @@
       "lng": -5.72026,
       "geoSource": "venue",
       "addedDate": "2026-10-20"
+    },
+    {
+      "id": "you2me-halloween-camp-deanby",
+      "name": "You2Me Play Halloween Camp (additional needs), Deanby Youth Club",
+      "description": "One-morning Halloween holiday camp from You2Me Play, whose holiday camps are designed for children with additional needs. Messy play and sensory exploration, crafts, baking and pumpkin decorating, games, a Halloween disco, and a calm corner. Read the information pack on the booking page before booking (it covers ages and drop-off); no refunds within 48 hours.",
+      "startDate": "2026-10-30",
+      "endDate": "2026-10-30",
+      "recurring": null,
+      "time": "10:00–13:00",
+      "venue": "Deanby Youth Club, Oldpark Terrace, BT14 6QU",
+      "town": "Belfast",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Halloween",
+      "senSpecific": true,
+      "general": false,
+      "price": "£28",
+      "url": "https://you2me-tuition.pembee.app/activity/6a8dc466cde9156d67debffe",
+      "soldOut": false,
+      "lat": 54.62275,
+      "lng": -5.95503,
+      "geoSource": "venue",
+      "addedDate": "2026-10-21"
+    },
+    {
+      "id": "ballymena-switch-on-quiet-time-2026",
+      "name": "Ballymena Christmas Lights Switch-on Quiet Time",
+      "description": "Quiet Time with a relaxed session of sensory play at Wellington Court, 3–4pm, before the main Ballymena switch-on (event 2–7pm; Santa parade 6pm, lights 6:30pm). Free.",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-14",
+      "recurring": null,
+      "time": "15:00–16:00 (quiet time)",
+      "venue": "Wellington Court, Ballymena town centre",
+      "town": "Ballymena",
+      "area": "Rest of Antrim",
+      "type": "Christmas",
+      "senSpecific": false,
+      "general": false,
+      "price": "Free",
+      "url": "https://www.shapedbyseaandstone.com/whats-on/ballymena-christmas-lights-switch-on-p865011",
+      "soldOut": false,
+      "lat": 54.86562,
+      "lng": -6.27557,
+      "geoSource": "venue",
+      "addedDate": "2026-10-21"
     }
   ]
 }
