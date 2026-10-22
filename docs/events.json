@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21T15:11:13+01:00",
+  "updatedAt": "2026-10-22T09:45:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -150,27 +150,6 @@
       "geoSource": "venue"
     },
     {
-      "id": "lisburn-relaxed-twilight-night-8",
-      "name": "Lisburn Relaxed Twilight Night",
-      "description": "Sensory-friendly silent disco and light trail.",
-      "startDate": "2026-10-21",
-      "endDate": "2026-10-21",
-      "recurring": null,
-      "time": "18:30–20:30",
-      "venue": "Wallace Park",
-      "town": "Lisburn",
-      "area": "County Down",
-      "type": "Disco/Party",
-      "senSpecific": true,
-      "price": "Tickets in advance (see site)",
-      "url": "https://lisburncastlereagh.gov.uk/halloween",
-      "soldOut": false,
-      "addedDate": "2026-10-10",
-      "lat": 54.51619,
-      "lng": -6.04015,
-      "geoSource": "venue"
-    },
-    {
       "id": "spooky-silent-disco-relaxed-session-9",
       "name": "Spooky Silent Disco Relaxed Session",
       "description": "Relaxed silent disco (sold out as of 10 Oct).",
@@ -236,7 +215,7 @@
     {
       "id": "dobbies-santa-s-quiet-grotto-12",
       "name": "Dobbies Santa's Quiet Grotto",
-      "description": "Music off, no queuing, photos of Santa beforehand.",
+      "description": "Music off, no queuing, photos of Santa beforehand. Pre-book only, reduced numbers per slot. Tue 8 Dec 9:10am–12:30pm is listed so far (other December dates may follow); check the Lisburn store on the booking page.",
       "startDate": "2026-12-01",
       "endDate": "2026-12-24",
       "recurring": "Selected December dates — check Lisburn availability",
@@ -7226,6 +7205,50 @@
       "lng": -5.95613,
       "geoSource": "venue",
       "addedDate": "2026-10-21"
+    },
+    {
+      "id": "nmd-neurodivergent-halloween-camp-downpatrick",
+      "name": "All-Inclusive Neurodivergent Halloween Camp, Down Leisure Centre",
+      "description": "Small-group Halloween sports camp from Newry, Mourne & Down council and Healthy Kidz, made for primary-school children (P1–P7) with autism, ADHD or other neurodivergent needs. Shorter sessions and a calm, structured, sensory-aware setting, ideal for children who find big camps overwhelming. The council poster says Wed 28 to Fri 31 Oct (Friday is actually 30 Oct), so check the exact days and times on the booking page. Book online via the NMD leisure booking site (choose the Main Category from the dropdown) or call 0330 137 4026 / email leisureandsport@nmandd.org. If your child needs extra support, a parent or carer must stay on site. Places are limited.",
+      "startDate": "2026-10-28",
+      "endDate": "2026-10-31",
+      "recurring": null,
+      "time": "See booking page (summer camps ran 2:30–4:30pm)",
+      "venue": "Down Leisure Centre, 114 Market Street",
+      "town": "Downpatrick",
+      "area": "County Down",
+      "type": "Halloween",
+      "senSpecific": true,
+      "general": false,
+      "price": "Low cost, see booking (summer camp was £11)",
+      "url": "https://www.newrymournedown.org/sports-development",
+      "soldOut": false,
+      "lat": 54.32433,
+      "lng": -5.71961,
+      "geoSource": "venue",
+      "addedDate": "2026-10-22"
+    },
+    {
+      "id": "nmd-neurodivergent-halloween-camp-newry",
+      "name": "All-Inclusive Neurodivergent Halloween Camp, Newry Leisure Centre",
+      "description": "Small-group Halloween sports camp from Newry, Mourne & Down council and Healthy Kidz, made for primary-school children (P1–P7) with autism, ADHD or other neurodivergent needs. Shorter sessions and a calm, structured, sensory-aware setting, ideal for children who find big camps overwhelming. The council poster says Wed 28 to Fri 31 Oct (Friday is actually 30 Oct), so check the exact days and times on the booking page. Book online via the NMD leisure booking site (choose the Main Category from the dropdown) or call 0330 137 4026 / email leisureandsport@nmandd.org. If your child needs extra support, a parent or carer must stay on site. Places are limited.",
+      "startDate": "2026-10-28",
+      "endDate": "2026-10-31",
+      "recurring": null,
+      "time": "See booking page (summer camps ran 2:30–4:30pm)",
+      "venue": "Newry Leisure Centre, 60 Cecil Street",
+      "town": "Newry",
+      "area": "County Down",
+      "type": "Halloween",
+      "senSpecific": true,
+      "general": false,
+      "price": "Low cost, see booking (summer camp was £11)",
+      "url": "https://www.newrymournedown.org/sports-development",
+      "soldOut": false,
+      "lat": 54.18069,
+      "lng": -6.34531,
+      "geoSource": "venue",
+      "addedDate": "2026-10-22"
     }
   ]
 }
