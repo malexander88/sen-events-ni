@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T15:30:00+01:00",
+  "updatedAt": "2026-10-23T09:20:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -6675,28 +6675,6 @@
       "soldOut": false,
       "lat": 54.59604,
       "lng": -5.89292,
-      "geoSource": "venue",
-      "addedDate": "2026-10-20"
-    },
-    {
-      "id": "gen-lisburn-twilight-parade",
-      "name": "Twilight Night & Lantern Parade, Lisburn",
-      "description": "Lisburn's Halloween Twilight Night: community lantern parade from Bow Street Mall to Wallace Park at 6:40pm with LED drumming by SPARK!, then the Twilight Night event in Wallace Park (food traders). Wallace Park entry by pre-paid ticket only; assistance dogs only. (Relaxed Twilight Night on 21 Oct is listed separately.)",
-      "startDate": "2026-10-22",
-      "endDate": "2026-10-22",
-      "recurring": null,
-      "time": "Parade 18:40",
-      "venue": "Bow Street to Wallace Park",
-      "town": "Lisburn",
-      "area": "Rest of Antrim",
-      "type": "Halloween",
-      "senSpecific": false,
-      "general": true,
-      "price": "Wallace Park entry by pre-paid ticket (see website)",
-      "url": "https://lisburncastlereagh.gov.uk/halloween",
-      "soldOut": false,
-      "lat": 54.51619,
-      "lng": -6.04015,
       "geoSource": "venue",
       "addedDate": "2026-10-20"
     },
