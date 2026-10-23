@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T15:30:00+01:00",
+  "updatedAt": "2026-10-23T17:30:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -7799,6 +7799,27 @@
       "addedDate": "2026-10-23",
       "lat": 54.3814,
       "lng": -5.67325
+    },
+    {
+      "id": "nas-ni-randalstown-centre-family-booking",
+      "name": "National Autistic Society Randalstown Autism Centre (family sensory bookings)",
+      "description": "Purpose-built National Autistic Society NI autism centre opened in 2026 in a quiet rural setting near Randalstown. At weekends families can book spaces for an hour on their own, such as the indoor immersive sensory room with touch-enabled projection, immersive cinema room, messy-play rooms, outdoor sensory pod, nest swing, water play, sandpits, trampolines and interactive gardens. The centre also runs evening and weekend 'Support for Life' sessions for autistic children with high support needs. You need to contact them first to book: email services@nas.org.uk.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekends (book an hour as a family)",
+      "time": "Weekends, 1-hour slots (contact to book)",
+      "venue": "National Autistic Society Randalstown Autism Centre, 157 Castle Road, Randalstown, BT41 4NG",
+      "town": "Randalstown",
+      "area": "Rest of Antrim",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "Contact to check (services@nas.org.uk)",
+      "url": "https://www.autism.org.uk/what-we-do/support-in-the-community/centres/randalstown-autism-centre-belfast",
+      "soldOut": false,
+      "addedDate": "2026-10-23",
+      "lat": 54.74013,
+      "lng": -6.28133,
+      "geoSource": "venue"
     }
   ]
 }
