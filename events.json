@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T17:30:00+01:00",
+  "updatedAt": "2026-10-24T09:40:00+01:00",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -929,18 +929,18 @@
     {
       "id": "buttercrane-silent-santa-52",
       "name": "Buttercrane Silent Santa",
-      "description": "Quieter longer Santa visit for autism/sensory needs; dates/prices TBA.",
-      "startDate": "2026-12-01",
+      "description": "Silent Santa: quieter, longer, relaxed grotto visit for autistic/sensory-needs children (siblings welcome). Select 'Silent Santa' when booking. Includes visit, family photo and selection box (allergen alternatives).",
+      "startDate": "2026-11-13",
       "endDate": "2026-12-24",
-      "recurring": "2026 dates/prices not yet published",
-      "time": "TBA",
+      "recurring": "Wed afternoons & Sun mornings, 13 Nov–24 Dec (book online)",
+      "time": "Wed afternoons & Sun mornings",
       "venue": "Buttercrane Shopping Centre",
       "town": "Newry",
       "area": "County Down",
       "type": "Christmas",
       "senSpecific": true,
-      "price": "TBC",
-      "url": "https://www.buttercraneshopping.co.uk/bookings/select-type.asp",
+      "price": "£6 per child",
+      "url": "https://www.buttercraneshopping.co.uk/santas-grotto-booking-link-open",
       "soldOut": false,
       "addedDate": "2026-10-15",
       "lat": 54.17194,
@@ -7819,6 +7819,27 @@
       "addedDate": "2026-10-23",
       "lat": 54.74013,
       "lng": -6.28133,
+      "geoSource": "venue"
+    },
+    {
+      "id": "swim-newtownabbey-lessons-54",
+      "name": "Swim! Newtownabbey (new swim school, SEND adaptations)",
+      "description": "New swim school opening 30 Oct: warm 31°C pool, small classes (max 6), teachers in the water with beginners, child-led. SEND children taught within core programme with adaptations — ask about needs when booking a taster. First month £10.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly lessons 7 days a week from Fri 30 Oct 2026",
+      "time": "Various — book taster",
+      "venue": "Swim! Newtownabbey, Longwood Retail Park, Longwood Road",
+      "town": "Newtownabbey",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Swim/Leisure",
+      "senSpecific": false,
+      "price": "First month £10 (then £39.99/month)",
+      "url": "https://www.swim.co.uk/blogs/swim-newtownabbey-opens-on-30th-october/",
+      "soldOut": false,
+      "addedDate": "2026-10-24",
+      "lat": 54.65571,
+      "lng": -5.91828,
       "geoSource": "venue"
     }
   ]
