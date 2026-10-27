@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T15:20:00Z",
+  "updatedAt": "2026-10-27T17:30:00Z",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -8044,6 +8044,27 @@
       "url": "https://themaclive.com/event/storytelling-crafts-with-goldilocks-the-three-bears",
       "lat": 54.60354,
       "lng": -5.92745
+    },
+    {
+      "id": "messy-martians-sen-messy-play-glengormley-2026-11-07",
+      "name": "Messy Play for SEN (Messy Martians)",
+      "description": "SEN messy play class designed specifically for children with special educational needs (SEN classes ages 2–10; small group of up to 10). Sensory activities such as squishy paint, textured playdough and calming water play, child-led at their own pace with one-to-one support from a leader with over a decade of SEN experience. Parent attendance required; wear old clothes. Book online; sibling add-on available. A 4-class SEN package (£47.50) is also offered.",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-07",
+      "recurring": null,
+      "time": "11:30–12:30",
+      "venue": "St Mary's on the Hill Parish, 165 Antrim Road, Glengormley, Newtownabbey, BT36 7QR",
+      "town": "Glengormley",
+      "area": "Newtownabbey & North Belfast",
+      "type": "Sensory play",
+      "senSpecific": true,
+      "price": "£12.50 per child (sibling add-on available)",
+      "url": "https://www.messymartians.co.uk/classes/p/single-lesson-7kgrb",
+      "soldOut": false,
+      "addedDate": "2026-10-27",
+      "lat": 54.66879,
+      "lng": -5.9525,
+      "geoSource": "venue"
     }
   ]
 }
