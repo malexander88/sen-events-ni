@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26T15:30:00Z",
+  "updatedAt": "2026-10-27T09:30:00Z",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -6553,28 +6553,6 @@
       "addedDate": "2026-10-20"
     },
     {
-      "id": "gen-ards-puppet-festival",
-      "name": "Ards Puppet Festival: Ahoy!",
-      "description": "Ards Arts Centre comes alive with puppets for the October break: pirates, puffins, seaside silliness and underwater adventures, with a mix of ticketed shows and free activities (incl. free drop-in sea-life puppet-making workshops 11am–4pm both days). Every person at bookable events needs a ticket; no buggy storage inside.",
-      "startDate": "2026-10-25",
-      "endDate": "2026-10-26",
-      "recurring": null,
-      "time": "All day",
-      "venue": "Ards Arts Centre, Town Hall, Conway Square",
-      "town": "Newtownards",
-      "area": "County Down",
-      "type": "Theatre/Show",
-      "senSpecific": false,
-      "general": true,
-      "price": "Various (ticketed shows + free activities)",
-      "url": "https://andculture.org.uk/whats-on/ards-puppet-festival-ahoy",
-      "soldOut": false,
-      "lat": 54.59368,
-      "lng": -5.69609,
-      "geoSource": "venue",
-      "addedDate": "2026-10-20"
-    },
-    {
       "id": "gen-ards-crafty-cafe-halloween",
       "name": "Crafty Café: paint a Halloween tealight holder, Ards Blair Mayne",
       "description": "Half-term craft at Parklands Café: paint your own ceramic Halloween tealight holder; includes battery tealight, kids' drink and a Halloween sweet treat. Parents can paint too. Book with Parklands on 028 9182 2463.",
@@ -7978,6 +7956,27 @@
       "general": true,
       "lat": 54.71517,
       "lng": -6.22089,
+      "geoSource": "venue"
+    },
+    {
+      "id": "mea-inclusive-all-ability-music-sensory-carrick-2026-11-07",
+      "name": "Inclusive All Ability Music and Sensory Session",
+      "description": "A free, fully accessible music session for children and young people of all abilities (ages 3–18) at Carrickfergus Museum & Civic Centre: live music and sing-alongs, interactive rhythm and percussion games and accessible drumming that everyone can join in with, finishing with a sensory disco. Booking required via the Mid & East Antrim tourism page (or call 028 2563 5077).",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-07",
+      "recurring": null,
+      "time": "14:00–16:00 (listing also shows 14:00–15:30)",
+      "venue": "Carrickfergus Museum & Civic Centre, 11 Antrim Street, BT38 7DG",
+      "town": "Carrickfergus",
+      "area": "Rest of Antrim",
+      "type": "Music/Sensory",
+      "senSpecific": true,
+      "price": "Free (booking required)",
+      "url": "https://www.shapedbyseaandstone.com/whats-on/inclusive-all-ability-music-and-sensory-session-p1114811",
+      "soldOut": false,
+      "addedDate": "2026-10-27",
+      "lat": 54.71634,
+      "lng": -5.80605,
       "geoSource": "venue"
     }
   ]
