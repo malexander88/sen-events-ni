@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T15:45:00Z",
+  "updatedAt": "2026-11-01T17:15:00Z",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -131,11 +131,11 @@
     {
       "id": "goldilocks-and-the-three-bears-relaxed-16",
       "name": "Goldilocks and the Three Bears (relaxed)",
-      "description": "Relaxed performances; Fri 11 Dec also signed + AD.",
-      "startDate": "2026-12-10",
+      "description": "Relaxed performances on 4, 10, 11, 12, 16 and 28 Dec; Thu 10 Dec 11am and Fri 11 Dec 6pm are also signed + audio described.",
+      "startDate": "2026-12-04",
       "endDate": "2026-12-28",
       "recurring": null,
-      "time": "Various (1pm or 6pm)",
+      "time": "Relaxed: Fri 4 Dec 11am; Thu 10 Dec 11am & 6pm; Fri 11 Dec 6pm; Sat 12 Dec 1pm; Wed 16 Dec 6pm; Mon 28 Dec 1pm",
       "venue": "The MAC",
       "town": "Belfast",
       "area": "Belfast",
@@ -7472,6 +7472,28 @@
       "url": "https://www.visitlisburncastlereagh.com/whats-on/sensory-santa-visits-2026-p1115731",
       "lat": 54.5112,
       "lng": -6.04378
+    },
+    {
+      "recurring": null,
+      "senSpecific": true,
+      "general": false,
+      "soldOut": false,
+      "addedDate": "2026-11-01",
+      "geoSource": "venue",
+      "id": "qft-relaxed-muppet-christmas-carol-2026-12-20",
+      "name": "Relaxed screening: The Muppet Christmas Carol (QFT)",
+      "description": "Relaxed screening for audiences with autism or sensory sensitivities (open to all): house lights up a little, sound lowered, half capacity, unallocated seats so you can move around, no ads or trailers; starts 5 minutes after advertised time. Cert PG (1992), 1hr 26min, descriptive subtitles.",
+      "startDate": "2026-12-20",
+      "endDate": "2026-12-20",
+      "time": "10:30 (film starts ~10:35)",
+      "venue": "Queen's Film Theatre, 20 University Square, BT7 1PA",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Cinema",
+      "price": "Price not listed (standard QFT ticket)",
+      "url": "https://queensfilmtheatre.com/whats-on/Relaxed-The-Muppet-Christmas-Carol",
+      "lat": 54.58564,
+      "lng": -5.93397
     }
   ]
 }
