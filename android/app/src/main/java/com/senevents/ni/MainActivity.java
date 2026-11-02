@@ -68,6 +68,18 @@ public class MainActivity extends Activity {
             }
 
             @android.webkit.JavascriptInterface
+            public void setReminders(String json) {
+                Reminders.set(MainActivity.this, json);
+                if (android.os.Build.VERSION.SDK_INT >= 33 &&
+                        checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    runOnUiThread(() -> requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 7));
+                }
+            }
+
+            @android.webkit.JavascriptInterface
+            public boolean hasReminders() { return true; }
+
+            @android.webkit.JavascriptInterface
             public boolean getNotifications() { return NewEventsJobService.enabled(MainActivity.this); }
 
             @android.webkit.JavascriptInterface
@@ -124,7 +136,8 @@ public class MainActivity extends Activity {
         });
 
         boolean showNew = getIntent() != null && getIntent().getBooleanExtra("showNew", false);
-        webView.loadUrl("file:///android_asset/index.html" + (showNew ? "?new=1" : ""));
+        String openId = getIntent() != null ? getIntent().getStringExtra("openId") : null;
+        webView.loadUrl("file:///android_asset/index.html" + (showNew ? "?new=1" : "") + (openId != null ? "#e/" + Uri.encode(openId) : ""));
 
         if (android.os.Build.VERSION.SDK_INT >= 33 &&
                 checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
@@ -185,6 +198,10 @@ public class MainActivity extends Activity {
         super.onNewIntent(intent);
         if (intent != null && intent.getBooleanExtra("showNew", false) && webView != null) {
             webView.evaluateJavascript("window.senShowNew && window.senShowNew()", null);
+        }
+        String openId = intent != null ? intent.getStringExtra("openId") : null;
+        if (openId != null && webView != null) {
+            webView.evaluateJavascript("location.hash = 'e/' + encodeURIComponent(" + org.json.JSONObject.quote(openId) + ")", null);
         }
     }
 

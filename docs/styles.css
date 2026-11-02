@@ -287,3 +287,14 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .tsec-new-star { color: #173766; font-weight: 900; }
 .tsec-name { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; overflow-wrap: break-word; }
 .clear-link { margin-right: 10px; color: var(--sold); }
+/* v1.9.0 My plan */
+.plan-btn { position: relative; color: #FDC722; font-size: 1.2rem; }
+.plan-btn .plan-n { position: absolute; top: 2px; right: 0; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: #FDC722; color: #173766; font-size: .65rem; font-weight: 800; line-height: 16px; }
+.plan-btn .plan-n:empty { display: none; }
+.plan-title { margin: 6px 0 10px; font-size: 1.4rem; }
+.plan-day { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 2px 8px; }
+.plan-remind { display: flex; gap: 10px; align-items: center; background: var(--surface-2); padding: 10px 12px; border-radius: 12px; font-weight: 600; font-size: .9rem; }
+.plan-remind input { width: 20px; height: 20px; accent-color: #173766; }
+.plan-note { background: var(--surface-2); color: var(--muted); padding: 10px 12px; border-radius: 12px; font-size: .85rem; margin: 0; }
+.plan-cal { margin-top: 8px; border: 1px solid var(--line, #d8d2c2); background: var(--surface); color: var(--text); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; }
+.plan-past { opacity: .6; }

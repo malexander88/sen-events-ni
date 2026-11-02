@@ -12,5 +12,6 @@ public class CheckReceiver extends BroadcastReceiver {
         boolean boot = Intent.ACTION_BOOT_COMPLETED.equals(a) || Intent.ACTION_MY_PACKAGE_REPLACED.equals(a);
         if (!boot && NewEventsJobService.enabled(ctx)) NewEventsJobService.runSoon(ctx);
         NewEventsJobService.schedule(ctx);
+        if (boot) Reminders.schedule(ctx); // alarms are cleared on reboot / update
     }
 }

@@ -32,7 +32,19 @@
   let allEvents = [];
   let saved = new Set();
   try { saved = new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]')); } catch (_) {}
-  const persistSaved = () => { try { localStorage.setItem(SAVED_KEY, JSON.stringify([...saved])); } catch (_) {} };
+  // v1.9.0: a copy of each saved item is kept on the device so My plan still opens offline / after an item leaves the feed
+  const SAVED_ITEMS_KEY = 'sen-events-ni-saved-items-v1', REMIND_KEY = 'sen-events-ni-reminders-v1';
+  let savedItems = {};
+  try { savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS_KEY) || '{}') || {}; } catch (_) {}
+  let remindOn = true;
+  try { remindOn = localStorage.getItem(REMIND_KEY) !== 'off'; } catch (_) {}
+  const persistSaved = () => {
+    for (const id of Object.keys(savedItems)) if (!saved.has(id)) delete savedItems[id];
+    allEvents.forEach(ev => { if (saved.has(ev.id)) savedItems[ev.id] = ev; });
+    try { localStorage.setItem(SAVED_KEY, JSON.stringify([...saved])); localStorage.setItem(SAVED_ITEMS_KEY, JSON.stringify(savedItems)); } catch (_) {}
+    syncReminders();
+  };
+  const findEvent = id => allEvents.find(x => x.id === id) || savedItems[id] || null;
   let statusText = '';
   let hidden = new Set();
   try { hidden = new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]')); } catch (_) {}
@@ -394,18 +406,89 @@
     const A = window.SENAndroid;
     if (A && A.addEvent) { A.addEvent(ev.name, +begin, +end, allDay, where, details); return; }
     if (A && A.addToCalendar && allDay) { A.addToCalendar(ev.name, +begin, +end, where, details); return; }
-    const dates = allDay ? toICSDate(begin) + '/' + toICSDate(end) : toICSDateTime(begin) + '/' + toICSDateTime(end);
-    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(ev.name) +
-      '&dates=' + dates + '&ctz=Europe/London&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent(details);
-    window.open(url, '_blank', 'noopener');
+    downloadIcs([{ ev, begin, end, allDay, where, details }], ev.name);
   }
+  // v1.9.0: .ics file (works with Google, Apple, Outlook calendars) for the web version
+  function calSpec(ev) {
+    const s0 = startOf(ev); if (!s0) return null;
+    const long = isLong(ev), day = long && s0 < today() ? today() : s0, tm = parseTimes(ev.time);
+    let begin, end, allDay;
+    if (tm) { begin = new Date(day); begin.setHours(tm.sh, tm.sm, 0, 0); if (tm.eh != null) { end = new Date(day); end.setHours(tm.eh, tm.em, 0, 0); } if (!end || end <= begin) end = new Date(+begin + 2 * 3600000); allDay = false; }
+    else { begin = new Date(day); end = addDays(day, (!long && endOf(ev)) ? Math.round((endOf(ev) - s0) / DAY) + 1 : 1); allDay = true; }
+    return { ev, begin, end, allDay, where: ev.venue + ', ' + placeOf(ev), details: (ev.time ? 'Time: ' + ev.time + '\n' : '') + (ev.description || '') + '\n' + (ev.url || '') };
+  }
+  const icsEsc = s => String(s || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/([,;])/g, '\\$1');
+  function downloadIcs(specs, name) {
+    const stamp = toICSDateTime(new Date());
+    const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Out & About NI//EN', 'CALSCALE:GREGORIAN'];
+    specs.filter(Boolean).forEach(c => {
+      lines.push('BEGIN:VEVENT', 'UID:' + c.ev.id + '@out-and-about-ni', 'DTSTAMP:' + stamp,
+        c.allDay ? 'DTSTART;VALUE=DATE:' + toICSDate(c.begin) : 'DTSTART;TZID=Europe/London:' + toICSDateTime(c.begin),
+        c.allDay ? 'DTEND;VALUE=DATE:' + toICSDate(c.end) : 'DTEND;TZID=Europe/London:' + toICSDateTime(c.end),
+        'SUMMARY:' + icsEsc(c.ev.name), 'LOCATION:' + icsEsc(c.where), 'DESCRIPTION:' + icsEsc(c.details), 'URL:' + (c.ev.url || ''), 'END:VEVENT');
+    });
+    lines.push('END:VCALENDAR');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([lines.join('\r\n')], { type: 'text/calendar' }));
+    a.download = (name || 'my-plan').replace(/[^\w\- ]+/g, '').trim().slice(0, 60) + '.ics';
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+  // ---------- v1.9.0 My plan ----------
+  const fmtLong = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  function nextDate(ev) { const s = startOf(ev); if (!s) return null; if (s >= today()) return s; const e = endOf(ev); return e && e >= today() ? today() : null; }
+  function reminderList() {
+    const out = [], now = Date.now(), A = window.SENAndroid;
+    Object.values(savedItems).forEach(ev => {
+      const s = startOf(ev);
+      if (remindOn && s && s > today()) {
+        const at = addDays(s, -1); at.setHours(18, 0, 0, 0);
+        if (+at > now) out.push({ key: ev.id + '|eve', id: ev.id, at: +at, title: 'Tomorrow: ' + ev.name, text: [ev.time, ev.venue + ', ' + placeOf(ev)].filter(Boolean).join(' · ') });
+      }
+      const bo = parseDate(ev.bookingOpens);
+      if (bo) { const at = new Date(bo); at.setHours(9, 0, 0, 0); if (+at > now) out.push({ key: ev.id + '|book', id: ev.id, at: +at, title: 'Booking opens today: ' + ev.name, text: 'Tap to open the booking link' + (ev.venue ? ' · ' + ev.venue : '') }); }
+    });
+    return out;
+  }
+  function syncReminders() { try { const A = window.SENAndroid; if (A && A.setReminders) A.setReminders(JSON.stringify(reminderList())); } catch (_) {} }
+  function planItem(ev) {
+    const nd = nextDate(ev), past = startOf(ev) && !nd && !ev.recurring;
+    const when = runBadge(ev) || dateLabel(ev);
+    return '<article class="card plan-card' + (past ? ' plan-past' : '') + '" data-id="' + esc(ev.id) + '" tabindex="0">' +
+      '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div><div class="card-body"><h2>' + esc(ev.name) + '</h2>' +
+      '<p class="meta">' + (past ? 'Finished · ' : '') + esc(when) + '</p><p class="meta">' + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span></p>' +
+      '<div class="pills">' + pills(ev) + '</div>' +
+      (!past && startOf(ev) ? '<button class="plan-cal" data-plan-cal="' + esc(ev.id) + '">🗓️ Add to calendar</button>' : '') +
+      '</div>' + heartBtn(ev) + '</article>';
+  }
+  function showPlan() {
+    const list = Object.values(savedItems);
+    const dated = list.filter(ev => nextDate(ev)).sort((a, b) => (startOf(a) < today() ? 0 : 1) - (startOf(b) < today() ? 0 : 1) || nextDate(a) - nextDate(b) || a.name.localeCompare(b.name));
+    const undated = list.filter(ev => !startOf(ev)).sort((a, b) => a.name.localeCompare(b.name));
+    const past = list.filter(ev => startOf(ev) && !nextDate(ev));
+    const A = window.SENAndroid, native = !!(A && A.setReminders);
+    let h = '<div class="detail-inner plan"><div class="detail-top"><button class="icon-btn" data-back>← Back</button>' +
+      (dated.length && !native ? '<button class="icon-btn" data-plan-ics>🗓️ All to calendar (.ics)</button>' : '') + '</div>' +
+      '<h2 class="plan-title">♥ My plan</h2>' +
+      (native ? '<label class="plan-remind"><input type="checkbox" id="plan-remind"' + (remindOn ? ' checked' : '') + '> 🔔 Remind me the evening before (6pm)</label>'
+              : '<p class="plan-note">Reminders the evening before work in the Android app. Here you can add items to your calendar instead.</p>');
+    if (!list.length) h += '<p class="empty">Nothing saved yet. Tap ♡ on any event or place to add it to your plan.</p>';
+    let lastDay = '';
+    dated.forEach(ev => { const on = startOf(ev) < today(), d = on ? 'On now' : fmtLong(nextDate(ev));
+      if (d !== lastDay) { h += '<h3 class="plan-day">' + (on ? '' : +nextDate(ev) === +today() ? 'Today · ' : +nextDate(ev) === +addDays(today(), 1) ? 'Tomorrow · ' : '') + esc(d) + '</h3>'; lastDay = d; } h += planItem(ev); });
+    if (undated.length) h += '<h3 class="plan-day">Any time · no fixed date</h3>' + undated.map(planItem).join('');
+    if (past.length) h += '<h3 class="plan-day">Finished</h3>' + past.map(planItem).join('');
+    els.detail.innerHTML = h + '</div>';
+    els.detail.hidden = false; els.detail.scrollTop = 0; document.body.style.overflow = 'hidden';
+    const cb = $('plan-remind'); if (cb) cb.addEventListener('change', () => { remindOn = cb.checked; try { localStorage.setItem(REMIND_KEY, remindOn ? 'on' : 'off'); } catch (_) {} syncReminders(); });
+  }
+  function updatePlanBtn() { const b = $('plan-btn'); if (b) { const n = Object.keys(savedItems).length; b.querySelector('.plan-n').textContent = n ? n : ''; b.setAttribute('aria-label', 'My plan, ' + n + ' saved'); } }
   const mapsUrl = ev => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ev.venue + ', ' + placeOf(ev) + ', Northern Ireland');
 
   function row(icon, label, value) {
     return value ? '<div class="info-row"><span class="k" aria-hidden="true">' + icon + '</span><div class="v"><span class="lbl">' + label + '</span>' + esc(value) + '</div></div>' : '';
   }
   function showDetail(id) {
-    const ev = allEvents.find(x => x.id === id);
+    const ev = findEvent(id);
     if (!ev) { hideDetail(); return; }
     const dated = !!startOf(ev);
     els.detail.innerHTML =
@@ -439,15 +522,15 @@
   function hideDetail() { els.detail.hidden = true; els.detail.innerHTML = ''; document.body.style.overflow = ''; }
   function route() {
     const m = location.hash.match(/^#e\/(.+)$/);
-    if (m) showDetail(decodeURIComponent(m[1])); else hideDetail();
+    if (m) showDetail(decodeURIComponent(m[1])); else if (location.hash === '#plan') showPlan(); else hideDetail();
   }
 
   // ---------- Events ----------
   function toggleSave(id) {
     if (saved.has(id)) saved.delete(id); else saved.add(id);
     persistSaved();
-    render();
-    if (!els.detail.hidden) showDetail(id);
+    render(); updatePlanBtn();
+    if (!els.detail.hidden) { if (location.hash === '#plan') showPlan(); else showDetail(id); }
   }
   function setHidden(id, on) {
     if (on) hidden.add(id); else hidden.delete(id);
@@ -468,6 +551,10 @@
     if (ub) { e.stopPropagation(); e.preventDefault(); setHidden(ub.dataset.unhide, false); return; }
     const h = e.target.closest('[data-heart]');
     if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
+    const pc = e.target.closest('[data-plan-cal]');
+    if (pc) { e.stopPropagation(); e.preventDefault(); const ev = findEvent(pc.dataset.planCal); if (ev) addToCalendar(ev); return; }
+    if (e.target.closest('[data-plan-ics]')) { downloadIcs(Object.values(savedItems).filter(nextDate).map(calSpec), 'my-plan'); return; }
+    if (e.target.closest('#plan-btn')) { location.hash = 'plan'; return; }
     if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
     const q = e.target.closest('[data-q]');
     if (q) { if (q.closest('.menu')) { els.menu.hidden = true; els.menuBtn.setAttribute('aria-expanded', 'false'); } state[q.dataset.q] = !state[q.dataset.q];
@@ -509,6 +596,7 @@
     allEvents = (data && data.events) || [];
     if (source === 'live') pruneHidden();
     persistHidden();
+    persistSaved(); updatePlanBtn(); // refresh saved copies with the latest data, re-arm reminders
     allTypes = [...new Set(allEvents.map(e => e.type).filter(Boolean))].sort();
     syncChips();
     render();
