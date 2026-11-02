@@ -26,7 +26,7 @@
 
   const $ = id => document.getElementById(id);
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), whereBtn: $('where-btn'), whereList: $('where-list'), whereVal: $('where-val'),
-    menu: $('menu'), menuBtn: $('menu-btn'), radius: $('radius-row'), expandAll: $('expand-all'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
+    menu: $('menu'), menuBtn: $('menu-btn'), radius: $('radius-row'), expandAll: $('expand-all'), clear: $('clear-chip'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
 
   const state = { near: false, weekend: false, free: false, sen: false, general: false, new: false, saved: false, area: 'all', town: 'all', type: 'all', query: '', showHidden: false };
   let allEvents = [];
@@ -92,17 +92,33 @@
       userPos = { lat: p.coords.latitude, lng: p.coords.longitude }; geoNotice = ''; render();
     }, fail, { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
   }
-  function isFree(ev) { const p = String(ev.price || ''); return /^\s*free\b(?!\s+with)/i.test(p) || /£0(\.00)?\b/.test(p) || /free entry/i.test(p); }
+  // v1.8.4: Free = the price text says the item itself is free ("Free", "Free entry", "Free (booking required)", "£0", "No charge"),
+  // not just carers/under-2s/members ("Carers free", "Free with zoo admission" and "£5 + £0.25 fee" don't count).
+  function isFree(ev) {
+    const p = String(ev.price || '').trim();
+    return /^free\b(?!\s+(with|for)\b)/i.test(p) || /^£\s?0(\.00)?(?![\d.])/.test(p) || /^(no charge|free of charge)\b/i.test(p) ||
+      /\bfree (entry|admission|event|to (visit|attend|enter))\b/i.test(p) && !/£\s?[1-9]/.test(p);
+  }
   function overlaps(ev, from, to) { const s = startOf(ev); if (!s) return false; const e = endOf(ev) || s; return s <= to && e >= from; }
   function weekendRange() {
     const t = today(); const dow = t.getDay();
     const sat = dow === 0 ? addDays(t, -1) : addDays(t, 6 - dow);
     return [dow === 0 ? t : sat, addDays(sat, 1)];
   }
+  // v1.8.4: This weekend = runs on the coming Sat/Sun (today and tomorrow if it's already Saturday, today if Sunday).
+  // Dated items must overlap that weekend; if their schedule names weekdays only (e.g. "Mondays 8pm") they're left out.
+  // Undated/ongoing items count when their schedule mentions Sat/Sun, weekends or daily opening.
+  const WKND_RE = /\b(sat(urday)?s?|sun(day)?s?|weekends?|daily|every ?day|7 days|seven days|open daily)\b/i;
+  const WKDAY_RE = /\b(mon|tues?|wed(nes)?|thu(rs)?|fri)(day)?s?\b/i;
   function isWeekend(ev) {
     const [a, b] = weekendRange();
-    if (startOf(ev)) return overlaps(ev, a, b);
-    return /\b(sat|sun|saturday|sunday|weekend|daily|every day|open daily)/i.test((ev.recurring || '') + ' ' + (ev.time || ''));
+    const sched = (ev.recurring || '') + ' ' + (ev.time || '');
+    if (startOf(ev)) {
+      if (!overlaps(ev, a, b)) return false;
+      if (ev.recurring && WKDAY_RE.test(sched) && !WKND_RE.test(sched)) return false;
+      return true;
+    }
+    return WKND_RE.test(sched);
   }
   const DAY = 86400000;
   function isLong(ev) { const a = startOf(ev), b = endOf(ev); return !!a && !!b && Math.round((b - a) / DAY) > 7; }
@@ -161,7 +177,7 @@
       if (state.weekend && !isWeekend(ev)) return false;
       if (state.free && !isFree(ev)) return false;
       if (state.sen && !ev.senSpecific) return false;
-      if (state.general && !ev.general) return false;
+      if (state.general && ev.senSpecific) return false;
       if (state.new && !isNew(ev)) return false;
       if (state.saved && !saved.has(ev.id)) return false;
       if (state.area !== 'all' && countyOf(ev) !== state.area) return false;
@@ -283,20 +299,14 @@
     els.expandAll.dataset.mode = allOpen ? 'collapse' : 'expand';
   }
   // ---- v1.8.0 single chip row: active chips first, then quick filters | types ----
-  const QUICK = [['near', '📍 Near me'], ['weekend', '📅 This weekend'], ['free', '🆓 Free'], ['sen', '💙 SEN only']];
-  const MENU_Q = { general: '🎈 General only', new: '✨ Found today', saved: '♥ Saved' };
+  // v1.8.4: the chip row holds exactly these five, in this fixed order
+  const QUICK = [['near', '📍 Near me'], ['weekend', '📅 This weekend'], ['free', '🆓 Free'], ['sen', '💙 SEN only'], ['general', '🎈 General only']];
   let allTypes = [];
   function renderChipRow() {
     const k = activeFilterCount();
     const qBtn = (key, label) => '<button class="chip" data-q="' + key + '" aria-pressed="' + !!state[key] + '">' + label + '</button>';
-    const tBtn = t => '<button class="chip chip-type" data-type="' + esc(t) + '" aria-pressed="' + (state.type === t) + '">' + typeIcon(t) + ' ' + esc(t) + '</button>';
-    let h = k ? '<button id="clear-chip" class="chip chip-clear" type="button" aria-label="Clear all ' + k + ' filters">Filters (' + k + ') ✕</button>' : '';
-    QUICK.forEach(([key, l]) => { if (state[key]) h += qBtn(key, l); });
-    Object.keys(MENU_Q).forEach(key => { if (state[key]) h += qBtn(key, MENU_Q[key]); });
-    if (state.type !== 'all') h += tBtn(state.type);
-    QUICK.forEach(([key, l]) => { if (!state[key]) h += qBtn(key, l); });
-    h += '<span class="chip-divider" aria-hidden="true"></span>';
-    allTypes.forEach(t => { if (state.type !== t) h += tBtn(t); });
+        const h = QUICK.map(([key, l]) => qBtn(key, l)).join('');
+    els.clear.hidden = !k; els.clear.textContent = 'Clear filters (' + k + ')';
     els.quick.innerHTML = h;
     els.radius.hidden = !state.near;
     els.radius.querySelectorAll('[data-radius]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.radius === radius)));
@@ -349,7 +359,6 @@
   function syncChips() {
     document.querySelectorAll('.menu [data-q]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.q])));
     if (allTypes.length || els.quick.children.length) renderChipRow();
-    els.quick.scrollLeft = 0;
   }
 
   // ---------- Details ----------
@@ -461,7 +470,9 @@
     if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
     if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
     const q = e.target.closest('[data-q]');
-    if (q) { if (q.closest('.menu')) { els.menu.hidden = true; els.menuBtn.setAttribute('aria-expanded', 'false'); } state[q.dataset.q] = !state[q.dataset.q]; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
+    if (q) { if (q.closest('.menu')) { els.menu.hidden = true; els.menuBtn.setAttribute('aria-expanded', 'false'); } state[q.dataset.q] = !state[q.dataset.q];
+      if (state[q.dataset.q] && q.dataset.q === 'sen') state.general = false; // SEN only / General only are mutually exclusive
+      if (state[q.dataset.q] && q.dataset.q === 'general') state.sen = false; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
     const a = e.target.closest('[data-area]');
     if (a) { state.area = a.dataset.area; state.town = 'all'; syncChips(); render(); return; }
     const t = e.target.closest('[data-type]');
