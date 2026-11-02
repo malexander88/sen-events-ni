@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T15:05:57Z",
+  "updatedAt": "2026-11-02T17:21:06Z",
   "region": "County Antrim and County Down, Northern Ireland",
   "events": [
     {
@@ -7295,6 +7295,28 @@
       "url": "https://www.visitcausewaycoastandglens.com/things-to-do/dunluce-castle-p675011",
       "lat": 55.21096,
       "lng": -6.57947,
+      "geoSource": "venue"
+    },
+    {
+      "id": "megain-breakfast-with-santa-sen-2026-12-05",
+      "name": "Breakfast with Santa – SEN session, Megain Church of the Nazarene",
+      "description": "Annual Breakfast with Santa at Megain Church of the Nazarene in east Belfast, with a separate one-hour session set aside for children with special educational needs. Free, but every place must be booked on Eventbrite.",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-05",
+      "recurring": null,
+      "time": "SEN session 13:00–14:00 (mainstream sessions 09:30 and 11:15)",
+      "venue": "Megain Church of the Nazarene, 257 Newtownards Road, Belfast BT4 1AF",
+      "town": "Belfast",
+      "area": "Belfast",
+      "type": "Christmas",
+      "senSpecific": true,
+      "general": false,
+      "price": "Free (booking required)",
+      "url": "https://www.eventbrite.co.uk/e/breakfast-with-santa-2026-tickets-2004117763179",
+      "soldOut": false,
+      "addedDate": "2026-11-02",
+      "lat": 54.59862,
+      "lng": -5.89815,
       "geoSource": "venue"
     }
   ]
