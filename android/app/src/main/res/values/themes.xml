@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.SENEvents" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">#3f7f7a</item>
-        <item name="android:navigationBarColor">#f6f3ee</item>
-        <item name="android:windowBackground">#f6f3ee</item>
-        <item name="android:colorPrimary">#3f7f7a</item>
+        <item name="android:statusBarColor">#173766</item>
+        <item name="android:navigationBarColor">#fffaf0</item>
+        <item name="android:windowBackground">#fffaf0</item>
+        <item name="android:colorPrimary">#173766</item>
     </style>
 </resources>
