@@ -234,8 +234,8 @@
       const open = isOpen(sec), id = 'sec-' + i;
       html += '<section class="tsec' + (open ? ' open' : '') + '" data-sec="' + esc(sec.key) + '">' +
         '<h3 class="tsec-h"><button class="tsec-head" type="button" aria-expanded="' + open + '" aria-controls="' + id + '" data-sec-toggle="' + esc(sec.key) + '">' +
-          '<span class="tsec-ico" aria-hidden="true">' + sec.icon + '</span><span class="tsec-name">' + esc(sec.name) + '</span>' +
-          '<span class="tsec-count">' + sec.list.length + '</span>' + (sec.fresh ? '<span class="tsec-new" aria-label="' + sec.fresh + ' new today">✨ ' + sec.fresh + ' new</span>' : '') + '<span class="tsec-chev" aria-hidden="true"></span></button></h3>' +
+          '<span class="tsec-ico" aria-hidden="true">' + sec.icon + '</span><span class="tsec-name">' + esc(sec.name).replace(/\//g, '/<wbr>') + '</span>' +
+          '<span class="tsec-count">' + sec.list.length + '</span>' + (sec.fresh ? '<span class="tsec-new" aria-label="' + sec.fresh + ' new today"><span class="tsec-new-star" aria-hidden="true">✦\uFE0E</span> ' + sec.fresh + ' new</span>' : '') + '<span class="tsec-chev" aria-hidden="true"></span></button></h3>' +
         '<div class="tsec-body" id="' + id + '"' + (open ? '' : ' inert') + '><div class="tsec-inner">' + sec.list.map(cardHtml).join('') + '</div></div></section>';
     });
     els.expandAll.hidden = forced || sections.length < 2;

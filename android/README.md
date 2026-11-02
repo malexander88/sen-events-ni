@@ -1,4 +1,4 @@
-# Android app — SEN Events NI
+# Android app — Out & About NI
 
 Minimal WebView wrapper around the `www/` UI.
 

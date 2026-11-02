@@ -1,6 +1,6 @@
-# SEN Events NI
+# Out & About NI
 
-A simple Android app (and web UI) listing autism/SEN-friendly events in **County Antrim** and **County Down**, Northern Ireland — aimed at families of non-verbal autistic children around ages 5–6.
+A simple Android app (and web UI), formerly "SEN Events NI", listing autism/SEN-friendly and family events and places across **all of Northern Ireland** — aimed at families of non-verbal autistic children around ages 5–6. The launcher label is "Out & About"; the package (`com.senevents.ni`) and repo name are unchanged so updates install over older versions.
 
 ## Live data
 

@@ -282,3 +282,7 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .tsec-new { flex: none; font-size: .74rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
 .tsec-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tsec-head { gap: 8px; } .tsec-ico { margin-right: 4px; }
+/* v1.8.2: navy star on the yellow "N new" pill; long section names wrap instead of being cut off */
+.tsec-new { padding: 3px 7px; color: #173766; }
+.tsec-new-star { color: #173766; font-weight: 900; }
+.tsec-name { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; overflow-wrap: break-word; }
