@@ -4,13 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#173766" />
+  <meta name="theme-color" content="#173766" id="theme-color" />
   <meta name="description" content="SEN and autism-friendly events and places across Northern Ireland" />
   <title>SEN Events NI</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // v1.7.3: apply saved theme before CSS paints (no flash). 'auto' | 'light' | 'dark'
+    (function () {
+      var m = 'auto'; try { m = localStorage.getItem('sen-events-ni-theme-v1') || 'auto'; } catch (e) {}
+      if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+      var dark = m === 'dark' || (m === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.style.backgroundColor = dark ? '#0f1726' : '#fffaf0';
+    })();
+  </script>
 </head>
 <body>
   <header class="app-header">
@@ -29,6 +38,7 @@
       </label>
       <button id="hidden-chip" class="chip chip-hidden" aria-pressed="false">Show hidden (0)</button>
       <button id="notify-chip" class="chip chip-hidden" aria-pressed="true" hidden title="Notify me about new events at about 9:45am and 5:45pm">🔔</button>
+      <button id="theme-btn" class="chip chip-hidden theme-btn" type="button" aria-label="Theme: Auto (follows device)" title="Theme: Auto"><span aria-hidden="true">🌓</span></button>
     </div>
     <nav class="chips" id="quick-chips" aria-label="Quick filters">
       <button class="chip" data-q="near" aria-pressed="false">📍 Near me</button>

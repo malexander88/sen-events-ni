@@ -449,6 +449,30 @@
     let on = !!A.getNotifications(); paint(on); b.hidden = false;
     b.addEventListener('click', () => { on = !on; A.setNotifications(on); paint(on); });
   })();
+  (function () {
+    // v1.7.3 theme toggle: Auto (system) -> Light -> Dark. Saved in localStorage; mirrored to Android for bars/background.
+    const KEY = 'sen-events-ni-theme-v1', ORDER = ['auto', 'light', 'dark'];
+    const ICON = { auto: '🌓', light: '☀️', dark: '🌙' };
+    const LABEL = { auto: 'Auto (follows device)', light: 'Light', dark: 'Dark' };
+    const b = $('theme-btn'), root = document.documentElement, mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+    let mode = 'auto'; try { mode = localStorage.getItem(KEY) || 'auto'; } catch (_) {}
+    if (ORDER.indexOf(mode) < 0) mode = 'auto';
+    const apply = () => {
+      if (mode === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', mode);
+      const dark = mode === 'dark' || (mode === 'auto' && !!(mq && mq.matches));
+      root.style.backgroundColor = dark ? '#0f1726' : '#fffaf0';
+      const tc = $('theme-color'); if (tc) tc.setAttribute('content', '#173766');
+      if (b) { b.innerHTML = '<span aria-hidden="true">' + ICON[mode] + '</span>'; b.setAttribute('aria-label', 'Theme: ' + LABEL[mode] + '. Tap to change'); b.title = 'Theme: ' + LABEL[mode]; }
+      try { window.SENAndroid && window.SENAndroid.setTheme && window.SENAndroid.setTheme(mode, dark); } catch (_) {}
+    };
+    if (b) b.addEventListener('click', () => {
+      mode = ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length];
+      try { localStorage.setItem(KEY, mode); } catch (_) {}
+      apply();
+    });
+    if (mq) { const f = () => { if (mode === 'auto') apply(); }; mq.addEventListener ? mq.addEventListener('change', f) : mq.addListener && mq.addListener(f); }
+    apply();
+  })();
   window.senShowNew = function () { state.new = true; if (location.hash) location.hash = ''; syncChips(); render(); };
   syncChips();
   init();

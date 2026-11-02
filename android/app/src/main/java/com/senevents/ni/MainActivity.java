@@ -21,6 +21,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
+        // v1.7.3: paint the saved theme's background before the page loads (no white flash in dark mode)
+        applyTheme(isDarkFor(getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).getString(KEY_THEME, "auto")));
         setContentView(webView);
 
         WebSettings settings = webView.getSettings();
@@ -79,6 +81,12 @@ public class MainActivity extends Activity {
             }
 
             @android.webkit.JavascriptInterface
+            public void setTheme(String mode, boolean dark) {
+                getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).edit().putString(KEY_THEME, mode).apply();
+                runOnUiThread(() -> applyTheme(dark));
+            }
+
+            @android.webkit.JavascriptInterface
             public void setHidden(String json) {
                 java.util.Set<String> ids = new java.util.HashSet<>();
                 try {
@@ -128,6 +136,33 @@ public class MainActivity extends Activity {
             final android.content.Context app = getApplicationContext();
             new Thread(() -> { try { NewEventsJobService.check(app); } catch (Exception ignored) {} }).start();
         }
+    }
+
+    private static final String KEY_THEME = "theme";
+    private static final int BG_LIGHT = 0xFFFFFAF0, BG_DARK = 0xFF0F1726, BAR = 0xFF173766;
+
+    private boolean isDarkFor(String mode) {
+        if ("dark".equals(mode)) return true;
+        if ("light".equals(mode)) return false;
+        int night = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        return night == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    @SuppressWarnings("deprecation")
+    private void applyTheme(boolean dark) {
+        int bg = dark ? BG_DARK : BG_LIGHT;
+        android.view.Window w = getWindow();
+        w.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(bg));
+        w.setStatusBarColor(BAR);
+        w.setNavigationBarColor(bg);
+        if (android.os.Build.VERSION.SDK_INT >= 26) {
+            android.view.View d = w.getDecorView();
+            int f = d.getSystemUiVisibility();
+            f = dark ? (f & ~android.view.View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR) : (f | android.view.View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            f &= ~android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR; // navy status bar keeps white icons
+            d.setSystemUiVisibility(f);
+        }
+        if (webView != null) webView.setBackgroundColor(bg);
     }
 
     private boolean hasLocation() {
