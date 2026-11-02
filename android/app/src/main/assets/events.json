@@ -22,7 +22,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.60814,
       "lng": -5.90984,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Paid underground car park (520 spaces, 24hr)"
     },
     {
       "id": "titanic-christmas-experience-quiet-sessions-2",
@@ -44,7 +45,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.60814,
       "lng": -5.90984,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Paid underground car park (520 spaces, 24hr)"
     },
     {
       "id": "dobbies-santa-s-quiet-grotto-12",
@@ -110,7 +112,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.96618,
       "lng": -5.95613,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site car park (gravel), disabled spaces"
     },
     {
       "id": "the-ark-open-farm-quiet-sen-night-christmas-expe-15",
@@ -132,7 +135,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.59338,
       "lng": -5.69609,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free car park, disabled bays by entrance"
     },
     {
       "id": "goldilocks-and-the-three-bears-relaxed-16",
@@ -154,7 +158,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.60354,
       "lng": -5.92745,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "St Anne's Square multi-storey next door (paid); on-street nearby"
     },
     {
       "id": "jack-and-the-beanstalk-relaxed-17",
@@ -198,7 +203,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Nearby paid car parks (Lanyon Place, Oxford St); on-street"
     },
     {
       "id": "the-little-mermaid-relaxed-19",
@@ -220,7 +226,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.59533,
       "lng": -5.93519,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Multi-storey behind Europa (Hope St) & Grosvenor Rd; limited on-street"
     },
     {
       "id": "omniplex-sensory-friendly-screenings-20",
@@ -286,7 +293,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.67788,
       "lng": -5.92492,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free parking"
     },
     {
       "id": "geppetto-30",
@@ -308,7 +316,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "No car park – Queen's PEC car park (£1.80/hr) & on-street nearby; 2 disabled bays outside"
     },
     {
       "id": "belfast-zoo-touch-and-tell-tour-31",
@@ -330,7 +339,8 @@
       "addedDate": "2026-10-10",
       "lat": 54.65727,
       "lng": -5.94212,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park (380+ spaces), 17 accessible bays"
     },
     {
       "id": "mid-east-antrim-quiet-hour-32",
@@ -418,7 +428,8 @@
       "addedDate": "2026-10-12",
       "lat": 54.4502,
       "lng": -6.39108,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "indiana-land-sensory-friendly-sessions-37",
@@ -440,7 +451,8 @@
       "addedDate": "2026-10-12",
       "lat": 54.58711,
       "lng": -5.81862,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free disabled parking bays"
     },
     {
       "id": "w5-november-quiet-session-38",
@@ -462,7 +474,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.60465,
       "lng": -5.91501,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Nearby car park on Queen's Island"
     },
     {
       "id": "w5-christmas-quiet-session-39",
@@ -484,7 +497,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.60465,
       "lng": -5.91501,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Nearby car park on Queen's Island"
     },
     {
       "id": "wee-uns-quiet-sen-play-session-40",
@@ -528,7 +542,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.59338,
       "lng": -5.69609,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Car park with Blue Badge bays near entrance"
     },
     {
       "id": "get-active-abc-quiet-hour-swims-48",
@@ -572,7 +587,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.17194,
       "lng": -6.3416,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Large car park (1,000+ spaces), disabled & parent bays"
     },
     {
       "id": "cineworld-belfast-autism-friendly-screenings-50",
@@ -638,7 +654,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.17194,
       "lng": -6.3416,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Large car park (1,000+ spaces), disabled & parent bays"
     },
     {
       "id": "ulster-folk-museum-santa-private-visits-53",
@@ -660,7 +677,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.64045,
       "lng": -5.83617,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free main car park (overflow bus at busy events)"
     },
     {
       "id": "valley-playzone-quiet-hour",
@@ -770,7 +788,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.58711,
       "lng": -5.81862,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free disabled parking bays"
     },
     {
       "id": "belfast-zoo-autism",
@@ -792,7 +811,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.67788,
       "lng": -5.92492,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free car park (380+ spaces), 17 accessible bays"
     },
     {
       "id": "hazelbank-sensory-garden",
@@ -858,7 +878,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.60106,
       "lng": -5.83258,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Stormont Estate car park, 100m inside main gate"
     },
     {
       "id": "blacks-road-sensory-playground",
@@ -968,7 +989,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.77834,
       "lng": -5.70842,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Parking at the Visitor Centre"
     },
     {
       "id": "bangor-aurora-sensory",
@@ -990,7 +1012,8 @@
       "addedDate": "2026-10-15",
       "lat": 54.6626,
       "lng": -5.66791,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Car park, 36 disabled bays"
     },
     {
       "id": "bangor-aurora-quieter-hours-56",
@@ -1012,7 +1035,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.6626,
       "lng": -5.66791,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Car park, 36 disabled bays"
     },
     {
       "id": "airtastic-bangor-quiet-57",
@@ -1034,7 +1058,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.6626,
       "lng": -5.66791,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free parking"
     },
     {
       "id": "moviehouse-cityside-relaxed-screenings-77",
@@ -1276,7 +1301,8 @@
       "url": "https://www.midandeastantrim.gov.uk/resident/sport-and-leisure/leisure-centres/amphitheatre-carrickfergus/swimming-pool",
       "lat": 54.71362,
       "lng": -5.80731,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Car park at front, Blue Badge bays"
     },
     {
       "id": "joey-dunlop-lc-autism-impact",
@@ -1320,7 +1346,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.71362,
       "lng": -5.80731,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Car park at front, Blue Badge bays"
     },
     {
       "id": "airtastic-bangor-quiet-bowling",
@@ -1342,7 +1369,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.6626,
       "lng": -5.66791,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free parking"
     },
     {
       "id": "carrickfergus-castle-sensory",
@@ -1364,7 +1392,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.71341,
       "lng": -5.80651,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park beside the castle"
     },
     {
       "id": "sensory-kids-antrim",
@@ -1430,7 +1459,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.54983,
       "lng": -5.74543,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free car park, accessible bays"
     },
     {
       "id": "wee-village-inclusive-sessions",
@@ -1452,7 +1482,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.75253,
       "lng": -6.00109,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Plenty of on-site parking"
     },
     {
       "id": "barnardos-play-for-all-saturday-clubs",
@@ -1584,7 +1615,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.63551,
       "lng": -5.93687,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car parks on site, Blue Badge bays"
     },
     {
       "id": "hill-croft-play-dates",
@@ -1628,7 +1660,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.58711,
       "lng": -5.81862,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free disabled parking bays"
     },
     {
       "id": "playtown-ni-sen-session",
@@ -1694,7 +1727,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.35212,
       "lng": -6.26988,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park, 4 Blue Badge bays"
     },
     {
       "id": "snap-north-belfast-saturday-group",
@@ -1804,7 +1838,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.67788,
       "lng": -5.92492,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free parking up to 4 hours"
     },
     {
       "id": "victoria-square-quiet-times",
@@ -1826,7 +1861,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.59837,
       "lng": -5.92574,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Q-Park underneath (paid)"
     },
     {
       "id": "mo-mowlam-quiet-hour",
@@ -1848,7 +1884,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Stormont Estate car park, 100m inside main gate"
     },
     {
       "id": "circusful-itty-bitty-circus",
@@ -1870,7 +1907,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "No own parking – on-street city-centre parking"
     },
     {
       "id": "gymfun-inclusive-newtownabbey",
@@ -2068,7 +2106,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Odyssey car park (1,500+ spaces, 60 disabled)"
     },
     {
       "id": "larne-fc-inver-park-sensory-bags",
@@ -2090,7 +2129,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.85085,
       "lng": -5.81831,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Limited disabled bays (book 24h ahead); some street parking"
     },
     {
       "id": "valdez-ready-steady-gym-ballymena",
@@ -2134,7 +2174,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.59675,
       "lng": -5.91965,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Nearby paid car parks (Lanyon Place, Oxford St); on-street"
     },
     {
       "id": "magheramorne-magic-mistletoe-quiet",
@@ -2156,7 +2197,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.85085,
       "lng": -5.81831,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Limited on-site parking – car sharing encouraged"
     },
     {
       "id": "abbey-allsorts-special-needs-club",
@@ -2266,7 +2308,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.75253,
       "lng": -6.00109,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Plenty of on-site parking"
     },
     {
       "id": "wave-ballyclare-special-needs-monthly",
@@ -2332,7 +2375,8 @@
       "addedDate": "2026-10-16",
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Limited accessible parking – request with tickets"
     },
     {
       "id": "carryduff-gac-all-stars",
@@ -2464,7 +2508,8 @@
       "addedDate": "2026-10-17",
       "lat": 54.60089,
       "lng": -5.9318,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "CastleCourt car park – validate ticket for 3 hrs for price of 1"
     },
     {
       "id": "gen-funworks",
@@ -2533,7 +2578,8 @@
       "general": true,
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Nearby car park on Queen's Island"
     },
     {
       "id": "gen-xmas-market",
@@ -2579,7 +2625,8 @@
       "general": true,
       "lat": 54.59644,
       "lng": -5.92951,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "No event parking – public car parks nearby"
     },
     {
       "id": "gen-roar-explore",
@@ -3085,7 +3132,8 @@
       "general": true,
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "id": "gen-colin-glen",
@@ -3177,7 +3225,8 @@
       "general": true,
       "lat": 54.59639,
       "lng": -5.93018,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "McClay Library car park, more nearby"
     },
     {
       "id": "gen-omniplex-kids-club",
@@ -3246,7 +3295,8 @@
       "general": true,
       "lat": 54.59533,
       "lng": -5.93519,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Multi-storey behind Europa (Hope St) & Grosvenor Rd; limited on-street"
     },
     {
       "id": "gen-happy-town",
@@ -3315,7 +3365,8 @@
       "general": true,
       "lat": 54.59338,
       "lng": -5.69609,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free car park, disabled bays by entrance"
     },
     {
       "id": "gen-streamvale-farm",
@@ -3384,7 +3435,8 @@
       "general": true,
       "lat": 54.65231,
       "lng": -5.80498,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site"
     },
     {
       "id": "gen-ulster-folk-xmas",
@@ -3407,7 +3459,8 @@
       "general": true,
       "lat": 54.64684,
       "lng": -5.79361,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free main car park (overflow bus at busy events)"
     },
     {
       "id": "gen-bangor-xmas-city",
@@ -3430,7 +3483,8 @@
       "general": true,
       "lat": 54.66373,
       "lng": -5.67444,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "City-centre car parks (free and charged)"
     },
     {
       "id": "gen-ards-xmas-square",
@@ -3545,7 +3599,8 @@
       "general": true,
       "lat": 54.46141,
       "lng": -6.08608,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-hillsborough-market",
@@ -3775,7 +3830,8 @@
       "general": true,
       "lat": 54.71984,
       "lng": -5.80459,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park at front, Blue Badge bays"
     },
     {
       "id": "gen-meaqua-lessons",
@@ -3844,7 +3900,8 @@
       "general": true,
       "lat": 54.59049,
       "lng": -5.70028,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park with Blue Badge bays near entrance"
     },
     {
       "id": "gen-bangor-aurora-swim",
@@ -3867,7 +3924,8 @@
       "general": true,
       "lat": 54.65278,
       "lng": -5.6641,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park, 36 disabled bays"
     },
     {
       "id": "gen-newry-lc-swim",
@@ -4051,7 +4109,8 @@
       "general": true,
       "lat": 54.26795,
       "lng": -5.96314,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Forest car park"
     },
     {
       "id": "gen-delamont",
@@ -4120,7 +4179,8 @@
       "general": true,
       "lat": 55.23119,
       "lng": -6.51819,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Reserved parking included with Visitor Experience ticket"
     },
     {
       "id": "gen-titanic-belfast",
@@ -4143,7 +4203,8 @@
       "general": true,
       "lat": 54.60814,
       "lng": -5.90984,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Paid underground car park (520 spaces, 24hr)"
     },
     {
       "id": "gen-ulster-folk-museum",
@@ -4166,7 +4227,8 @@
       "general": true,
       "lat": 54.64684,
       "lng": -5.79361,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free main car park (overflow bus at busy events)"
     },
     {
       "id": "gen-down-county-museum",
@@ -4189,7 +4251,8 @@
       "general": true,
       "lat": 54.32873,
       "lng": -5.72026,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-mid-antrim-museum",
@@ -4373,7 +4436,8 @@
       "general": true,
       "lat": 54.57719,
       "lng": -5.93096,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "No car park – Queen's PEC car park (£1.80/hr) & on-street nearby; 2 disabled bays outside"
     },
     {
       "id": "gen-judith-keyes-ballet",
@@ -4419,7 +4483,8 @@
       "general": true,
       "lat": 54.65258,
       "lng": -5.65312,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-disney-princess",
@@ -4442,7 +4507,8 @@
       "general": true,
       "lat": 54.59675,
       "lng": -5.91965,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Nearby paid car parks (Lanyon Place, Oxford St); on-street"
     },
     {
       "id": "gen-belfast-childrens-festival",
@@ -4878,7 +4944,8 @@
       "lat": 54.51119,
       "lng": -6.04378,
       "geoSource": "venue",
-      "addedDate": "2026-10-19"
+      "addedDate": "2026-10-19",
+      "parking": "Off-site parking"
     },
     {
       "id": "gen-carryduff-xmas-market",
@@ -4992,7 +5059,8 @@
       "lat": 54.65208,
       "lng": -5.92178,
       "geoSource": "venue",
-      "addedDate": "2026-10-20"
+      "addedDate": "2026-10-20",
+      "parking": "Free parking"
     },
     {
       "id": "gen-courtyard-judith-keyes-xmas",
@@ -5130,7 +5198,8 @@
       "lat": 54.59675,
       "lng": -5.91965,
       "geoSource": "venue",
-      "addedDate": "2026-10-20"
+      "addedDate": "2026-10-20",
+      "parking": "Nearby paid car parks (Lanyon Place, Oxford St); on-street"
     },
     {
       "id": "gen-mac-goldilocks-all",
@@ -5153,7 +5222,8 @@
       "lat": 54.60354,
       "lng": -5.92745,
       "geoSource": "venue",
-      "addedDate": "2026-10-20"
+      "addedDate": "2026-10-20",
+      "parking": "St Anne's Square multi-storey next door (paid); on-street nearby"
     },
     {
       "id": "gen-w5",
@@ -5176,7 +5246,8 @@
       "lat": 54.60465,
       "lng": -5.91501,
       "geoSource": "venue",
-      "addedDate": "2026-10-20"
+      "addedDate": "2026-10-20",
+      "parking": "Nearby car park on Queen's Island"
     },
     {
       "id": "gen-ulster-museum-discover-fashion",
@@ -5199,7 +5270,8 @@
       "lat": 54.58225,
       "lng": -5.93532,
       "geoSource": "venue",
-      "addedDate": "2026-10-20"
+      "addedDate": "2026-10-20",
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "id": "gen-strand-minors-club",
@@ -5222,7 +5294,8 @@
       "lat": 54.59604,
       "lng": -5.89292,
       "geoSource": "venue",
-      "addedDate": "2026-10-20"
+      "addedDate": "2026-10-20",
+      "parking": "On-street parking on Holywood Rd"
     },
     {
       "id": "gen-island-sleeping-beauty",
@@ -5314,7 +5387,8 @@
       "lat": 54.32873,
       "lng": -5.72026,
       "geoSource": "venue",
-      "addedDate": "2026-10-21"
+      "addedDate": "2026-10-21",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-clay-project-halloween-pottery",
@@ -5360,7 +5434,8 @@
       "lat": 54.96618,
       "lng": -5.95613,
       "geoSource": "venue",
-      "addedDate": "2026-10-21"
+      "addedDate": "2026-10-21",
+      "parking": "On-site car park (gravel), disabled spaces"
     },
     {
       "startDate": "2026-11-20",
@@ -5429,7 +5504,8 @@
       "price": "See Better",
       "url": "https://www.better.org.uk/leisure-centre/belfast/ballysillan-leisure-centre",
       "lat": 54.62279,
-      "lng": -5.97
+      "lng": -5.97,
+      "parking": "Car park (60 spaces), accessible bays"
     },
     {
       "startDate": null,
@@ -5475,7 +5551,8 @@
       "price": "Free",
       "url": "https://www.ulstermuseum.org/whats-on/extinction-explorers",
       "lat": 54.58225,
-      "lng": -5.93532
+      "lng": -5.93532,
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "startDate": "2027-02-12",
@@ -5498,7 +5575,8 @@
       "price": "See website",
       "url": "https://www.ulstermuseum.org/whats-on/creating-colour-art",
       "lat": 54.58225,
-      "lng": -5.93532
+      "lng": -5.93532,
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "startDate": "2027-02-13",
@@ -5521,7 +5599,8 @@
       "price": "Free",
       "url": "https://www.ulstermuseum.org/whats-on/grey-wolves-grey-squirrels",
       "lat": 54.58225,
-      "lng": -5.93532
+      "lng": -5.93532,
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "id": "gen-hillmount-belfast-santa-2026",
@@ -5613,7 +5692,8 @@
       "geoSource": "venue",
       "addedDate": "2026-10-23",
       "lat": 54.59086,
-      "lng": -5.98575
+      "lng": -5.98575,
+      "parking": "Car park (80 spaces), accessible bays"
     },
     {
       "id": "gen-pickie-funpark",
@@ -5751,7 +5831,8 @@
       "geoSource": "venue",
       "addedDate": "2026-10-23",
       "lat": 54.10071,
-      "lng": -6.25422
+      "lng": -6.25422,
+      "parking": "On-site parking"
     },
     {
       "id": "gen-narrow-water-santa-2026",
@@ -5774,7 +5855,8 @@
       "geoSource": "venue",
       "addedDate": "2026-10-23",
       "lat": 54.11457,
-      "lng": -6.28294
+      "lng": -6.28294,
+      "parking": "On-site parking"
     },
     {
       "id": "gen-santa-at-slieve-2026",
@@ -5820,7 +5902,8 @@
       "geoSource": "venue",
       "addedDate": "2026-10-23",
       "lat": 54.26795,
-      "lng": -5.96314
+      "lng": -5.96314,
+      "parking": "Forest car park"
     },
     {
       "id": "gen-kilbroney-victorian-crafts-2026",
@@ -5888,7 +5971,8 @@
       "addedDate": "2026-10-23",
       "lat": 54.74013,
       "lng": -6.28133,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Secure car park"
     },
     {
       "id": "swim-newtownabbey-lessons-54",
@@ -6025,7 +6109,8 @@
       "price": "Child £2.90, family £11.50, under 5 free",
       "url": "https://getactiveabc.com/facility/banbridge-leisure-centre/",
       "lat": 54.35212,
-      "lng": -6.26988
+      "lng": -6.26988,
+      "parking": "Free car park, 4 Blue Badge bays"
     },
     {
       "id": "gen-dcdr-lapland-express-2026",
@@ -6071,7 +6156,8 @@
       "general": true,
       "lat": 54.58711,
       "lng": -5.81862,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free disabled parking bays"
     },
     {
       "id": "gen-north-down-museum",
@@ -6094,7 +6180,8 @@
       "general": true,
       "lat": 54.6559,
       "lng": -5.66873,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park, 3 Blue Badge spaces"
     },
     {
       "id": "gen-carrickfergus-museum",
@@ -6163,7 +6250,8 @@
       "general": true,
       "lat": 54.60814,
       "lng": -5.90984,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Paid underground car park (520 spaces, 24hr)"
     },
     {
       "id": "mea-inclusive-all-ability-music-sensory-carrick-2026-11-07",
@@ -6208,7 +6296,8 @@
       "price": "£3 per ticket (+ booking fee)",
       "url": "https://wegottickets.com/ulster-museum/",
       "lat": 54.58225,
-      "lng": -5.93532
+      "lng": -5.93532,
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "recurring": null,
@@ -6231,7 +6320,8 @@
       "price": "£4.40 (£3.30 concession)",
       "url": "https://wegottickets.com/ulster-museum/",
       "lat": 54.58225,
-      "lng": -5.93532
+      "lng": -5.93532,
+      "parking": "4 accessible spaces on Stranmillis Rd side"
     },
     {
       "recurring": null,
@@ -6254,7 +6344,8 @@
       "price": "£7",
       "url": "https://themaclive.com/event/storytelling-crafts-with-goldilocks-the-three-bears",
       "lat": 54.60354,
-      "lng": -5.92745
+      "lng": -5.92745,
+      "parking": "St Anne's Square multi-storey next door (paid); on-street nearby"
     },
     {
       "id": "messy-martians-sen-messy-play-glengormley-2026-11-07",
@@ -6299,7 +6390,8 @@
       "lat": 54.26795,
       "lng": -5.96314,
       "geoSource": "venue",
-      "addedDate": "2026-10-28"
+      "addedDate": "2026-10-28",
+      "parking": "Forest car park"
     },
     {
       "id": "gen-delamont-hedgehog-heroes-2026-11-22",
@@ -6391,7 +6483,8 @@
       "price": "Price not listed on official page (reported from £35.45 excl. fees); under-24 months free",
       "url": "https://theo2belfast.com/events/disney-on-ice-2026",
       "lat": 54.6036,
-      "lng": -5.9142
+      "lng": -5.9142,
+      "parking": "Odyssey car park (1,500+ spaces, 60 disabled)"
     },
     {
       "recurring": null,
@@ -6414,7 +6507,8 @@
       "price": "£16 full, £12 child (12 & under), £49 family of 4 (excl. booking fee); under-2s free",
       "url": "https://www.tumblecircus.com/winter-circus-show/",
       "lat": 54.60224,
-      "lng": -5.92966
+      "lng": -5.92966,
+      "parking": "No event parking – city-centre car parks"
     },
     {
       "recurring": null,
@@ -6437,7 +6531,8 @@
       "price": "£5 + £0.25 booking fee",
       "url": "https://www.belfastcity.gov.uk/belfastcastle/what-to-do/events/mrs-claus-is-a-silly-sausage",
       "lat": 54.63551,
-      "lng": -5.93687
+      "lng": -5.93687,
+      "parking": "Free car parks on site, Blue Badge bays"
     },
     {
       "recurring": null,
@@ -6460,7 +6555,8 @@
       "price": "Price not listed",
       "url": "https://www.belfastcity.gov.uk/belfastcastle/what-to-do/events/wilbur-s-trail",
       "lat": 54.63551,
-      "lng": -5.93687
+      "lng": -5.93687,
+      "parking": "Free car parks on site, Blue Badge bays"
     },
     {
       "recurring": null,
@@ -6483,7 +6579,8 @@
       "price": "Price not listed",
       "url": "https://www.titanichotelbelfast.com/christmas/weekends-with-santa",
       "lat": 54.60779,
-      "lng": -5.909
+      "lng": -5.909,
+      "parking": "Hotel car park (paid)"
     },
     {
       "recurring": null,
@@ -6667,7 +6764,8 @@
       "addedDate": "2026-10-30",
       "lat": 54.59844,
       "lng": -5.92541,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Q-Park underneath (paid)"
     },
     {
       "id": "gen-ark-santa-christmas-experience-2026",
@@ -6690,7 +6788,8 @@
       "addedDate": "2026-10-30",
       "lat": 54.60985,
       "lng": -5.68217,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park, disabled bays by entrance"
     },
     {
       "id": "gen-greenisland-switch-on-2026",
@@ -6713,7 +6812,8 @@
       "addedDate": "2026-10-30",
       "lat": 54.69765,
       "lng": -5.8715,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-kilcreggan-urban-farm",
@@ -6736,7 +6836,8 @@
       "addedDate": "2026-10-30",
       "lat": 54.72059,
       "lng": -5.79522,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-lough-moss-gaelic-kids",
@@ -6804,7 +6905,8 @@
       "addedDate": "2026-10-31",
       "lat": 54.3285,
       "lng": -5.7146,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-ncc-stickman-2026-11-15",
@@ -6873,7 +6975,8 @@
       "addedDate": "2026-10-31",
       "lat": 54.61267,
       "lng": -5.93688,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free on-street parking; 2 disabled bays (book ahead)"
     },
     {
       "id": "gen-galgorm-weekends-with-santa",
@@ -6988,7 +7091,8 @@
       "addedDate": "2026-10-31",
       "lat": 54.50369,
       "lng": -6.02878,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking on site"
     },
     {
       "id": "gen-dobbies-lisburn-santa-breakfast",
@@ -7011,7 +7115,8 @@
       "addedDate": "2026-10-31",
       "lat": 54.50369,
       "lng": -6.02878,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking on site"
     },
     {
       "id": "gen-dobbies-lisburn-santa-arrival-2026-11-21",
@@ -7034,7 +7139,8 @@
       "addedDate": "2026-10-31",
       "lat": 54.50369,
       "lng": -6.02878,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking on site"
     },
     {
       "id": "you2me-christmas-sensory-disco-belfast-2026-12-21",
@@ -7103,7 +7209,8 @@
       "price": "Free",
       "url": "https://www.visitmournegullionstrangford.com/whats-on/christmas-light-switch-on-at-slieve-donard-p1104301",
       "lat": 54.21591,
-      "lng": -5.88457
+      "lng": -5.88457,
+      "parking": "On-site parking"
     },
     {
       "recurring": null,
@@ -7379,7 +7486,8 @@
       "price": "Price not listed (standard QFT ticket)",
       "url": "https://queensfilmtheatre.com/whats-on/Relaxed-The-Muppet-Christmas-Carol",
       "lat": 54.58564,
-      "lng": -5.93397
+      "lng": -5.93397,
+      "parking": "Blue Badge spaces in Queen's car park opposite (after 4pm)"
     },
     {
       "id": "castlecourt-santa-grotto-quieter-hour-2026",
@@ -7402,7 +7510,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.60097,
       "lng": -5.9332,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "CastleCourt multi-storey car park (paid)"
     },
     {
       "id": "bangor-believe-christmas-quiet-hour-2026-11-21",
@@ -7517,7 +7626,8 @@
       "url": "https://www.belfastpotterypainting.co.uk/themed-events",
       "lat": 54.60027,
       "lng": -5.92444,
-      "geoSource": "street"
+      "geoSource": "street",
+      "parking": "No own parking – paid car parks behind studio"
     },
     {
       "startDate": null,
@@ -7563,7 +7673,8 @@
       "url": "https://www.leisureardsandnorthdown.com/centres/comber/kids",
       "lat": 54.55106,
       "lng": -5.74739,
-      "geoSource": "street"
+      "geoSource": "street",
+      "parking": "Car park with Blue Badge bays near entrance"
     },
     {
       "startDate": null,
@@ -7632,7 +7743,8 @@
       "url": "https://www.visitcausewaycoastandglens.com/things-to-do/dunluce-castle-p675011",
       "lat": 55.21096,
       "lng": -6.57947,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "megain-breakfast-with-santa-sen-2026-12-05",
@@ -7747,7 +7859,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.99585,
       "lng": -7.31954,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Several public car parks within 5 mins' walk"
     },
     {
       "id": "bridewell-grotto-neurodivergent-2026",
@@ -7793,7 +7906,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.75162,
       "lng": -6.60927,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Blue Badge bays on site"
     },
     {
       "id": "tower-museum-autism-friendly",
@@ -7908,7 +8022,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.64114,
       "lng": -6.74111,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Blue Badge bays on site"
     },
     {
       "id": "dungannon-lc-quiet-swim",
@@ -7931,7 +8046,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.50673,
       "lng": -6.76317,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Blue Badge bays on site"
     },
     {
       "id": "omagh-lc-sensory-room",
@@ -8115,7 +8231,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "marble-arch-elf-escape-sensory-2026",
@@ -8138,7 +8255,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.25852,
       "lng": -7.81319,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site (closed outside opening hours)"
     },
     {
       "id": "gen-switchon-coleraine",
@@ -8299,7 +8417,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.64367,
       "lng": -6.7416,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Town-centre parking; disabled bays available"
     },
     {
       "id": "gen-switchon-dungannon",
@@ -8368,7 +8487,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.8448,
       "lng": -6.67186,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Town-centre car parks; disabled spaces on Church St"
     },
     {
       "id": "gen-switchon-magherafelt",
@@ -8391,7 +8511,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.75448,
       "lng": -6.60781,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Disabled parking in town-centre car parks"
     },
     {
       "id": "gen-switchon-lurgan",
@@ -8598,7 +8719,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.99585,
       "lng": -7.31954,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Several public car parks within 5 mins' walk"
     },
     {
       "id": "gen-market-place-robin-hood-2026",
@@ -8644,7 +8766,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "gen-strule-little-red-2026",
@@ -8690,7 +8813,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "gen-uafp-father-christmas-2026",
@@ -8736,7 +8860,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.25852,
       "lng": -7.81319,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site (closed outside opening hours)"
     },
     {
       "id": "gen-santas-magical-forest-2026",
@@ -8897,7 +9022,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.33161,
       "lng": -6.27223,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free on-site parking"
     },
     {
       "id": "gen-lusty-beg-santa-2026",
@@ -8989,7 +9115,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.58173,
       "lng": -5.94245,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking (£1/hr)"
     },
     {
       "id": "gen-la-mon-santa-brunch-2026",
@@ -9012,7 +9139,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.54777,
       "lng": -5.81717,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-rabbit-hotel-santa-sundays-2026",
@@ -9242,7 +9370,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.45072,
       "lng": -6.39216,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free parking"
     },
     {
       "id": "miniville-carrickfergus-sensory",
@@ -9403,7 +9532,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.46,
       "lng": -6.47235,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (first come, first served)"
     },
     {
       "id": "fort-evergreen",
@@ -9587,7 +9717,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.40712,
       "lng": -5.97,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Secure car park on site"
     },
     {
       "id": "kinedale-donkeys",
@@ -9656,7 +9787,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.35303,
       "lng": -6.64983,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free on-site car park (approx. 40 spaces)"
     },
     {
       "id": "lost-city-golf-belfast",
@@ -9679,7 +9811,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.60403,
       "lng": -5.91647,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking at Cityside (time limits apply)"
     },
     {
       "id": "scrapyard-golf",
@@ -9748,7 +9881,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.71898,
       "lng": -6.91684,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "share-discovery-village",
@@ -9817,7 +9951,8 @@
       "addedDate": "2026-11-02",
       "lat": 55.12087,
       "lng": -6.67708,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Lots of free parking"
     },
     {
       "id": "airtastic-lisburn",
@@ -9840,7 +9975,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.50691,
       "lng": -6.05122,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "cheeky-chimps-coleraine",
@@ -10461,7 +10597,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.59481,
       "lng": -5.70002,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking on site"
     },
     {
       "id": "into-the-woods-carryduff",
@@ -10645,7 +10782,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.5883,
       "lng": -5.82561,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park on site"
     },
     {
       "id": "world-of-owls",
@@ -10760,7 +10898,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.2581,
       "lng": -7.7278,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park, Blue Badge bays at Visitor Centre"
     },
     {
       "id": "nt-castle-coole",
@@ -10783,7 +10922,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.34103,
       "lng": -7.62321,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park, Blue Badge spaces"
     },
     {
       "id": "nt-crom-estate",
@@ -10806,7 +10946,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.1698,
       "lng": -7.4446,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site"
     },
     {
       "id": "nt-springhill",
@@ -10829,7 +10970,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.69255,
       "lng": -6.65495,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site"
     },
     {
       "id": "nt-the-argory",
@@ -10875,7 +11017,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.44845,
       "lng": -5.831,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park"
     },
     {
       "id": "enniskillen-castle-museums",
@@ -10898,7 +11041,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.346,
       "lng": -7.6443,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free car park adjacent to the castle"
     },
     {
       "id": "palace-demesne-armagh",
@@ -10921,7 +11065,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.34007,
       "lng": -6.65336,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Parking beside the play park"
     },
     {
       "id": "slieve-gullion-forest-park",
@@ -11036,7 +11181,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.59589,
       "lng": -5.92202,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Lanyon Place car park – £5 for 4 hrs Fri–Sun (APCOA app)"
     },
     {
       "id": "treehouse-lurgan-sen-sessions",
@@ -11312,7 +11458,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.69863,
       "lng": -6.14023,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Accessible parking by main entrance"
     },
     {
       "id": "gen-marble-arch-willow-2026",
@@ -11335,7 +11482,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.25852,
       "lng": -7.81319,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site (closed outside opening hours)"
     },
     {
       "id": "wa-headhunters-railway-museum",
@@ -11979,7 +12127,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.46819,
       "lng": -6.36709,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Parking at the farm and gardens"
     },
     {
       "id": "wa-ardress-house",
@@ -12002,7 +12151,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.44581,
       "lng": -6.59105,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park on site"
     },
     {
       "id": "wa-the-hive",
@@ -12117,7 +12267,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.51177,
       "lng": -6.57137,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking in the park"
     },
     {
       "id": "wa-loughgall-country-park",
@@ -12232,7 +12383,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.234,
       "lng": -5.86184,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Pay & display (free for NT members & Blue Badge)"
     },
     {
       "id": "wa-dundrum-castle",
@@ -12301,7 +12453,8 @@
       "addedDate": "2026-11-02",
       "lat": 55.16763,
       "lng": -6.81082,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Pay & display at Lion's Gate (£10/day; free for NT members)"
     },
     {
       "id": "wa-carrick-a-rede-rope-bridge",
@@ -12324,7 +12477,8 @@
       "addedDate": "2026-11-02",
       "lat": 55.2398,
       "lng": -6.34901,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site car park included with bridge ticket"
     },
     {
       "id": "wa-cranfield-alpacas",
@@ -12347,7 +12501,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.06267,
       "lng": -6.00599,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Parking on site"
     },
     {
       "id": "wa-round-lake",
@@ -12485,7 +12640,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.43444,
       "lng": -6.41788,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-santas-supershow-enniskillen-2026",
@@ -12508,7 +12664,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.34314,
       "lng": -7.62731,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-santas-supershow-derry-2026",
@@ -12531,7 +12688,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.98186,
       "lng": -7.33718,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-santas-supershow-belfast-2026",
@@ -12554,7 +12712,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.57259,
       "lng": -5.93754,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-three-ways-santa-sunday-2026",
@@ -12669,7 +12828,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.64715,
       "lng": -6.74657,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free public car park adjacent"
     },
     {
       "id": "gen-larne-hullabaloo-peter-pan-2026",
@@ -12876,7 +13036,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "gen-ardhowen-space-for-everyone-2027",
@@ -12899,7 +13060,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "gen-ardhowen-zog-first-aid-2027",
@@ -12922,7 +13084,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "gen-ardhowen-beauty-beast-panto-2027",
@@ -12945,7 +13108,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.3373,
       "lng": -7.62646,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car park (very busy at sell-outs – arrive early); limited Blue Badge spaces"
     },
     {
       "id": "gen-strule-old-macdonald-2027",
@@ -13175,7 +13339,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.43444,
       "lng": -6.41788,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-st-marks-portadown-santa-tractor-run-2026",
@@ -13267,7 +13432,8 @@
       "addedDate": "2026-11-02",
       "lat": 55.13833,
       "lng": -6.67726,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free on-site parking"
     },
     {
       "id": "pan-disability-sports-club-ballymoney",
@@ -13359,7 +13525,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.52888,
       "lng": -5.89349,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Plenty of car parking"
     },
     {
       "id": "gen-aghalee-snap-nativity-2026",
@@ -13451,7 +13618,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.85143,
       "lng": -6.67955,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "gen-culloville-winter-wonderland-2026",
@@ -13497,7 +13665,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.17682,
       "lng": -6.33972,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "incredible-kids-mid-ulster-sen-clubs",
@@ -13612,7 +13781,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.11406,
       "lng": -6.42442,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-feathered-friends-castlewellan-2027",
@@ -13635,7 +13805,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.26795,
       "lng": -5.96314,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Forest car park"
     },
     {
       "id": "gen-feathered-friends-delamont-2027",
@@ -13681,7 +13852,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.11406,
       "lng": -6.42442,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "On-site parking"
     },
     {
       "id": "gen-feathered-friends-kilbroney-2027",
@@ -13980,7 +14152,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.57611,
       "lng": -6.16573,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Car parking close to the house"
     },
     {
       "id": "gen-spout-farm-christmas-magic-2026",
@@ -14049,7 +14222,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.64045,
       "lng": -5.83617,
-      "geoSource": "town"
+      "geoSource": "town",
+      "parking": "Free main car park (overflow bus at busy events)"
     },
     {
       "id": "gen-rushmere-ski-lift-santa-2026",
@@ -14072,7 +14246,8 @@
       "addedDate": "2026-11-02",
       "lat": 54.4502,
       "lng": -6.39108,
-      "geoSource": "venue"
+      "geoSource": "venue",
+      "parking": "Free parking"
     },
     {
       "id": "you2me-christmas-camp-coleraine-2026",
