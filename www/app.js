@@ -602,7 +602,7 @@
     render();
     route();
     const when = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
-    statusText = 'events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
+    statusText = 'events & places' + when;
     render();
   }
   async function fetchRemote() {
@@ -611,28 +611,45 @@
       try {
         const res = await fetch(base + '?t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error(base + ' ' + res.status);
+        if (res.headers.get('X-OA-Offline')) throw new Error('offline (service worker copy)');
         return await res.json();
       } catch (e) { last = e; }
     }
     throw last || new Error('all remotes failed');
   }
+  // v1.9.1 offline mode: the last good download is kept on the device (with the time it was fetched) and used when offline
+  const CACHE_TIME_KEY = 'sen-events-ni-cache-time-v1';
+  function offlineBanner(source, data) {
+    const b = $('offline-banner'); if (!b) return;
+    if (source === 'live') { b.hidden = true; return; }
+    let t = null; try { t = source === 'offline copy' ? +localStorage.getItem(CACHE_TIME_KEY) : 0; } catch (_) {}
+    const when = t ? new Date(t).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+      : (data && data.updatedAt ? new Date(data.updatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + ' (copy built into the app)' : 'an earlier copy');
+    b.innerHTML = '<span aria-hidden="true">📴</span> Offline — showing data from ' + esc(when) + '. Saved items in My plan still open. <button class="offline-retry" type="button" data-retry>Retry</button>';
+    b.hidden = false;
+  }
+  let lastSource = '';
   async function init() {
     try {
       const data = await fetchRemote();
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (_) {}
-      applyData(data, 'live');
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); localStorage.setItem(CACHE_TIME_KEY, String(Date.now())); } catch (_) {}
+      lastSource = 'live'; applyData(data, 'live'); offlineBanner('live');
     } catch (e) {
       let cached = null;
       try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch (_) {}
-      if (cached) { applyData(cached, 'offline copy'); return; }
+      if (cached) { lastSource = 'offline copy'; applyData(cached, 'offline copy'); offlineBanner('offline copy', cached); return; }
       try {
         const res = await fetch('events.json');
-        applyData(await res.json(), 'bundled');
+        const data = await res.json(); lastSource = 'bundled'; applyData(data, 'bundled'); offlineBanner('bundled', data);
       } catch (err) {
-        els.list.innerHTML = '<p class="empty">Could not load events. Check your connection and try again.</p>';
+        els.list.innerHTML = '<p class="empty">Could not load events. Check your connection and try again.</p>' +
+          (Object.keys(savedItems).length ? '<p class="empty empty-sm"><a href="#plan">Open My plan (' + Object.keys(savedItems).length + ' saved)</a></p>' : '');
       }
     }
   }
+  window.addEventListener('online', () => { if (lastSource && lastSource !== 'live') init(); });
+  document.addEventListener('click', e => { if (e.target.closest('[data-retry]')) { e.preventDefault(); init(); } });
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); }); }
 
   try {
     const p = new URLSearchParams(location.search);

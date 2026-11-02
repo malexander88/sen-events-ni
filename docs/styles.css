@@ -298,3 +298,8 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .plan-note { background: var(--surface-2); color: var(--muted); padding: 10px 12px; border-radius: 12px; font-size: .85rem; margin: 0; }
 .plan-cal { margin-top: 8px; border: 1px solid var(--line, #d8d2c2); background: var(--surface); color: var(--text); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; }
 .plan-past { opacity: .6; }
+/* v1.9.1 offline banner */
+.offline-banner { margin: 8px 16px 0; padding: 9px 12px; border-radius: 12px; background: var(--new-soft); color: var(--new); font-size: .84rem; font-weight: 600; line-height: 1.35; }
+.offline-retry { margin-left: 6px; border: 0; background: #173766; color: #fff; border-radius: 999px; padding: 3px 10px; font: inherit; font-size: .78rem; cursor: pointer; }
+:root[data-theme="dark"] .offline-retry { background: #FDC722; color: #173766; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .offline-retry { background: #FDC722; color: #173766; } }
