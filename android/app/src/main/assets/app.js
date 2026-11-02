@@ -224,19 +224,18 @@
     const byType = new Map();
     items.forEach(ev => { const t = ev.type || 'Other'; if (!byType.has(t)) byType.set(t, []); byType.get(t).push(ev); });
     const sections = [...byType.entries()].sort((x, y) => y[1].length - x[1].length || x[0].localeCompare(y[0]))
-      .map(([t, list]) => ({ key: 't:' + t, icon: typeIcon(t), name: t, list }));
-    const fresh = (state.new || state.type !== 'all') ? [] : items.filter(isNew);
-    if (fresh.length) sections.unshift({ key: 'new', icon: '✨', name: 'Found today', list: fresh, special: true });
-    // auto-expand: search or type chip active, or only one section to show
-    const forced = !!(state.query && state.query.trim()) || state.type !== 'all' || sections.length === 1;
-    const isOpen = sec => forced || expanded.has(sec.key) || (sec.special && !expandedTouched.has(sec.key) && sec.list.length <= 3);
+      // v1.8.1: items found today go to the top of their own section (stable, keeps the usual order otherwise)
+      .map(([t, list]) => ({ key: 't:' + t, icon: typeIcon(t), name: t, list: list.filter(isNew).concat(list.filter(ev => !isNew(ev))), fresh: list.filter(isNew).length }));
+    // auto-expand: search, type chip or Found today filter active, or only one section to show
+    const forced = !!(state.query && state.query.trim()) || state.type !== 'all' || state.new || sections.length === 1;
+    const isOpen = sec => forced || expanded.has(sec.key);
     let html = notice;
     sections.forEach((sec, i) => {
       const open = isOpen(sec), id = 'sec-' + i;
-      html += '<section class="tsec' + (sec.special ? ' tsec-special' : '') + (open ? ' open' : '') + '" data-sec="' + esc(sec.key) + '">' +
+      html += '<section class="tsec' + (open ? ' open' : '') + '" data-sec="' + esc(sec.key) + '">' +
         '<h3 class="tsec-h"><button class="tsec-head" type="button" aria-expanded="' + open + '" aria-controls="' + id + '" data-sec-toggle="' + esc(sec.key) + '">' +
           '<span class="tsec-ico" aria-hidden="true">' + sec.icon + '</span><span class="tsec-name">' + esc(sec.name) + '</span>' +
-          '<span class="tsec-count">' + sec.list.length + '</span><span class="tsec-chev" aria-hidden="true"></span></button></h3>' +
+          '<span class="tsec-count">' + sec.list.length + '</span>' + (sec.fresh ? '<span class="tsec-new" aria-label="' + sec.fresh + ' new today">✨ ' + sec.fresh + ' new</span>' : '') + '<span class="tsec-chev" aria-hidden="true"></span></button></h3>' +
         '<div class="tsec-body" id="' + id + '"' + (open ? '' : ' inert') + '><div class="tsec-inner">' + sec.list.map(cardHtml).join('') + '</div></div></section>';
     });
     els.expandAll.hidden = forced || sections.length < 2;

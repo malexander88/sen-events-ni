@@ -278,3 +278,7 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
   :root:not([data-theme="light"]) .tsec-count { background: #26375a; }
 }
 @media (prefers-reduced-motion: reduce) { .tsec-body, .tsec-chev { transition: none; } }
+/* v1.8.1 "✨ N new" pill on section headers */
+.tsec-new { flex: none; font-size: .74rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
+.tsec-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tsec-head { gap: 8px; } .tsec-ico { margin-right: 4px; }
