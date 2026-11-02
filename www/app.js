@@ -24,7 +24,7 @@
 
   const $ = id => document.getElementById(id);
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), areas: $('area-chips'),
-    towns: $('town-chips'), types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
+    towns: $('town-select'), types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
 
   const state = { near: false, weekend: false, free: false, sen: false, general: false, new: false, saved: false, area: 'all', town: 'all', type: 'all', query: '', showHidden: false };
   let allEvents = [];
@@ -143,7 +143,7 @@
     return !!(state.near || state.weekend || state.free || state.sen || state.general || state.new || state.saved ||
       state.area !== 'all' || state.town !== 'all' || state.type !== 'all' || (state.query && state.query.trim()));
   }
-  function filtered(wantHidden) {
+  function filtered(wantHidden, ignoreTown) {
     return allEvents.filter(ev => {
       if (isPast(ev)) return false;
       if (hidden.has(ev.id) !== !!wantHidden) return false;
@@ -158,7 +158,7 @@
       if (state.new && !isNew(ev)) return false;
       if (state.saved && !saved.has(ev.id)) return false;
       if (state.area !== 'all' && countyOf(ev) !== state.area) return false;
-      if (state.town !== 'all' && ev.town !== state.town) return false;
+      if (!ignoreTown && state.town !== 'all' && countyOf(ev) + '|' + ev.town !== state.town) return false;
       if (state.type !== 'all' && ev.type !== state.type) return false;
       return true;
     }).sort((a, b) => {
@@ -191,6 +191,7 @@
   }
   function render() {
     updateHiddenChip();
+    renderTownSelect();
     if (state.showHidden) {
       const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
       const hid = filtered(true);
@@ -234,19 +235,37 @@
       '<button class="chip" data-' + key + '="' + esc(v) + '" aria-pressed="' + (state[key] === v) + '">' +
       (v === 'all' ? labelAll : (key === 'type' ? typeIcon(v) + ' ' : '') + esc(v)) + '</button>').join('');
   }
-  // Second row: towns with (upcoming) events in the selected county, most events first.
-  function renderTownChips() {
-    if (state.area === 'all') { els.towns.hidden = true; els.towns.innerHTML = ''; state.town = 'all'; return; }
+  // Town dropdown: every NI city/town/main village (NISRA settlements of 1,000+ people, from Wikipedia's
+  // list of localities by population) plus any town used in events.json, with live counts.
+  const NI_TOWNS = {"Belfast": ["Belfast", "Dunmurry"], "County Antrim": ["Aghagallon", "Ahoghill", "Antrim", "Ballycarry", "Ballycastle", "Ballyclare", "Ballymena", "Ballymoney", "Ballynure", "Broughshane", "Bushmills", "Carnlough", "Carrickfergus", "Clogh Mills", "Cogry / Kilbride", "Crumlin", "Cullybackey", "Cushendall", "Doagh", "Dunloy", "Glenariff", "Glenarm", "Glenavy", "Glengormley", "Greenisland", "Islandmagee", "Kells / Connor", "Kilrea", "Larne", "Lisburn", "Maghaberry", "Milltown", "Newtownabbey", "Portglenone", "Portrush", "Randalstown", "Rasharkin", "Templepatrick", "Toome", "Whitehead"], "County Down": ["Annahilt", "Annalong", "Ardglass", "Ballygowan", "Ballyhalbert", "Ballynahinch", "Ballywalter", "Banbridge", "Bangor", "Bleary", "Carrowdore", "Carryduff", "Castlewellan", "Clough", "Cloughey", "Comber", "Crawfordsburn", "Crossgar", "Dollingstown", "Donaghadee", "Donaghcloney", "Downpatrick", "Dromara", "Dromore", "Drumaness", "Dundonald", "Dundrum", "Gilford", "Groomsport", "Helen's Bay", "Hillsborough", "Hilltown", "Holywood", "Kilkeel", "Killyleagh", "Kinallen", "Kircubbin", "Lisburn", "Magheralin", "Mayobridge", "Millisle", "Moira", "Moneyreagh", "Newcastle", "Newry", "Newtownards", "Portaferry", "Portavogie", "Rathfriland", "Rostrevor", "Royal Hillsborough and Culcavy", "Saintfield", "Seahill", "Waringstown", "Warrenpoint", "Warrenpoint / Burren"], "County Armagh": ["Armagh", "Bessbrook", "Camlough", "Craigavon", "Crossmaglen", "Drumnacanvy", "Hamiltonsbawn", "Keady", "Laurelvale / Mullavilly", "Lurgan", "Markethill", "Portadown", "Richhill", "Tandragee"], "County Londonderry": ["Ballykelly", "Bellaghy", "Castledawson", "Castlerock", "Claudy", "Coleraine", "Culmore", "Derry~Londonderry", "Draperstown", "Dungiven", "Eglinton", "Garvagh", "Greysteel", "Limavady", "Maghera", "Magherafelt", "Moneymore", "Newbuildings", "Portstewart", "Strathfoyle"], "County Tyrone": ["Annaghmore", "Aughnacloy", "Castlederg", "Coalisland", "Cookstown", "Donaghmore", "Dromore", "Dungannon", "Fintona", "Fivemiletown", "Killyman", "Moy", "Newtownstewart", "Omagh Town", "Sion Mills", "Strabane"], "County Fermanagh": ["Ballinamallard", "Enniskillen", "Irvinestown", "Kesh", "Lisbellaw", "Lisnaskea", "Maguiresbridge"]};
+  function townCounts() {
+    // counts honour every active filter except the town itself
     const n = {};
-    allEvents.forEach(ev => { if (!isPast(ev) && countyOf(ev) === state.area && ev.town) n[ev.town] = (n[ev.town] || 0) + 1; });
-    const towns = Object.keys(n).sort((a, b) => n[b] - n[a] || a.localeCompare(b));
-    if (state.town !== 'all' && !n[state.town]) state.town = 'all';
-    els.towns.hidden = towns.length < 2;
-    els.towns.innerHTML = ['all', ...towns].map(v => '<button class="chip chip-town" data-town="' + esc(v) + '" aria-pressed="' + (state.town === v) + '">' +
-      (v === 'all' ? '🏘️ All towns' : esc(v) + ' <span class="chip-count">' + n[v] + '</span>') + '</button>').join('');
+    filtered(state.showHidden, true).forEach(ev => { const k = countyOf(ev) + '|' + ev.town; n[k] = (n[k] || 0) + 1; });
+    return n;
+  }
+  function renderTownSelect() {
+    const sel = els.towns; if (!sel) return;
+    const n = townCounts();
+    const counties = state.area === 'all' ? AREAS : [state.area];
+    let html = '<option value="all">🏘️ All towns</option>';
+    let found = state.town === 'all';
+    counties.forEach(c => {
+      const set = new Set(NI_TOWNS[c] || []);
+      allEvents.forEach(ev => { if (countyOf(ev) === c && ev.town && !/\//.test(ev.town)) set.add(ev.town); });
+      const towns = [...set].sort((a, b) => a.localeCompare(b));
+      if (!towns.length) return;
+      html += '<optgroup label="' + esc(c) + '">' + towns.map(t => {
+        const v = c + '|' + t; if (v === state.town) found = true;
+        return '<option value="' + esc(v) + '"' + (v === state.town ? ' selected' : '') + '>' + esc(t) + ' (' + (n[v] || 0) + ')</option>';
+      }).join('') + '</optgroup>';
+    });
+    if (!found) state.town = 'all';
+    sel.innerHTML = html;
+    sel.value = state.town;
+    sel.classList.toggle('active', state.town !== 'all');
   }
   function syncChips() {
-    renderTownChips();
     els.quick.querySelectorAll('[data-q]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.q])));
     els.areas.querySelectorAll('[data-area]').forEach(b => b.setAttribute('aria-pressed', String(state.area === b.dataset.area)));
     els.types.querySelectorAll('[data-type]').forEach(b => b.setAttribute('aria-pressed', String(state.type === b.dataset.type)));
@@ -364,13 +383,12 @@
     if (q) { state[q.dataset.q] = !state[q.dataset.q]; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
     const a = e.target.closest('[data-area]');
     if (a) { state.area = a.dataset.area; state.town = 'all'; syncChips(); render(); return; }
-    const tw = e.target.closest('[data-town]');
-    if (tw) { state.town = tw.dataset.town; syncChips(); render(); return; }
     const t = e.target.closest('[data-type]');
     if (t) { state.type = t.dataset.type; syncChips(); render(); return; }
     const card = e.target.closest('.card[data-id]');
     if (card) location.hash = 'e/' + encodeURIComponent(card.dataset.id);
   });
+  if (els.towns) els.towns.addEventListener('change', () => { state.town = els.towns.value; render(); });
   document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && e.target.matches('.card[data-id]')) location.hash = 'e/' + encodeURIComponent(e.target.dataset.id);
     if (e.key === 'Escape' && !els.detail.hidden && e.target !== els.search) history.back();

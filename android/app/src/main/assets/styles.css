@@ -140,11 +140,13 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 @media (prefers-color-scheme: dark) { .pill-general { background: transparent; color: var(--accent); border-color: var(--accent); } .pill-sen { background: #3a5a99; } }
 .dist { color: var(--primary); }
 
-/* v1.8 town filter row (shown when a county chip is selected) */
-.chips-towns[hidden] { display: none; }
-.chips-towns { padding-top: 0; }
-.chips-towns .chip { font-size: .76rem; padding: 4px 10px; border-style: dashed; }
-.chips-towns .chip[aria-pressed="true"] { border-style: solid; }
-.chip-count { display: inline-block; min-width: 1.4em; margin-left: 4px; padding: 0 5px; border-radius: 999px; font-size: .7rem; font-weight: 700; background: var(--primary); color: var(--primary-ink); }
-.chip[aria-pressed="true"] .chip-count { background: var(--accent-ink); color: var(--accent); }
+/* v1.8 town dropdown (all NI towns, counts in brackets) */
+.town-row { padding: 2px 16px 8px; }
+.town-select { width: 100%; max-width: 420px; font: inherit; font-size: .85rem; padding: 7px 34px 7px 12px; border-radius: 999px;
+  border: 1px solid var(--border); background-color: var(--surface); color: var(--text, inherit); appearance: none; -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--primary) 50%), linear-gradient(135deg, var(--primary) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.town-select.active { background-color: var(--accent); border-color: var(--accent-border); color: var(--accent-ink); font-weight: 700; }
+.town-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .place { font-weight: 600; }
