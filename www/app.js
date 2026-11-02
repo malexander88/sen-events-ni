@@ -16,15 +16,17 @@
   const TYPE_ICONS = {
     'Halloween': '🎃', 'Christmas': '🎄', 'Theatre': '🎭', 'Cinema': '🎬', 'Sensory play': '🫧',
     'Swim/Leisure': '🏊', 'Library/Storytime': '📚', 'Museum/Attraction': '🏛️', 'Outdoors': '🌳',
-    'Disco/Party': '🪩', 'Soft play (SEN hours)': '🧸', 'Place to visit': '📍'
+    'Disco/Party': '🪩', 'Soft play (SEN hours)': '🧸', 'Place to visit': '📍',
+    'Theatre/Show': '🎭', 'Farm': '🐑', 'Soft play': '🧸', 'Play café': '☕', 'Workshop': '🎨', 'Park/Playground': '🛝',
+    'Sport': '⚽', 'Trampoline/Inflatables': '🤸', 'Kids class': '🖍️', 'Festival/Market': '🎪', 'Music/Sensory': '🎵'
   };
   const EYE_OFF = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
   const EYE = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
   const typeIcon = t => TYPE_ICONS[t] || '⭐';
 
   const $ = id => document.getElementById(id);
-  const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), areas: $('area-chips'),
-    towns: $('town-select'), types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
+  const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), whereBtn: $('where-btn'), whereList: $('where-list'), whereVal: $('where-val'),
+    menu: $('menu'), menuBtn: $('menu-btn'), radius: $('radius-row'), expandAll: $('expand-all'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
 
   const state = { near: false, weekend: false, free: false, sen: false, general: false, new: false, saved: false, area: 'all', town: 'all', type: 'all', query: '', showHidden: false };
   let allEvents = [];
@@ -67,7 +69,12 @@
   function londonToday() { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date()); } catch (_) { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); } }
   function isNew(ev) { return !!ev.addedDate && ev.addedDate.slice(0, 10) === londonToday(); }
   // ---- GPS "Near me" ----
-  const RADIUS_MI = 10;
+  // v1.8.0: chosen "Near me" radius (miles; 0 = any distance), remembered on the device
+  const RADIUS_KEY = 'sen-events-ni-radius-v1', RADII = [5, 10, 25, 50, 0];
+  let radius = 10;
+  try { const r = parseInt(localStorage.getItem(RADIUS_KEY), 10); if (RADII.indexOf(r) >= 0) radius = r; } catch (_) {}
+  const radiusText = () => radius ? 'within ' + radius + ' miles' : 'at any distance';
+  const origin = () => userPos || HOME;
   let userPos = null, geoNotice = '';
   function hasCoords(ev) { return typeof ev.lat === 'number' && typeof ev.lng === 'number'; }
   function distMi(ev, from) {
@@ -79,7 +86,7 @@
   }
   function requestLocation() {
     geoNotice = 'Finding your location…';
-    const fail = () => { userPos = null; geoNotice = 'Location unavailable, so showing places within ' + RADIUS_MI + ' miles of Newtownabbey instead.'; render(); };
+    const fail = () => { userPos = null; geoNotice = 'Location unavailable, so showing places ' + radiusText() + ' of Newtownabbey instead, nearest first.'; render(); };
     if (!navigator.geolocation) return fail();
     navigator.geolocation.getCurrentPosition(p => {
       userPos = { lat: p.coords.latitude, lng: p.coords.longitude }; geoNotice = ''; render();
@@ -149,7 +156,7 @@
       if (hidden.has(ev.id) !== !!wantHidden) return false;
       if (!matchesQuery(ev)) return false;
       if (state.near) {
-        const d = distMi(ev, userPos || HOME); if (d !== null && d > RADIUS_MI) return false;
+        const d = distMi(ev, origin()); if (radius && d !== null && d > radius) return false;
       }
       if (state.weekend && !isWeekend(ev)) return false;
       if (state.free && !isFree(ev)) return false;
@@ -162,8 +169,8 @@
       if (state.type !== 'all' && ev.type !== state.type) return false;
       return true;
     }).sort((a, b) => {
-      if (state.near && userPos) {
-        const d1 = distMi(a), d2 = distMi(b);
+      if (state.near) {
+        const d1 = distMi(a, origin()), d2 = distMi(b, origin());
         if (d1 !== d2) return (d1 === null ? 9e9 : d1) - (d2 === null ? 9e9 : d2);
       }
       const s1 = startOf(a), s2 = startOf(b);
@@ -191,7 +198,9 @@
   }
   function render() {
     updateHiddenChip();
-    renderTownSelect();
+    renderWhere();
+    renderChipRow();
+    els.expandAll.hidden = true;
     if (state.showHidden) {
       const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
       const hid = filtered(true);
@@ -205,70 +214,143 @@
     if (anyFilter()) {
       const all = allEvents.filter(ev => !isPast(ev) && !hidden.has(ev.id)).length;
       els.status.textContent = items.length + ' of ' + all + ' events & places';
-    } else if (statusText) els.status.textContent = statusText;
-    const notice = state.near && geoNotice ? '<p class="geo-notice">' + esc(geoNotice) + '</p>' : (state.near && userPos ? '<p class="geo-notice geo-ok">📍 Within ' + RADIUS_MI + ' miles of you, nearest first</p>' : '');
+    } else if (statusText) els.status.textContent = items.length + ' ' + statusText;
+    const notice = state.near && geoNotice ? '<p class="geo-notice">' + esc(geoNotice) + '</p>' : (state.near && userPos ? '<p class="geo-notice geo-ok">📍 Places ' + radiusText() + ' of you, nearest first</p>' : '');
     if (!items.length) {
       els.list.innerHTML = notice + '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
       return;
     }
+    // v1.8.0: collapsible sections by type, biggest first (Found today on top when there is any)
+    const byType = new Map();
+    items.forEach(ev => { const t = ev.type || 'Other'; if (!byType.has(t)) byType.set(t, []); byType.get(t).push(ev); });
+    const sections = [...byType.entries()].sort((x, y) => y[1].length - x[1].length || x[0].localeCompare(y[0]))
+      .map(([t, list]) => ({ key: 't:' + t, icon: typeIcon(t), name: t, list }));
+    const fresh = (state.new || state.type !== 'all') ? [] : items.filter(isNew);
+    if (fresh.length) sections.unshift({ key: 'new', icon: '✨', name: 'Found today', list: fresh, special: true });
+    // auto-expand: search or type chip active, or only one section to show
+    const forced = !!(state.query && state.query.trim()) || state.type !== 'all' || sections.length === 1;
+    const isOpen = sec => forced || expanded.has(sec.key) || (sec.special && !expandedTouched.has(sec.key) && sec.list.length <= 3);
     let html = notice;
-    for (const g of GROUPS) {
-      const gi = items.filter(ev => group(ev) === g);
-      if (!gi.length) continue;
-      html += '<h3 class="group-title">' + g + ' · ' + gi.length + '</h3>';
-      html += gi.map(ev =>
-        '<article class="card' + (ev.soldOut ? ' sold-out' : '') + '" data-id="' + esc(ev.id) + '" tabindex="0">' +
-          '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
-          '<div class="card-body">' +
-            '<h2>' + esc(ev.name) + '</h2>' +
-            (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
-            '<p class="meta">' + (state.near && distMi(ev) !== null ? '<span class="dist">' + distMi(ev).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span>' + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
-            '<div class="pills">' + pills(ev) + '</div>' +
-          '</div>' + heartBtn(ev) + hideBtn(ev) +
-        '</article>').join('');
-    }
+    sections.forEach((sec, i) => {
+      const open = isOpen(sec), id = 'sec-' + i;
+      html += '<section class="tsec' + (sec.special ? ' tsec-special' : '') + (open ? ' open' : '') + '" data-sec="' + esc(sec.key) + '">' +
+        '<h3 class="tsec-h"><button class="tsec-head" type="button" aria-expanded="' + open + '" aria-controls="' + id + '" data-sec-toggle="' + esc(sec.key) + '">' +
+          '<span class="tsec-ico" aria-hidden="true">' + sec.icon + '</span><span class="tsec-name">' + esc(sec.name) + '</span>' +
+          '<span class="tsec-count">' + sec.list.length + '</span><span class="tsec-chev" aria-hidden="true"></span></button></h3>' +
+        '<div class="tsec-body" id="' + id + '"' + (open ? '' : ' inert') + '><div class="tsec-inner">' + sec.list.map(cardHtml).join('') + '</div></div></section>';
+    });
+    els.expandAll.hidden = forced || sections.length < 2;
+    const allOpen = sections.every(isOpen);
+    els.expandAll.textContent = allOpen ? 'Collapse all' : 'Expand all';
+    els.expandAll.dataset.mode = allOpen ? 'collapse' : 'expand';
+    lastSections = sections.map(x => x.key);
     els.list.innerHTML = html;
   }
 
-  function chipRow(container, key, values, labelAll) {
-    container.innerHTML = ['all', ...values].map(v =>
-      '<button class="chip" data-' + key + '="' + esc(v) + '" aria-pressed="' + (state[key] === v) + '">' +
-      (v === 'all' ? labelAll : (key === 'type' ? typeIcon(v) + ' ' : '') + esc(v)) + '</button>').join('');
+  function cardHtml(ev) {
+    return '<article class="card' + (ev.soldOut ? ' sold-out' : '') + '" data-id="' + esc(ev.id) + '" tabindex="0">' +
+      '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
+      '<div class="card-body">' +
+        '<h2>' + esc(ev.name) + '</h2>' +
+        (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
+        '<p class="meta">' + (state.near && distMi(ev, origin()) !== null ? '<span class="dist">' + distMi(ev, origin()).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span>' + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
+        '<div class="pills">' + pills(ev) + '</div>' +
+      '</div>' + heartBtn(ev) + hideBtn(ev) +
+    '</article>';
+  }
+  // ---- v1.8.0 section expand state (kept for this session) ----
+  const EXP_KEY = 'sen-events-ni-expanded-v1';
+  let expanded = new Set(), expandedTouched = new Set(), lastSections = [];
+  try { const o = JSON.parse(sessionStorage.getItem(EXP_KEY) || '{}'); expanded = new Set(o.open || []); expandedTouched = new Set(o.touched || []); } catch (_) {}
+  const persistExpanded = () => { try { sessionStorage.setItem(EXP_KEY, JSON.stringify({ open: [...expanded], touched: [...expandedTouched] })); } catch (_) {} };
+  function setSection(secEl, open) {
+    secEl.classList.toggle('open', open);
+    const btn = secEl.querySelector('.tsec-head'), body = secEl.querySelector('.tsec-body');
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) body.removeAttribute('inert'); else body.setAttribute('inert', '');
+  }
+  function toggleSection(key) {
+    const secEl = [...els.list.querySelectorAll('.tsec')].find(x => x.dataset.sec === key); if (!secEl) return;
+    const open = !secEl.classList.contains('open');
+    if (open) expanded.add(key); else expanded.delete(key);
+    expandedTouched.add(key); persistExpanded();
+    setSection(secEl, open);
+    syncExpandAll();
+  }
+  function syncExpandAll() {
+    const secs = [...els.list.querySelectorAll('.tsec')];
+    const allOpen = secs.length && secs.every(x => x.classList.contains('open'));
+    els.expandAll.textContent = allOpen ? 'Collapse all' : 'Expand all';
+    els.expandAll.dataset.mode = allOpen ? 'collapse' : 'expand';
+  }
+  // ---- v1.8.0 single chip row: active chips first, then quick filters | types ----
+  const QUICK = [['near', '📍 Near me'], ['weekend', '📅 This weekend'], ['free', '🆓 Free'], ['sen', '💙 SEN only']];
+  const MENU_Q = { general: '🎈 General only', new: '✨ Found today', saved: '♥ Saved' };
+  let allTypes = [];
+  function renderChipRow() {
+    const k = activeFilterCount();
+    const qBtn = (key, label) => '<button class="chip" data-q="' + key + '" aria-pressed="' + !!state[key] + '">' + label + '</button>';
+    const tBtn = t => '<button class="chip chip-type" data-type="' + esc(t) + '" aria-pressed="' + (state.type === t) + '">' + typeIcon(t) + ' ' + esc(t) + '</button>';
+    let h = k ? '<button id="clear-chip" class="chip chip-clear" type="button" aria-label="Clear all ' + k + ' filters">Filters (' + k + ') ✕</button>' : '';
+    QUICK.forEach(([key, l]) => { if (state[key]) h += qBtn(key, l); });
+    Object.keys(MENU_Q).forEach(key => { if (state[key]) h += qBtn(key, MENU_Q[key]); });
+    if (state.type !== 'all') h += tBtn(state.type);
+    QUICK.forEach(([key, l]) => { if (!state[key]) h += qBtn(key, l); });
+    h += '<span class="chip-divider" aria-hidden="true"></span>';
+    allTypes.forEach(t => { if (state.type !== t) h += tBtn(t); });
+    els.quick.innerHTML = h;
+    els.radius.hidden = !state.near;
+    els.radius.querySelectorAll('[data-radius]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.radius === radius)));
   }
   // Town dropdown: every NI city/town/main village (NISRA settlements of 1,000+ people, from Wikipedia's
   // list of localities by population) plus any town used in events.json, with live counts.
   const NI_TOWNS = {"Belfast": ["Belfast", "Dunmurry"], "County Antrim": ["Aghagallon", "Ahoghill", "Antrim", "Ballycarry", "Ballycastle", "Ballyclare", "Ballymena", "Ballymoney", "Ballynure", "Broughshane", "Bushmills", "Carnlough", "Carrickfergus", "Clogh Mills", "Cogry / Kilbride", "Crumlin", "Cullybackey", "Cushendall", "Doagh", "Dunloy", "Glenariff", "Glenarm", "Glenavy", "Glengormley", "Greenisland", "Islandmagee", "Kells / Connor", "Kilrea", "Larne", "Lisburn", "Maghaberry", "Milltown", "Newtownabbey", "Portglenone", "Portrush", "Randalstown", "Rasharkin", "Templepatrick", "Toome", "Whitehead"], "County Down": ["Annahilt", "Annalong", "Ardglass", "Ballygowan", "Ballyhalbert", "Ballynahinch", "Ballywalter", "Banbridge", "Bangor", "Bleary", "Carrowdore", "Carryduff", "Castlewellan", "Clough", "Cloughey", "Comber", "Crawfordsburn", "Crossgar", "Dollingstown", "Donaghadee", "Donaghcloney", "Downpatrick", "Dromara", "Dromore", "Drumaness", "Dundonald", "Dundrum", "Gilford", "Groomsport", "Helen's Bay", "Hillsborough", "Hilltown", "Holywood", "Kilkeel", "Killyleagh", "Kinallen", "Kircubbin", "Lisburn", "Magheralin", "Mayobridge", "Millisle", "Moira", "Moneyreagh", "Newcastle", "Newry", "Newtownards", "Portaferry", "Portavogie", "Rathfriland", "Rostrevor", "Royal Hillsborough and Culcavy", "Saintfield", "Seahill", "Waringstown", "Warrenpoint", "Warrenpoint / Burren"], "County Armagh": ["Armagh", "Bessbrook", "Camlough", "Craigavon", "Crossmaglen", "Drumnacanvy", "Hamiltonsbawn", "Keady", "Laurelvale / Mullavilly", "Lurgan", "Markethill", "Portadown", "Richhill", "Tandragee"], "County Londonderry": ["Ballykelly", "Bellaghy", "Castledawson", "Castlerock", "Claudy", "Coleraine", "Culmore", "Derry~Londonderry", "Draperstown", "Dungiven", "Eglinton", "Garvagh", "Greysteel", "Limavady", "Maghera", "Magherafelt", "Moneymore", "Newbuildings", "Portstewart", "Strathfoyle"], "County Tyrone": ["Annaghmore", "Aughnacloy", "Castlederg", "Coalisland", "Cookstown", "Donaghmore", "Dromore", "Dungannon", "Fintona", "Fivemiletown", "Killyman", "Moy", "Newtownstewart", "Omagh Town", "Sion Mills", "Strabane"], "County Fermanagh": ["Ballinamallard", "Enniskillen", "Irvinestown", "Kesh", "Lisbellaw", "Lisnaskea", "Maguiresbridge"]};
-  function townCounts() {
-    // counts honour every active filter except the town itself
-    const n = {};
-    filtered(state.showHidden, true).forEach(ev => { const k = countyOf(ev) + '|' + ev.town; n[k] = (n[k] || 0) + 1; });
-    return n;
+  // ---- v1.8.0: merged "Where" (area + town) ----
+  function whereCounts() {
+    const keep = [state.area, state.town]; state.area = 'all'; state.town = 'all';
+    const list = filtered(state.showHidden, true);
+    state.area = keep[0]; state.town = keep[1];
+    const c = {}, t = {};
+    list.forEach(ev => { const k = countyOf(ev); c[k] = (c[k] || 0) + 1; const tk = k + '|' + ev.town; t[tk] = (t[tk] || 0) + 1; });
+    return { all: list.length, c, t };
   }
-  function renderTownSelect() {
-    const sel = els.towns; if (!sel) return;
-    const n = townCounts();
-    const counties = state.area === 'all' ? AREAS : [state.area];
-    let html = '<option value="all">🏘️ All towns</option>';
-    let found = state.town === 'all';
-    counties.forEach(c => {
-      const set = new Set(NI_TOWNS[c] || []);
-      allEvents.forEach(ev => { if (countyOf(ev) === c && ev.town && !/\//.test(ev.town)) set.add(ev.town); });
-      const towns = [...set].sort((a, b) => a.localeCompare(b));
-      if (!towns.length) return;
-      html += '<optgroup label="' + esc(c) + '">' + towns.map(t => {
-        const v = c + '|' + t; if (v === state.town) found = true;
-        return '<option value="' + esc(v) + '"' + (v === state.town ? ' selected' : '') + '>' + esc(t) + ' (' + (n[v] || 0) + ')</option>';
-      }).join('') + '</optgroup>';
+  function townsOf(c) {
+    const set = new Set(NI_TOWNS[c] || []);
+    allEvents.forEach(ev => { if (countyOf(ev) === c && ev.town && !/\//.test(ev.town)) set.add(ev.town); });
+    set.delete(c);
+    return [...set].sort((a, b) => a.localeCompare(b));
+  }
+  function whereLabel() {
+    if (state.town !== 'all') { const [c, t] = state.town.split('|'); return t + ', ' + c.replace('County ', 'Co. '); }
+    if (state.area !== 'all') return state.area;
+    return 'All of NI';
+  }
+  function renderWhere() {
+    const n = whereCounts();
+    els.whereVal.textContent = whereLabel() + ' (' + (state.town !== 'all' ? (n.t[state.town] || 0) : state.area !== 'all' ? (n.c[state.area] || 0) : n.all) + ')';
+    els.whereBtn.classList.toggle('active', state.area !== 'all' || state.town !== 'all');
+    const opt = (lvl, val, label, cnt, sel) => '<button class="wopt lvl' + lvl + (sel ? ' sel' : '') + (cnt ? '' : ' zero') + '" data-where="' + esc(val) + '" role="option" aria-selected="' + sel + '">' +
+      '<span>' + esc(label) + '</span><span class="n">' + cnt + '</span></button>';
+    let h = opt(0, 'all', '🗺️ All of NI', n.all, state.area === 'all' && state.town === 'all') + '<div class="wsep"></div>';
+    AREAS.forEach(c => {
+      h += opt(1, 'c:' + c, c, n.c[c] || 0, state.area === c && state.town === 'all');
+      townsOf(c).forEach(t => { const k = c + '|' + t; if (n.t[k] || state.town === k) h += opt(2, 't:' + k, t, n.t[k] || 0, state.town === k); });
     });
-    if (!found) state.town = 'all';
-    sel.innerHTML = html;
-    sel.value = state.town;
-    sel.classList.toggle('active', state.town !== 'all');
+    els.whereList.innerHTML = h;
+  }
+  function activeFilterCount() {
+    return ['near', 'weekend', 'free', 'sen', 'general', 'new', 'saved'].filter(k => state[k]).length +
+      (state.area !== 'all' || state.town !== 'all' ? 1 : 0) + (state.type !== 'all' ? 1 : 0) + (state.query && state.query.trim() ? 1 : 0);
+  }
+  function setWhere(v) {
+    if (v === 'all') { state.area = 'all'; state.town = 'all'; }
+    else if (v.startsWith('c:')) { state.area = v.slice(2); state.town = 'all'; }
+    else { const k = v.slice(2); state.town = k; state.area = k.split('|')[0]; }
   }
   function syncChips() {
-    els.quick.querySelectorAll('[data-q]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.q])));
-    els.areas.querySelectorAll('[data-area]').forEach(b => b.setAttribute('aria-pressed', String(state.area === b.dataset.area)));
-    els.types.querySelectorAll('[data-type]').forEach(b => b.setAttribute('aria-pressed', String(state.type === b.dataset.type)));
+    document.querySelectorAll('.menu [data-q]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.q])));
+    if (allTypes.length || els.quick.children.length) renderChipRow();
+    els.quick.scrollLeft = 0;
   }
 
   // ---------- Details ----------
@@ -369,7 +451,7 @@
   els.search.addEventListener('input', () => { state.query = els.search.value; render(); });
   els.searchClear.addEventListener('click', () => { els.search.value = ''; state.query = ''; render(); els.search.focus(); });
   els.search.addEventListener('keydown', e => { if (e.key === 'Escape') { els.search.value = ''; state.query = ''; render(); } });
-  els.hiddenChip.addEventListener('click', () => { state.showHidden = !state.showHidden; render(); window.scrollTo(0,0); });
+  els.hiddenChip.addEventListener('click', () => { els.menu.hidden = true; state.showHidden = !state.showHidden; render(); window.scrollTo(0,0); });
   document.addEventListener('click', e => {
     const hb = e.target.closest('[data-hide]');
     if (hb) { e.stopPropagation(); e.preventDefault(); setHidden(hb.dataset.hide, true); return; }
@@ -380,15 +462,32 @@
     if (h) { e.stopPropagation(); e.preventDefault(); toggleSave(h.dataset.heart); return; }
     if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
     const q = e.target.closest('[data-q]');
-    if (q) { state[q.dataset.q] = !state[q.dataset.q]; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
+    if (q) { if (q.closest('.menu')) { els.menu.hidden = true; els.menuBtn.setAttribute('aria-expanded', 'false'); } state[q.dataset.q] = !state[q.dataset.q]; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
     const a = e.target.closest('[data-area]');
     if (a) { state.area = a.dataset.area; state.town = 'all'; syncChips(); render(); return; }
     const t = e.target.closest('[data-type]');
-    if (t) { state.type = t.dataset.type; syncChips(); render(); return; }
+    if (t) { state.type = state.type === t.dataset.type ? 'all' : t.dataset.type; syncChips(); render(); return; }
     const card = e.target.closest('.card[data-id]');
     if (card) location.hash = 'e/' + encodeURIComponent(card.dataset.id);
   });
-  if (els.towns) els.towns.addEventListener('change', () => { state.town = els.towns.value; render(); });
+  const closePops = () => { els.whereList.hidden = true; els.whereBtn.setAttribute('aria-expanded', 'false'); els.menu.hidden = true; els.menuBtn.setAttribute('aria-expanded', 'false'); };
+  els.whereBtn.addEventListener('click', e => { e.stopPropagation(); const open = els.whereList.hidden; closePops(); els.whereList.hidden = !open; els.whereBtn.setAttribute('aria-expanded', String(open)); });
+  els.menuBtn.addEventListener('click', e => { e.stopPropagation(); const open = els.menu.hidden; closePops(); els.menu.hidden = !open; els.menuBtn.setAttribute('aria-expanded', String(open)); });
+  document.addEventListener('click', e => {
+    const st = e.target.closest('[data-sec-toggle]');
+    if (st) { toggleSection(st.dataset.secToggle); return; }
+    if (e.target.closest('#expand-all')) {
+      const open = els.expandAll.dataset.mode === 'expand';
+      els.list.querySelectorAll('.tsec').forEach(x => { const key = x.dataset.sec; if (open) expanded.add(key); else expanded.delete(key); expandedTouched.add(key); setSection(x, open); });
+      persistExpanded(); syncExpandAll(); return;
+    }
+    const rb = e.target.closest('[data-radius]');
+    if (rb) { radius = +rb.dataset.radius; try { localStorage.setItem(RADIUS_KEY, String(radius)); } catch (_) {} if (!userPos && geoNotice && geoNotice.indexOf('unavailable') >= 0) geoNotice = 'Location unavailable, so showing places ' + radiusText() + ' of Newtownabbey instead, nearest first.'; render(); return; }
+    const w = e.target.closest('[data-where]');
+    if (w) { setWhere(w.dataset.where); closePops(); render(); return; }
+    if (e.target.closest('#clear-chip')) { ['near','weekend','free','sen','general','new','saved'].forEach(k => state[k] = false); state.area = 'all'; state.town = 'all'; state.type = 'all'; state.query = ''; els.search.value = ''; syncChips(); render(); return; }
+    if (!e.target.closest('.menu, .where-list')) closePops();
+  }, true);
   document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && e.target.matches('.card[data-id]')) location.hash = 'e/' + encodeURIComponent(e.target.dataset.id);
     if (e.key === 'Escape' && !els.detail.hidden && e.target !== els.search) history.back();
@@ -400,13 +499,12 @@
     allEvents = (data && data.events) || [];
     if (source === 'live') pruneHidden();
     persistHidden();
-    chipRow(els.areas, 'area', AREAS, '🗺️ All areas');
-    chipRow(els.types, 'type', [...new Set(allEvents.map(e => e.type))].sort(), '🔎 All types');
+    allTypes = [...new Set(allEvents.map(e => e.type).filter(Boolean))].sort();
     syncChips();
     render();
     route();
     const when = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
-    statusText = allEvents.length + ' events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
+    statusText = 'events & places' + when + (source === 'live' ? '' : ' (' + source + ')');
     render();
   }
   async function fetchRemote() {

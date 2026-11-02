@@ -11,8 +11,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
-  <script>
-    // v1.7.3: apply saved theme before CSS paints (no flash). 'auto' | 'light' | 'dark'
+    <script>
+    // v1.8.0 compact layout. v1.7.3: apply saved theme before CSS paints (no flash). 'auto' | 'light' | 'dark'
     (function () {
       var m = 'auto'; try { m = localStorage.getItem('sen-events-ni-theme-v1') || 'auto'; } catch (e) {}
       if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
@@ -23,11 +23,21 @@
 </head>
 <body>
   <header class="app-header">
-    <div class="brand">
-      <img class="logo logo-img" src="icon-192.png" alt="" aria-hidden="true" width="40" height="40">
-      <div>
-        <h1>SEN Events NI</h1>
-        <p class="subtitle">Across Northern Ireland</p>
+    <div class="brand brand-slim">
+      <img class="logo logo-img" src="icon-192.png" alt="" aria-hidden="true" width="28" height="28">
+      <h1>SEN Events NI</h1>
+      <div class="hdr-actions">
+        <button id="notify-chip" class="hdr-btn" aria-pressed="true" hidden title="Notifications">🔔</button>
+        <button id="theme-btn" class="hdr-btn theme-btn" type="button" aria-label="Theme"><span aria-hidden="true">🌓</span></button>
+        <div class="menu-wrap">
+          <button id="menu-btn" class="hdr-btn menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More options">⋮</button>
+          <div id="menu" class="menu" role="menu" hidden>
+            <button id="hidden-chip" class="menu-item" role="menuitem" aria-pressed="false">Show hidden (0)</button>
+            <button class="menu-item" role="menuitem" data-q="saved" data-menu-q="1">♥ Saved only</button>
+            <button class="menu-item" role="menuitem" data-q="new" data-menu-q="1">✨ Found today</button>
+            <button class="menu-item" role="menuitem" data-q="general" data-menu-q="1">🎈 General events only</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="search-row">
@@ -36,25 +46,21 @@
         <input id="search" type="search" placeholder="Search events, venues, towns…" autocomplete="off" enterkeyhint="search" aria-label="Search" />
         <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" hidden>✕</button>
       </label>
-      <button id="hidden-chip" class="chip chip-hidden" aria-pressed="false">Show hidden (0)</button>
-      <button id="notify-chip" class="chip chip-hidden" aria-pressed="true" hidden title="Notify me about new events at about 9:45am and 5:45pm">🔔</button>
-      <button id="theme-btn" class="chip chip-hidden theme-btn" type="button" aria-label="Theme: Auto (follows device)" title="Theme: Auto"><span aria-hidden="true">🌓</span></button>
     </div>
-    <nav class="chips" id="quick-chips" aria-label="Quick filters">
-      <button class="chip" data-q="near" aria-pressed="false">📍 Near me</button>
-      <button class="chip" data-q="weekend" aria-pressed="false">📅 This weekend</button>
-      <button class="chip" data-q="free" aria-pressed="false">🆓 Free</button>
-      <button class="chip" data-q="sen" aria-pressed="false">💙 SEN only</button>
-      <button class="chip" data-q="general" aria-pressed="false">🎈 General</button>
-      <button class="chip" data-q="new" aria-pressed="false">✨ Found today</button>
-      <button class="chip" data-q="saved" aria-pressed="false">♥ Saved</button>
-    </nav>
-    <nav class="chips chips-secondary" id="area-chips" aria-label="County"></nav>
-    <div class="town-row"><label class="sr-only" for="town-select">Town</label><select id="town-select" class="town-select" aria-label="Town"><option value="all">🏘️ All towns</option></select></div>
-    <nav class="chips chips-secondary" id="type-chips" aria-label="Type"></nav>
+    <div class="where-row">
+      <button id="where-btn" class="where-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="where-pin" aria-hidden="true">📍</span><span class="where-lbl">Where</span><span id="where-val" class="where-val">All of NI</span><span class="where-caret" aria-hidden="true"></span>
+      </button>
+      <div id="where-list" class="where-list" role="listbox" hidden></div>
+    </div>
+    <nav class="chips" id="quick-chips" aria-label="Filters"></nav>
+    <div id="radius-row" class="radius-row" role="group" aria-label="Near me distance" hidden>
+      <span class="radius-lbl">Within</span>
+      <button class="rad" type="button" data-radius="5">5 mi</button><button class="rad" type="button" data-radius="10">10 mi</button><button class="rad" type="button" data-radius="25">25 mi</button><button class="rad" type="button" data-radius="50">50 mi</button><button class="rad" type="button" data-radius="0">Any</button>
+    </div>
   </header>
 
-  <p id="status" class="status" role="status"></p>
+  <div class="status-row"><p id="status" class="status" role="status"></p><button id="expand-all" class="expand-all" type="button" data-mode="expand" hidden>Expand all</button></div>
   <main id="list" class="event-list" aria-live="polite">
     <div class="card skeleton"><div class="sk sk-t"></div><div class="sk"></div><div class="sk sk-s"></div></div>
     <div class="card skeleton"><div class="sk sk-t"></div><div class="sk"></div><div class="sk sk-s"></div></div>
