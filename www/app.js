@@ -7,9 +7,12 @@
   const CACHE_KEY = 'sen-events-ni-cache-v1';
   const SAVED_KEY = 'sen-events-ni-saved-v1';
   const HIDDEN_KEY = 'sen-events-ni-hidden-v1';
-  const NEAR = 'Newtownabbey & North Belfast';
-  const AREAS = [NEAR, 'Belfast', 'Rest of Antrim', 'County Down'];
-  const AREA_ORDER = { [NEAR]: 0, 'Belfast': 1, 'Rest of Antrim': 2, 'County Down': 3 };
+  // Belfast first, then counties by population. The area filter uses ev.county (falls back to ev.area).
+  const AREAS = ['Belfast', 'County Antrim', 'County Down', 'County Armagh', 'County Londonderry', 'County Tyrone', 'County Fermanagh'];
+  const AREA_ORDER = Object.fromEntries(AREAS.map((a, i) => [a, i]));
+  const HOME = { lat: 54.65823, lng: -5.90542 }; // Newtownabbey: "Near me" fallback when location is unavailable
+  const countyOf = ev => ev.county || ev.area || '';
+  const placeOf = ev => { const c = countyOf(ev); return (ev.town && ev.town !== c) ? ev.town + ', ' + c : (ev.town || c); };
   const TYPE_ICONS = {
     'Halloween': '🎃', 'Christmas': '🎄', 'Theatre': '🎭', 'Cinema': '🎬', 'Sensory play': '🫧',
     'Swim/Leisure': '🏊', 'Library/Storytime': '📚', 'Museum/Attraction': '🏛️', 'Outdoors': '🌳',
@@ -21,9 +24,9 @@
 
   const $ = id => document.getElementById(id);
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), areas: $('area-chips'),
-    types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
+    towns: $('town-chips'), types: $('type-chips'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
 
-  const state = { near: false, weekend: false, free: false, sen: false, general: false, new: false, saved: false, area: 'all', type: 'all', query: '', showHidden: false };
+  const state = { near: false, weekend: false, free: false, sen: false, general: false, new: false, saved: false, area: 'all', town: 'all', type: 'all', query: '', showHidden: false };
   let allEvents = [];
   let saved = new Set();
   try { saved = new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]')); } catch (_) {}
@@ -47,7 +50,7 @@
   function matchesQuery(ev) {
     const words = norm(state.query).split(/\s+/).filter(Boolean);
     if (!words.length) return true;
-    const hay = norm([ev.name, ev.description, ev.venue, ev.town].join(' '));
+    const hay = norm([ev.name, ev.description, ev.venue, ev.town, countyOf(ev)].join(' '));
     return words.every(w => hay.includes(w));
   }
 
@@ -67,15 +70,16 @@
   const RADIUS_MI = 10;
   let userPos = null, geoNotice = '';
   function hasCoords(ev) { return typeof ev.lat === 'number' && typeof ev.lng === 'number'; }
-  function distMi(ev) {
-    if (!userPos || !hasCoords(ev)) return null;
-    const r = Math.PI / 180, dLat = (ev.lat - userPos.lat) * r, dLng = (ev.lng - userPos.lng) * r;
-    const a = Math.sin(dLat / 2) ** 2 + Math.cos(userPos.lat * r) * Math.cos(ev.lat * r) * Math.sin(dLng / 2) ** 2;
+  function distMi(ev, from) {
+    const p = from || userPos;
+    if (!p || !hasCoords(ev)) return null;
+    const r = Math.PI / 180, dLat = (ev.lat - p.lat) * r, dLng = (ev.lng - p.lng) * r;
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(p.lat * r) * Math.cos(ev.lat * r) * Math.sin(dLng / 2) ** 2;
     return 3958.8 * 2 * Math.asin(Math.sqrt(a));
   }
   function requestLocation() {
     geoNotice = 'Finding your location…';
-    const fail = () => { userPos = null; geoNotice = 'Location unavailable, so showing Newtownabbey & North Belfast instead.'; render(); };
+    const fail = () => { userPos = null; geoNotice = 'Location unavailable, so showing places within ' + RADIUS_MI + ' miles of Newtownabbey instead.'; render(); };
     if (!navigator.geolocation) return fail();
     navigator.geolocation.getCurrentPosition(p => {
       userPos = { lat: p.coords.latitude, lng: p.coords.longitude }; geoNotice = ''; render();
@@ -137,7 +141,7 @@
 
   function anyFilter() {
     return !!(state.near || state.weekend || state.free || state.sen || state.general || state.new || state.saved ||
-      state.area !== 'all' || state.type !== 'all' || (state.query && state.query.trim()));
+      state.area !== 'all' || state.town !== 'all' || state.type !== 'all' || (state.query && state.query.trim()));
   }
   function filtered(wantHidden) {
     return allEvents.filter(ev => {
@@ -145,8 +149,7 @@
       if (hidden.has(ev.id) !== !!wantHidden) return false;
       if (!matchesQuery(ev)) return false;
       if (state.near) {
-        if (userPos) { const d = distMi(ev); if (d !== null && d > RADIUS_MI) return false; }
-        else if (ev.area !== NEAR) return false;
+        const d = distMi(ev, userPos || HOME); if (d !== null && d > RADIUS_MI) return false;
       }
       if (state.weekend && !isWeekend(ev)) return false;
       if (state.free && !isFree(ev)) return false;
@@ -154,7 +157,8 @@
       if (state.general && !ev.general) return false;
       if (state.new && !isNew(ev)) return false;
       if (state.saved && !saved.has(ev.id)) return false;
-      if (state.area !== 'all' && ev.area !== state.area) return false;
+      if (state.area !== 'all' && countyOf(ev) !== state.area) return false;
+      if (state.town !== 'all' && ev.town !== state.town) return false;
       if (state.type !== 'all' && ev.type !== state.type) return false;
       return true;
     }).sort((a, b) => {
@@ -163,7 +167,7 @@
         if (d1 !== d2) return (d1 === null ? 9e9 : d1) - (d2 === null ? 9e9 : d2);
       }
       const s1 = startOf(a), s2 = startOf(b);
-      const k = [(AREA_ORDER[a.area] ?? 9) - (AREA_ORDER[b.area] ?? 9), (s1 ? +s1 : 9e15) - (s2 ? +s2 : 9e15)];
+      const k = [(AREA_ORDER[countyOf(a)] ?? 9) - (AREA_ORDER[countyOf(b)] ?? 9), (s1 ? +s1 : 9e15) - (s2 ? +s2 : 9e15)];
       for (const v of k) if (v) return v;
       return a.name.localeCompare(b.name);
     });
@@ -174,7 +178,7 @@
     return '<article class="card card-hidden" data-id="' + esc(ev.id) + '" tabindex="0">' +
       '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
       '<div class="card-body"><h2 class="h2-hidden">' + esc(ev.name) + '</h2>' +
-        '<p class="meta">' + esc(ev.venue) + ', ' + esc(ev.town) + '</p></div>' +
+        '<p class="meta">' + esc(ev.venue) + ' · ' + esc(placeOf(ev)) + '</p></div>' +
       '<button class="unhide-btn" data-unhide="' + esc(ev.id) + '">' + EYE + ' Unhide</button></article>';
   }
   function updateHiddenChip() {
@@ -217,7 +221,7 @@
           '<div class="card-body">' +
             '<h2>' + esc(ev.name) + '</h2>' +
             (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
-            '<p class="meta">' + (state.near && distMi(ev) !== null ? '<span class="dist">' + distMi(ev).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ', ' + esc(ev.town) + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
+            '<p class="meta">' + (state.near && distMi(ev) !== null ? '<span class="dist">' + distMi(ev).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span>' + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
             '<div class="pills">' + pills(ev) + '</div>' +
           '</div>' + heartBtn(ev) + hideBtn(ev) +
         '</article>').join('');
@@ -230,7 +234,19 @@
       '<button class="chip" data-' + key + '="' + esc(v) + '" aria-pressed="' + (state[key] === v) + '">' +
       (v === 'all' ? labelAll : (key === 'type' ? typeIcon(v) + ' ' : '') + esc(v)) + '</button>').join('');
   }
+  // Second row: towns with (upcoming) events in the selected county, most events first.
+  function renderTownChips() {
+    if (state.area === 'all') { els.towns.hidden = true; els.towns.innerHTML = ''; state.town = 'all'; return; }
+    const n = {};
+    allEvents.forEach(ev => { if (!isPast(ev) && countyOf(ev) === state.area && ev.town) n[ev.town] = (n[ev.town] || 0) + 1; });
+    const towns = Object.keys(n).sort((a, b) => n[b] - n[a] || a.localeCompare(b));
+    if (state.town !== 'all' && !n[state.town]) state.town = 'all';
+    els.towns.hidden = towns.length < 2;
+    els.towns.innerHTML = ['all', ...towns].map(v => '<button class="chip chip-town" data-town="' + esc(v) + '" aria-pressed="' + (state.town === v) + '">' +
+      (v === 'all' ? '🏘️ All towns' : esc(v) + ' <span class="chip-count">' + n[v] + '</span>') + '</button>').join('');
+  }
   function syncChips() {
+    renderTownChips();
     els.quick.querySelectorAll('[data-q]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.q])));
     els.areas.querySelectorAll('[data-area]').forEach(b => b.setAttribute('aria-pressed', String(state.area === b.dataset.area)));
     els.types.querySelectorAll('[data-type]').forEach(b => b.setAttribute('aria-pressed', String(state.type === b.dataset.type)));
@@ -251,7 +267,7 @@
     const long = isLong(ev);
     const day = long && s0 < today() ? today() : s0; // first upcoming date for long runs
     const tm = parseTimes(ev.time);
-    const where = ev.venue + ', ' + ev.town;
+    const where = ev.venue + ', ' + placeOf(ev);
     const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
     let details = '';
     if (long) details += 'Runs ' + fmt(s0) + ' – ' + fmt(endOf(ev)) + ' (pick the date that suits on the booking page).\n';
@@ -274,7 +290,7 @@
       '&dates=' + dates + '&ctz=Europe/London&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent(details);
     window.open(url, '_blank', 'noopener');
   }
-  const mapsUrl = ev => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ev.venue + ', ' + ev.town + ', Northern Ireland');
+  const mapsUrl = ev => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ev.venue + ', ' + placeOf(ev) + ', Northern Ireland');
 
   function row(icon, label, value) {
     return value ? '<div class="info-row"><span class="k" aria-hidden="true">' + icon + '</span><div class="v"><span class="lbl">' + label + '</span>' + esc(value) + '</div></div>' : '';
@@ -295,8 +311,8 @@
         '<div class="info">' +
           row('🗓️', ev.recurring ? 'Hours' : 'When', dateLabel(ev)) +
           (ev.recurring && ev.time ? row('⏰', 'Time', ev.time) : '') +
-          row('📍', 'Where', ev.venue + ', ' + ev.town) +
-          row('🧭', 'Area', ev.area) +
+          row('📍', 'Where', ev.venue + ', ' + placeOf(ev)) +
+          row('🧭', 'County', countyOf(ev)) +
           row('💷', 'Price', ev.price) +
         '</div>' +
         '<div class="info"><div class="info-row"><span class="k" aria-hidden="true">💙</span><div class="v why"><span class="lbl">Why it suits / what to expect</span>' + esc(ev.description) + '</div></div></div>' +
@@ -347,7 +363,9 @@
     const q = e.target.closest('[data-q]');
     if (q) { state[q.dataset.q] = !state[q.dataset.q]; if (q.dataset.q === 'near' && state.near) requestLocation(); syncChips(); render(); return; }
     const a = e.target.closest('[data-area]');
-    if (a) { state.area = a.dataset.area; syncChips(); render(); return; }
+    if (a) { state.area = a.dataset.area; state.town = 'all'; syncChips(); render(); return; }
+    const tw = e.target.closest('[data-town]');
+    if (tw) { state.town = tw.dataset.town; syncChips(); render(); return; }
     const t = e.target.closest('[data-type]');
     if (t) { state.type = t.dataset.type; syncChips(); render(); return; }
     const card = e.target.closest('.card[data-id]');

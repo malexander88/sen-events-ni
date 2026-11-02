@@ -139,3 +139,12 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .pill-general { background: var(--accent-soft); color: var(--accent-ink); border: 1px solid var(--accent-border); padding: 2px 8px; }
 @media (prefers-color-scheme: dark) { .pill-general { background: transparent; color: var(--accent); border-color: var(--accent); } .pill-sen { background: #3a5a99; } }
 .dist { color: var(--primary); }
+
+/* v1.8 town filter row (shown when a county chip is selected) */
+.chips-towns[hidden] { display: none; }
+.chips-towns { padding-top: 0; }
+.chips-towns .chip { font-size: .76rem; padding: 4px 10px; border-style: dashed; }
+.chips-towns .chip[aria-pressed="true"] { border-style: solid; }
+.chip-count { display: inline-block; min-width: 1.4em; margin-left: 4px; padding: 0 5px; border-radius: 999px; font-size: .7rem; font-weight: 700; background: var(--primary); color: var(--primary-ink); }
+.chip[aria-pressed="true"] .chip-count { background: var(--accent-ink); color: var(--accent); }
+.place { font-weight: 600; }
