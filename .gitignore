@@ -14,3 +14,8 @@ captures/
 node_modules/
 dist/
 *.apk
+# Play release signing secrets: never commit
+*.jks
+keystore.properties
+upload-keystore-password.txt
+*.aab

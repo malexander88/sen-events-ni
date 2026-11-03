@@ -12,6 +12,10 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     private WebView webView;
+    private android.widget.LinearLayout root;
+    private android.view.View statusStrip;
+    private Object backCallback; // android.window.OnBackInvokedCallback on API 33+
+    private boolean backRegistered;
     private String geoOrigin;
     private android.webkit.GeolocationPermissions.Callback geoCallback;
     private static final int REQ_LOC = 11;
@@ -21,9 +25,33 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
+        // v2.0: targetSdk 36 forces edge-to-edge, so lay out a navy status-bar strip above the WebView
+        // and pad the root for the navigation bar / keyboard ourselves.
+        statusStrip = new android.view.View(this);
+        statusStrip.setBackgroundColor(BAR);
+        root = new android.widget.LinearLayout(this);
+        root.setOrientation(android.widget.LinearLayout.VERTICAL);
+        root.addView(statusStrip, new android.widget.LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 0));
+        root.addView(webView, new android.widget.LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
+        root.setOnApplyWindowInsetsListener((v, insets) -> {
+            int top, left, right, bottom;
+            if (android.os.Build.VERSION.SDK_INT >= 30) {
+                android.graphics.Insets sb = insets.getInsets(android.view.WindowInsets.Type.systemBars() | android.view.WindowInsets.Type.displayCutout());
+                android.graphics.Insets ime = insets.getInsets(android.view.WindowInsets.Type.ime());
+                top = sb.top; left = sb.left; right = sb.right; bottom = Math.max(sb.bottom, ime.bottom);
+            } else {
+                top = insets.getSystemWindowInsetTop(); left = insets.getSystemWindowInsetLeft();
+                right = insets.getSystemWindowInsetRight(); bottom = insets.getSystemWindowInsetBottom();
+            }
+            android.view.ViewGroup.LayoutParams lp = statusStrip.getLayoutParams();
+            if (lp.height != top) { lp.height = top; statusStrip.setLayoutParams(lp); }
+            v.setPadding(left, 0, right, bottom);
+            return android.os.Build.VERSION.SDK_INT >= 30 ? android.view.WindowInsets.CONSUMED : insets.consumeSystemWindowInsets();
+        });
+        if (android.os.Build.VERSION.SDK_INT >= 30) getWindow().setDecorFitsSystemWindows(false);
         // v1.7.3: paint the saved theme's background before the page loads (no white flash in dark mode)
         applyTheme(isDarkFor(getSharedPreferences(NewEventsJobService.PREFS, MODE_PRIVATE).getString(KEY_THEME, "auto")));
-        setContentView(webView);
+        setContentView(root);
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -35,7 +63,7 @@ public class MainActivity extends Activity {
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setAllowFileAccessFromFileURLs(true);
         // v1.9.2: OpenStreetMap's tile policy asks apps to identify themselves
-        settings.setUserAgentString(settings.getUserAgentString() + " OutAndAboutNI/1.9 (com.senevents.ni; +https://github.com/malexander88/sen-events-ni)");
+        settings.setUserAgentString(settings.getUserAgentString() + " OutAndAboutNI/" + appVersion() + " (com.senevents.ni; +https://github.com/malexander88/sen-events-ni)");
 
         webView.addJavascriptInterface(new Object() {
             @android.webkit.JavascriptInterface
@@ -125,6 +153,12 @@ public class MainActivity extends Activity {
                 try { startActivity(new Intent(Intent.ACTION_VIEW, uri)); } catch (Exception ignored) {}
                 return true;
             }
+
+            @Override
+            public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
+                super.doUpdateVisitedHistory(view, url, isReload);
+                updateBackCallback();
+            }
         });
 
         settings.setGeolocationEnabled(true);
@@ -133,7 +167,7 @@ public class MainActivity extends Activity {
             public void onGeolocationPermissionsShowPrompt(String origin, android.webkit.GeolocationPermissions.Callback callback) {
                 if (hasLocation()) { callback.invoke(origin, true, false); return; }
                 geoOrigin = origin; geoCallback = callback;
-                requestPermissions(new String[]{"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"}, REQ_LOC);
+                requestPermissions(new String[]{"android.permission.ACCESS_COARSE_LOCATION"}, REQ_LOC);
             }
         });
 
@@ -178,12 +212,27 @@ public class MainActivity extends Activity {
             d.setSystemUiVisibility(f);
         }
         if (webView != null) webView.setBackgroundColor(bg);
+        if (root != null) root.setBackgroundColor(bg); // fills the nav-bar / keyboard padding
+    }
+
+    private String appVersion() {
+        try { return getPackageManager().getPackageInfo(getPackageName(), 0).versionName; } catch (Exception e) { return "2"; }
+    }
+
+    /** targetSdk 36: onBackPressed is no longer called on Android 16+, so register an
+     *  OnBackInvokedCallback only while the WebView has history (keeps predictive back-to-home). */
+    private void updateBackCallback() {
+        if (android.os.Build.VERSION.SDK_INT < 33 || webView == null) return;
+        boolean want = webView.canGoBack();
+        if (want == backRegistered) return;
+        if (backCallback == null) backCallback = (android.window.OnBackInvokedCallback) () -> { if (webView.canGoBack()) webView.goBack(); };
+        if (want) getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT, (android.window.OnBackInvokedCallback) backCallback);
+        else getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback((android.window.OnBackInvokedCallback) backCallback);
+        backRegistered = want;
     }
 
     private boolean hasLocation() {
-        int ok = android.content.pm.PackageManager.PERMISSION_GRANTED;
-        return checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == ok
-                || checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") == ok;
+        return checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") == android.content.pm.PackageManager.PERMISSION_GRANTED;
     }
 
     @Override

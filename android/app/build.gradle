@@ -2,21 +2,40 @@ plugins {
     id 'com.android.application'
 }
 
+// Release signing: secrets live in android/keystore.properties (git-ignored) or the file named
+// by the KEYSTORE_PROPERTIES env var. Without it, release builds are produced unsigned.
+def keystorePropsFile = System.getenv('KEYSTORE_PROPERTIES') ? file(System.getenv('KEYSTORE_PROPERTIES')) : rootProject.file('keystore.properties')
+def keystoreProps = new Properties()
+if (keystorePropsFile.exists()) { keystorePropsFile.withInputStream { keystoreProps.load(it) } }
+
 android {
     namespace 'com.senevents.ni'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.senevents.ni"
         minSdk 24
-        targetSdk 34
-        versionCode 22
-        versionName "1.9.5"
+        targetSdk 36
+        versionCode 200
+        versionName "2.0.0"
+    }
+
+    signingConfigs {
+        release {
+            if (keystoreProps['storeFile']) {
+                storeFile file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+            if (keystoreProps['storeFile']) signingConfig signingConfigs.release
         }
         debug {
             minifyEnabled false
