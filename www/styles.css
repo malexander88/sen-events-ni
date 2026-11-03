@@ -328,16 +328,3 @@ body.view-map .app-footer { display: none; }
 :root[data-theme="dark"] .pill-book { background: #213050; color: #dfe7f5; } :root[data-theme="dark"] .pill-book-soon { background: #FDC722; color: #173766; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill-book { background: #213050; color: #dfe7f5; } :root:not([data-theme="light"]) .pill-book-soon { background: #FDC722; color: #173766; } }
 .meta.parking { font-size: .82rem; }
-/* v1.9.4 parent reviews */
-.reviews { margin-top: 14px; }
-.rev-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.rev-head .lbl { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-.rev-avg { font-weight: 700; font-size: .9rem; }
-.rev-stars { color: #e0a800; letter-spacing: 1px; }
-.rev { border-top: 1px solid var(--surface-2); padding: 10px 0 4px; }
-.rev p { margin: 0 0 6px; } .rev-text { white-space: pre-line; } .rev-tips { font-size: .88rem; color: var(--muted); }
-.rev-none, .rev-note { color: var(--muted); font-size: .85rem; margin: 8px 0; }
-.rev-btn { display: block; text-align: center; margin-top: 8px; }
-.pill-rev { background: #fff4cc; color: #7a5600; font-weight: 700; }
-:root[data-theme="dark"] .pill-rev { background: #3a3118; color: #FDC722; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill-rev { background: #3a3118; color: #FDC722; } }

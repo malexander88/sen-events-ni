@@ -169,7 +169,6 @@
     if (isFree(ev)) h += '<span class="pill pill-free">Free</span>';
     if (ev.soldOut) h += '<span class="pill pill-sold">Sold out</span>';
     else { const bk = bookingBadge(ev); if (bk) h += '<span class="pill pill-book' + (bk.soon ? ' pill-book-soon' : '') + '">' + esc(bk.text) + '</span>'; }
-    const rv = revOf(ev); if (rv.length) h += '<span class="pill pill-rev" aria-label="Rated ' + avg(rv).toFixed(1) + ' by ' + rv.length + ' parents">★ ' + avg(rv).toFixed(1) + ' (' + rv.length + ')</span>';
     h += '<span class="pill pill-type">' + esc(ev.type) + '</span>';
     return h;
   }
@@ -181,39 +180,7 @@
     if (ev.bookingRequired || bo) return { text: '🎟️ Book ahead' };
     return null;
   }
-  // ---------- v1.9.4 parent reviews (moderated: GitHub issue form -> approved into reviews.json) ----------
-  const REVIEW_URLS = ['https://malexander88.github.io/sen-events-ni/reviews.json', 'https://raw.githubusercontent.com/malexander88/sen-events-ni/main/reviews.json'];
-  const REVIEWS_CACHE = 'sen-events-ni-reviews-cache-v1';
-  let reviewsBy = new Map();
-  function setReviews(data) {
-    reviewsBy = new Map();
-    ((data && data.reviews) || []).forEach(r => { if (!r || !r.eventId || !r.text) return; const k = r.eventId; if (!reviewsBy.has(k)) reviewsBy.set(k, []); reviewsBy.get(k).push(r); });
-  }
-  try { setReviews(JSON.parse(localStorage.getItem(REVIEWS_CACHE) || 'null')); } catch (_) {}
-  async function loadReviews() {
-    let data = null;
-    for (const u of REVIEW_URLS) { try { const r = await fetch(u + '?t=' + Date.now(), { cache: 'no-store' }); if (r.ok && !r.headers.get('X-OA-Offline')) { data = await r.json(); break; } } catch (_) {} }
-    if (data) { try { localStorage.setItem(REVIEWS_CACHE, JSON.stringify(data)); } catch (_) {} }
-    else if (!reviewsBy.size) { try { data = await (await fetch('reviews.json')).json(); } catch (_) {} }
-    if (data) { setReviews(data); if (allEvents.length) { render(); if (location.hash.startsWith('#e/')) route(); } }
-  }
-  const revOf = ev => reviewsBy.get(ev.id) || [];
-  const avg = list => list.reduce((a, r) => a + (+r.rating || 0), 0) / list.length;
-  const stars = n => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
-  const reviewUrl = ev => 'https://github.com/malexander88/sen-events-ni/issues/new?template=review.yml&title=' + encodeURIComponent('Review: ' + ev.name) +
-    '&event_id=' + encodeURIComponent(ev.id) + '&event_name=' + encodeURIComponent(ev.name + (ev.venue ? ' (' + ev.venue + ')' : ''));
-  function reviewsHtml(ev) {
-    const list = revOf(ev).slice().sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
-    let h = '<div class="info reviews"><div class="rev-head"><span class="lbl">Parent reviews</span>' +
-      (list.length ? '<span class="rev-avg" aria-label="Average ' + avg(list).toFixed(1) + ' out of 5"><span class="rev-stars">' + stars(avg(list)) + '</span> ' + avg(list).toFixed(1) + ' · ' + list.length + ' review' + (list.length === 1 ? '' : 's') + '</span>' : '') + '</div>';
-    if (!list.length) h += '<p class="rev-none">No reviews yet. Been here? Your tips could help another family.</p>';
-    list.forEach(r => {
-      h += '<div class="rev"><p class="rev-top"><span class="rev-stars" aria-label="' + (+r.rating) + ' out of 5">' + stars(+r.rating) + '</span> <b>' + esc(r.author || 'A parent') + '</b>' + (r.visited ? ' · visited ' + esc(r.visited) : r.date ? ' · ' + esc(r.date) : '') + '</p>' +
-        '<p class="rev-text">' + esc(r.text) + '</p>' + (r.senNotes ? '<p class="rev-tips"><b>Tips for SEN families:</b> ' + esc(r.senNotes) + '</p>' : '') + '</div>';
-    });
-    return h + '<a class="btn btn-secondary rev-btn" href="' + esc(reviewUrl(ev)) + '" target="_blank" rel="noopener noreferrer">✍️ Leave a review</a>' +
-      '<p class="rev-note">Opens a short form on GitHub (free account needed). Reviews are read by a person before they appear here.</p></div>';
-  }
+  try { localStorage.removeItem('sen-events-ni-reviews-cache-v1'); } catch (_) {} // v1.9.5: reviews removed
   const heartBtn = ev => '<button class="heart" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) +
     '" aria-label="' + (saved.has(ev.id) ? 'Remove from saved' : 'Save') + '">' + (saved.has(ev.id) ? '♥' : '♡') + '</button>';
 
@@ -619,7 +586,7 @@
         '<div class="btn-row">' +
           (dated ? '<button class="btn btn-secondary" data-cal>🗓️ Add to calendar</button>' : '') +
           '<a class="btn btn-secondary" href="' + esc(mapsUrl(ev)) + '" target="_blank" rel="noopener noreferrer">🧭 Directions</a>' +
-        '</div>' + reviewsHtml(ev) +
+        '</div>' +
       '</div>';
     els.detail.hidden = false;
     els.detail.scrollTop = 0;
@@ -797,5 +764,4 @@
   window.senShowNew = function () { state.new = true; if (location.hash) location.hash = ''; syncChips(); render(); };
   syncChips();
   init();
-  loadReviews();
 })();
