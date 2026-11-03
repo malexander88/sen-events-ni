@@ -99,7 +99,7 @@
     syncReminders();
   };
   const findEvent = id => allEvents.find(x => x.id === id) || savedItems[id] || null;
-  let statusText = '';
+  let statusText = '', statusWhen = '';
   let hidden = new Set();
   try { hidden = new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]')); } catch (_) {}
   const persistHidden = () => {
@@ -359,7 +359,7 @@
     if (state.showHidden) {
       const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
       const hid = filtered(true);
-      els.status.textContent = anyFilter() ? hid.length + ' of ' + total + ' hidden' : total + ' hidden item' + (total === 1 ? '' : 's');
+      els.status.textContent = anyFilter() ? hid.length + '/' + total + ' hidden' : total + ' hidden'; els.status.title = anyFilter() ? hid.length + ' of ' + total + ' hidden items' : total + ' hidden item' + (total === 1 ? '' : 's'); els.status.setAttribute('aria-label', els.status.title);
       els.list.innerHTML = '<div class="hidden-view-head"><h3 class="group-title group-hidden">Hidden (' + total + ')' + (hid.length !== total ? ' · ' + hid.length + ' match' : '') + '</h3>' +
         '<button class="icon-btn back-all" data-back-all="1">← Show all events</button></div>' +
         (hid.length ? hid.map(hiddenCard).join('') : '<p class="empty empty-sm">' + (total ? 'No hidden items match these filters.' : 'Nothing hidden.') + '</p>');
@@ -368,8 +368,14 @@
     const items = filtered(false);
     if (anyFilter()) {
       const all = allEvents.filter(ev => !isPast(ev) && !hidden.has(ev.id)).length;
-      els.status.textContent = items.length + ' of ' + all + ' events & places';
-    } else if (statusText) els.status.textContent = items.length + ' ' + statusText;
+      els.status.textContent = items.length + '/' + all;
+      els.status.title = items.length + ' of ' + all + ' events & places' + statusWhen;
+      els.status.setAttribute('aria-label', items.length + ' of ' + all + ' events and places shown');
+    } else if (statusText) {
+      els.status.textContent = items.length + ' ' + statusText;
+      els.status.title = items.length + ' events & places' + statusWhen;
+      els.status.setAttribute('aria-label', items.length + ' events and places' + statusWhen);
+    }
     const notice = state.near && geoNotice ? '<p class="geo-notice">' + esc(geoNotice) + '</p>' : (state.near && userPos ? '<p class="geo-notice geo-ok">📍 Places ' + radiusText() + ' of you, nearest first</p>' : '');
     if (!items.length) {
       els.list.innerHTML = notice + '<p class="empty">' + (state.query ? 'No matches for “' + esc(state.query.trim()) + '”.' : state.saved ? 'Nothing saved yet. Tap ♡ on anything you like.' : 'Nothing matches these filters right now.') + '</p>';
@@ -446,7 +452,7 @@
     const k = activeFilterCount();
     const qBtn = (key, label) => '<button class="chip" data-q="' + key + '" aria-pressed="' + !!state[key] + '">' + label + '</button>';
         const h = QUICK.map(([key, l]) => qBtn(key, l)).join('');
-    els.clear.hidden = !k; els.clear.textContent = 'Clear filters (' + k + ')';
+    els.clear.hidden = !k; els.clear.textContent = 'Clear (' + k + ')'; els.clear.setAttribute('aria-label', 'Clear ' + k + ' filter' + (k === 1 ? '' : 's'));
     els.quick.innerHTML = h;
     els.radius.hidden = !state.near;
     els.radius.querySelectorAll('[data-radius]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.radius === radius)));
@@ -756,8 +762,9 @@
     syncChips();
     render();
     route();
-    const when = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
-    statusText = 'events & places' + when;
+    // Keep the row short so it never wraps on 320px phones; the update date lives in the tooltip/aria-label.
+    statusWhen = data.updatedAt ? ' · updated ' + data.updatedAt.slice(0, 10) : '';
+    statusText = 'events';
     render();
   }
   async function fetchRemote() {

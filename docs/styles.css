@@ -359,3 +359,14 @@ body.view-map .app-footer { display: none; }
 /* v2.0.1: section names wrap between words, not inside one (e.g. "Seasonal" on 320px phones) */
 .tsec-name { min-width: min-content; }
 @media (max-width: 340px) { .tsec-head { gap: 8px; } .tsec-new { font-size: .7rem; padding: 3px 6px; } }
+
+/* Results row: one line down to 320px (compact "740/740" count, nowrap links) */
+.status-row { flex-wrap: nowrap; align-items: center; gap: 8px; }
+.status-row .status { flex: 1 1 auto; min-width: 0; font-size: .72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.status-row .expand-all { flex: none; white-space: nowrap; }
+.status-row .clear-link, .status-row .view-toggle { margin-right: 4px; }
+@media (max-width: 360px) {
+  .status-row { gap: 6px; padding-right: 12px; }
+  .status-row .status { margin-left: 12px; }
+  .status-row .expand-all { font-size: .78rem; }
+}
