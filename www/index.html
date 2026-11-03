@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
   <link rel="stylesheet" href="styles.css" />
     <script>
     // v1.8.0 compact layout. v1.7.3: apply saved theme before CSS paints (no flash). 'auto' | 'light' | 'dark'
@@ -61,7 +62,7 @@
   </header>
 
   <div id="offline-banner" class="offline-banner" role="status" hidden></div>
-  <div class="status-row"><p id="status" class="status" role="status"></p><button id="clear-chip" class="expand-all clear-link" type="button" hidden>Clear filters</button><button id="expand-all" class="expand-all" type="button" data-mode="expand" hidden>Expand all</button></div>
+  <div class="status-row"><p id="status" class="status" role="status"></p><button id="clear-chip" class="expand-all clear-link" type="button" hidden>Clear filters</button><button id="view-toggle" class="expand-all view-toggle" type="button">🗺️ Map</button><button id="expand-all" class="expand-all" type="button" data-mode="expand" hidden>Expand all</button></div>
   <main id="list" class="event-list" aria-live="polite">
     <div class="card skeleton"><div class="sk sk-t"></div><div class="sk"></div><div class="sk sk-s"></div></div>
     <div class="card skeleton"><div class="sk sk-t"></div><div class="sk"></div><div class="sk sk-s"></div></div>
@@ -69,12 +70,17 @@
     <div class="card skeleton"><div class="sk sk-t"></div><div class="sk"></div><div class="sk sk-s"></div></div>
   </main>
 
+  <div id="map-wrap" class="map-wrap" hidden><div id="map" class="map" role="region" aria-label="Map of events"></div>
+    <div class="map-legend" aria-hidden="true"><span><i class="lg lg-sen"></i>SEN only</span><span><i class="lg lg-gen"></i>General</span><span><i class="lg lg-mix"></i>Both</span></div>
+    <p class="map-note">Map tiles need a connection · pins show where each event or place is</p></div>
+
   <section id="detail" class="detail" hidden aria-modal="true" role="dialog"></section>
 
   <footer class="app-footer">
     <p>Past events hide automatically. The list updates when you're online.</p>
   </footer>
 
+  <script src="vendor/leaflet/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

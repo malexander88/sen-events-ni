@@ -224,11 +224,72 @@
     document.body.classList.toggle('view-hidden', state.showHidden);
     els.searchClear.hidden = !state.query;
   }
+  // ---------- v1.9.2 Map view (Leaflet + OpenStreetMap tiles; Leaflet is bundled, tiles need a connection) ----------
+  const VIEW_KEY = 'sen-events-ni-view-v1';
+  let view = 'list';
+  try { if (sessionStorage.getItem(VIEW_KEY) === 'map') view = 'map'; } catch (_) {}
+  let map = null, pinLayer = null, meLayer = null, lastPinSig = '';
+  function setView(v) {
+    view = v; try { sessionStorage.setItem(VIEW_KEY, v); } catch (_) {}
+    render(); window.scrollTo(0, 0);
+  }
+  function pinColour(list) {
+    const sen = list.filter(ev => ev.senSpecific).length;
+    return sen === list.length ? { fillColor: '#FDC722', color: '#173766' } : sen === 0 ? { fillColor: '#173766', color: '#ffffff' } : { fillColor: '#173766', color: '#FDC722' };
+  }
+  function renderMap(items) {
+    const wrap = $('map-wrap'); if (!wrap) return;
+    if (!window.L) { wrap.innerHTML = '<p class="empty">The map could not load.</p>'; return; }
+    if (!map) {
+      map = L.map('map', { zoomSnap: 0.25, zoomDelta: 0.5, zoomControl: true, attributionControl: true, tap: true }).setView([54.65, -6.6], 8);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+      pinLayer = L.layerGroup().addTo(map); meLayer = L.layerGroup().addTo(map);
+    }
+    setTimeout(() => map.invalidateSize(), 0);
+    const byPlace = new Map();
+    items.forEach(ev => { if (!hasCoords(ev)) return; const k = ev.lat.toFixed(4) + ',' + ev.lng.toFixed(4); if (!byPlace.has(k)) byPlace.set(k, []); byPlace.get(k).push(ev); });
+    const sig = items.map(ev => ev.id).join('|') + (state.near ? '|near' + radius : '');
+    if (sig === lastPinSig) return;
+    lastPinSig = sig;
+    pinLayer.clearLayers(); meLayer.clearLayers();
+    const pts = [];
+    byPlace.forEach(list => {
+      const ev0 = list[0], c = pinColour(list);
+      const m = L.circleMarker([ev0.lat, ev0.lng], Object.assign({ radius: list.length > 1 ? 10 : 8, weight: 2.5, fillOpacity: .95 }, c));
+      const head = list.length > 1 ? '<p class="mp-venue">' + esc(ev0.venue) + ' · ' + list.length + ' items</p>' : '';
+      m.bindPopup('<div class="map-pop">' + head + list.slice(0, 30).map(ev => '<a class="mp-item" href="#e/' + encodeURIComponent(ev.id) + '"><span class="mp-ico" aria-hidden="true">' + typeIcon(ev.type) + '</span><span><b>' + esc(ev.name) + '</b><br><small>' +
+        esc(runBadge(ev) || dateLabel(ev)) + (list.length > 1 ? '' : ' · ' + esc(ev.venue)) + '</small><br>' + pills(ev) + '</span></a>').join('') + (list.length > 30 ? '<p class="mp-venue">…and ' + (list.length - 30) + ' more</p>' : '') + '</div>', { maxWidth: 290, minWidth: 220, autoPanPadding: [20, 20] });
+      m.addTo(pinLayer); pts.push([ev0.lat, ev0.lng]);
+    });
+    if (state.near) {
+      const o = origin();
+      L.circleMarker([o.lat, o.lng], { radius: 7, color: '#fff', weight: 3, fillColor: '#2f7de1', fillOpacity: 1 }).bindTooltip(userPos ? 'You' : 'Newtownabbey (location unavailable)').addTo(meLayer);
+      if (radius) L.circle([o.lat, o.lng], { radius: radius * 1609.34, color: '#2f7de1', weight: 1.5, fillOpacity: .05 }).addTo(meLayer);
+      pts.push([o.lat, o.lng]);
+    }
+    map.invalidateSize();
+    const fit = () => { if (pts.length) map.fitBounds(L.latLngBounds(pts).pad(0.08), { maxZoom: 14, animate: false }); };
+    fit(); setTimeout(() => { map.invalidateSize(); fit(); }, 60);
+  }
   function render() {
     updateHiddenChip();
     renderWhere();
     renderChipRow();
     els.expandAll.hidden = true;
+    const vt = $('view-toggle');
+    if (vt) { vt.hidden = state.showHidden; vt.textContent = view === 'map' ? '☰ List' : '🗺️ Map'; vt.setAttribute('aria-label', view === 'map' ? 'Show as list' : 'Show on a map'); }
+    const mw = $('map-wrap'), inMap = view === 'map' && !state.showHidden;
+    if (mw) mw.hidden = !inMap;
+    els.list.hidden = inMap;
+    document.body.classList.toggle('view-map', inMap);
+    if (inMap) {
+      const items = filtered(false);
+      const all = allEvents.filter(ev => !isPast(ev) && !hidden.has(ev.id)).length;
+      const noLoc = items.filter(ev => !hasCoords(ev)).length;
+      els.status.textContent = (anyFilter() ? items.length + ' of ' + all : items.length) + ' on the map' + (noLoc ? ' (' + noLoc + ' without a location)' : '');
+      renderMap(items);
+      return;
+    }
     if (state.showHidden) {
       const total = allEvents.filter(ev => hidden.has(ev.id) && !isPast(ev)).length;
       const hid = filtered(true);
@@ -554,6 +615,7 @@
     const pc = e.target.closest('[data-plan-cal]');
     if (pc) { e.stopPropagation(); e.preventDefault(); const ev = findEvent(pc.dataset.planCal); if (ev) addToCalendar(ev); return; }
     if (e.target.closest('[data-plan-ics]')) { downloadIcs(Object.values(savedItems).filter(nextDate).map(calSpec), 'my-plan'); return; }
+    if (e.target.closest('#view-toggle')) { setView(view === 'map' ? 'list' : 'map'); return; }
     if (e.target.closest('#plan-btn')) { location.hash = 'plan'; return; }
     if (e.target.closest('[data-back]')) { history.length > 1 ? history.back() : (location.hash = ''); return; }
     const q = e.target.closest('[data-q]');

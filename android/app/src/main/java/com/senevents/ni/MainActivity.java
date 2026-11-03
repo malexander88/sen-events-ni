@@ -34,6 +34,8 @@ public class MainActivity extends Activity {
         // Allow the bundled file:// UI to fetch https://raw.githubusercontent.com/...events.json
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setAllowFileAccessFromFileURLs(true);
+        // v1.9.2: OpenStreetMap's tile policy asks apps to identify themselves
+        settings.setUserAgentString(settings.getUserAgentString() + " OutAndAboutNI/1.9 (com.senevents.ni; +https://github.com/malexander88/sen-events-ni)");
 
         webView.addJavascriptInterface(new Object() {
             @android.webkit.JavascriptInterface

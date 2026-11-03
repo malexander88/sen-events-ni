@@ -303,3 +303,22 @@ h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
 .offline-retry { margin-left: 6px; border: 0; background: #173766; color: #fff; border-radius: 999px; padding: 3px 10px; font: inherit; font-size: .78rem; cursor: pointer; }
 :root[data-theme="dark"] .offline-retry { background: #FDC722; color: #173766; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .offline-retry { background: #FDC722; color: #173766; } }
+/* v1.9.2 map view */
+.view-toggle { margin-right: 10px; }
+.map-wrap { position: relative; margin: 8px 12px 0; }
+.map { height: calc(100vh - 290px); min-height: 360px; border-radius: 16px; overflow: hidden; border: 1px solid var(--surface-2); z-index: 0; }
+.map-legend { position: absolute; top: 10px; right: 10px; z-index: 500; display: flex; gap: 10px; background: var(--surface); color: var(--text); border-radius: 999px; padding: 5px 12px; font-size: .75rem; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.map-legend span { display: flex; align-items: center; gap: 5px; }
+.lg { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid; }
+.lg-sen { background: #FDC722; border-color: #173766; } .lg-gen { background: #173766; border-color: #fff; box-shadow: 0 0 0 1px #173766; } .lg-mix { background: #173766; border-color: #FDC722; }
+.map-note { color: var(--muted); font-size: .75rem; text-align: center; margin: 6px 0 0; }
+body.view-map .app-footer { display: none; }
+.map-pop { max-height: 260px; overflow-y: auto; }
+.mp-venue { margin: 0 0 6px; font-weight: 700; color: #535f70; font-size: .8rem; }
+.mp-item { display: flex; gap: 8px; padding: 6px 0; border-top: 1px solid #eee; color: #1a2638 !important; text-decoration: none; }
+.mp-item:first-child, .mp-venue + .mp-item { border-top: 0; }
+.mp-item b { color: #173766; } .mp-item small { color: #535f70; } .mp-ico { font-size: 1.2rem; }
+.mp-item .pill { font-size: .65rem; padding: 1px 6px; margin: 3px 3px 0 0; display: inline-block; }
+.leaflet-container { font: inherit; }
+:root[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); } }
