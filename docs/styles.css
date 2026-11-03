@@ -322,3 +322,9 @@ body.view-map .app-footer { display: none; }
 .leaflet-container { font: inherit; }
 :root[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); } }
+/* v1.9.3 booking + parking */
+.pill-book { background: #e3eaf6; color: #173766; font-weight: 700; }
+.pill-book-soon { background: #FDC722; color: #173766; }
+:root[data-theme="dark"] .pill-book { background: #213050; color: #dfe7f5; } :root[data-theme="dark"] .pill-book-soon { background: #FDC722; color: #173766; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill-book { background: #213050; color: #dfe7f5; } :root:not([data-theme="light"]) .pill-book-soon { background: #FDC722; color: #173766; } }
+.meta.parking { font-size: .82rem; }

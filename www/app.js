@@ -168,8 +168,17 @@
     if (ev.general) h += '<span class="pill pill-general" title="General family event, not SEN-specific">General</span>';
     if (isFree(ev)) h += '<span class="pill pill-free">Free</span>';
     if (ev.soldOut) h += '<span class="pill pill-sold">Sold out</span>';
+    else { const bk = bookingBadge(ev); if (bk) h += '<span class="pill pill-book' + (bk.soon ? ' pill-book-soon' : '') + '">' + esc(bk.text) + '</span>'; }
     h += '<span class="pill pill-type">' + esc(ev.type) + '</span>';
     return h;
+  }
+  // v1.9.3 book-ahead flags (optional schema fields: bookingRequired bool, bookingOpens 'YYYY-MM-DD', soldOut bool)
+  function bookingBadge(ev) {
+    const bo = parseDate(ev.bookingOpens);
+    if (bo && bo > today()) return { text: '🎟️ Booking opens ' + fmtShort(bo), soon: true };
+    if (bo && +bo === +today()) return { text: '🎟️ Booking opens today', soon: true };
+    if (ev.bookingRequired || bo) return { text: '🎟️ Book ahead' };
+    return null;
   }
   const heartBtn = ev => '<button class="heart" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) +
     '" aria-label="' + (saved.has(ev.id) ? 'Remove from saved' : 'Save') + '">' + (saved.has(ev.id) ? '♥' : '♡') + '</button>';
@@ -342,6 +351,7 @@
         '<h2>' + esc(ev.name) + '</h2>' +
         (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
         '<p class="meta">' + (state.near && distMi(ev, origin()) !== null ? '<span class="dist">' + distMi(ev, origin()).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span>' + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
+        (ev.parking ? '<p class="meta parking"><span aria-hidden="true">🅿️</span> ' + esc(ev.parking) + '</p>' : '') +
         '<div class="pills">' + pills(ev) + '</div>' +
       '</div>' + heartBtn(ev) + hideBtn(ev) +
     '</article>';
@@ -567,6 +577,8 @@
           row('📍', 'Where', ev.venue + ', ' + placeOf(ev)) +
           row('🧭', 'County', countyOf(ev)) +
           row('💷', 'Price', ev.price) +
+          row('🅿️', 'Parking', ev.parking) +
+          (bookingBadge(ev) && !ev.soldOut ? row('🎟️', 'Booking', parseDate(ev.bookingOpens) && parseDate(ev.bookingOpens) >= today() ? 'Booking opens ' + fmtLong(parseDate(ev.bookingOpens)) + (saved.has(ev.id) && window.SENAndroid && window.SENAndroid.setReminders ? ' — you\'ll get a reminder that morning' : ' — save it (♡) to get a reminder that morning in the app') : 'Book ahead — places are limited or must be booked') : '') +
         '</div>' +
         '<div class="info"><div class="info-row"><span class="k" aria-hidden="true">💙</span><div class="v why"><span class="lbl">Why it suits / what to expect</span>' + esc(ev.description) + '</div></div></div>' +
         '<a class="btn btn-primary" href="' + esc(ev.url) + '" target="_blank" rel="noopener noreferrer">Book / More info</a>' +
