@@ -59,6 +59,17 @@
       <span class="radius-lbl">Within</span>
       <button class="rad" type="button" data-radius="5">5 mi</button><button class="rad" type="button" data-radius="10">10 mi</button><button class="rad" type="button" data-radius="25">25 mi</button><button class="rad" type="button" data-radius="50">50 mi</button><button class="rad" type="button" data-radius="0">Any</button>
     </div>
+    <div id="age-row" class="age-row" role="group" aria-label="Age range">
+      <span class="age-lbl" aria-hidden="true">Age</span>
+      <div class="age-slider">
+        <div class="age-track" aria-hidden="true"><div id="age-fill" class="age-fill"></div></div>
+        <input id="age-lo" class="age-input" type="range" min="0" max="12" step="1" value="0" aria-label="Youngest age">
+        <input id="age-hi" class="age-input" type="range" min="0" max="12" step="1" value="12" aria-label="Oldest age (12 means 12 and over)">
+        <div class="age-ticks" aria-hidden="true"><span>0</span><span>3</span><span>6</span><span>9</span><span>12+</span></div>
+      </div>
+      <span id="age-val" class="age-val" aria-live="polite">All ages</span>
+      <button id="age-reset" class="age-reset" type="button" aria-label="Show all ages" hidden>✕</button>
+    </div>
   </header>
 
   <div id="offline-banner" class="offline-banner" role="status" hidden></div>

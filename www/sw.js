@@ -1,5 +1,5 @@
 // v1.9.1 offline support for the web version (GitHub Pages). The Android app loads from its own bundled files instead.
-const SHELL = 'oa-shell-v1.9.5', DATA = 'oa-data-v1';
+const SHELL = 'oa-shell-v2.0.1', DATA = 'oa-data-v1';
 const ASSETS = ['./', 'index.html', 'app.js', 'styles.css', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'favicon.png', 'apple-touch-icon.png', 'events.json', 'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(SHELL).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {

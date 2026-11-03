@@ -14,7 +14,7 @@
   const countyOf = ev => ev.county || ev.area || '';
   const placeOf = ev => { const c = countyOf(ev); return (ev.town && ev.town !== c) ? ev.town + ', ' + c : (ev.town || c); };
   const TYPE_ICONS = {
-    'Halloween': '🎃', 'Christmas': '🎄', 'Theatre': '🎭', 'Cinema': '🎬', 'Sensory play': '🫧',
+    'Seasonal': '🎉', 'Theatre': '🎭', 'Cinema': '🎬', 'Sensory play': '🫧',
     'Swim/Leisure': '🏊', 'Library/Storytime': '📚', 'Museum/Attraction': '🏛️', 'Outdoors': '🌳',
     'Disco/Party': '🪩', 'Soft play (SEN hours)': '🧸', 'Place to visit': '📍',
     'Theatre/Show': '🎭', 'Farm': '🐑', 'Soft play': '🧸', 'Play café': '☕', 'Workshop': '🎨', 'Park/Playground': '🛝',
@@ -23,6 +23,60 @@
   const EYE_OFF = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
   const EYE = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
   const typeIcon = t => TYPE_ICONS[t] || '⭐';
+  // ---- v2.0.1 Seasonal: Christmas, Easter, Halloween, summer etc. share one section; its icon follows the season ----
+  const SEASONAL_TYPES = { 'Christmas': 1, 'Halloween': 1, 'Easter': 1, 'Summer': 1, 'Seasonal trail': 1, "Valentine's": 1 }; // older data
+  function easterSunday(y) { // anonymous Gregorian algorithm
+    const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3),
+      h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451),
+      mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(y, mo - 1, da);
+  }
+  // Season icon for a date: 🎃 Oct, 🎄 Nov–26 Dec, 🎆 27 Dec–6 Jan, ❄️ rest of Jan, 💝 Feb, 🐣 Mar–Easter Monday, 🌸 to end May, ☀️ Jun–Aug, 🍂 Sep
+  function seasonIconForDate(d) {
+    const m = d.getMonth(), day = d.getDate();
+    if (m === 9) return '🎃';
+    if (m === 10 || (m === 11 && day <= 26)) return '🎄';
+    if (m === 11 || (m === 0 && day <= 6)) return '🎆';
+    if (m === 0) return '❄️';
+    if (m === 1) return '💝';
+    if (m >= 2 && m <= 4) { const em = easterSunday(d.getFullYear()); em.setDate(em.getDate() + 1); return d <= em ? '🐣' : '🌸'; }
+    if (m >= 5 && m <= 7) return '☀️';
+    return '🍂';
+  }
+  const SEASON_WORDS = [[/\b(christmas|xmas|santa|festive|grotto|elves|elf|reindeer|nativity|carols?|panto(mime)?|north pole|mrs claus|yuletide|christmastide)\b/i, '🎄'],
+    [/\b(easter|egg hunt|bunny|bunnies)\b/i, '🐣'], [/\b(hallowe'?en|pumpkins?|spooky|spooktacular|trick or treat)\b/i, '🎃'],
+    [/\bvalentine/i, '💝'], [/\b(new year|hogmanay)\b/i, '🎆'], [/\bsummer\b/i, '☀️']];
+  // The icon for one seasonal item: from its own name, then its description, else from the date it next runs
+  function seasonIconOf(ev) {
+    for (const [re, ic] of SEASON_WORDS) if (re.test(ev.name || '')) return ic;
+    for (const [re, ic] of SEASON_WORDS) if (re.test(ev.description || '')) return ic;
+    const s = startOf(ev); return seasonIconForDate(s && s > today() ? s : today());
+  }
+  // Section icon: the season of the earliest upcoming (or running) seasonal item, else today's season
+  function seasonalSectionIcon(list) {
+    let best = null, bestD = null;
+    (list || []).forEach(ev => { const s = startOf(ev); if (!s || isPast(ev)) return; const d = s < today() ? today() : s; if (!bestD || d < bestD) { best = ev; bestD = d; } });
+    return best ? seasonIconOf(best) : seasonIconForDate(today());
+  }
+  const evIcon = ev => ev.type === 'Seasonal' ? seasonIconOf(ev) : typeIcon(ev.type);
+  // ---- v2.0.1 age range: optional ageMin/ageMax (whole years) on items; picker 0..12 where 12 means "12+" ----
+  const AGE_KEY = 'sen-events-ni-age-v1', AGE_TOP = 12;
+  let ageLo = 0, ageHi = AGE_TOP;
+  try { const a = JSON.parse(localStorage.getItem(AGE_KEY) || 'null'); if (a && a.length === 2) { ageLo = Math.max(0, Math.min(AGE_TOP, a[0] | 0)); ageHi = Math.max(ageLo, Math.min(AGE_TOP, a[1] | 0)); } } catch (_) {}
+  const ageActive = () => ageLo > 0 || ageHi < AGE_TOP;
+  const persistAge = () => { try { localStorage.setItem(AGE_KEY, JSON.stringify([ageLo, ageHi])); } catch (_) {} };
+  const ageNum = v => (typeof v === 'number' && isFinite(v)) ? v : null;
+  // Items without an age range always show; items with one show if it overlaps the chosen range at all
+  function ageMatch(ev) {
+    if (!ageActive()) return true;
+    const lo = ageNum(ev.ageMin), hi = ageNum(ev.ageMax);
+    if (lo === null && hi === null) return true;
+    const a = lo === null ? 0 : lo, b = hi === null ? Infinity : hi, selHi = ageHi >= AGE_TOP ? Infinity : ageHi;
+    return a <= selHi && b >= ageLo;
+  }
+  const ageText = () => !ageActive() ? 'All ages' : ageHi >= AGE_TOP ? 'Ages ' + ageLo + '+' : ageLo === ageHi ? 'Age ' + ageLo : 'Ages ' + ageLo + '–' + ageHi;
+  const agePill = ev => { const lo = ageNum(ev.ageMin), hi = ageNum(ev.ageMax); if (lo === null && hi === null) return '';
+    return hi === null ? 'Ages ' + lo + '+' : lo === null || lo === 0 ? (hi === 0 ? 'Under 1' : 'Up to ' + hi) : 'Ages ' + lo + '–' + hi; };
 
   const $ = id => document.getElementById(id);
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), whereBtn: $('where-btn'), whereList: $('where-list'), whereVal: $('where-val'),
@@ -169,6 +223,7 @@
     if (isFree(ev)) h += '<span class="pill pill-free">Free</span>';
     if (ev.soldOut) h += '<span class="pill pill-sold">Sold out</span>';
     else { const bk = bookingBadge(ev); if (bk) h += '<span class="pill pill-book' + (bk.soon ? ' pill-book-soon' : '') + '">' + esc(bk.text) + '</span>'; }
+    const ag = agePill(ev); if (ag) h += '<span class="pill pill-age" title="Age range from the organiser">' + esc(ag) + '</span>';
     h += '<span class="pill pill-type">' + esc(ev.type) + '</span>';
     return h;
   }
@@ -186,7 +241,7 @@
 
   function anyFilter() {
     return !!(state.near || state.weekend || state.free || state.sen || state.general || state.new || state.saved ||
-      state.area !== 'all' || state.town !== 'all' || state.type !== 'all' || (state.query && state.query.trim()));
+      state.area !== 'all' || state.town !== 'all' || state.type !== 'all' || (state.query && state.query.trim()) || ageActive());
   }
   function filtered(wantHidden, ignoreTown) {
     return allEvents.filter(ev => {
@@ -205,6 +260,7 @@
       if (state.area !== 'all' && countyOf(ev) !== state.area) return false;
       if (!ignoreTown && state.town !== 'all' && countyOf(ev) + '|' + ev.town !== state.town) return false;
       if (state.type !== 'all' && ev.type !== state.type) return false;
+      if (!ageMatch(ev)) return false;
       return true;
     }).sort((a, b) => {
       if (state.near) {
@@ -221,7 +277,7 @@
   const hideBtn = ev => '<button class="hide-btn" data-hide="' + esc(ev.id) + '" aria-label="Hide" title="Hide">' + EYE_OFF + '</button>';
   function hiddenCard(ev) {
     return '<article class="card card-hidden" data-id="' + esc(ev.id) + '" tabindex="0">' +
-      '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
+      '<div class="type-icon" aria-hidden="true">' + evIcon(ev) + '</div>' +
       '<div class="card-body"><h2 class="h2-hidden">' + esc(ev.name) + '</h2>' +
         '<p class="meta">' + esc(ev.venue) + ' · ' + esc(placeOf(ev)) + '</p></div>' +
       '<button class="unhide-btn" data-unhide="' + esc(ev.id) + '">' + EYE + ' Unhide</button></article>';
@@ -267,7 +323,7 @@
       const ev0 = list[0], c = pinColour(list);
       const m = L.circleMarker([ev0.lat, ev0.lng], Object.assign({ radius: list.length > 1 ? 10 : 8, weight: 2.5, fillOpacity: .95 }, c));
       const head = list.length > 1 ? '<p class="mp-venue">' + esc(ev0.venue) + ' · ' + list.length + ' items</p>' : '';
-      m.bindPopup('<div class="map-pop">' + head + list.slice(0, 30).map(ev => '<a class="mp-item" href="#e/' + encodeURIComponent(ev.id) + '"><span class="mp-ico" aria-hidden="true">' + typeIcon(ev.type) + '</span><span><b>' + esc(ev.name) + '</b><br><small>' +
+      m.bindPopup('<div class="map-pop">' + head + list.slice(0, 30).map(ev => '<a class="mp-item" href="#e/' + encodeURIComponent(ev.id) + '"><span class="mp-ico" aria-hidden="true">' + evIcon(ev) + '</span><span><b>' + esc(ev.name) + '</b><br><small>' +
         esc(runBadge(ev) || dateLabel(ev)) + (list.length > 1 ? '' : ' · ' + esc(ev.venue)) + '</small><br>' + pills(ev) + '</span></a>').join('') + (list.length > 30 ? '<p class="mp-venue">…and ' + (list.length - 30) + ' more</p>' : '') + '</div>', { maxWidth: 290, minWidth: 220, autoPanPadding: [20, 20] });
       m.addTo(pinLayer); pts.push([ev0.lat, ev0.lng]);
     });
@@ -324,7 +380,7 @@
     items.forEach(ev => { const t = ev.type || 'Other'; if (!byType.has(t)) byType.set(t, []); byType.get(t).push(ev); });
     const sections = [...byType.entries()].sort((x, y) => y[1].length - x[1].length || x[0].localeCompare(y[0]))
       // v1.8.1: items found today go to the top of their own section (stable, keeps the usual order otherwise)
-      .map(([t, list]) => ({ key: 't:' + t, icon: typeIcon(t), name: t, list: list.filter(isNew).concat(list.filter(ev => !isNew(ev))), fresh: list.filter(isNew).length }));
+      .map(([t, list]) => ({ key: 't:' + t, icon: t === 'Seasonal' ? seasonalSectionIcon(list) : typeIcon(t), name: t, list: list.filter(isNew).concat(list.filter(ev => !isNew(ev))), fresh: list.filter(isNew).length }));
     // auto-expand: search, type chip or Found today filter active, or only one section to show
     const forced = !!(state.query && state.query.trim()) || state.type !== 'all' || state.new || sections.length === 1;
     const isOpen = sec => forced || expanded.has(sec.key);
@@ -347,7 +403,7 @@
 
   function cardHtml(ev) {
     return '<article class="card' + (ev.soldOut ? ' sold-out' : '') + '" data-id="' + esc(ev.id) + '" tabindex="0">' +
-      '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div>' +
+      '<div class="type-icon" aria-hidden="true">' + evIcon(ev) + '</div>' +
       '<div class="card-body">' +
         '<h2>' + esc(ev.name) + '</h2>' +
         (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
@@ -394,6 +450,29 @@
     els.quick.innerHTML = h;
     els.radius.hidden = !state.near;
     els.radius.querySelectorAll('[data-radius]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.radius === radius)));
+    syncAge();
+  }
+  // ---- v2.0.1 age slider (two range inputs over one track) ----
+  const ageEls = { row: $('age-row'), lo: $('age-lo'), hi: $('age-hi'), val: $('age-val'), fill: $('age-fill'), reset: $('age-reset') };
+  function syncAge() {
+    if (!ageEls.row) return;
+    ageEls.lo.value = ageLo; ageEls.hi.value = ageHi;
+    ageEls.val.textContent = ageText();
+    ageEls.row.classList.toggle('active', ageActive());
+    ageEls.reset.hidden = !ageActive();
+    ageEls.lo.setAttribute('aria-valuetext', 'From age ' + ageLo); ageEls.hi.setAttribute('aria-valuetext', ageHi >= AGE_TOP ? 'Up to 12 and over' : 'Up to age ' + ageHi);
+    ageEls.fill.style.left = (ageLo / AGE_TOP * 100) + '%'; ageEls.fill.style.right = (100 - ageHi / AGE_TOP * 100) + '%';
+  }
+  if (ageEls.row) {
+    let ageTimer = null;
+    const onAge = which => () => {
+      let lo = +ageEls.lo.value, hi = +ageEls.hi.value;
+      if (lo > hi) { if (which === 'lo') lo = hi; else hi = lo; }
+      ageLo = lo; ageHi = hi; persistAge(); syncAge();
+      clearTimeout(ageTimer); ageTimer = setTimeout(render, 60);
+    };
+    ageEls.lo.addEventListener('input', onAge('lo')); ageEls.hi.addEventListener('input', onAge('hi'));
+    ageEls.reset.addEventListener('click', () => { ageLo = 0; ageHi = AGE_TOP; persistAge(); render(); });
   }
   // Town dropdown: every NI city/town/main village (NISRA settlements of 1,000+ people, from Wikipedia's
   // list of localities by population) plus any town used in events.json, with live counts.
@@ -433,7 +512,7 @@
   }
   function activeFilterCount() {
     return ['near', 'weekend', 'free', 'sen', 'general', 'new', 'saved'].filter(k => state[k]).length +
-      (state.area !== 'all' || state.town !== 'all' ? 1 : 0) + (state.type !== 'all' ? 1 : 0) + (state.query && state.query.trim() ? 1 : 0);
+      (state.area !== 'all' || state.town !== 'all' ? 1 : 0) + (state.type !== 'all' ? 1 : 0) + (state.query && state.query.trim() ? 1 : 0) + (ageActive() ? 1 : 0);
   }
   function setWhere(v) {
     if (v === 'all') { state.area = 'all'; state.town = 'all'; }
@@ -526,7 +605,7 @@
     const nd = nextDate(ev), past = startOf(ev) && !nd && !ev.recurring;
     const when = runBadge(ev) || dateLabel(ev);
     return '<article class="card plan-card' + (past ? ' plan-past' : '') + '" data-id="' + esc(ev.id) + '" tabindex="0">' +
-      '<div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div><div class="card-body"><h2>' + esc(ev.name) + '</h2>' +
+      '<div class="type-icon" aria-hidden="true">' + evIcon(ev) + '</div><div class="card-body"><h2>' + esc(ev.name) + '</h2>' +
       '<p class="meta">' + (past ? 'Finished · ' : '') + esc(when) + '</p><p class="meta">' + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span></p>' +
       '<div class="pills">' + pills(ev) + '</div>' +
       (!past && startOf(ev) ? '<button class="plan-cal" data-plan-cal="' + esc(ev.id) + '">🗓️ Add to calendar</button>' : '') +
@@ -568,7 +647,7 @@
         '<div class="detail-top"><button class="icon-btn" data-back>← Back</button><div class="detail-actions">' +
           '<button class="icon-btn" data-heart="' + esc(ev.id) + '" aria-pressed="' + saved.has(ev.id) + '">' + (saved.has(ev.id) ? '♥ Saved' : '♡ Save') + '</button>' +
           (hidden.has(ev.id) ? '<button class="icon-btn" data-unhide="' + esc(ev.id) + '">' + EYE + ' Unhide</button>' : '<button class="icon-btn" data-hide="' + esc(ev.id) + '">' + EYE_OFF + ' Hide</button>') + '</div></div>' +
-        '<div class="detail-hero"><div class="type-icon" aria-hidden="true">' + typeIcon(ev.type) + '</div><h2>' + esc(ev.name) + '</h2></div>' +
+        '<div class="detail-hero"><div class="type-icon" aria-hidden="true">' + evIcon(ev) + '</div><h2>' + esc(ev.name) + '</h2></div>' +
         '<div class="pills">' + pills(ev) + '</div>' +
         (runBadge(ev) ? '<p class="run-badge run-badge-lg">📅 ' + esc(runBadge(ev)) + '</p>' : '') +
         (ev.soldOut ? '<p class="note">Sold out at last check. Returns sometimes come up on the booking page.</p>' : '') +
@@ -657,7 +736,7 @@
     if (rb) { radius = +rb.dataset.radius; try { localStorage.setItem(RADIUS_KEY, String(radius)); } catch (_) {} if (!userPos && geoNotice && geoNotice.indexOf('unavailable') >= 0) geoNotice = 'Location unavailable, so showing places ' + radiusText() + ' of Newtownabbey instead, nearest first.'; render(); return; }
     const w = e.target.closest('[data-where]');
     if (w) { setWhere(w.dataset.where); closePops(); render(); return; }
-    if (e.target.closest('#clear-chip')) { ['near','weekend','free','sen','general','new','saved'].forEach(k => state[k] = false); state.area = 'all'; state.town = 'all'; state.type = 'all'; state.query = ''; els.search.value = ''; syncChips(); render(); return; }
+    if (e.target.closest('#clear-chip')) { ['near','weekend','free','sen','general','new','saved'].forEach(k => state[k] = false); state.area = 'all'; state.town = 'all'; state.type = 'all'; state.query = ''; els.search.value = ''; ageLo = 0; ageHi = AGE_TOP; persistAge(); syncChips(); render(); return; }
     if (!e.target.closest('.menu, .where-list')) closePops();
   }, true);
   document.addEventListener('keydown', e => {
@@ -669,6 +748,7 @@
   // ---------- Data ----------
   function applyData(data, source) {
     allEvents = (data && data.events) || [];
+    allEvents.forEach(ev => { if (SEASONAL_TYPES[ev.type]) ev.type = 'Seasonal'; });
     if (source === 'live') pruneHidden();
     persistHidden();
     persistSaved(); updatePlanBtn(); // refresh saved copies with the latest data, re-arm reminders

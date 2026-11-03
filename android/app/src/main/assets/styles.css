@@ -328,3 +328,34 @@ body.view-map .app-footer { display: none; }
 :root[data-theme="dark"] .pill-book { background: #213050; color: #dfe7f5; } :root[data-theme="dark"] .pill-book-soon { background: #FDC722; color: #173766; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill-book { background: #213050; color: #dfe7f5; } :root:not([data-theme="light"]) .pill-book-soon { background: #FDC722; color: #173766; } }
 .meta.parking { font-size: .82rem; }
+
+/* v2.0.1 age range slider (dual handle: two range inputs over one track) */
+.age-row { display: flex; align-items: center; gap: 10px; padding: 0 14px 4px; }
+.age-lbl { flex: none; font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.age-slider { position: relative; flex: 1; min-width: 0; height: 34px; }
+.age-track { position: absolute; left: 11px; right: 11px; top: 11px; height: 6px; border-radius: 3px; background: var(--surface-2); border: 1px solid var(--border); }
+.age-fill { position: absolute; top: -1px; bottom: -1px; left: 0; right: 0; border-radius: 3px; background: var(--primary); opacity: .45; }
+.age-row.active .age-fill { background: var(--accent); border: 1px solid var(--accent-border); opacity: 1; }
+.age-input { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 28px; margin: 0; background: transparent; pointer-events: none;
+  -webkit-appearance: none; appearance: none; outline: none; }
+.age-input::-webkit-slider-runnable-track { background: transparent; border: 0; height: 28px; }
+.age-input::-moz-range-track { background: transparent; border: 0; height: 28px; }
+.age-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; pointer-events: auto; width: 22px; height: 22px; margin-top: 3px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: pointer; }
+.age-input::-moz-range-thumb { pointer-events: auto; width: 18px; height: 18px; border-radius: 50%; background: var(--surface); border: 2px solid var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: pointer; }
+.age-row.active .age-input::-webkit-slider-thumb { border-color: var(--accent-border); background: var(--accent); }
+.age-row.active .age-input::-moz-range-thumb { border-color: var(--accent-border); background: var(--accent); }
+.age-input:focus-visible::-webkit-slider-thumb { outline: 3px solid var(--accent); outline-offset: 2px; }
+.age-ticks { position: absolute; left: 11px; right: 11px; bottom: -2px; height: 11px; font-size: .6rem; line-height: 1; color: var(--muted); }
+.age-ticks span { position: absolute; transform: translateX(-50%); }
+.age-ticks span:nth-child(1) { left: 0; } .age-ticks span:nth-child(2) { left: 25%; } .age-ticks span:nth-child(3) { left: 50%; }
+.age-ticks span:nth-child(4) { left: 75%; } .age-ticks span:nth-child(5) { left: 100%; }
+.age-val { flex: none; min-width: 66px; text-align: right; font-size: .84rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.age-row.active .age-val { color: var(--accent-ink); background: var(--accent); border-radius: 999px; padding: 3px 9px; min-width: 0; }
+.age-reset { flex: none; border: 0; background: var(--surface-2); color: var(--muted); width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: .75rem; margin-left: -4px; }
+.age-reset[hidden] { display: none; }
+.pill-age { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+@media (max-width: 340px) { .age-row { gap: 6px; } .age-val { min-width: 56px; font-size: .78rem; } .age-lbl { display: none; } }
+/* v2.0.1: section names wrap between words, not inside one (e.g. "Seasonal" on 320px phones) */
+.tsec-name { min-width: min-content; }
+@media (max-width: 340px) { .tsec-head { gap: 8px; } .tsec-new { font-size: .7rem; padding: 3px 6px; } }
