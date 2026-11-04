@@ -1838,7 +1838,7 @@
       "senSpecific": true,
       "addedDate": "2026-10-16",
       "name": "Amphitheatre Carrickfergus Quiet Time Swim",
-      "description": "Quiet-time public swim on Monday evenings in both the small pool (with slide and water features) and the main pool. Term-time timetable; check with reception 028 9335 8342.",
+      "description": "Quiet-time public swim on Monday evenings in both the small pool (with slide and water features) and the main pool. Term-time timetable. Timings conflict: Amphitheatre swimming pool timetable says Mon 6:15–7:15pm (small pool) and 6:15–7:30pm (main pool); Mid & East Antrim Disability Sports Hub page says MEAqua Quiet Hour Mon 5–6pm. Please confirm with the Amphitheatre on 028 9335 8342 or amphitheatre@midandeastantrim.gov.uk before travelling.",
       "recurring": "Every Monday (term time)",
       "time": "6:15–7:15pm (small pool), to 7:30pm (main pool)",
       "venue": "Amphitheatre Leisure Centre",
@@ -2327,7 +2327,7 @@
     {
       "id": "snap-north-belfast-saturday-group",
       "name": "SNAP North Belfast Autism Family Group (Saturdays)",
-      "description": "Weekly parent-run group for autistic children and their families: children play in a relaxed setting while parents chat over tea. About 10 families each week; also runs trips (e.g. Santa Train). Contact Joe & Jacquie Kelly on 028 9037 0090 before first visit (SENAC lists 10am–12pm, so confirm time).",
+      "description": "Weekly parent-run group for autistic children and their families: children play in a relaxed setting while parents chat over tea. About 10 families each week; also runs trips (e.g. Santa Train). Contact Joe & Jacquie Kelly before your first visit. Timings conflict: SNAP website says Sat 10:30am–12:30pm; SENAC listing says Sat 10am–12pm. Please confirm with SNAP on 028 9037 0090 or joe.snap@outlook.com before travelling.",
       "startDate": null,
       "endDate": null,
       "recurring": "Every Saturday",
