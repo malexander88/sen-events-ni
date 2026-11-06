@@ -22346,6 +22346,31 @@
       "geoSource": "venue",
       "bookingRequired": true,
       "bookingOpens": null
+    },
+    {
+      "id": "gen-guildhall-craft-fair-2026",
+      "name": "Guildhall Craft Fair 2026",
+      "description": "Three-day Christmas craft and artisan food fair at the Guildhall, with handmade goods exclusively made in Ireland, local makers and artisan food in the Whittaker Suite, plus choral performances. Timings conflict: Guildhall Craft Fair page says Fri 12pm–6pm, Sat–Sun 10am–6pm; council news article says Fri 12–8pm, Sat–Sun 10–6pm; Visit Derry listing says Fri–Sun 10:00–18:00. Please confirm with the venue on 028 7125 3253 or info@derrystrabane.com before travelling.",
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-15",
+      "recurring": null,
+      "time": "Fri 12:00–18:00; Sat–Sun 10:00–18:00 (see conflict note)",
+      "venue": "The Guildhall, Guildhall Square, Derry BT48 7BB",
+      "town": "Derry~Londonderry",
+      "county": "County Londonderry",
+      "area": "County Londonderry",
+      "type": "Seasonal",
+      "senSpecific": false,
+      "general": true,
+      "price": "See listing",
+      "url": "https://www.visitderry.com/whats-on/guildhall-craft-fair-2026-p1017991",
+      "soldOut": false,
+      "addedDate": "2026-11-06",
+      "lat": 54.9976,
+      "lng": -7.3194,
+      "geoSource": "venue",
+      "bookingRequired": false,
+      "bookingOpens": null
     }
   ]
 }
