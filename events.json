@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T09:21:58.106573+00:00",
+  "updatedAt": "2026-11-10T12:03:52.205578+00:00",
   "region": "Northern Ireland",
   "events": [
     {
@@ -24367,6 +24367,33 @@
       "geoSource": "venue",
       "lat": 54.3814,
       "lng": -5.67325
+    },
+    {
+      "id": "gen-little-crafters-christmas-enniskillen-castle",
+      "name": "Little Crafters Christmas (Enniskillen Castle)",
+      "description": "Children's Christmas craft workshop where little crafters make Christmas cards and decorations. Two sessions on Saturday 5 December (11:00am and 1:30pm). Free, suitable for ages 4-11, children must be accompanied by an adult, all materials provided. Booking via the council event page.",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-05",
+      "recurring": null,
+      "time": "11:00am and 1:30pm sessions",
+      "venue": "Enniskillen Castle, Wellington Road",
+      "town": "Enniskillen",
+      "county": "County Fermanagh",
+      "area": "County Fermanagh",
+      "type": "Seasonal",
+      "senSpecific": false,
+      "general": true,
+      "price": "Free",
+      "url": "https://www.fermanaghomagh.com/event/little-crafters-christmas/",
+      "soldOut": false,
+      "addedDate": "2026-11-10",
+      "lat": 54.34615,
+      "lng": -7.64505,
+      "geoSource": "venue",
+      "bookingRequired": true,
+      "bookingOpens": null,
+      "ageMin": 4,
+      "ageMax": 11
     }
   ]
 }
