@@ -25254,6 +25254,30 @@
       "geoSource": "street",
       "bookingOpens": null,
       "ageMin": 1
+    },
+    {
+      "id": "gen-strule-the-grinch-film-2026-11-21",
+      "name": "The Grinch (family film, Cert U), Strule Arts Centre",
+      "description": "Screening of The Grinch (Cert U, 82 mins), a family-friendly animated Christmas film. Duration 1hr 22 mins. Tickets non-transferable and non-refundable. Box office: 028 8224 7831.",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "recurring": "",
+      "time": "15:00",
+      "venue": "Strule Arts Centre",
+      "town": "Omagh",
+      "county": "County Tyrone",
+      "area": "County Tyrone",
+      "type": "Cinema",
+      "senSpecific": false,
+      "general": true,
+      "price": "£2.50–£8",
+      "url": "https://struleartscentre.co.uk/show/the-grinch/",
+      "soldOut": false,
+      "addedDate": "2026-11-11",
+      "lat": 54.60075,
+      "lng": -7.30332,
+      "geoSource": "venue",
+      "bookingOpens": null
     }
   ]
 }
