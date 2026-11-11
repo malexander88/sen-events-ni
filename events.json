@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T20:56:08.749091+00:00",
+  "updatedAt": "2026-11-11T20:56:49.212631+00:00",
   "region": "Northern Ireland",
   "events": [
     {
@@ -27773,6 +27773,32 @@
       "bookingRequired": true,
       "bookingOpens": null,
       "phone": "028 686 21177"
+    },
+    {
+      "id": "sen-sports-for-autism-belfast",
+      "name": "Sports for Autism weekly sports sessions, Belfast",
+      "description": "Sports for Autism (SFA) runs weekly small-group, play-based sports and movement sessions for children with autism, to build confidence, coordination, communication and friendships. Groups are kept small (a maximum of 4 on their website) and children are matched after a 1-to-1 consultation and assessment with a coach. To join, you book a paid 30-minute consultation at their facility, which costs £20 to reserve a space because of high demand and limited group places. Weekly class days, times and session prices are not published; they are arranged after the consultation. Book a consultation at https://go.sportsforautism.com/calendar or call 07852 438657. No email is published on their official pages.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Weekly sessions (consultation first)",
+      "time": "Session days and times arranged after consultation",
+      "venue": "Sports for Autism, Unit 4 Holly Business Park, Belfast BT11 9DT",
+      "town": "Belfast",
+      "county": "Belfast",
+      "area": "Belfast",
+      "type": "Sport",
+      "senSpecific": true,
+      "general": false,
+      "price": "£20 consultation; class prices not published",
+      "url": "https://sportsforautism.com/",
+      "soldOut": false,
+      "addedDate": "2026-11-11",
+      "lat": 54.57765,
+      "lng": -5.97348,
+      "geoSource": "venue",
+      "bookingRequired": true,
+      "bookingOpens": null,
+      "phone": "07852 438657"
     }
   ]
 }
