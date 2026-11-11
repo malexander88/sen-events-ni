@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T21:00:12.688277+00:00",
+  "updatedAt": "2026-11-11T21:01:06.139104+00:00",
   "region": "Northern Ireland",
   "events": [
     {
@@ -28311,6 +28311,31 @@
       "bookingRequired": true,
       "bookingOpens": null,
       "phone": "07706 242473"
+    },
+    {
+      "id": "party-birthday-party-packages-multi-sensory-play-area-melvin-sport",
+      "name": "Birthday party packages & multi-sensory play area, Melvin Sports Complex",
+      "description": "Council sports and activity centre with a children's MULTI-SENSORY indoor play area, outdoor play parks and birthday party packages. Contact the centre for packages and prices.",
+      "startDate": null,
+      "endDate": null,
+      "recurring": "Book a date (party venue/provider)",
+      "time": null,
+      "venue": "Melvin Sports Complex, Melvin Road",
+      "town": "Strabane",
+      "county": "County Tyrone",
+      "area": "County Tyrone",
+      "type": "Parties",
+      "senSpecific": false,
+      "price": "See website",
+      "url": "https://www.visitderry.com/things-to-do/melvin-strabane-complex-p754961",
+      "soldOut": false,
+      "addedDate": "2026-11-11",
+      "general": true,
+      "lat": 54.82669,
+      "lng": -7.46312,
+      "geoSource": "town",
+      "bookingRequired": true,
+      "bookingOpens": null
     }
   ]
 }
