@@ -25330,6 +25330,30 @@
       "bookingOpens": null,
       "ageMin": 0,
       "ageMax": 18
+    },
+    {
+      "soldOut": false,
+      "addedDate": "2026-11-11",
+      "senSpecific": false,
+      "general": true,
+      "bookingOpens": null,
+      "id": "carrickfergus-christmas-artisan-market-2026-11-21",
+      "name": "Carrickfergus Christmas Artisan Market",
+      "description": "Annual Christmas Artisan Market alongside the Carrickfergus Light Switch-On, at Jubilee Hall and Carrickfergus Civic. Open 1pm to 5:30pm. Contact Mid & East Antrim Town Centres: 0300 124 5000 or towncentres@midandeastantrim.gov.uk.",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "time": "1pm-5:30pm",
+      "venue": "Jubilee Hall & Carrickfergus Civic, Carrickfergus",
+      "town": "Carrickfergus",
+      "county": "County Antrim",
+      "type": "Seasonal",
+      "price": "Not stated",
+      "url": "https://www.shapedbyseaandstone.com/whats-on/carrickfergus-christmas-artisan-market-p1119281",
+      "bookingRequired": false,
+      "area": "County Antrim",
+      "geoSource": "town",
+      "lat": 54.71362,
+      "lng": -5.80731
     }
   ]
 }
