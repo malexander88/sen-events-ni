@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T09:26:30.320878+00:00",
+  "updatedAt": "2026-11-11T12:17:32.644606+00:00",
   "region": "Northern Ireland",
   "events": [
     {
@@ -25354,6 +25354,33 @@
       "geoSource": "town",
       "lat": 54.71362,
       "lng": -5.80731
+    },
+    {
+      "id": "gen-snowtube-with-santa-craigavon-2026",
+      "name": "Snowtube With Santa, Craigavon Golf & Ski Centre",
+      "description": "30-minute snowtubing session, a visit to see Santa and a sweet treat. Slots: Fri 18 Dec 1–7pm; Sat 19–Tue 22 Dec 10am–7pm; Wed 23 Dec 10am–4:30pm. Suitable for ages 3–13; under-3s or children who need help getting out of the tube use the gentler Junior Slope. Photos not provided. All sessions must be pre-booked; help with booking on 028 3832 6606.",
+      "startDate": "2026-12-18",
+      "endDate": "2026-12-23",
+      "recurring": "Fri 18 – Wed 23 Dec, timed slots",
+      "time": "Fri 1–7pm; Sat 19–Tue 22 10am–7pm; Wed 23 10am–4:30pm",
+      "venue": "Craigavon Golf & Ski Centre, Silverwood Court, Lurgan BT66 6JW",
+      "town": "Craigavon",
+      "county": "County Armagh",
+      "area": "County Armagh",
+      "type": "Seasonal",
+      "senSpecific": false,
+      "general": true,
+      "price": "£11.50 per child",
+      "url": "https://getactiveabc.com/events/snowtube-with-santa/",
+      "soldOut": false,
+      "addedDate": "2026-11-11",
+      "lat": 54.47551,
+      "lng": -6.357,
+      "geoSource": "venue",
+      "bookingRequired": true,
+      "bookingOpens": null,
+      "ageMin": 3,
+      "ageMax": 13
     }
   ]
 }
