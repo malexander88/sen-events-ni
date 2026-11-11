@@ -70,6 +70,13 @@
       <span id="age-val" class="age-val" aria-live="polite">All ages</span>
       <button id="age-reset" class="age-reset" type="button" aria-label="Show all ages" hidden>✕</button>
     </div>
+    <div id="date-row" class="date-row" role="group" aria-label="Date range">
+      <span class="date-lbl" aria-hidden="true">Dates</span>
+      <label class="date-field"><span class="date-cap">From</span><input id="date-from" class="date-input" type="date" aria-label="From date"></label>
+      <span class="date-dash" aria-hidden="true">–</span>
+      <label class="date-field"><span class="date-cap">To</span><input id="date-to" class="date-input" type="date" aria-label="To date"></label>
+      <button id="date-reset" class="age-reset date-reset" type="button" aria-label="Clear dates" hidden>✕</button>
+    </div>
   </header>
 
   <div id="offline-banner" class="offline-banner" role="status" hidden></div>

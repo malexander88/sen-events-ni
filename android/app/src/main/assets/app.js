@@ -18,7 +18,7 @@
     'Swim/Leisure': '🏊', 'Library/Storytime': '📚', 'Museum/Attraction': '🏛️', 'Outdoors': '🌳',
     'Disco/Party': '🪩', 'Soft play (SEN hours)': '🧸', 'Place to visit': '📍',
     'Theatre/Show': '🎭', 'Farm': '🐑', 'Soft play': '🧸', 'Play café': '☕', 'Workshop': '🎨', 'Park/Playground': '🛝',
-    'Sport': '⚽', 'Trampoline/Inflatables': '🤸', 'Kids class': '🖍️', 'Festival/Market': '🎪', 'Music/Sensory': '🎵'
+    'Parties': '🎂', 'Sport': '⚽', 'Trampoline/Inflatables': '🤸', 'Kids class': '🖍️', 'Festival/Market': '🎪', 'Music/Sensory': '🎵'
   };
   const EYE_OFF = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
   const EYE = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
@@ -78,6 +78,22 @@
   const agePill = ev => { const lo = ageNum(ev.ageMin), hi = ageNum(ev.ageMax); if (lo === null && hi === null) return '';
     return hi === null ? 'Ages ' + lo + '+' : lo === null || lo === 0 ? (hi === 0 ? 'Under 1' : 'Up to ' + hi) : 'Ages ' + lo + '–' + hi; };
 
+  // ---- v2.1.0 From/To date range: dated items show if their run overlaps it; undated/ongoing items (soft play, party venues) always show ----
+  function londonToday() { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date()); } catch (_) { return ''; } }
+  const DATE_KEY = 'sen-events-ni-dates-v1';
+  let dateFrom = '', dateTo = ''; // 'YYYY-MM-DD' or ''
+  const isoOk = v => /^\d{4}-\d{2}-\d{2}$/.test(String(v || ''));
+  try { const o = JSON.parse(localStorage.getItem(DATE_KEY) || 'null'); if (o) { dateFrom = isoOk(o.from) ? o.from : ''; dateTo = isoOk(o.to) ? o.to : ''; } } catch (_) {}
+  const persistDates = () => { try { localStorage.setItem(DATE_KEY, JSON.stringify({ from: dateFrom, to: dateTo })); } catch (_) {} };
+  const datesActive = () => !!(dateFrom || dateTo);
+  function dateMatch(ev) {
+    if (!datesActive()) return true;
+    const s = startOf(ev); if (!s) return true; // ongoing / no fixed date
+    const e = endOf(ev) || s, f = dateFrom ? parseDate(dateFrom) : null, t = dateTo ? parseDate(dateTo) : null;
+    return (!t || s <= t) && (!f || e >= f);
+  }
+
+  if (dateTo && dateTo < londonToday()) { dateFrom = ''; dateTo = ''; persistDates(); }
   const $ = id => document.getElementById(id);
   const els = { list: $('list'), status: $('status'), quick: $('quick-chips'), whereBtn: $('where-btn'), whereList: $('where-list'), whereVal: $('where-val'),
     menu: $('menu'), menuBtn: $('menu-btn'), radius: $('radius-row'), expandAll: $('expand-all'), clear: $('clear-chip'), detail: $('detail'), search: $('search'), searchClear: $('search-clear'), hiddenChip: $('hidden-chip') };
@@ -118,7 +134,7 @@
   function matchesQuery(ev) {
     const words = norm(state.query).split(/\s+/).filter(Boolean);
     if (!words.length) return true;
-    const hay = norm([ev.name, ev.description, ev.venue, ev.town, countyOf(ev)].join(' '));
+    const hay = norm([ev.name, ev.description, ev.venue, ev.town, countyOf(ev), ev.type, ev.type === 'Parties' ? 'party parties birthday' : ''].join(' '));
     return words.every(w => hay.includes(w));
   }
 
@@ -212,9 +228,24 @@
     else if (s && e && +s !== +e) parts.push(fmt(s) + ' – ' + fmt(e));
     else if (s) parts.push(fmt(s));
     if (ev.time && !ev.recurring) parts.push(ev.time);
-    return parts.join(' · ') || 'See booking page';
+    return parts.join(' · ') || (ev.type === 'Parties' ? 'Parties by booking · any date' : 'See booking page');
   }
 
+  // v2.1.0 party venues: optional pricePerChild, minGuests/maxGuests (or guestsMin/guestsMax), phone, email
+  const pnum = v => (typeof v === 'number' && isFinite(v)) ? v : (typeof v === 'string' && /^\d+$/.test(v.trim()) ? +v : null);
+  function guestsText(ev) {
+    const lo = pnum(ev.minGuests ?? ev.guestsMin), hi = pnum(ev.maxGuests ?? ev.guestsMax ?? ev.capacity);
+    if (typeof ev.guests === 'string' && ev.guests.trim()) return ev.guests.trim();
+    if (lo !== null && hi !== null) return lo === hi ? lo + ' children' : lo + '–' + hi + ' children';
+    if (hi !== null) return 'Up to ' + hi + ' children';
+    if (lo !== null) return 'From ' + lo + ' children';
+    return '';
+  }
+  const perChild = ev => { const v = ev.pricePerChild; if (v == null || v === '') return ''; return typeof v === 'number' ? '£' + (v % 1 ? v.toFixed(2) : v) + ' per child' : String(v); };
+  const telHref = p => 'tel:' + String(p).replace(/[^\d+]/g, '');
+  function linkRow(icon, label, value, href) {
+    return value ? '<div class="info-row"><span class="k" aria-hidden="true">' + icon + '</span><div class="v"><span class="lbl">' + label + '</span><a href="' + esc(href) + '">' + esc(value) + '</a></div></div>' : '';
+  }
   function pills(ev) {
     let h = '';
     if (isNew(ev)) h += '<span class="pill pill-new">Found today</span>';
@@ -241,7 +272,7 @@
 
   function anyFilter() {
     return !!(state.near || state.weekend || state.free || state.sen || state.general || state.new || state.saved ||
-      state.area !== 'all' || state.town !== 'all' || state.type !== 'all' || (state.query && state.query.trim()) || ageActive());
+      state.area !== 'all' || state.town !== 'all' || state.type !== 'all' || (state.query && state.query.trim()) || ageActive() || datesActive());
   }
   function filtered(wantHidden, ignoreTown) {
     return allEvents.filter(ev => {
@@ -261,6 +292,7 @@
       if (!ignoreTown && state.town !== 'all' && countyOf(ev) + '|' + ev.town !== state.town) return false;
       if (state.type !== 'all' && ev.type !== state.type) return false;
       if (!ageMatch(ev)) return false;
+      if (!dateMatch(ev)) return false;
       return true;
     }).sort((a, b) => {
       if (state.near) {
@@ -413,7 +445,8 @@
       '<div class="card-body">' +
         '<h2>' + esc(ev.name) + '</h2>' +
         (runBadge(ev) ? '<p class="run-badge">📅 ' + esc(runBadge(ev)) + '</p>' : '<p class="meta">' + esc(dateLabel(ev)) + '</p>') +
-        '<p class="meta">' + (state.near && distMi(ev, origin()) !== null ? '<span class="dist">' + distMi(ev, origin()).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span>' + (ev.price ? ' · ' + esc(ev.price) : '') + '</p>' +
+        '<p class="meta">' + (state.near && distMi(ev, origin()) !== null ? '<span class="dist">' + distMi(ev, origin()).toFixed(1) + ' mi</span> · ' : '') + esc(ev.venue) + ' · <span class="place">' + esc(placeOf(ev)) + '</span>' + (ev.price ? ' · ' + esc(ev.price) : perChild(ev) ? ' · ' + esc(perChild(ev)) : '') + '</p>' +
+        (ev.type === 'Parties' && guestsText(ev) ? '<p class="meta party-meta"><span aria-hidden="true">👥</span> ' + esc(guestsText(ev)) + '</p>' : '') +
         (ev.parking ? '<p class="meta parking"><span aria-hidden="true">🅿️</span> ' + esc(ev.parking) + '</p>' : '') +
         '<div class="pills">' + pills(ev) + '</div>' +
       '</div>' + heartBtn(ev) + hideBtn(ev) +
@@ -456,7 +489,7 @@
     els.quick.innerHTML = h;
     els.radius.hidden = !state.near;
     els.radius.querySelectorAll('[data-radius]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.radius === radius)));
-    syncAge();
+    syncAge(); syncDates();
   }
   // ---- v2.0.1 age slider (two range inputs over one track) ----
   const ageEls = { row: $('age-row'), lo: $('age-lo'), hi: $('age-hi'), val: $('age-val'), fill: $('age-fill'), reset: $('age-reset') };
@@ -479,6 +512,28 @@
     };
     ageEls.lo.addEventListener('input', onAge('lo')); ageEls.hi.addEventListener('input', onAge('hi'));
     ageEls.reset.addEventListener('click', () => { ageLo = 0; ageHi = AGE_TOP; persistAge(); render(); });
+  }
+  // ---- v2.1.0 date range pickers ----
+  const dateEls = { row: $('date-row'), from: $('date-from'), to: $('date-to'), reset: $('date-reset') };
+  function syncDates() {
+    if (!dateEls.row) return;
+    if (dateEls.from.value !== dateFrom) dateEls.from.value = dateFrom;
+    if (dateEls.to.value !== dateTo) dateEls.to.value = dateTo;
+    dateEls.to.min = dateFrom || londonToday(); dateEls.from.max = dateTo || '';
+    dateEls.from.classList.toggle('set', !!dateFrom); dateEls.to.classList.toggle('set', !!dateTo);
+    dateEls.row.classList.toggle('active', datesActive());
+    dateEls.reset.hidden = !datesActive();
+  }
+  if (dateEls.row) {
+    dateEls.from.min = londonToday();
+    const onDate = which => () => {
+      const f = isoOk(dateEls.from.value) ? dateEls.from.value : '', t = isoOk(dateEls.to.value) ? dateEls.to.value : '';
+      dateFrom = f; dateTo = t;
+      if (dateFrom && dateTo && dateFrom > dateTo) { if (which === 'from') dateTo = dateFrom; else dateFrom = dateTo; }
+      persistDates(); render();
+    };
+    dateEls.from.addEventListener('change', onDate('from')); dateEls.to.addEventListener('change', onDate('to'));
+    dateEls.reset.addEventListener('click', () => { dateFrom = ''; dateTo = ''; persistDates(); render(); });
   }
   // Town dropdown: every NI city/town/main village (NISRA settlements of 1,000+ people, from Wikipedia's
   // list of localities by population) plus any town used in events.json, with live counts.
@@ -518,7 +573,7 @@
   }
   function activeFilterCount() {
     return ['near', 'weekend', 'free', 'sen', 'general', 'new', 'saved'].filter(k => state[k]).length +
-      (state.area !== 'all' || state.town !== 'all' ? 1 : 0) + (state.type !== 'all' ? 1 : 0) + (state.query && state.query.trim() ? 1 : 0) + (ageActive() ? 1 : 0);
+      (state.area !== 'all' || state.town !== 'all' ? 1 : 0) + (state.type !== 'all' ? 1 : 0) + (state.query && state.query.trim() ? 1 : 0) + (ageActive() ? 1 : 0) + (datesActive() ? 1 : 0);
   }
   function setWhere(v) {
     if (v === 'all') { state.area = 'all'; state.town = 'all'; }
@@ -663,6 +718,10 @@
           row('📍', 'Where', ev.venue + ', ' + placeOf(ev)) +
           row('🧭', 'County', countyOf(ev)) +
           row('💷', 'Price', ev.price) +
+          (perChild(ev) && perChild(ev) !== ev.price ? row('🧒', 'Per child', perChild(ev)) : '') +
+          row('👥', 'Party size', guestsText(ev)) +
+          (ev.phone ? linkRow('📞', 'Phone', ev.phone, telHref(ev.phone)) : '') +
+          (ev.email ? linkRow('✉️', 'Email', ev.email, 'mailto:' + ev.email) : '') +
           row('🅿️', 'Parking', ev.parking) +
           (bookingBadge(ev) && !ev.soldOut ? row('🎟️', 'Booking', parseDate(ev.bookingOpens) && parseDate(ev.bookingOpens) >= today() ? 'Booking opens ' + fmtLong(parseDate(ev.bookingOpens)) + (saved.has(ev.id) && window.SENAndroid && window.SENAndroid.setReminders ? ' — you\'ll get a reminder that morning' : ' — save it (♡) to get a reminder that morning in the app') : 'Book ahead — places are limited or must be booked') : '') +
         '</div>' +
@@ -742,7 +801,7 @@
     if (rb) { radius = +rb.dataset.radius; try { localStorage.setItem(RADIUS_KEY, String(radius)); } catch (_) {} if (!userPos && geoNotice && geoNotice.indexOf('unavailable') >= 0) geoNotice = 'Location unavailable, so showing places ' + radiusText() + ' of Newtownabbey instead, nearest first.'; render(); return; }
     const w = e.target.closest('[data-where]');
     if (w) { setWhere(w.dataset.where); closePops(); render(); return; }
-    if (e.target.closest('#clear-chip')) { ['near','weekend','free','sen','general','new','saved'].forEach(k => state[k] = false); state.area = 'all'; state.town = 'all'; state.type = 'all'; state.query = ''; els.search.value = ''; ageLo = 0; ageHi = AGE_TOP; persistAge(); syncChips(); render(); return; }
+    if (e.target.closest('#clear-chip')) { ['near','weekend','free','sen','general','new','saved'].forEach(k => state[k] = false); state.area = 'all'; state.town = 'all'; state.type = 'all'; state.query = ''; els.search.value = ''; ageLo = 0; ageHi = AGE_TOP; persistAge(); dateFrom = ''; dateTo = ''; persistDates(); syncChips(); render(); return; }
     if (!e.target.closest('.menu, .where-list')) closePops();
   }, true);
   document.addEventListener('keydown', e => {
