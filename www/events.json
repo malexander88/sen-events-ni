@@ -34076,6 +34076,31 @@
       "lat": 54.59338,
       "lng": -5.69609,
       "geoSource": "town"
+    },
+    {
+      "id": "gen-lisburn-museum-victorian-crafts-2026",
+      "name": "Victorian Christmas Family Craft Workshops, Lisburn Museum",
+      "description": "Drop-in family craft mornings: make handmade decorations and keepsakes inspired by a traditional Victorian Christmas. Workshops change each week; for children and adults alike. Contact the museum on 028 9266 3377 or ilc.reception@lisburncastlereagh.gov.uk.",
+      "venue": "Irish Linen Centre & Lisburn Museum, Market Square",
+      "town": "Lisburn",
+      "county": "County Antrim",
+      "area": "County Antrim",
+      "type": "Seasonal",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-19",
+      "recurring": "Saturdays 5, 12 & 19 Dec",
+      "time": "10:30–12:30",
+      "price": "Free (museum entry free)",
+      "url": "https://www.lisburnmuseum.com/events/victorian-christmas-family-craft-workshop/",
+      "senSpecific": false,
+      "general": true,
+      "soldOut": false,
+      "geoSource": "venue",
+      "addedDate": "2026-11-19",
+      "lat": 54.5112,
+      "lng": -6.04378,
+      "bookingRequired": false,
+      "bookingOpens": null
     }
   ]
 }
